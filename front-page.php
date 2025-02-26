@@ -32,26 +32,19 @@ get_header(); ?>
         <div class="banner-on-marquee">
           <div class="home-two-tab-hero-image">
             <img
-              src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2).webp"
+              src="./src/media/heropic1.jpg"
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 46vw, (max-width: 991px) 47vw, 100vw"
               width="278.5"
               height="306"
               alt="Home Two Hero Image"
-              srcset="
-                https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2)-p-500.webp 500w,
-                https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2).webp       557w
-              "
               class="full-width full-height"
             /><img
-              src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5).webp"
+              src="./src/media/heropic1.jpg"
               id="w-node-_4dd505b1-6401-240c-7ad1-1e56bce8b7b5-5e5927f7"
               width="278.5"
               height="306"
               alt="Home Two Hero Image"
-              srcset="
-                https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5)-p-500.webp 500w,
-                https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5).webp       555w
-              "
+              
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 46vw, (max-width: 991px) 47vw, 100vw"
               class="full-width full-height"
             />
@@ -67,10 +60,7 @@ get_header(); ?>
                 width="278.5"
                 height="306"
                 alt="Home Two Hero Image"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5)-p-500.webp 500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5).webp       555w
-                "
+                
                 class="home-two-hero-image home-two-hero-animate-image"
               />
             </div>
@@ -79,15 +69,12 @@ get_header(); ?>
               class="banner-one-image-wrap right"
             >
               <img
-                src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2).webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/heropic1.jpg"
                 sizes="(max-width: 991px) 100vw, 278.5px"
                 width="278.5"
                 height="306"
                 alt="Home Two Hero Image"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2)-p-500.webp 500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2).webp       557w
-                "
+                
                 class="home-two-hero-image"
               />
             </div>
@@ -96,15 +83,12 @@ get_header(); ?>
               class="banner-one-image-wrap left"
             >
               <img
-                src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f7faad79a9f0a4c15_Home%20Two%20Hero%20Image%20(3).webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/pc-pic.jpg"
                 sizes="(max-width: 991px) 100vw, 278.5px"
                 width="278.5"
                 height="306"
                 alt="Home Two Hero Image"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f7faad79a9f0a4c15_Home%20Two%20Hero%20Image%20(3)-p-500.webp 500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f7faad79a9f0a4c15_Home%20Two%20Hero%20Image%20(3).webp       556w
-                "
+                
                 class="home-two-hero-image"
               />
             </div>
@@ -113,15 +97,12 @@ get_header(); ?>
               class="banner-one-image-wrap right"
             >
               <img
-                src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f8def766283e181da_Home%20Two%20Hero%20Image%20(4).webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/66d15d9f8def766283e181da_Home-Two-Hero-Image-4.jpg"
                 sizes="(max-width: 991px) 100vw, 278.5px"
                 width="278.5"
                 height="306"
                 alt="Home Two Hero Image"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f8def766283e181da_Home%20Two%20Hero%20Image%20(4)-p-500.webp 500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f8def766283e181da_Home%20Two%20Hero%20Image%20(4).webp       549w
-                "
+                
                 class="home-two-hero-image"
               />
             </div>
@@ -130,15 +111,12 @@ get_header(); ?>
               class="banner-one-image-wrap left"
             >
               <img
-                src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5).webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/66d15d9f98945ff5748ddae7_Home-Two-Hero-Image-5-1.jpg"
                 sizes="(max-width: 991px) 100vw, 278.5px"
                 width="278.5"
                 height="306"
                 alt="Home Two Hero Image"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5)-p-500.webp 500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9f98945ff5748ddae7_Home%20Two%20Hero%20Image%20(5).webp       555w
-                "
+                
                 class="home-two-hero-image"
               />
             </div>
@@ -147,15 +125,12 @@ get_header(); ?>
               class="banner-one-image-wrap right"
             >
               <img
-                src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2).webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/heropic1.jpg"
                 sizes="(max-width: 991px) 100vw, 278.5px"
                 width="278.5"
                 height="306"
                 alt="Home Two Hero Image"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2)-p-500.webp 500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d15d9fa8db170b0c8ee717_Home%20Two%20Hero%20Image%20(2).webp       557w
-                "
+                
                 class="home-two-hero-image"
               />
             </div>
@@ -981,8 +956,8 @@ get_header(); ?>
                     data-w-id="2ad05d87-a211-1492-fef7-192e1f43e203"
                     class="margin-top-ten text-white"
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit Nam
-                    ligula neque, tempus sed leo ac, posuere eleifend.
+                  Drive measurable growth through innovative campaigns, optimized strategies, and a laser focus on ROI. 
+                  
                   </p>
                 </div>
               </div>
@@ -1015,8 +990,7 @@ get_header(); ?>
                     data-w-id="2ad05d87-a211-1492-fef7-192e1f43e20d"
                     class="margin-top-ten text-white"
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit Nam
-                    ligula neque, tempus sed leo ac, posuere eleifend.
+                  Elevate your brand’s story with compelling positioning, consistent messaging, and a clear identity.
                   </p>
                 </div>
               </div>
@@ -1045,8 +1019,7 @@ get_header(); ?>
                     data-w-id="2ad05d87-a211-1492-fef7-192e1f43e216"
                     class="margin-top-ten margin-bottom-none text-white"
                   >
-                    Lorem ipsum dolor sit amet consectetur. Nibh sed faucibus
-                    gravida hac cursus sit.
+                  Stand out from the crowd with striking visuals, user-friendly layouts, and creative flair.
                   </p>
                 </div>
               </div>
@@ -1058,14 +1031,9 @@ get_header(); ?>
                 width="554.5"
                 height="649.5"
                 alt="Brand Image"
-                src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d054894b9dd7eb4bdd8517_Home%20Two%20Brand%20Image.webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/66d054894b9dd7eb4bdd8517_Home-Two-Brand-Image.jpg"
                 loading="lazy"
-                srcset="
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d054894b9dd7eb4bdd8517_Home%20Two%20Brand%20Image-p-500.webp   500w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d054894b9dd7eb4bdd8517_Home%20Two%20Brand%20Image-p-800.webp   800w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d054894b9dd7eb4bdd8517_Home%20Two%20Brand%20Image-p-1080.webp 1080w,
-                  https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d054894b9dd7eb4bdd8517_Home%20Two%20Brand%20Image.webp        1107w
-                "
+                
                 sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 1279px) 97vw, 1230px"
                 class="animated-image full-width tab-height-auto"
               />
@@ -1091,6 +1059,9 @@ get_header(); ?>
         </div>
       </div>
     </section>
+
+
+    <!-- Two Story About Section -->
     <section class="home-two-story-section">
       <div class="home-two-story-sticky-box">
         <div class="w-layout-blockcontainer container-one w-container">
@@ -1183,6 +1154,9 @@ get_header(); ?>
         </div>
       </div>
     </section>
+
+
+<!-- Projects And Work Showcase Section -->    
     <section class="home-two-work-section">
       <div class="w-layout-vflex home-two-work-wrap">
         <div
@@ -1214,14 +1188,14 @@ get_header(); ?>
                 width="150"
                 height="150"
                 alt="Circle Image"
-                src="./Media/66b09867393ab0f51bf149ea_Rotate Icon.webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/creativeagency.png"
                 loading="lazy"
                 class="circle"
               /><img
                 width="55.5"
                 height="52"
                 alt="Thumb"
-                src="./Media/66b09877b5344d77dd110048_Thumb up hand.webp"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/thumb.png"
                 loading="lazy"
                 class="rotte-icon"
               />
@@ -1242,9 +1216,9 @@ get_header(); ?>
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image.webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Untitled-design-3.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1260,23 +1234,14 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image.webp        3840w
-                          "
+                          
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Identity Design
+                          Best Of North West Baltimore
                         </div>
                         <p class="margin-top-three">
                           Branding, Web Design, Marketing
@@ -1299,9 +1264,9 @@ get_header(); ?>
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7).webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Untitled-design-3.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1317,23 +1282,14 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7).webp        3840w
-                          "
+                          
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Data Visualization
+                          Best Of North West Baltimore
                         </div>
                         <p class="margin-top-three">Creative Direction</p>
                       </div></a
@@ -1354,9 +1310,9 @@ get_header(); ?>
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6).webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Untitled-design-2.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1372,23 +1328,13 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6).webp        3840w
-                          "
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Content Design
+                         Reflect Neuropsychology
                         </div>
                         <p class="margin-top-three">
                           Branding, Web Design, Marketing
@@ -1411,9 +1357,9 @@ get_header(); ?>
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5).webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Untitled-design-1.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1429,23 +1375,13 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5).webp        3840w
-                          "
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Creative problem-solving
+                          Care Giving Angels Of Maryland
                         </div>
                         <p class="margin-top-three">
                           Branding, Web Design, Marketing
@@ -1468,9 +1404,9 @@ get_header(); ?>
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4).webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Untitled-design-4.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1486,25 +1422,15 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4).webp        3840w
-                          "
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Strategic design &amp; campaigns
+                        Cullen Burke
                         </div>
-                        <p class="margin-top-three">Creative Direction</p>
+                        <p class="margin-top-three">Web Design, Marketing</p>
                       </div></a
                     >
                   </div>
@@ -1523,9 +1449,9 @@ get_header(); ?>
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3).webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Website-mockup.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1541,32 +1467,22 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3).webp        3840w
-                          "
+                          
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Design thinking &amp; innovation
+                         Precision Aesthetics MD
                         </div>
-                        <p class="margin-top-three">Brand Storytelling</p>
+                        <p class="margin-top-three">Web Design And Development, Marketing</p>
                       </div></a
                     >
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="w-layout-hflex home-two-work-scroll-main-box">
+
               <div class="home-two-work-collection-wrap w-dyn-list">
                 <div role="list" class="w-dyn-items">
                   <div
@@ -1574,296 +1490,15 @@ get_header(); ?>
                     class="home-two-work-collection-item w-dyn-item"
                   >
                     <a
-                      data-w-id="42328ff7-7488-99fc-8d71-a48033049683"
-                      href="/portfolio/identity-design"
-                      class="home-one-portfolio-card w-inline-block"
-                      ><div class="overflow-none">
-                        <img
-                          class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image.webp"
-                          width="870"
-                          height="455"
-                          alt=""
-                          style="
-                            -webkit-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -moz-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          "
-                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
-                          loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2d29c5846c8d09f058711_Portfolio%20Image.webp        3840w
-                          "
-                        />
-                      </div>
-                      <div
-                        class="w-layout-vflex home-two-work-card-contain-wrap"
-                      >
-                        <div class="heading-four margin-top-twenty">
-                          Identity Design
-                        </div>
-                        <p class="margin-top-three">
-                          Branding, Web Design, Marketing
-                        </p>
-                      </div></a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="home-two-work-collection-wrap w-dyn-list">
-                <div role="list" class="w-dyn-items">
-                  <div
-                    role="listitem"
-                    class="home-two-work-collection-item w-dyn-item"
-                  >
-                    <a
-                      data-w-id="42328ff7-7488-99fc-8d71-a4803304968f"
-                      href="/portfolio/data-visualization"
-                      class="home-one-portfolio-card w-inline-block"
-                      ><div class="overflow-none">
-                        <img
-                          class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7).webp"
-                          width="870"
-                          height="455"
-                          alt=""
-                          style="
-                            -webkit-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -moz-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          "
-                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
-                          loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2ca2b4e25097b67c5a1d1_One%20(7).webp        3840w
-                          "
-                        />
-                      </div>
-                      <div
-                        class="w-layout-vflex home-two-work-card-contain-wrap"
-                      >
-                        <div class="heading-four margin-top-twenty">
-                          Data Visualization
-                        </div>
-                        <p class="margin-top-three">Creative Direction</p>
-                      </div></a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="home-two-work-collection-wrap w-dyn-list">
-                <div role="list" class="w-dyn-items">
-                  <div
-                    role="listitem"
-                    class="home-two-work-collection-item w-dyn-item"
-                  >
-                    <a
-                      data-w-id="42328ff7-7488-99fc-8d71-a4803304969b"
-                      href="/portfolio/content-design"
-                      class="home-one-portfolio-card w-inline-block"
-                      ><div class="overflow-none">
-                        <img
-                          class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6).webp"
-                          width="870"
-                          height="455"
-                          alt=""
-                          style="
-                            -webkit-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -moz-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          "
-                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
-                          loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9f7d6ae51f7242ca249_One%20(6).webp        3840w
-                          "
-                        />
-                      </div>
-                      <div
-                        class="w-layout-vflex home-two-work-card-contain-wrap"
-                      >
-                        <div class="heading-four margin-top-twenty">
-                          Content Design
-                        </div>
-                        <p class="margin-top-three">
-                          Branding, Web Design, Marketing
-                        </p>
-                      </div></a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="home-two-work-collection-wrap w-dyn-list">
-                <div role="list" class="w-dyn-items">
-                  <div
-                    role="listitem"
-                    class="home-two-work-collection-item w-dyn-item"
-                  >
-                    <a
-                      data-w-id="42328ff7-7488-99fc-8d71-a480330496a7"
-                      href="/portfolio/creative-problem-solving"
-                      class="home-one-portfolio-card w-inline-block"
-                      ><div class="overflow-none">
-                        <img
-                          class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5).webp"
-                          width="870"
-                          height="455"
-                          alt=""
-                          style="
-                            -webkit-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -moz-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          "
-                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
-                          loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c994472ba68432fd64b0_One%20(5).webp        3840w
-                          "
-                        />
-                      </div>
-                      <div
-                        class="w-layout-vflex home-two-work-card-contain-wrap"
-                      >
-                        <div class="heading-four margin-top-twenty">
-                          Creative problem-solving
-                        </div>
-                        <p class="margin-top-three">
-                          Branding, Web Design, Marketing
-                        </p>
-                      </div></a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="home-two-work-collection-wrap w-dyn-list">
-                <div role="list" class="w-dyn-items">
-                  <div
-                    role="listitem"
-                    class="home-two-work-collection-item w-dyn-item"
-                  >
-                    <a
-                      data-w-id="42328ff7-7488-99fc-8d71-a480330496b3"
-                      href="/portfolio/strategic-design-campaigns"
-                      class="home-one-portfolio-card w-inline-block"
-                      ><div class="overflow-none">
-                        <img
-                          class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4).webp"
-                          width="870"
-                          height="455"
-                          alt=""
-                          style="
-                            -webkit-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -moz-transform: translate3d(0, 0, 0)
-                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                              skew(0, 0);
-                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          "
-                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
-                          loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c9583805f8514ed4821c_One%20(4).webp        3840w
-                          "
-                        />
-                      </div>
-                      <div
-                        class="w-layout-vflex home-two-work-card-contain-wrap"
-                      >
-                        <div class="heading-four margin-top-twenty">
-                          Strategic design &amp; campaigns
-                        </div>
-                        <p class="margin-top-three">Creative Direction</p>
-                      </div></a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="home-two-work-collection-wrap w-dyn-list">
-                <div role="list" class="w-dyn-items">
-                  <div
-                    role="listitem"
-                    class="home-two-work-collection-item w-dyn-item"
-                  >
-                    <a
-                      data-w-id="42328ff7-7488-99fc-8d71-a480330496bf"
+                      data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
                       href="/portfolio/design-thinking-innovation"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
                           class="tab-full-width tab-height-auto"
-                          src="https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3).webp"
-                          width="870"
-                          height="455"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Website-mockup-1-1.png"
+                          width="600"
+                          height="400"
                           alt=""
                           style="
                             -webkit-transform: translate3d(0, 0, 0)
@@ -1879,32 +1514,119 @@ get_header(); ?>
                           "
                           sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
                           loading="lazy"
-                          srcset="
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-500.webp   500w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-800.webp   800w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-1080.webp 1080w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-1600.webp 1600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-2000.webp 2000w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-2600.webp 2600w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3)-p-3200.webp 3200w,
-                            https://cdn.prod.website-files.com/66b19afbc61f218b010b1256/66e2c919e2b54a78d62d0836_One%20(3).webp        3840w
-                          "
+                          
                         />
                       </div>
                       <div
                         class="w-layout-vflex home-two-work-card-contain-wrap"
                       >
                         <div class="heading-four margin-top-twenty">
-                          Design thinking &amp; innovation
+                          EV-Auto Glass
                         </div>
-                        <p class="margin-top-three">Brand Storytelling</p>
+                        <p class="margin-top-three">Web Design And Development</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="home-two-work-collection-wrap w-dyn-list">
+                <div role="list" class="w-dyn-items">
+                  <div
+                    role="listitem"
+                    class="home-two-work-collection-item w-dyn-item"
+                  >
+                    <a
+                      data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
+                      href="/portfolio/design-thinking-innovation"
+                      class="home-one-portfolio-card w-inline-block"
+                      ><div class="overflow-none">
+                        <img
+                          class="tab-full-width tab-height-auto"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Website-mockup-2-1.png"
+                          width="600"
+                          height="400"
+                          alt=""
+                          style="
+                            -webkit-transform: translate3d(0, 0, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 0, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          "
+                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
+                          loading="lazy"
+                          
+                        />
+                      </div>
+                      <div
+                        class="w-layout-vflex home-two-work-card-contain-wrap"
+                      >
+                        <div class="heading-four margin-top-twenty">
+                        Kidzz Kreations
+                        </div>
+                        <p class="margin-top-three">Website Development</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="home-two-work-collection-wrap w-dyn-list">
+                <div role="list" class="w-dyn-items">
+                  <div
+                    role="listitem"
+                    class="home-two-work-collection-item w-dyn-item"
+                  >
+                    <a
+                      data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
+                      href="/portfolio/design-thinking-innovation"
+                      class="home-one-portfolio-card w-inline-block"
+                      ><div class="overflow-none">
+                        <img
+                          class="tab-full-width tab-height-auto"
+                          src="https://localvocalmarketing.com/wp-content/uploads/2025/02/Website-mockup-3-1.png"
+                          width="600"
+                          height="400"
+                          alt=""
+                          style="
+                            -webkit-transform: translate3d(0, 0, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 0, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          "
+                          sizes="(max-width: 479px) 100vw, (max-width: 767px) 96vw, (max-width: 991px) 47vw, 870px"
+                          loading="lazy"
+                          
+                        />
+                      </div>
+                      <div
+                        class="w-layout-vflex home-two-work-card-contain-wrap"
+                      >
+                        <div class="heading-four margin-top-twenty">
+                           The Ministry of Healing Arts
+                        </div>
+                        <p class="margin-top-three">Website Development</p>
                       </div></a
                     >
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            
+
+<!-- Horizontal Train of Text With Floating Card -->
           <div class="home-two-pogress-line">
             <div class="home-two-pogress-inner-line"></div>
           </div>
@@ -1941,13 +1663,9 @@ get_header(); ?>
                     width="438.29"
                     height="516.38"
                     alt="Image"
-                    src="./Media/garey.jpg"
+                    src="https://localvocalmarketing.com/wp-content/uploads/2023/08/GareySimmons-smile-1.jpg"
                     loading="lazy"
-                    srcset="
-                      ./Media/garey.jpg 500w,
-                      ./Media/garey.jpg 800w,
-                      ./Media/garey.jpg 877w
-                    "
+                    
                     sizes="(max-width: 767px) 100vw, 438px"
                     class="image-cover"
                   />
@@ -2058,9 +1776,9 @@ get_header(); ?>
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e2dd"
                 class="home-two-craft-paragraph text-white margin-top-ten"
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque dolor sagittis sollicitudin et, finibus sit amet
-                leo. Mauris et purus quam. In hac habitasse platea.
+              We bring your ideas to life with strategic thinking, creative expertise, and a keen eye for detail. 
+              Our team is dedicated to transforming your vision into impactful solutions that captivate your audience and drive meaningful results. 
+              Let’s craft something extraordinary together.
               </p>
             </div>
             <div class="home-two-craft-line">
@@ -2081,16 +1799,14 @@ get_header(); ?>
                     alt="Icon"
                     src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d822556685c2018538fa3a_Mask%20group%20(10).svg"
                     loading="lazy"
-                    class="craft-icon"
+                    class="craft-icon" 
                   />
                   <div class="w-layout-vflex craft-card-contain">
                     <div class="heading-five text-white">
                       Digital Advertising
                     </div>
                     <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
+                    Boost your brand with targeted, high-impact ads that drive engagement, conversions, and results. 
                     </p>
                   </div>
                 </div>
@@ -2102,13 +1818,9 @@ get_header(); ?>
                     width="414"
                     height="466"
                     alt="Craft Image"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875890ce8bb64e56a44_Craft%20Image.webp"
+                    src="https://localvocalmarketing.com/wp-content/uploads/2025/02/66b09875890ce8bb64e56a44_Craft-Image.jpg"
                     loading="lazy"
-                    srcset="
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875890ce8bb64e56a44_Craft%20Image-p-500.webp 500w,
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875890ce8bb64e56a44_Craft%20Image-p-800.webp 800w,
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875890ce8bb64e56a44_Craft%20Image.webp       828w
-                    "
+                    
                     sizes="100vw"
                     class="full-width full-height"
                   />
@@ -2142,7 +1854,9 @@ get_header(); ?>
 "
                     src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875a615a5a064eb0af8_Craft%20Arrow.svg"
                     loading="lazy"
-                  /></div></a
+                  />
+                </div>
+                </a
               ><a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e2ef"
                 href="/service-details"
@@ -2160,11 +1874,9 @@ get_header(); ?>
                     class="craft-icon"
                   />
                   <div class="w-layout-vflex craft-card-contain">
-                    <div class="heading-five text-white">Brand Strategy</div>
+                    <div class="heading-five text-white">Website Development</div>
                     <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
+                    Create stunning, fast, and user-friendly websites designed to engage <br/>and convert.
                     </p>
                   </div>
                 </div>
@@ -2235,12 +1947,10 @@ get_header(); ?>
                   />
                   <div class="w-layout-vflex craft-card-contain">
                     <div class="heading-five text-white">
-                      Cutting-Edge Solutions
+                      Content Creation
                     </div>
                     <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
+                    Engaging, high-quality content that informs, inspires, and drives audience action across platforms.
                     </p>
                   </div>
                 </div>
@@ -2311,12 +2021,10 @@ get_header(); ?>
                   />
                   <div class="w-layout-vflex craft-card-contain">
                     <div class="heading-five text-white">
-                      Competitive Analysis
+                      Search Engine Optimization
                     </div>
                     <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
+                    Improve rankings, boost traffic, and increase visibility<br/> with data-driven SEO strategies.
                     </p>
                   </div>
                 </div>
@@ -2387,12 +2095,10 @@ get_header(); ?>
                   />
                   <div class="w-layout-vflex craft-card-contain">
                     <div class="heading-five text-white">
-                      Digital Advertising
+                      Social Media Management
                     </div>
                     <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
+                    Grow your brand with strategic content, engagement, and data-driven social media marketing.
                     </p>
                   </div>
                 </div>
@@ -2445,157 +2151,7 @@ get_header(); ?>
                     sizes="100vw"
                     class="full-width full-height"
                   /></div></a
-              ><a
-                data-w-id="2ad05d87-a211-1492-fef7-192e1f43e323"
-                href="/service-details"
-                class="home-two-craft-card six w-inline-block"
-                ><div
-                  style="opacity: 1"
-                  class="w-layout-vflex craft-card-contain-wrap"
-                >
-                  <img
-                    width="60"
-                    height="61"
-                    alt="Icon"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d8225659b33a09de6e0f0a_Mask%20group%20(11).svg"
-                    loading="lazy"
-                    class="craft-icon"
-                  />
-                  <div class="w-layout-vflex craft-card-contain">
-                    <div class="heading-five text-white">Brand Strategy</div>
-                    <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  data-w-id="cdf51392-e8d3-8c4a-5c41-85d1563b10c1"
-                  style="display: none; opacity: 0"
-                  class="w-layout-vflex craft-card-button"
-                >
-                  <img
-                    width="103"
-                    height="103"
-                    alt="Rotate Text"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09877423eba907f558841_Rotate%20Text.webp"
-                    loading="lazy"
-                    style="
-                      -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                      -moz-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                      -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                      transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                    "
-                    class="craft-button-rotate-image"
-                  /><img
-                    width="23"
-                    height="17"
-                    alt="Arrow
-"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875a615a5a064eb0af8_Craft%20Arrow.svg"
-                    loading="lazy"
-                  />
-                </div>
-                <div
-                  style="display: none; opacity: 0"
-                  class="craft-card-image-box"
-                >
-                  <img
-                    width="414"
-                    height="466"
-                    alt="Vissin Image"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d59968afe3de60f474ca7d_Vission%20Image%20(1).webp"
-                    loading="lazy"
-                    srcset="
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d59968afe3de60f474ca7d_Vission%20Image%20(1)-p-500.webp 500w,
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d59968afe3de60f474ca7d_Vission%20Image%20(1)-p-800.webp 800w,
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d59968afe3de60f474ca7d_Vission%20Image%20(1).webp       828w
-                    "
-                    sizes="100vw"
-                    class="full-width full-height"
-                  /></div></a
-              ><a
-                data-w-id="2ad05d87-a211-1492-fef7-192e1f43e330"
-                href="/service-details"
-                class="home-two-craft-card seven w-inline-block"
-                ><div
-                  style="opacity: 1"
-                  class="w-layout-vflex craft-card-contain-wrap"
-                >
-                  <img
-                    width="61"
-                    height="61"
-                    alt="Icon"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d82255f3cfea948ba15f8b_Mask%20group%20(9).svg"
-                    loading="lazy"
-                    class="craft-icon"
-                  />
-                  <div class="w-layout-vflex craft-card-contain">
-                    <div class="heading-five text-white">
-                      Cutting-Edge Solutions
-                    </div>
-                    <p class="text-grey margin-top-twenty-five">
-                      Lorem ipsum dolor sit elitellentesque dolor sagittis
-                      sollicitudin et, finibus sit amet Mauris et purus quam. In
-                      hac habitasse.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  data-w-id="2ad05d87-a211-1492-fef7-192e1f43e338"
-                  style="display: none; opacity: 0"
-                  class="w-layout-vflex craft-card-button"
-                >
-                  <img
-                    width="103"
-                    height="103"
-                    alt="Rotate Text"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09877423eba907f558841_Rotate%20Text.webp"
-                    loading="lazy"
-                    style="
-                      -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                      -moz-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                      -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                      transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
-                        rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);
-                    "
-                    class="craft-button-rotate-image"
-                  /><img
-                    width="23"
-                    height="17"
-                    alt="Arrow
-"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875a615a5a064eb0af8_Craft%20Arrow.svg"
-                    loading="lazy"
-                  />
-                </div>
-                <div
-                  style="display: none; opacity: 0"
-                  class="craft-card-image-box"
-                >
-                  <img
-                    width="414"
-                    height="466"
-                    alt="Vissin Image"
-                    src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d5996801daedde69330aeb_Vission%20Image.webp"
-                    loading="lazy"
-                    srcset="
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d5996801daedde69330aeb_Vission%20Image-p-500.webp 500w,
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d5996801daedde69330aeb_Vission%20Image-p-800.webp 800w,
-                      https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d5996801daedde69330aeb_Vission%20Image.webp       828w
-                    "
-                    sizes="100vw"
-                    class="full-width full-height"
-                  /></div
-              ></a>
+              >
             </div>
           </div>
         </div>
@@ -2608,9 +2164,7 @@ get_header(); ?>
           <p
             class="home-two-testemonial-paragraph text-center margin-top-ten text-grey"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque dolor sagittis sollicitudin et, finibus sit amet leo.
-            Mauris et purus quam. In hac habitasse platea.
+          See how our strategies have helped businesses grow through real success stories and glowing testimonials. Our clients' experiences speak for our commitment to excellence.
           </p>
         </div>
       </div>
@@ -2660,9 +2214,10 @@ get_header(); ?>
                     <div class="text-white">
                       <span
                         class="heading-five text-white text-playfair text-capitalize text-medium"
-                        >Ahmad Philips -</span
+                        >
+                        Gary Wallis -</span
                       >
-                      Montoya
+                      Google
                     </div>
                   </div>
                   <div class="overflow-none">
@@ -2677,9 +2232,7 @@ get_header(); ?>
                   </div>
                   <div class="overflow-none">
                     <p class="home-two-testimonial-paragraph">
-                      “Lorem ipsum dolor sit amet, consectetur commodo massa
-                      vitae massa facilisis, at bibendum odio volutpat. In hac
-                      habitasse platea”
+                      “My experience with Local Vocal Marketing has been outstanding. Prior to working with Local Vocal Marketing, we had lackluster results marketing our company through the web.”
                     </p>
                   </div>
                 </div>
@@ -2716,9 +2269,9 @@ get_header(); ?>
                     <div class="text-white">
                       <span
                         class="heading-five text-white text-playfair text-capitalize text-medium"
-                        >John Peterson -</span
+                        >Jake Smith -</span
                       >
-                      Montoya
+                      Google
                     </div>
                   </div>
                   <div class="overflow-none">
@@ -2733,9 +2286,7 @@ get_header(); ?>
                   </div>
                   <div class="overflow-none">
                     <p class="home-two-testimonial-paragraph">
-                      “Lorem ipsum dolor sit amet, consectetur commodo massa
-                      vitae massa facilisis, at bibendum odio volutpat. In hac
-                      habitasse platea”
+                      “ Garey's knowledge and attention to detail made it amazing to watch the changes as my company climbed near the top of the 1st Google page within a few days with just a few changes”
                     </p>
                   </div>
                 </div>
@@ -2772,9 +2323,10 @@ get_header(); ?>
                     <div class="text-white">
                       <span
                         class="heading-five text-white text-playfair text-capitalize text-medium"
-                        >Karen Earle -</span
+                        >
+                        Char Rustia -</span
                       >
-                      Montoya
+                      Google
                     </div>
                   </div>
                   <div class="overflow-none">
@@ -2789,9 +2341,7 @@ get_header(); ?>
                   </div>
                   <div class="overflow-none">
                     <p class="home-two-testimonial-paragraph">
-                      “Lorem ipsum dolor sit amet, consectetur commodo massa
-                      vitae massa facilisis, at bibendum odio volutpat. In hac
-                      habitasse platea”
+                      “ Thanks to his knowledge, I am now more fully equipped to handle my business ventures. Thank you again!”
                     </p>
                   </div>
                 </div>
@@ -2828,9 +2378,9 @@ get_header(); ?>
                     <div class="text-white">
                       <span
                         class="heading-five text-white text-playfair text-capitalize text-medium"
-                        >Abram George -</span
+                        >John Haley -</span
                       >
-                      Montoya
+                      Google
                     </div>
                   </div>
                   <div class="overflow-none">
@@ -2845,9 +2395,7 @@ get_header(); ?>
                   </div>
                   <div class="overflow-none">
                     <p class="home-two-testimonial-paragraph">
-                      “Lorem ipsum dolor sit amet, consectetur commodo massa
-                      vitae massa facilisis, at bibendum odio volutpat. In hac
-                      habitasse platea”
+                      “Gary is great to work with. He has a full range of great services to help local businesses get more customers. Highly recommended”
                     </p>
                   </div>
                 </div>
