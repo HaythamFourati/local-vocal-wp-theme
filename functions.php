@@ -3,6 +3,9 @@
 function boilerplate_load_assets() {
   wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), '1.0', true);
   wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'));
+
+  // Enqueue mobile menu script
+  wp_enqueue_script('mobile-menu', get_theme_file_uri('/src/scripts/mobilemenu.js'), array(), '1.0', true);
 }
 
 add_action('wp_enqueue_scripts', 'boilerplate_load_assets');

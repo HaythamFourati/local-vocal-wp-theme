@@ -32,14 +32,14 @@ get_header(); ?>
         <div class="banner-on-marquee">
           <div class="home-two-tab-hero-image">
             <img
-              src="./src/media/heropic1.jpg"
+              src="https://localvocalmarketing.com/wp-content/uploads/2025/02/heropic1.jpg"
               sizes="(max-width: 479px) 100vw, (max-width: 767px) 46vw, (max-width: 991px) 47vw, 100vw"
               width="278.5"
               height="306"
               alt="Home Two Hero Image"
               class="full-width full-height"
             /><img
-              src="./src/media/heropic1.jpg"
+              src="https://localvocalmarketing.com/wp-content/uploads/2025/02/66d15d9f8def766283e181da_Home-Two-Hero-Image-4.jpg"
               id="w-node-_4dd505b1-6401-240c-7ad1-1e56bce8b7b5-5e5927f7"
               width="278.5"
               height="306"
@@ -2424,6 +2424,66 @@ get_header(); ?>
         </div>
       </div>
     </section>
+
+
+    <!-- Team Section -->
+<section class="bg-white py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+          <p class="text-xl text-gray-600">Dedicated professionals working to serve you better</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <!-- Team Member 1 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img class="w-full h-80 object-cover" src="https://localvocalmarketing.com/wp-content/uploads/2023/08/GareySimmons-smile-1.jpg" alt="Garey Simmons">
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-2">Garey Simmons</h3>
+              <p class="text-lg font-medium text-indigo-600 mb-4">CEO & Founder</p>
+              <p class="text-gray-600">With over 15 years of experience in digital marketing and business strategy.</p>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img class="w-full h-80 object-cover" src="https://localvocalmarketing.com/wp-content/uploads/2025/02/WhatsApp-Image-2023-02-20-at-12.00.54.jpg" alt="Haytham Fourati">
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-2">Haytham Fourati</h3>
+              <p class="text-lg font-medium text-indigo-600 mb-4">Website Developer</p>
+              <p class="text-gray-600">A creative visionary with a passion for innovative design solutions.</p>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img class="w-full h-80 object-cover" src="https://media.licdn.com/dms/image/v2/C4D03AQG5f_vr1gwUGQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1520827295424?e=2147483647&v=beta&t=D1-2d7zzAim9B6CikUFsheLMP-CxVcGsMchqu3owgMs" alt="Team Member 3">
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-2">David Breth</h3>
+              <p class="text-lg font-medium text-indigo-600 mb-4">Social Media Manager</p>
+              <p class="text-gray-600"> A social media expert with a knack for creating engaging content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CTA Banner Section -->
+   <section class="bg-indigo-700 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-4xl font-bold text-white pb-6">Let's Start a New Project</h2>
+            <p class="text-xl text-indigo-100 pb-6 max-w-2xl mx-auto">Ready to transform your digital presence? Partner with us to bring your vision to life with innovative solutions tailored to your needs.</p>
+            <a href="/contact" class="inline-flex items-center px-8 py-4 border text-lg font-medium rounded-md text-white bg-red hover:bg-indigo-50 transition duration-300 ease-in-out shadow-lg">
+                Get Started
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </div>
+   </section>
     <!-- <footer class="footer-two footer-white">
       <div class="w-layout-blockcontainer footer-one-container w-container">
         <div class="w-layout-hflex footer-one-wrap">

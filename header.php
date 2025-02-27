@@ -49,18 +49,7 @@ data-wf-domain="localvocalmarketing.com"
       href="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d81b398d58d44672705a70_Large.svg"
       rel="apple-touch-icon"
     />
-    <script type="text/javascript">
-      window.__WEBFLOW_CURRENCY_SETTINGS = {
-        currencyCode: "USD",
-        symbol: "$",
-        decimal: ".",
-        fractionDigits: 2,
-        group: ",",
-        template:
-          '{{wf {"path":"symbol","type":"PlainText"} }} {{wf {"path":"amount","type":"CommercePrice"} }} {{wf {"path":"currencyCode","type":"PlainText"} }}',
-        hideDecimalForWholeNumbers: false,
-      };
-    </script>
+    
   </head>
   <header class="header-custom">
     <div class="header-custom_nav container mx-auto flex items-center justify-between py-3 px-3">
@@ -70,29 +59,58 @@ data-wf-domain="localvocalmarketing.com"
       </a>
 
       <!-- Navigation Links -->
-      <nav >
-
+      <nav>
         <?php
         wp_nav_menu(array(
           'theme_location' => 'primary',
           'container' => false,
-          'items_wrap' => '%3$s',
-          'link_before' => '<span class="text-gray-900 hover:text-blue-600">',
+          'menu_class' => 'flex space-x-6',
+          'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+          'link_before' => '<span class="text-gray-900 hover:text-blue-600 transition-colors">',
           'link_after' => '</span>',
         ));
         ?>
-
       </nav>
 
       <!-- CTA Button -->
-      <a href="#" class="hidden md:block bg-blue-600 text-black px-4 py-2 rounded-lg hover:bg-blue-700">Get Started</a>
+      <button href="/contact" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Get Started</button>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button" class="md:hidden text-gray-700">
+      <button id="mobile-menu-button" class="md:hidden text-gray-700 z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
+
+      <!-- Mobile Menu Overlay -->
+      <div id="mobile-menu" class="w-screen" >
+        <div class="w-full mx-auto h-full bg-white shadow-xl ">
+          <div class="flex">
+            <div class="p-4">
+              <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <nav class="flex flex-col px-4 py-6">
+              <?php
+              wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'container' => false,
+                'menu_class' => 'space-y-4',
+                'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+                'link_before' => '<span class="block text-gray-900 hover:text-blue-600 py-2 transition-colors">',
+                'link_after' => '</span>',
+              ));
+              ?>
+              <div class="mt-6">
+                <button href="#" class="block w-full bg-blue-600 text-white text-center px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Get Started</button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
   

@@ -30,6 +30,28 @@
   padding-left: 10px;
 }
 
+/*Hide Menu on mobile*/
+
+@media only screen and (max-width: 756px) {
+  .header-custom_nav nav{
+    display: none;
+  }
+}
+
+/* Mobile menu styles */
+
+#mobile-menu{ 
+ margin: 0;
+ height: 50vh;
+ position: absolute;
+ top:0;
+ left:0;
+}
+
+#mobile-menu.active {
+  display: block;
+}
+
 
 
 /* Media Break Points Start */

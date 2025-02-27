@@ -1,7 +1,7 @@
 <footer id="my-footer" class="full mx-auto">
     <div class="grid justify-center max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
             <div class="space-y-4">
-                <h2 class="text-center text-playfair text-9xl font-semibold text-white">Local Vocal Marketing LLC</h2>
+                <h2 class="text-center text-9xl font-semibold text-white">Local Vocal Marketing LLC</h2>
                 <p class="text-center text-white ">Empowering local voices and connecting communities through meaningful content.</p>
             </div>
             
