@@ -1,12 +1,9 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
+// Main JavaScript file
+// Add vanilla JavaScript code here
 
-
-if (document.querySelector("#render-react-example-here")) {
-  const root = ReactDOM.createRoot(document.querySelector("#render-react-example-here"))
-  root.render(
-  <>  
+// Example of how to add event listeners when the document is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Document loaded and ready!');
   
-  </>
-  )
-}
+  // You can initialize any custom scripts here
+});
