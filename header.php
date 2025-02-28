@@ -59,7 +59,7 @@ data-wf-domain="localvocalmarketing.com"
     <div class="header-custom_nav container mx-auto flex items-center justify-between py-3 px-3">
       <!-- Logo -->
       <a href="<?php echo home_url(); ?>" class="text-3xl text-playfair font-semibold text-black logo">
-        <img src="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM.png" alt="LVM Logo">
+        <img src="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png" alt="LVM Logo">
       </a>
 
       <!-- Navigation Links -->

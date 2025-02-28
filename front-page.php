@@ -2457,7 +2457,7 @@ get_header(); ?>
 
           <!-- Team Member 3 -->
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img class="w-full h-80 object-cover" src="https://media.licdn.com/dms/image/v2/C4D03AQG5f_vr1gwUGQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1520827295424?e=2147483647&v=beta&t=D1-2d7zzAim9B6CikUFsheLMP-CxVcGsMchqu3owgMs" alt="Team Member 3">
+            <img class="w-full h-80 object-cover" src="https://localvocalmarketing.com/wp-content/uploads/2025/02/467235083_10234123037800716_1873456959756484989_n-1.jpg" alt="Team Member 3">
             <div class="p-6">
               <h3 class="text-2xl font-semibold text-gray-900 mb-2">David Breth</h3>
               <p class="text-lg font-medium text-indigo-600 mb-4">Social Media Manager</p>
