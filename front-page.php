@@ -15,7 +15,7 @@ get_header(); ?>
               <h1
                 class="text-playfair text-capitalize text-medium margin-top-none text-center"
               >
-                Actually Works
+                Actually <span style="color:#4F39F6">Works</span>
               </h1>
             </div>
             <div class="overflow-none">
