@@ -15,7 +15,7 @@ get_header(); ?>
               <h1
                 class="text-playfair text-capitalize text-medium margin-top-none text-center"
               >
-                Actually <span style="color:#4F39F6">Works</span>
+                Actually <span style="color:#4F46E5">Works</span>
               </h1>
             </div>
             <div class="overflow-none">
@@ -1096,7 +1096,7 @@ get_header(); ?>
                 <a
                   role="button"
                   data-w-id="115e51e6-cde9-befa-9523-f7f0500016d0"
-                  href="#"
+                  href="<?php echo get_page_link( get_page_by_path( 'contact' )->ID ); ?>"
                   class="link-button black w-inline-block"
                   ><div class="w-layout-vflex button-text-wrap">
                     <div>Know More</div>
@@ -1211,7 +1211,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="061a0f05-4160-7a06-d915-a4486f88d23e"
-                      href="/portfolio/identity-design"
+                      href="https://www.northwestbaltimore.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1259,7 +1259,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="9c7853b5-83dc-573f-9a25-8c58b1bb7834"
-                      href="/portfolio/data-visualization"
+                      href="https://www.northwestbaltimore.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1305,7 +1305,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="a6437f01-a48d-abae-bd06-575a6d42e36c"
-                      href="/portfolio/content-design"
+                      href="https://www.reflectneuro.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1352,7 +1352,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="73cc0c9b-12fe-2b4a-fc69-55b8d788a648"
-                      href="/portfolio/creative-problem-solving"
+                      href="https://caregivingangelsofmd.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1399,7 +1399,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="c1afd779-c526-bbf5-d484-9fcb349ca7ad"
-                      href="/portfolio/strategic-design-campaigns"
+                      href="https://www.cullenburke.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1444,7 +1444,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
-                      href="/portfolio/design-thinking-innovation"
+                      href="https://precisionaestheticsmd.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1491,7 +1491,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
-                      href="/portfolio/design-thinking-innovation"
+                      href="https://ev-autoglass.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1538,7 +1538,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
-                      href="/portfolio/design-thinking-innovation"
+                      href="https://kidzzkreations.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1585,7 +1585,7 @@ get_header(); ?>
                   >
                     <a
                       data-w-id="f0850ea4-e330-1cca-54e2-b8684c3a46bd"
-                      href="/portfolio/design-thinking-innovation"
+                      href="https://theministryofhealingarts.com/"
                       class="home-one-portfolio-card w-inline-block"
                       ><div class="overflow-none">
                         <img
@@ -1785,9 +1785,10 @@ get_header(); ?>
               <div class="craft-inner-line"></div>
             </div>
             <div class="w-layout-hflex home-two-craft-card-wrap">
-              <a
+              
+            <a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e2e2"
-                href="/service-details"
+                href="/digital-marketing"
                 class="home-two-craft-card one w-inline-block"
                 ><div
                   style="opacity: 1"
@@ -1856,8 +1857,10 @@ get_header(); ?>
                     loading="lazy"
                   />
                 </div>
-                </a
-              ><a
+                </a>
+              
+              
+              <a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e2ef"
                 href="/service-details"
                 class="home-two-craft-card two w-inline-block"

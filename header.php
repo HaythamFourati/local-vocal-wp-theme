@@ -77,7 +77,7 @@ data-wf-domain="localvocalmarketing.com"
       </nav>
 
       <!-- CTA Button -->
-      <button href="/contact" class="hidden md:block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Get Started</button>
+      <button onclick="window.location.href='<?php echo get_page_link( get_page_by_path( 'contact' )->ID ); ?>'" class="hidden md:block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Get Started</button>
 
       <!-- Mobile Menu Button -->
       <button id="mobile-menu-button" class="md:hidden text-gray-700 z-50">
@@ -111,7 +111,7 @@ data-wf-domain="localvocalmarketing.com"
           ));
           ?>
           <div class="mt-6">
-            <button href="/contact" class="block w-full bg-blue-600 text-white text-center px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Get Started</button>
+            <button onclick="window.location.href='<?php echo get_page_link( get_page_by_path( 'contact' )->ID ); ?>'" class="block w-full bg-indigo-600 text-white text-center px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Get Started</button>
           </div>
         </nav>
       </div>
