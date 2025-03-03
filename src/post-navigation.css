@@ -1,0 +1,24 @@
+/* Post Navigation Styles */
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-previous,
+.nav-next {
+    flex: 1;
+    font-size: 1rem;
+    color: #1a1a1a;
+    transition: color 0.2s;
+}
+
+.nav-previous:hover,
+.nav-next:hover {
+    color: #4F39F6;
+}
+
+.nav-next {
+    text-align: right;
+}

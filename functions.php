@@ -25,3 +25,19 @@ function boilerplate_add_support() {
 }
 
 add_action('after_setup_theme', 'boilerplate_add_support');
+
+// Enqueue Contact Form 7 custom styles
+function enqueue_cf7_custom_styles() {
+    if (function_exists('wpcf7_contact_form')) {
+        wp_enqueue_style('cf7-custom', get_template_directory_uri() . '/src/contact-form.css', array(), '1.0.0');
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_cf7_custom_styles');
+
+// Enqueue post navigation styles
+function enqueue_post_navigation_styles() {
+    if (is_single()) {
+        wp_enqueue_style('post-navigation', get_template_directory_uri() . '/src/post-navigation.css', array(), '1.0.0');
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_post_navigation_styles');

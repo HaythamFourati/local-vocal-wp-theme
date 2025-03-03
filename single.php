@@ -16,7 +16,7 @@ get_header(); ?>
             </div>
 
             <!-- Title -->
-            <h1 style="font-size: 3em;" class="sm:text-5xl font-bold text-gray-900 mb-4">
+            <h1 style="font-size: 3em; line-height: 1;" class="sm:text-5xl font-bold text-gray-900 mb-4">
                 <?php the_title(); ?>
             </h1>
 
@@ -59,7 +59,7 @@ get_header(); ?>
       <p class="text-xl mb-8 max-w-3xl mx-auto">
         Join our satisfied clients and experience the difference<br/> our services can make for your business.
       </p>
-      <button class="bg-black text-indigo-600 font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors">
+      <button onclick="window.location.href='<?php echo get_page_link(get_page_by_path('contact')->ID); ?>'" class="bg-black text-indigo-600 font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors">
         Contact Us Today
       </button>
     </div>
@@ -106,36 +106,20 @@ get_header(); ?>
             <?php endif; ?>
 
             <!-- Post Navigation -->
-            <nav class="flex flex-col sm:flex-row justify-between gap-4 py-6 border-t border-b border-gray-200">
+            <nav class="nav-links flex justify-between items-center gap-4 py-6 border-t border-b border-gray-200">
                 <?php
                 $prev_post = get_previous_post();
-                if (!empty($prev_post)) : ?>
-                    <a href="<?php echo esc_url(get_permalink($prev_post->ID)); ?>" class="group flex-1 flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-indigo-500 hover:shadow-md transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400 group-hover:text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                        <div>
-                            <span class="block text-sm text-gray-500 mb-1">Previous Post</span>
-                            <span class="font-medium text-gray-900 group-hover:text-indigo-600"><?php echo esc_html(get_the_title($prev_post->ID)); ?></span>
-                        </div>
-                    </a>
-                <?php else : ?>
+                if (!empty($prev_post)) :
+                    previous_post_link('%link', '<span class="nav-previous">%title</span>');
+                else: ?>
                     <div class="flex-1"></div>
                 <?php endif; ?>
 
                 <?php
                 $next_post = get_next_post();
-                if (!empty($next_post)) : ?>
-                    <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="group flex-1 flex items-center justify-end p-4 bg-white rounded-lg border border-gray-200 hover:border-indigo-500 hover:shadow-md transition-all">
-                        <div class="text-right">
-                            <span class="block text-sm text-gray-500 mb-1">Next Post</span>
-                            <span class="font-medium text-gray-900 group-hover:text-indigo-600"><?php echo esc_html(get_the_title($next_post->ID)); ?></span>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-gray-400 group-hover:text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                <?php else : ?>
+                if (!empty($next_post)) :
+                    next_post_link('%link', '<span class="nav-next">%title</span>');
+                else: ?>
                     <div class="flex-1"></div>
                 <?php endif; ?>
             </nav>

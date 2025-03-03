@@ -78,6 +78,30 @@
   }
 }
 
+/*Single Page CTA Buttom (Under Page Header)*/
+.custom-button {
+  background-color: #0f0f0f; /* bg-gray-800 */
+  color: #ffffff; /* text-indigo-600 */
+  font-weight: 500; /* font-medium */
+  padding: 0.75rem 1.6rem; /* py-3 px-8 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: background-color 0.2s; /* transition-colors */
+}
+
+.custom-button:hover {
+  background-color: #1a1a1a; /* hover:bg-gray-600 */
+}
+
+
+/*Contact Page Map Button*/
+.map-link:hover {
+  background-color: #f9fafb;
+}
+.map-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4f46e5;
+}
+
 
 
 /* Media Break Points Start */

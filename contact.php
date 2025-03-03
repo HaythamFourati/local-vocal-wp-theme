@@ -34,7 +34,7 @@ get_header(); ?>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
           <p class="text-gray-600 mb-4">Our team is here to help with any questions</p>
-          <a href="mailto:info@localvocalmarketing.com" class="text-indigo-600 font-medium hover:text-indigo-800 transition-colors">
+          <a href="mailto:info@localvocalmarketing.com" class="text-indigo-600" style="color: #4F39F6">
             info@localvocalmarketing.com
           </a>
         </div>
@@ -48,7 +48,7 @@ get_header(); ?>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
           <p class="text-gray-600 mb-4">We're available Monday-Friday, 9am-5pm</p>
-          <a href="tel:+1(443)852-1000" class="text-indigo-600 font-medium hover:text-indigo-800 transition-colors">
+          <a href="tel:+1(443)852-1000" class="text-indigo-600 font-medium" style="color: #4F39F6">
           (443) 852-1000
           </a>
         </div>
@@ -87,7 +87,7 @@ get_header(); ?>
             // Check if Contact Form 7 is active
             if (function_exists('wpcf7_contact_form')) {
               // Display the form with ID 123 (replace with your form ID)
-              echo do_shortcode('[contact-form-7 id="123" title="Contact Form"]');
+              echo do_shortcode('[contact-form-7 id="1570408" title="Contact Form"]');
             } else {
               // Fallback custom form
             ?>
@@ -128,8 +128,11 @@ get_header(); ?>
           </div>
           
           <!-- Map/Image -->
-          <div class="bg-indigo-600 p-10 flex items-center justify-center">
-            <div class="text-center">
+          <div class="bg-indigo-900 relative overflow-hidden flex items-center justify-center" style="background-image: url('<?php echo get_theme_file_uri('assets/images/baltimore-skyline.jpg'); ?>'); background-size: cover; background-position: center;">
+            <!-- Dark overlay -->
+            <div class="absolute inset-0 bg-indigo-900 opacity-75"></div>
+            <!-- Content -->
+            <div class="relative px-8 py-12 text-center">
               <div class="mb-8">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-white mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -138,7 +141,7 @@ get_header(); ?>
               </div>
               <h3 class="text-2xl font-bold text-white mb-4">Our Maryland Office</h3>
               <p class="text-indigo-100 mb-6">Centrally located in Baltimore's vibrant business district</p>
-              <a href="https://goo.gl/maps/your-map-url" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+              <a href="https://maps.app.goo.gl/eio3U1s7NzCkutyf8" target="_blank" style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; border: 1px solid transparent; font-size: 1rem; font-weight: 500; border-radius: 0.375rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); color: #4f46e5; background-color: #ffffff; transition: all 0.2s;">
                 View on Google Maps
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -152,34 +155,92 @@ get_header(); ?>
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-16 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-        <p class="text-xl text-gray-600">Find answers to common questions about our services</p>
+        <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p class="mt-4 text-xl text-gray-600">Find answers to common questions about our services</p>
       </div>
-      
-      <div class="space-y-8">
-        <!-- FAQ Item 1 -->
-        <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">What services does Local Vocal Marketing offer?</h3>
-          <p class="text-gray-600">We offer a comprehensive suite of marketing services including digital marketing, SEO optimization, content creation, social media management, analytics & reporting, and development solutions tailored to your business needs.</p>
+
+      <!-- Tab Navigation -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button onclick="openTab('general')" class="tab-button active px-6 py-2 rounded-lg font-medium" style="background-color: #4F39F6; color: white;">
+          General Questions
+        </button>
+        <button onclick="openTab('services')" class="tab-button px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700">
+          Our Services
+        </button>
+        <button onclick="openTab('pricing')" class="tab-button px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700">
+          Pricing & Plans
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="general" style="display: block;">
+        <div class="space-y-8">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">What makes Local Vocal Marketing different?</h3>
+            <p class="text-gray-600">We combine local expertise with global insights to deliver personalized digital marketing solutions that drive real results for your business.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">How do I get started?</h3>
+            <p class="text-gray-600">Simply reach out through our contact form or give us a call. We'll schedule a consultation to understand your needs and create a tailored strategy.</p>
+          </div>
         </div>
-        
-        <!-- FAQ Item 2 -->
-        <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">How long does it take to see results?</h3>
-          <p class="text-gray-600">Results vary depending on the service and your specific goals. SEO typically takes 3-6 months to show significant results, while paid advertising and social media campaigns can show results more quickly. During our initial consultation, we'll provide a realistic timeline based on your objectives.</p>
+      </div>
+
+      <div class="tab-content" id="services" style="display: none;">
+        <div class="space-y-8">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">What services do you offer?</h3>
+            <p class="text-gray-600">We offer a comprehensive suite of digital marketing services including SEO, social media management, content creation, web development, and analytics reporting.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Can you customize services for my business?</h3>
+            <p class="text-gray-600">Yes! We create custom strategies tailored to your specific industry, goals, and target audience to ensure maximum impact.</p>
+          </div>
         </div>
-        
-        <!-- FAQ Item 3 -->
-        <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Do you work with businesses of all sizes?</h3>
-          <p class="text-gray-600">Yes! We pride ourselves on serving businesses of all sizes in Maryland. Whether you're a local startup or an established enterprise, we tailor our approach to meet your specific needs and budget.</p>
+      </div>
+
+      <div class="tab-content" id="pricing" style="display: none;">
+        <div class="space-y-8">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">How is pricing structured?</h3>
+            <p class="text-gray-600">We offer flexible pricing options based on your needs and budget. Contact us for a custom quote tailored to your requirements.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Do you offer package deals?</h3>
+            <p class="text-gray-600">Yes, we offer bundled service packages that provide comprehensive digital marketing solutions at competitive rates.</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <script>
+    function openTab(tabName) {
+      // Hide all tab content
+      var tabContents = document.getElementsByClassName('tab-content');
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = 'none';
+      }
+
+      // Remove active class from all buttons
+      var tabButtons = document.getElementsByClassName('tab-button');
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].style.backgroundColor = '#e5e7eb';
+        tabButtons[i].style.color = '#374151';
+      }
+
+      // Show the selected tab content
+      document.getElementById(tabName).style.display = 'block';
+
+      // Add active class to the clicked button
+      var activeButton = document.querySelector(`[onclick="openTab('${tabName}')"]`);
+      activeButton.style.backgroundColor = '#4F39F6';
+      activeButton.style.color = 'white';
+    }
+  </script>
 
   <!-- CTA Section -->
   <section class="bg-indigo-600 text-white py-16">
@@ -188,8 +249,8 @@ get_header(); ?>
       <p class="text-xl mb-8 max-w-3xl mx-auto">
         Let our expert team help you achieve your business goals with our comprehensive service offerings.
       </p>
-      <a href="#contact-form" class="bg-black text-white font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center">
-        Get Started Today
+      <a href="tel:(443) 852-1000" class="bg-black text-white font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center">
+        Call (443) 852-1000 Today
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
