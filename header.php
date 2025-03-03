@@ -45,12 +45,12 @@ data-wf-domain="localvocalmarketing.com"
       })(window, document);
     </script>
     <link
-      href="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d81b35d90b12bb59f22758_Small.svg"
+      href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png"
       rel="shortcut icon"
       type="image/x-icon"
     />
     <link
-      href="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66d81b398d58d44672705a70_Large.svg"
+      href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png"
       rel="apple-touch-icon"
     />
     
