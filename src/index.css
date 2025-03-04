@@ -26,6 +26,10 @@
   justify-content: space-between;
   gap: 2em;
 }
+
+.header-custom_nav nav ul {
+  margin-bottom: 0 !important;
+}
 .logo{
   padding-left: 10px;
   width: 70px;

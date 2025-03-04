@@ -37,8 +37,7 @@ get_header(); ?>
         <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <div class="text-indigo-600 mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16v-2a4 4 0 118 0v2" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a4 4 0 100-8 4 4 0 000 8z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-2">On-Page SEO</h3>
@@ -49,7 +48,7 @@ get_header(); ?>
         <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <div class="text-indigo-600 mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16c0-1.657 1.343-3 3-3h4c1.657 0 3 1.343 3 3m-8 0v-4a2 2 0 012-2h4a2 2 0 012 2v4m-6 4h.01M12 20h.01M12 20a2 2 0 110-4 2 2 0 010 4z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Off-Page SEO</h3>
@@ -60,7 +59,7 @@ get_header(); ?>
         <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <div class="text-indigo-600 mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7m-4 5v6m-6-6v6" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Technical SEO</h3>

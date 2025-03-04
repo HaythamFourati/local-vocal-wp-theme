@@ -97,7 +97,7 @@ get_header(); ?>
               class="banner-one-image-wrap right"
             >
               <img
-                src="https://localvocalmarketing.com/wp-content/uploads/2025/02/66d15d9f8def766283e181da_Home-Two-Hero-Image-4.jpg"
+                src="https://localvocalmarketing.com/wp-content/uploads/2025/03/hero-pic-new-1.jpg"
                 sizes="(max-width: 991px) 100vw, 278.5px"
                 width="278.5"
                 height="306"
@@ -1862,7 +1862,7 @@ get_header(); ?>
               
               <a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e2ef"
-                href="/service-details"
+                href="/development"
                 class="home-two-craft-card two w-inline-block"
                 ><div
                   style="opacity: 1"
@@ -1934,7 +1934,7 @@ get_header(); ?>
                   /></div></a
               ><a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e2fc"
-                href="/service-details"
+                href="/content-creation"
                 class="home-two-craft-card three w-inline-block"
                 ><div
                   style="opacity: 1"
@@ -2008,7 +2008,7 @@ get_header(); ?>
                   /></div></a
               ><a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e309"
-                href="/service-details"
+                href="/seo-optimization"
                 class="home-two-craft-card four w-inline-block"
                 ><div
                   style="opacity: 1"
@@ -2082,7 +2082,7 @@ get_header(); ?>
                   /></div></a
               ><a
                 data-w-id="2ad05d87-a211-1492-fef7-192e1f43e316"
-                href="/service-details"
+                href="/social-media-management"
                 class="home-two-craft-card five w-inline-block"
                 ><div
                   style="opacity: 1"
@@ -2454,7 +2454,7 @@ get_header(); ?>
             <div class="p-6">
               <h3 class="text-2xl font-semibold text-gray-900 mb-2">Haytham Fourati</h3>
               <p class="text-lg font-medium text-indigo-600 mb-4">Website Developer</p>
-              <p class="text-gray-600">A creative visionary with a passion for innovative design solutions.</p>
+              <p class="text-gray-600">Expert in front-end development, WordPress development, and SEO strategy.</p>
             </div>
           </div>
 
@@ -2478,178 +2478,13 @@ get_header(); ?>
         <div class="text-center">
             <h2 class="text-4xl font-bold text-white pb-6">Let's Start a New Project</h2>
             <p class="text-xl text-indigo-100 pb-6 max-w-2xl mx-auto">Ready to transform your digital presence? Partner with us to bring your vision to life with innovative solutions tailored to your needs.</p>
-            <a href="/contact" class="inline-flex items-center px-8 py-4 border text-lg font-medium rounded-md text-white bg-red hover:bg-indigo-50 transition duration-300 ease-in-out shadow-lg">
-                Get Started
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
+            <button onclick="window.location.href='<?php echo get_page_link(get_page_by_path('contact')->ID); ?>'"
+              class="bg-black text-white font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors">
+         Contact Us Today
+      </button>
         </div>
     </div>
    </section>
-    <!-- <footer class="footer-two footer-white">
-      <div class="w-layout-blockcontainer footer-one-container w-container">
-        <div class="w-layout-hflex footer-one-wrap">
-          <div class="w-layout-hflex footer-two-top-contain">
-            <div class="w-layout-vflex footer-two-left-block">
-              <div class="heading-four">Sign Up For Our Newsletter</div>
-            </div>
-            <div class="w-layout-vflex footer-two-right-block">
-              <div class="footer-form w-form">
-                <form
-                  id="wf-form-Footer-Form"
-                  name="wf-form-Footer-Form"
-                  data-name="Footer Form"
-                  method="get"
-                  class="footer-form-container"
-                  data-wf-page-id="66b0af4743ca3e675e5927f7"
-                  data-wf-element-id="e4795ecf-3b10-1da7-40f9-cc665307bd9c"
-                >
-                  <div class="footer-form-block">
-                    <input
-                      class="footer-form-field left-padding-off w-input"
-                      maxlength="256"
-                      name="Footer-Email-2"
-                      data-name="Footer Email 2"
-                      aria-label="Get product updates"
-                      placeholder="Email..."
-                      type="email"
-                      id="Footer-Email-2"
-                      required=""
-                    /><input
-                      type="submit"
-                      data-wait="Please wait..."
-                      class="footer-form-submit w-button"
-                      value=""
-                    />
-                  </div>
-                </form>
-                <div class="w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
-                </div>
-                <div class="w-form-fail">
-                  <div>
-                    Oops! Something went wrong while submitting the form.
-                  </div>
-                </div>
-              </div>
-              <p class="margin-top-thirty">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elitNullam
-                sit amet erat convallis.
-              </p>
-            </div>
-          </div>
-          <div class="footer-content footer-two-content">
-            <div
-              id="w-node-e4795ecf-3b10-1da7-40f9-cc665307bda9-5307bd89"
-              class="footer-block"
-            >
-              <div class="heading-four">Links</div>
-              <div class="footer-block-line footer-two-line"></div>
-              <a href="/home-one" class="footer-link text-black">Home</a
-              ><a href="/about-one" class="footer-link text-black">About</a
-              ><a href="/service-one" class="footer-link text-black">Service</a
-              ><a href="/portfolio-one" class="footer-link text-black"
-                >Portfolio</a
-              ><a href="/contact-one" class="footer-link text-black">Contact</a>
-            </div>
-            <div
-              id="w-node-e4795ecf-3b10-1da7-40f9-cc665307bdb7-5307bd89"
-              class="footer-block"
-            >
-              <div class="heading-four">Get In TOUCH</div>
-              <div class="footer-block-line footer-two-line"></div>
-              <div class="w-layout-hflex footer-get-in-touch-block">
-                <img
-                  width="19.5"
-                  height="19.5"
-                  alt="Icon"
-                  src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b09875e6a25f4652f62d40_Call.webp"
-                  loading="lazy"
-                /><a
-                  href="tel:8884567890"
-                  class="footer-link margin-none text-black"
-                  >888 456 7890</a
-                >
-              </div>
-              <div class="w-layout-hflex footer-get-in-touch-block top-align">
-                <img
-                  width="18"
-                  height="28"
-                  alt="Location"
-                  src="https://cdn.prod.website-files.com/6667e64973c050569f2ec968/66b5b3dcf8536b923d28512d_image%20131%20(1).webp"
-                  loading="lazy"
-                  class="margin-top-five"
-                />
-                <div class="footer-link margin-none footer-address text-black">
-                  410 Sandtown, California 94001, USA
-                </div>
-              </div>
-            </div>
-            <div
-              id="w-node-e4795ecf-3b10-1da7-40f9-cc665307bdc3-5307bd89"
-              class="footer-block"
-            >
-              <div class="heading-four">Support</div>
-              <div class="footer-block-line footer-two-line"></div>
-              <a href="/style-guide" class="footer-link text-black"
-                >Style Guide</a
-              ><a href="/license" class="footer-link text-black">License</a
-              ><a
-                href="https://regix.webflow.io/404"
-                class="footer-link text-black"
-                >404 Error</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="w-layout-hflex copyright-text tab-display-off">
-        <div class="footer-copyright-center text-black">Designed by</div>
-        <div
-          data-w-id="e4795ecf-3b10-1da7-40f9-cc665307bdd1"
-          class="w-layout-vflex position-relative overflow-none"
-        >
-          <div class="footer-copyright-center text-black">
-            <a
-              href="https://www.radianttemplates.com/"
-              class="footer-bottom-link text-black"
-              >Radiant Templates</a
-            >,
-          </div>
-          <div class="link-hover-line color-black"></div>
-        </div>
-        <div class="footer-copyright-center text-black">powered by</div>
-        <div
-          data-w-id="e4795ecf-3b10-1da7-40f9-cc665307bdd9"
-          class="w-layout-vflex position-relative overflow-none"
-        >
-          <div class="footer-copyright-center">
-            <a href="https://webflow.com" class="footer-bottom-link text-black"
-              >Webflow</a
-            >
-          </div>
-          <div class="link-hover-line color-black"></div>
-        </div>
-      </div>
-      <div class="w-layout-hflex copyright-text desktop-display-off">
-        <div class="footer-copyright-center text-black">
-          Designed by
-          <a
-            href="https://www.radianttemplates.com/"
-            class="footer-bottom-link text-black"
-            >Radiant Templates</a
-          >, powered by
-          <a href="https://webflow.com" class="footer-bottom-link text-black"
-            >Webflow</a
-          >
-        </div>
-      </div>
-    </footer> -->
-    
-
-
-
+  
 
 <?php get_footer();

@@ -129,8 +129,7 @@ get_header(); ?>
           
           <!-- Map/Image -->
           <div class="bg-indigo-900 relative overflow-hidden flex items-center justify-center" style="background-image: url('<?php echo get_theme_file_uri('assets/images/baltimore-skyline.jpg'); ?>'); background-size: cover; background-position: center;">
-            <!-- Dark overlay -->
-            <div class="absolute inset-0 bg-indigo-900 opacity-75"></div>
+            
             <!-- Content -->
             <div class="relative px-8 py-12 text-center">
               <div class="mb-8">
