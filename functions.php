@@ -41,3 +41,20 @@ function enqueue_post_navigation_styles() {
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_post_navigation_styles');
+
+// Add custom menu item for Funnel + CRM Offer
+function add_crm_offer_menu_item($items, $args) {
+    // Only add to primary menu
+    if ($args->theme_location == 'primary') {
+        $crm_item = '<li class="menu-item" style="position: relative; padding-right: 0.5rem;"><a href="' . home_url('/website-crm-offer') . '"><span class="text-gray-900 hover:text-blue-600 transition-colors">Funnel + CRM</span></a><span style="position: absolute; top: -1.4rem; right: -4rem; background-color: #ef4444; color: white; font-size: 0.625rem; font-weight: 700; padding: 0.1rem 0.25rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.025em; white-space: nowrap; box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3); animation: pulse-bubble 2s ease-in-out infinite;">Limited Offer</span></li>
+        <style>
+        @keyframes pulse-bubble {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4); }
+        }
+        </style>';
+        $items .= $crm_item;
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_crm_offer_menu_item', 10, 2);
