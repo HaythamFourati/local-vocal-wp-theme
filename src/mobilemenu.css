@@ -1,0 +1,116 @@
+/* Mobile menu styles - UPDATED */
+#mobile-menu {
+  display: none; /* Initially hidden, controlled by JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mobile-menu.active {
+  display: block;
+}
+
+#mobile-menu > div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+#mobile-menu.active > div {
+  transform: translateX(0);
+}
+
+.mobile-menu-open {
+  overflow: hidden;
+}
+
+/* Mobile menu items styling */
+#mobile-menu ul.space-y-4 {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+#mobile-menu ul.space-y-4 li {
+  margin-bottom: 0.5rem;
+}
+
+#mobile-menu ul.space-y-4 li a {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+}
+
+#mobile-menu ul.space-y-4 li a:hover,
+#mobile-menu ul.space-y-4 li a:focus {
+  color: #3b82f6; /* Tailwind blue-500 */
+}
+
+/* Close button styling */
+#mobile-menu-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#mobile-menu-close:hover {
+  opacity: 0.7;
+}
+
+/* For debugging - add a colored border */
+#mobile-menu > div {
+  border-left: 4px solid #3b82f6;
+}
+
+/* Responsive menu styles */
+@media (max-width: 767px) {
+  .header-custom_nav nav {
+    display: none;
+  }
+  
+  #mobile-menu ul.space-y-4 {
+    margin-top: 1rem;
+  }
+  
+  #mobile-menu ul.space-y-4 li {
+    margin-bottom: 0.5rem;
+  }
+  
+  #mobile-menu ul.space-y-4 li a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  
+  /* Make sure the menu content is visible */
+  #mobile-menu .p-4 {
+    position: relative;
+    z-index: 10001;
+  }
+  
+  #mobile-menu nav {
+    position: relative;
+    z-index: 10000;
+    width: 100%;
+  }
+}

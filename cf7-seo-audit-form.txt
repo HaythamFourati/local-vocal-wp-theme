@@ -1,0 +1,126 @@
+=====================================================================
+CONTACT FORM 7 - FREE LOCAL SEO AUDIT FORM
+=====================================================================
+
+INSTRUCTIONS:
+1. In WP Admin, go to: Contact > Add New
+2. Title the form: "Free Local SEO Audit"
+3. Paste the FORM TEMPLATE below into the "Form" tab
+4. Paste the MAIL TEMPLATE into the "Mail" tab
+5. Paste the MESSAGES into the "Messages" tab (optional)
+6. Save the form and copy the generated shortcode (e.g. [contact-form-7 id="1234" title="Free Local SEO Audit"])
+7. Replace the existing <form id="seo-audit-form"> block in front-page.php
+   with:  <?php echo do_shortcode('[contact-form-7 id="XXXX" title="Free Local SEO Audit"]'); ?>
+
+=====================================================================
+FORM TEMPLATE (paste into "Form" tab)
+=====================================================================
+
+<div class="seo-audit-form-wrap">
+  <p>
+    [text* your-name class:w-full class:px-4 class:py-3 class:rounded-lg class:border-0 placeholder "Your Name"]
+  </p>
+
+  <p>
+    [email* your-email class:w-full class:px-4 class:py-3 class:rounded-lg class:border-0 placeholder "Your Email Address"]
+  </p>
+
+  <p>
+    [url* your-website class:w-full class:px-4 class:py-3 class:rounded-lg class:border-0 placeholder "Your Website URL"]
+  </p>
+
+  <p>
+    [tel your-phone class:w-full class:px-4 class:py-3 class:rounded-lg class:border-0 placeholder "Phone Number (Optional)"]
+  </p>
+
+  <p>
+    [submit class:w-full class:bg-white class:text-indigo-600 class:font-bold class:py-3 class:px-6 class:rounded-lg class:hover:bg-indigo-50 class:shadow-lg "Get My Free SEO Audit →"]
+  </p>
+
+  <p class="text-sm text-indigo-100 mt-4">
+    🔒 Your information is secure. We'll never spam you or share your data.
+  </p>
+</div>
+
+=====================================================================
+MAIL TEMPLATE (paste into "Mail" tab)
+=====================================================================
+
+To:          your-email@localvocalmarketing.com
+From:        [your-name] <wordpress@localvocalmarketing.com>
+Subject:     New Free SEO Audit Request from [your-name]
+Reply-To:    [your-email]
+
+Message Body:
+------------------------------------------------------------
+New Free Local SEO Audit Request
+
+Name:     [your-name]
+Email:    [your-email]
+Website:  [your-website]
+Phone:    [your-phone]
+
+------------------------------------------------------------
+Submitted via the homepage lead magnet on Local Vocal Marketing.
+------------------------------------------------------------
+
+---- OPTIONAL: Mail (2) - Auto-reply to the lead ----
+
+To:          [your-email]
+From:        Local Vocal Marketing <hello@localvocalmarketing.com>
+Subject:     Your Free Local SEO Audit is on its way, [your-name]!
+Reply-To:    hello@localvocalmarketing.com
+
+Message Body:
+------------------------------------------------------------
+Hi [your-name],
+
+Thanks for requesting your free Local SEO audit for [your-website].
+
+Our team will review your site and send you a personalized audit
+with quick wins you can implement immediately — usually within
+24–48 business hours.
+
+In the meantime, if you have any questions, just reply to this email.
+
+Talk soon,
+The Local Vocal Marketing Team
+https://localvocalmarketing.com
+------------------------------------------------------------
+
+=====================================================================
+MESSAGES (optional overrides - "Messages" tab)
+=====================================================================
+
+Sender's message was sent successfully:
+Thanks! Your free SEO audit request has been received. We'll review your website and send your personalized audit within 24–48 hours.
+
+Sender's message failed to send:
+Something went wrong. Please try again or email us directly at hello@localvocalmarketing.com.
+
+Validation errors occurred:
+Please check the fields and try again.
+
+=====================================================================
+FRONT-PAGE.PHP REPLACEMENT SNIPPET
+=====================================================================
+
+Replace the existing <form id="seo-audit-form"> ... </form> block
+inside the "Lead Magnet Section" of front-page.php with:
+
+<?php echo do_shortcode('[contact-form-7 id="XXXX" title="Free Local SEO Audit"]'); ?>
+
+(Replace XXXX with the actual form ID assigned by CF7.)
+
+=====================================================================
+NOTES
+=====================================================================
+
+- The class: attributes on CF7 tags let Tailwind utilities apply directly
+  to the rendered inputs so the form keeps the current indigo/purple look.
+- If you want to disable the auto-reply, simply uncheck "Mail (2)" in CF7.
+- Once CF7 is live, you can safely remove:
+    src/scripts/lead-magnet.js
+    the wp_enqueue_script('lead-magnet', ...) line in functions.php
+- Consider adding Flamingo (CF7 companion plugin) to store submissions
+  inside WP, and/or a reCAPTCHA integration to cut spam.
