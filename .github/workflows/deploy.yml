@@ -1,0 +1,23 @@
+name: Deploy to Siteground
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Setup known hosts
+        run: echo "[ssh.localvocalmarketing.com]:18765 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> ~/.ssh/known_hosts
+      
+      - name: Deploy to Siteground
+        run: |
+          rsync -avz --delete -e "ssh -p 18765" ./ u4-gj8wdcduelff@ssh.localvocalmarketing.com:/home/customer/www/localvocalmarketing.com/public_html/wp-content/themes/local-vocal-wp-theme/
