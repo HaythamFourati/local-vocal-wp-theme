@@ -26,6 +26,9 @@ get_header(); ?>
                 impactful results.
               </p>
             </div>
+            <div class="flex justify-center margin-top-eight">
+              <a href="#free-seo-audit" style="background-color:#4F46E5;color:#fff;padding:0.75rem 2rem;border-radius:0.5rem;font-weight:700;font-size:1rem;display:inline-block;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,0.4);transition:background-color 0.2s;" onmouseover="this.style.backgroundColor='#4338CA'" onmouseout="this.style.backgroundColor='#4F46E5'">Get a Free Audit</a>
+            </div>
             <div class="home-two-hero-bottom-line"></div>
           </div>
         </div>
@@ -905,7 +908,7 @@ get_header(); ?>
     </section>
 
     <!-- Lead Magnet Section -->
-    <section class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16">
+    <section id="free-seo-audit" class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 class="text-4xl font-bold text-white mb-4">Get Your Free Local SEO Audit</h2>
