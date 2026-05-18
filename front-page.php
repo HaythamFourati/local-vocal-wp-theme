@@ -9,25 +9,22 @@ get_header(); ?>
         <div class="w-layout-blockcontainer container-one w-container">
           <div class="w-layout-vflex home-two-hero-wrap">
             <div class="overflow-none">
-              <h1 class="margin-bottom-none text-center">Marketing That</h1>
+              <h1 class="margin-bottom-none text-center">Maryland Web Design &amp; SEO</h1>
             </div>
             <div class="overflow-none">
               <h1
                 class="text-playfair text-capitalize text-medium margin-top-none text-center"
               >
-                Actually <span style="color:#4F46E5">Works</span>
+                For <span style="color:#4F46E5">Local Businesses</span>
               </h1>
             </div>
             <div class="overflow-none">
               <p class="home-two-hero-paragraph text-center margin-top-eight">
-                we are proud Maryland professionals dedicated to elevating your brand’s voice. 
-                With deep community insights and innovative strategies, 
-                we craft campaigns that resonate authentically and drive 
-                impactful results.
+                Serving restaurants, contractors, medical practices, and service businesses across <strong>Baltimore County, Frederick, Glyndon, Reisterstown, and surrounding Maryland communities</strong> — we build websites and SEO strategies that turn local searches into paying customers.
               </p>
             </div>
             <div class="flex justify-center margin-top-eight">
-              <a href="#free-seo-audit" style="background-color:#4F46E5;color:#fff;padding:0.75rem 2rem;border-radius:0.5rem;font-weight:700;font-size:1rem;display:inline-block;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,0.4);transition:background-color 0.2s;" onmouseover="this.style.backgroundColor='#4338CA'" onmouseout="this.style.backgroundColor='#4F46E5'">Get a Free Audit</a>
+              <a href="#free-seo-audit" style="background-color:#4F46E5;color:#fff;padding:0.75rem 2rem;border-radius:0.5rem;font-weight:700;font-size:1rem;display:inline-block;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,0.4);transition:background-color 0.2s;" onmouseover="this.style.backgroundColor='#4338CA'" onmouseout="this.style.backgroundColor='#4F46E5'">Get a Free Local SEO Audit</a>
             </div>
             <div class="home-two-hero-bottom-line"></div>
           </div>
@@ -142,13 +139,12 @@ get_header(); ?>
         <div class="w-layout-blockcontainer container-one w-container">
           <div class="w-layout-vflex home-two-hero-bottom-wrap">
             <h2 class="home-two-hero-bottom-heading text-center">
-              Marketing Solutions for local Businesses
+              Built for Maryland Small Business Owners
             </h2>
             <p
               class="home-two-hero-bottom-paragraph margin-top-ten text-center"
             >
-            Leveraging local insights and advanced strategies, our approach amplifies your brand’s voice, engages your audience, and drives measurable growth. Experience marketing 
-            that connects with the community and propels your business forward in Maryland’s competitive market.
+            If you run a plumbing company in Reisterstown, a dental practice in Glyndon, or a restaurant in Baltimore County — your customers are searching for you right now. We make sure they find <em>you</em> before they find your competition.
             </p>
             <div class="w-layout-grid home-two-hero-counter-grid">
               <div
