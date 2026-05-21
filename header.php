@@ -1,169 +1,159 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>
-data-wf-domain="localvocalmarketing.com"
-  data-wf-page="66b0af4743ca3e675e5927f7"
-  data-wf-site="6667e64973c050569f2ec968"  
->
-  <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link
-      href="https://fonts.gstatic.com"
-      rel="preconnect"
-      crossorigin="anonymous"
-    />
-    <link 
-      href="<?php echo get_template_directory_uri(); ?>/src/mobilemenu.css" 
-      rel="stylesheet" 
-    />
-    <?php wp_head(); ?>
+<?php
+/**
+ * Header — Local Vocal Marketing redesign
+ */
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- LocalBusiness Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Local Vocal Marketing",
-      "description": "Web design and SEO services for Maryland small businesses",
-      "url": "https://localvocalmarketing.com",
-      "telephone": "+1-240-555-0123",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Frederick",
-        "addressRegion": "MD",
-        "postalCode": "21701",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "39.4143",
-        "longitude": "-77.4105"
-      },
-      "areaServed": [
-        "Frederick MD",
-        "Baltimore MD",
-        "Washington DC",
-        "Montgomery County MD",
-        "Howard County MD",
-        "Carroll County MD",
-        "Washington County MD"
-      ],
-      "openingHours": [
-        "Mo-Fr 09:00-18:00",
-        "Sa 10:00-15:00"
-      ],
-      "servicesOffered": [
-        "Web Design",
-        "SEO Optimization",
-        "Digital Marketing",
-        "Content Creation",
-        "Social Media Management",
-        "Analytics & Reporting"
-      ],
-      "priceRange": "$$",
-      "paymentAccepted": ["Cash", "Check", "Credit Card"],
-      "currenciesAccepted": "USD"
-    }
-    </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap">
 
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
-      type="text/javascript"
-    ></script>
-    <script type="text/javascript">
-      WebFont.load({
-        google: {
-          families: [
-            "Manrope:200,300,regular,500,600,700,800",
-            "Urbanist:200,300,regular,500,600,700",
-            "Playfair Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic",
-          ],
-        },
-      });
-    </script>
-    <script type="text/javascript">
-      !(function (o, c) {
-        var n = c.documentElement,
-          t = " w-mod-";
-        (n.className += t + "js"),
-          ("ontouchstart" in o ||
-            (o.DocumentTouch && c instanceof DocumentTouch)) &&
-            (n.className += t + "touch");
-      })(window, document);
-    </script>
-    <link
-      href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png"
-      rel="shortcut icon"
-      type="image/x-icon"
-    />
-    <link
-      href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png"
-      rel="apple-touch-icon"
-    />
-    
-  </head>
-  <header class="header-custom">
-    <div class="header-custom_nav container mx-auto flex items-center justify-between py-3 px-3">
-      <!-- Logo -->
-      <a href="<?php echo home_url(); ?>" class="text-3xl text-playfair font-semibold text-black logo">
-        <img src="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png" alt="LVM Logo">
-      </a>
+  <link rel="shortcut icon" type="image/x-icon"
+        href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png">
+  <link rel="apple-touch-icon"
+        href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png">
 
-      <!-- Navigation Links -->
-      <nav>
-        <?php
-        wp_nav_menu(array(
-          'theme_location' => 'primary',
-          'container' => false,
-          'menu_class' => 'flex space-x-6',
-          'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-          'link_before' => '<span class="text-gray-900 hover:text-blue-600 transition-colors">',
-          'link_after' => '</span>',
-        ));
-        ?>
-      </nav>
+  <?php wp_head(); ?>
 
-      <!-- CTA Button -->
-      <button onclick="window.location.href='<?php echo get_page_link( get_page_by_path( 'contact' )->ID ); ?>'" class="hidden md:block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Get Started</button>
+  <!-- LocalBusiness Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Local Vocal Marketing",
+    "description": "Maryland web design and SEO services for local businesses.",
+    "url": "<?php echo esc_url( home_url( '/' ) ); ?>",
+    "telephone": "+1-443-852-1000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "209 Central Ave",
+      "addressLocality": "Glyndon",
+      "addressRegion": "MD",
+      "postalCode": "21071",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      "Annapolis MD","Severna Park MD","Glen Burnie MD","Easton MD",
+      "Ocean City MD","Baltimore MD","Frederick MD","Glyndon MD",
+      "Reisterstown MD","Anne Arundel County MD","Baltimore County MD"
+    ],
+    "openingHours": ["Mo-Fr 09:00-18:00","Sa 10:00-15:00"],
+    "servicesOffered": [
+      "Web Design","Local SEO","SEO Blog Articles",
+      "Social Media Management","Ongoing Website Support"
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+</head>
+<body <?php body_class( 'lvm-redesign' ); ?>>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button" class="md:hidden text-gray-700 z-50">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
+<header class="nav" id="lvm-nav">
+  <div class="nav__inner lvm-container">
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav__brand">
+      <span class="nav__mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="nav__name">Local Vocal</span>
+      <span class="nav__suffix mono">MD</span>
+    </a>
+
+    <?php
+    $lvm_services = array(
+      array( 'S/01', 'Web Development',         'Engineering doc',     home_url( '/development/' ) ),
+      array( 'S/02', 'Local SEO',               'Ranking report',      home_url( '/seo-optimization/' ) ),
+      array( 'S/03', 'Content & Blog',          'Editorial magazine',  home_url( '/content-creation/' ) ),
+      array( 'S/04', 'Social Media',            'Social feed',         home_url( '/social-media-management/' ) ),
+      array( 'S/05', 'Analytics & Reporting',   'Live dashboard',      home_url( '/analytics-reporting/' ) ),
+      array( 'S/06', 'Digital Marketing',       'Campaign brief',      home_url( '/digital-marketing/' ) ),
+    );
+
+    $lvm_nav_items = array(
+      array( 'label' => 'Home',            'url' => home_url( '/' ) ),
+      array( 'label' => 'Advertise',       'url' => home_url( '/grow-your-small-business-online/' ) ),
+      array( 'label' => 'Services',        'url' => home_url( '/services/' ), 'children' => $lvm_services ),
+      array( 'label' => 'Invoice Payment', 'url' => home_url( '/payment-page/' ) ),
+      array( 'label' => 'Requests',        'url' => home_url( '/intake-form/' ) ),
+      array( 'label' => 'About Us',        'url' => home_url( '/about-us/' ) ),
+      array( 'label' => 'Blog',            'url' => home_url( '/blog/' ) ),
+    );
+    ?>
+    <nav class="nav__links" aria-label="Primary">
+      <?php foreach ( $lvm_nav_items as $item ) :
+        $has_children = ! empty( $item['children'] );
+        if ( $has_children ) : ?>
+          <div class="nav__item nav__item--has-children">
+            <a class="nav__link nav__link--has-children" href="<?php echo esc_url( $item['url'] ); ?>" aria-haspopup="true" aria-expanded="false">
+              <?php echo esc_html( $item['label'] ); ?>
+              <span class="nav__caret" aria-hidden="true">⌄</span>
+            </a>
+
+            <div class="nav__panel" role="menu" aria-label="<?php echo esc_attr( $item['label'] ); ?> submenu">
+              <div class="nav__panel-head mono">
+                <span>All services</span>
+                <a class="nav__panel-all" href="<?php echo esc_url( $item['url'] ); ?>">Index <span aria-hidden="true">→</span></a>
+              </div>
+              <ul class="nav__panel-list">
+                <?php foreach ( $item['children'] as $child ) : ?>
+                  <li>
+                    <a class="nav__panel-item" href="<?php echo esc_url( $child[3] ); ?>" role="menuitem">
+                      <span class="nav__panel-num mono"><?php echo esc_html( $child[0] ); ?></span>
+                      <span class="nav__panel-body">
+                        <span class="nav__panel-name"><?php echo esc_html( $child[1] ); ?></span>
+                        <span class="nav__panel-sig mono"><?php echo esc_html( $child[2] ); ?></span>
+                      </span>
+                      <span class="nav__panel-arrow" aria-hidden="true">→</span>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+          </div>
+        <?php else : ?>
+          <a class="nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+        <?php endif;
+      endforeach; ?>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="tel:+14438521000" class="btn btn--ghost"><span aria-hidden="true">↳</span> (443) 852‑1000</a>
+      <a href="#cta" class="btn btn--primary">Free website &amp; SEO review <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg></a>
+      <button class="nav__toggle" type="button" aria-controls="lvm-drawer" aria-expanded="false" aria-label="Open menu">
+        <span class="mono">Menu</span>
       </button>
     </div>
-  </header>
-
-  <!-- Mobile Menu Overlay - OUTSIDE the header for proper z-index stacking -->
-  <div id="mobile-menu" class="md:hidden">
-    <div>
-      <div class="flex flex-col h-full">
-        <div class="p-4 flex justify-end">
-          <button id="mobile-menu-close" class="text-gray-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-        <nav class="flex-1 px-4 py-2">
-          <?php
-          wp_nav_menu(array(
-            'theme_location' => 'primary',
-            'container' => false,
-            'menu_class' => 'space-y-4',
-            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-            'link_before' => '<span class="block text-gray-900 hover:text-blue-600 py-2 transition-colors">',
-            'link_after' => '</span>',
-          ));
-          ?>
-          <div class="mt-6">
-            <button onclick="window.location.href='<?php echo get_page_link( get_page_by_path( 'contact' )->ID ); ?>'" class="block w-full bg-indigo-600 text-white text-center px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Get Started</button>
-          </div>
-        </nav>
-      </div>
-    </div>
   </div>
+</header>
 
-  <body <?php body_class(); ?>>
+<div class="nav__drawer" id="lvm-drawer">
+  <?php foreach ( $lvm_nav_items as $item ) :
+    $has_children = ! empty( $item['children'] );
+    if ( $has_children ) : ?>
+      <details class="nav__drawer-group">
+        <summary class="nav__drawer-summary">
+          <span><?php echo esc_html( $item['label'] ); ?></span>
+          <span class="nav__drawer-caret mono" aria-hidden="true">+</span>
+        </summary>
+        <div class="nav__drawer-children">
+          <a class="nav__drawer-child nav__drawer-child--all" href="<?php echo esc_url( $item['url'] ); ?>">
+            <span class="mono">All services</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <?php foreach ( $item['children'] as $child ) : ?>
+            <a class="nav__drawer-child" href="<?php echo esc_url( $child[3] ); ?>">
+              <span class="nav__drawer-child-num mono"><?php echo esc_html( $child[0] ); ?></span>
+              <span class="nav__drawer-child-name"><?php echo esc_html( $child[1] ); ?></span>
+            </a>
+          <?php endforeach; ?>
+        </div>
+      </details>
+    <?php else : ?>
+      <a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+    <?php endif;
+  endforeach; ?>
+  <a href="tel:+14438521000" class="btn btn--ghost" style="margin-top:16px;">↳ (443) 852‑1000</a>
+  <a href="#cta" class="btn btn--primary" style="margin-top:8px;">Free website &amp; SEO review</a>
+</div>

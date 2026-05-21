@@ -1,261 +1,341 @@
 <?php
 /**
  * Template Name: Contact Page
- * Description: A stylish and elegant contact page template.
+ * Visual language: switchboard / dispatch desk
  */
-
 get_header(); ?>
 
-<main class="single-page-layout">
-  <!-- Hero Section -->
-  <section class="bg-gray-200 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-      <div class="flex flex-col items-center text-center">
-        <h1 class="text-2xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800">
-          Let's Connect
-        </h1>
-        <p class="text-xl md:text-2xl max-w-3xl mb-8 text-gray-600">
-          Reach out to us for innovative solutions tailored to your business needs.
+<main class="service-page svc-contact">
+
+  <!-- ============================================================
+       MASTHEAD — switchboard
+       ============================================================ -->
+  <section class="ct-mast">
+    <div class="lvm-container">
+
+      <div class="ct-mast__top mono">
+        <span class="ct-mast__top-l">
+          <span class="ct-mast__pulse" aria-hidden="true">
+            <span class="ct-mast__pulse-dot"></span>
+            <span class="ct-mast__pulse-ring"></span>
+          </span>
+          <strong>LINE OPEN</strong> · Dispatch desk
+        </span>
+        <span class="ct-mast__top-rule"></span>
+        <span><?php echo esc_html( gmdate( 'l, F j' ) ); ?></span>
+        <span class="ct-mast__top-rule"></span>
+        <span>Annapolis · MD · USA</span>
+        <span class="ct-mast__top-rule"></span>
+        <span>Reply ≤ 1 business day</span>
+      </div>
+
+      <div class="page-hero__crumb mono ct-mast__crumb">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
+        <span class="page-hero__crumb-sep">/</span>
+        <span>Contact</span>
+      </div>
+
+      <h1 class="ct-mast__h">
+        <span>Get in</span>
+        <em class="serif">touch.</em>
+      </h1>
+
+      <div class="ct-mast__sub-row">
+        <p class="ct-mast__sub">
+          You're talking to the people who'll be doing the work — not a sales team. Pick a line, send a brief, or just call. We answer every message within one business day with a clear next step.
         </p>
+        <ul class="ct-mast__meta mono">
+          <li><span class="ct-mast__meta-k">Hours</span><span>Mon&ndash;Fri · 9&ndash;6 ET</span></li>
+          <li><span class="ct-mast__meta-k">Reply</span><span>Within 24 hrs</span></li>
+          <li><span class="ct-mast__meta-k">Calls</span><span>No phone tree</span></li>
+          <li><span class="ct-mast__meta-k">Coverage</span><span>MD &amp; remote</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DIRECT LINES — switchboard panel
+       ============================================================ -->
+  <section class="ct-lines">
+    <div class="lvm-container">
+
+      <div class="ct-section-bar mono">
+        <span class="ct-section-bar__num">§ 01</span>
+        <span class="ct-section-bar__rule"></span>
+        <span class="ct-section-bar__lbl">Three direct lines</span>
+        <span class="ct-section-bar__tag">All open</span>
+      </div>
+
+      <h2 class="ct-lines__h">Pick the channel<br><em class="serif">that fits the moment.</em></h2>
+
+      <div class="ct-lines__grid">
+
+        <a class="ct-line ct-line--01" href="mailto:info@localvocalmarketing.com">
+          <div class="ct-line__head">
+            <span class="ct-line__num mono">01</span>
+            <span class="ct-line__status mono">
+              <span class="ct-line__status-dot"></span>
+              ONLINE
+            </span>
+          </div>
+          <div class="ct-line__channel mono">Email</div>
+          <h3 class="ct-line__t">Send a message.</h3>
+          <p class="ct-line__desc">Best for project briefs, quotes, and anything you'd rather not say twice. We log every email and reply within one business day.</p>
+          <div class="ct-line__value">info@localvocalmarketing.com</div>
+          <div class="ct-line__foot mono">
+            <span>Reply ≤ 24h</span>
+            <span class="ct-line__foot-cta">Compose <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a class="ct-line ct-line--02" href="tel:+14438521000">
+          <div class="ct-line__head">
+            <span class="ct-line__num mono">02</span>
+            <span class="ct-line__status mono">
+              <span class="ct-line__status-dot"></span>
+              LIVE
+            </span>
+          </div>
+          <div class="ct-line__channel mono">Phone</div>
+          <h3 class="ct-line__t">Call us.</h3>
+          <p class="ct-line__desc">Real human, first ring. No gatekeeper, no salesperson on commission, no transferring you four times. Voicemails returned same day.</p>
+          <div class="ct-line__value">(443)&nbsp;852‑1000</div>
+          <div class="ct-line__foot mono">
+            <span>Mon&ndash;Fri · 9&ndash;6 ET</span>
+            <span class="ct-line__foot-cta">Dial <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a class="ct-line ct-line--03" href="https://maps.app.goo.gl/eio3U1s7NzCkutyf8" target="_blank" rel="noopener">
+          <div class="ct-line__head">
+            <span class="ct-line__num mono">03</span>
+            <span class="ct-line__status mono">
+              <span class="ct-line__status-dot"></span>
+              BY APPT
+            </span>
+          </div>
+          <div class="ct-line__channel mono">Office</div>
+          <h3 class="ct-line__t">Stop by.</h3>
+          <p class="ct-line__desc">Maryland‑based studio. Coffee's on if you call ahead. Easier than parking in DC, friendlier than another Zoom.</p>
+          <div class="ct-line__value">209 Central Ave<br>Glyndon, MD&nbsp;21071</div>
+          <div class="ct-line__foot mono">
+            <span>By appointment</span>
+            <span class="ct-line__foot-cta">Map <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg></span>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact Information Cards -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Email Card -->
-        <div class="bg-gray-50 rounded-lg p-8 text-center shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-          <div class="text-indigo-600 mb-4 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
-          <p class="text-gray-600 mb-4">Our team is here to help with any questions</p>
-          <a href="mailto:info@localvocalmarketing.com" class="text-indigo-600" style="color: #4F39F6">
-            info@localvocalmarketing.com
-          </a>
-        </div>
-        
-        <!-- Phone Card -->
-        <div class="bg-gray-50 rounded-lg p-8 text-center shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-          <div class="text-indigo-600 mb-4 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
-          <p class="text-gray-600 mb-4">We're available Monday-Friday, 9am-5pm</p>
-          <a href="tel:+1(443)852-1000" class="text-indigo-600 font-medium" style="color: #4F39F6">
-          (443) 852-1000
-          </a>
-        </div>
-        
-        <!-- Location Card -->
-        <div class="bg-gray-50 rounded-lg p-8 text-center shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-          <div class="text-indigo-600 mb-4 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
-          <p class="text-gray-600 mb-4">Come by our office in Maryland</p>
-          <address class="not-italic text-indigo-600 font-medium">
-          209 Central Ave,<br>
-          Glyndon, MD 21071,<br>
-          United States
-          </address>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ============================================================
+       PROJECT BRIEF — form
+       ============================================================ -->
+  <section class="ct-brief" id="brief">
+    <div class="lvm-container">
 
-  <!-- Contact Form Section -->
-  <section class="py-16 bg-gray-100">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <!-- Form -->
-          <div class="p-10">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-            <p class="text-gray-600 mb-8">We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.</p>
-            
+      <div class="ct-section-bar mono">
+        <span class="ct-section-bar__num">§ 02</span>
+        <span class="ct-section-bar__rule"></span>
+        <span class="ct-section-bar__lbl">Project brief</span>
+        <span class="ct-section-bar__tag">Form · 04 fields</span>
+      </div>
+
+      <div class="ct-brief__grid">
+
+        <aside class="ct-brief__aside">
+          <h2 class="ct-brief__h">Tell us about<br><em class="serif">your business.</em></h2>
+          <p class="ct-brief__p">A few sentences are plenty. We'll come back within one business day with a clear next step — whether that's a quote, a strategy call, or a written review of your current setup.</p>
+
+          <ul class="ct-brief__check">
+            <li><span class="ct-brief__check-mark" aria-hidden="true">✓</span><span><strong>What you're stuck on.</strong> Rankings, leads, design, content — pick one or list them.</span></li>
+            <li><span class="ct-brief__check-mark" aria-hidden="true">✓</span><span><strong>Where you are now.</strong> A link to your site or social, plus the area you serve.</span></li>
+            <li><span class="ct-brief__check-mark" aria-hidden="true">✓</span><span><strong>Rough timeline.</strong> Yesterday, this quarter, "exploring." All fine.</span></li>
+            <li><span class="ct-brief__check-mark" aria-hidden="true">✓</span><span><strong>Budget range, if any.</strong> Helps us shape a real proposal, not a sales pitch.</span></li>
+          </ul>
+
+          <div class="ct-brief__hours">
+            <div class="ct-brief__hours-bar mono">
+              <span>Office hours</span>
+              <span class="ct-brief__hours-bar-rule"></span>
+              <span>ET</span>
+            </div>
+            <ul class="ct-brief__hours-list">
+              <li><span>Mon&ndash;Fri</span><span class="ct-brief__hours-dot"></span><span>9am&ndash;6pm</span></li>
+              <li><span>Saturday</span><span class="ct-brief__hours-dot"></span><span>By appointment</span></li>
+              <li><span>Sunday</span><span class="ct-brief__hours-dot"></span><span>Closed</span></li>
+              <li class="ct-brief__hours-list-em"><span>Email replies</span><span class="ct-brief__hours-dot"></span><span>Within 1 business day</span></li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="ct-brief__form-wrap">
+          <div class="ct-brief__form-bar mono">
+            <span class="ct-brief__form-bar-tag">FORM 02 · INTAKE</span>
+            <span class="ct-brief__form-bar-rule"></span>
+            <span class="ct-brief__form-bar-meta">Encrypted · No spam, ever</span>
+          </div>
+
+          <div class="ct-brief__form contact-form">
             <?php
-            // Check if Contact Form 7 is active
-            if (function_exists('wpcf7_contact_form')) {
-              // Display the form with ID 123 (replace with your form ID)
-              echo do_shortcode('[contact-form-7 id="1570408" title="Contact Form"]');
+            if ( function_exists( 'wpcf7_contact_form' ) ) {
+              echo do_shortcode( '[contact-form-7 id="1570408" title="Contact Form"]' );
             } else {
-              // Fallback custom form
+              ?>
+              <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+                <p><label class="mono">Full name<input type="text" name="name" placeholder="Jane Doe" required></label></p>
+                <p><label class="mono">Email address<input type="email" name="email" placeholder="jane@business.com" required></label></p>
+                <p><label class="mono">Phone (optional)<input type="tel" name="phone" placeholder="(443) 555 0100"></label></p>
+                <p><label class="mono">Tell us what you're working on<textarea name="message" rows="6" placeholder="A few sentences about your business and what you'd like help with…" required></textarea></label></p>
+                <input type="hidden" name="action" value="submit_contact_form">
+                <?php wp_nonce_field( 'contact_form_submit' ); ?>
+                <p><input type="submit" value="Send brief →"></p>
+              </form>
+              <?php
+            }
             ?>
-            <form class="space-y-6" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                <input type="text" name="name" id="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-              </div>
-              
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                <input type="email" name="email" id="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-              </div>
-              
-              <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-              </div>
-              
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
-                <textarea name="message" id="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-              </div>
-              
-              <div>
-                <button type="submit" class="w-full inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                  Send Message
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-              </div>
-              
-              <input type="hidden" name="action" value="submit_contact_form">
-              <?php wp_nonce_field('contact_form_submit'); ?>
-            </form>
-            <?php } ?>
           </div>
-          
-          <!-- Map/Image -->
-          <div class="bg-indigo-900 relative overflow-hidden flex items-center justify-center" style="background-image: url('<?php echo get_theme_file_uri('assets/images/baltimore-skyline.jpg'); ?>'); background-size: cover; background-position: center;">
-            
-            <!-- Content -->
-            <div class="relative px-8 py-12 text-center">
-              <div class="mb-8">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-white mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-4">Our Maryland Office</h3>
-              <p class="text-indigo-100 mb-6">Centrally located in Baltimore's vibrant business district</p>
-              <a href="https://maps.app.goo.gl/eio3U1s7NzCkutyf8" target="_blank" style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; border: 1px solid transparent; font-size: 1rem; font-weight: 500; border-radius: 0.375rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); color: #4f46e5; background-color: #ffffff; transition: all 0.2s;">
-                View on Google Maps
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
+
+          <div class="ct-brief__form-foot mono">
+            <span>By submitting, you agree to our gentle email follow-up.</span>
+            <span class="ct-brief__form-foot-rule"></span>
+            <span>SIG · LV-2026</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VISIT — location card
+       ============================================================ -->
+  <section class="ct-visit">
+    <div class="lvm-container">
+
+      <div class="ct-section-bar mono">
+        <span class="ct-section-bar__num">§ 03</span>
+        <span class="ct-section-bar__rule"></span>
+        <span class="ct-section-bar__lbl">Where we work</span>
+      </div>
+
+      <div class="ct-visit__grid">
+        <div class="ct-visit__l">
+          <h2 class="ct-visit__h">Maryland-based,<br><em class="serif">remote-friendly.</em></h2>
+          <p class="ct-visit__p">Our studio is in Glyndon, MD — half an hour from Baltimore, an hour from DC. We work with clients across the Mid-Atlantic in person and U.S.-wide remotely. If a coffee or a whiteboard would be useful, we're up for the drive.</p>
+
+          <ul class="ct-visit__list mono">
+            <li><span class="ct-visit__list-k">Studio</span><span>209 Central Ave, Glyndon, MD 21071</span></li>
+            <li><span class="ct-visit__list-k">Calls</span><span>(443) 852‑1000</span></li>
+            <li><span class="ct-visit__list-k">Mail</span><span>info@localvocalmarketing.com</span></li>
+            <li><span class="ct-visit__list-k">Coverage</span><span>Maryland · DMV · remote U.S.</span></li>
+          </ul>
+
+          <a class="ct-visit__cta" href="https://maps.app.goo.gl/eio3U1s7NzCkutyf8" target="_blank" rel="noopener">
+            Open in Maps <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg>
+          </a>
+        </div>
+
+        <div class="ct-visit__card">
+          <div class="ct-visit__card-bar mono">
+            <span class="ct-visit__card-folio">FIELD&nbsp;CARD&nbsp;/&nbsp;03</span>
+            <span class="ct-visit__card-rule"></span>
+            <span>39.4836°N · 76.8236°W</span>
+          </div>
+
+          <div class="ct-visit__card-art" aria-hidden="true">
+            <svg class="ct-visit__lines" viewBox="0 0 600 380" preserveAspectRatio="none">
+              <path d="M0 60 Q 200 100, 400 80 T 600 120" />
+              <path d="M0 140 Q 250 200, 500 170 T 700 210" />
+              <path d="M0 220 Q 180 260, 360 240 T 600 270" />
+              <path d="M0 300 Q 220 340, 440 310 T 600 340" />
+              <path d="M120 0 Q 180 200, 140 380" />
+              <path d="M280 0 Q 320 200, 260 380" />
+              <path d="M440 0 Q 480 200, 420 380" />
+            </svg>
+            <div class="ct-visit__pin">
+              <span class="ct-visit__pin-ring--lg"></span>
+              <span class="ct-visit__pin-ring"></span>
+              <span class="ct-visit__pin-dot"></span>
             </div>
           </div>
+
+          <dl class="ct-visit__card-list">
+            <div>
+              <dt>Studio</dt>
+              <dd>209 Central Ave · Glyndon, MD</dd>
+            </div>
+            <div>
+              <dt>Hours</dt>
+              <dd>Mon&ndash;Fri · 9am&ndash;6pm ET</dd>
+            </div>
+            <div class="ct-visit__card-list-last">
+              <dt>Parking</dt>
+              <dd>On‑site · free · the gravel lot out back</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <div class="py-12 px-4">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
-        <p class="mt-4 text-xl text-gray-600">Find answers to common questions about our services</p>
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section class="ct-faq">
+    <div class="lvm-container">
+
+      <div class="ct-section-bar mono">
+        <span class="ct-section-bar__num">§ 04</span>
+        <span class="ct-section-bar__rule"></span>
+        <span class="ct-section-bar__lbl">FAQ</span>
+        <span class="ct-section-bar__tag">06 questions</span>
       </div>
 
-      <!-- Tab Navigation -->
-      <div class="flex flex-wrap justify-center gap-4 mb-8">
-        <button onclick="openTab('general')" class="tab-button active px-6 py-2 rounded-lg font-medium" style="background-color: #4F39F6; color: white;">
-          General Questions
-        </button>
-        <button onclick="openTab('services')" class="tab-button px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700">
-          Our Services
-        </button>
-        <button onclick="openTab('pricing')" class="tab-button px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700">
-          Pricing & Plans
-        </button>
+      <h2 class="ct-faq__h">Quick answers<br><em class="serif">before you write.</em></h2>
+
+      <div class="faq ct-faq__list">
+        <?php
+        $faqs = array(
+          array( 'What makes Local Vocal different?', 'We combine local Maryland expertise with proven SEO + web design practices. You work with the same three people from first call through every blog post, design tweak, and SEO update — no juniors, no offshoring.' ),
+          array( 'How do I get started?', 'Send us a message or call. We\'ll schedule a 30-minute call, review your current setup live, and email a written recommendation within 48 hours. No deck, no pressure.' ),
+          array( 'What services do you offer?', 'Website design, local SEO, blog content, social media management, analytics &amp; reporting, and digital marketing strategy &mdash; for local Maryland businesses and U.S. service brands.' ),
+          array( 'Can you customize for my business?', 'Yes. Every engagement starts with a review, not a template. Service-area pages, blog topics, and design choices are tailored to your business and your customers.' ),
+          array( 'How is pricing structured?', 'Pricing depends on scope &mdash; we share a flat number after the first call so there are no surprises. Most clients fall into recurring monthly retainers; one-off projects are available too.' ),
+          array( 'Do you offer package deals?', 'Yes &mdash; bundles for businesses combining web design with ongoing SEO + content, at a meaningful discount vs. piecing them out.' ),
+        );
+        foreach ( $faqs as $i => $q ) : ?>
+          <div class="faq__item">
+            <button class="faq__q" type="button" aria-expanded="false">
+              <span class="faq__qnum mono"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
+              <span class="faq__qtext"><?php echo $q[0]; ?></span>
+              <span class="faq__qicon" aria-hidden="true"><span></span><span></span></span>
+            </button>
+            <div class="faq__a-wrap"><div class="faq__a"><?php echo $q[1]; ?></div></div>
+          </div>
+        <?php endforeach; ?>
       </div>
-
-      <!-- Tab Content -->
-      <div class="tab-content" id="general" style="display: block;">
-        <div class="space-y-8">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">What makes Local Vocal Marketing different?</h3>
-            <p class="text-gray-600">We combine local expertise with global insights to deliver personalized digital marketing solutions that drive real results for your business.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">How do I get started?</h3>
-            <p class="text-gray-600">Simply reach out through our contact form or give us a call. We'll schedule a consultation to understand your needs and create a tailored strategy.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-content" id="services" style="display: none;">
-        <div class="space-y-8">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">What services do you offer?</h3>
-            <p class="text-gray-600">We offer a comprehensive suite of digital marketing services including SEO, social media management, content creation, web development, and analytics reporting.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">Can you customize services for my business?</h3>
-            <p class="text-gray-600">Yes! We create custom strategies tailored to your specific industry, goals, and target audience to ensure maximum impact.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-content" id="pricing" style="display: none;">
-        <div class="space-y-8">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">How is pricing structured?</h3>
-            <p class="text-gray-600">We offer flexible pricing options based on your needs and budget. Contact us for a custom quote tailored to your requirements.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">Do you offer package deals?</h3>
-            <p class="text-gray-600">Yes, we offer bundled service packages that provide comprehensive digital marketing solutions at competitive rates.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function openTab(tabName) {
-      // Hide all tab content
-      var tabContents = document.getElementsByClassName('tab-content');
-      for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].style.display = 'none';
-      }
-
-      // Remove active class from all buttons
-      var tabButtons = document.getElementsByClassName('tab-button');
-      for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].style.backgroundColor = '#e5e7eb';
-        tabButtons[i].style.color = '#374151';
-      }
-
-      // Show the selected tab content
-      document.getElementById(tabName).style.display = 'block';
-
-      // Add active class to the clicked button
-      var activeButton = document.querySelector(`[onclick="openTab('${tabName}')"]`);
-      activeButton.style.backgroundColor = '#4F39F6';
-      activeButton.style.color = 'white';
-    }
-  </script>
-
-  <!-- CTA Section -->
-  <section class="bg-indigo-600 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-4 text-white">Ready to Boost Your Business?</h2>
-      <p class="text-xl mb-8 max-w-3xl mx-auto">
-        Let our expert team help you achieve your business goals with our comprehensive service offerings.
-      </p>
-      <a href="tel:(443) 852-1000" class="bg-black text-white font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center">
-        Call (443) 852-1000 Today
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
     </div>
   </section>
+
+  <!-- ============================================================
+       FINAL CTA
+       ============================================================ -->
+  <section class="cta" id="cta">
+    <div class="cta__glow" aria-hidden="true"></div>
+    <div class="lvm-container cta__inner">
+      <div class="cta__eyebrow mono">↳ Ready when you are</div>
+      <h2 class="cta__h">Prefer to talk<br><em class="serif">to a human?</em></h2>
+      <p class="cta__p">Call us directly. No phone tree, no gatekeeper, no salesperson on commission.</p>
+      <div class="cta__actions">
+        <a href="tel:+14438521000" class="btn btn--primary btn--lg">↳ (443) 852‑1000</a>
+        <a href="mailto:info@localvocalmarketing.com" class="btn btn--dark-ghost btn--lg">Email instead →</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();

@@ -1,308 +1,332 @@
 <?php
 /**
  * Template Name: Development Service Page
- * Description: A template for displaying the Development service details
+ * Visual language: engineering documentation
  */
-
 get_header(); ?>
 
-<main class="single-page-layout">
-  <!-- Hero Section -->
-  <section class="bg-gray-200 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-      <div class="flex flex-col items-center text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800">
-          Web Development
-        </h1>
-        <p class="text-xl md:text-2xl max-w-3xl mb-8 text-gray-600">
-          Custom web solutions tailored to your business needs
+<main class="service-page svc-dev">
+
+  <!-- ============================================================
+       HERO — with floating build spec card
+       ============================================================ -->
+  <section class="dev-hero">
+    <div class="dev-hero__grid" aria-hidden="true"></div>
+    <div class="lvm-container dev-hero__inner">
+
+      <div class="dev-hero__copy">
+        <div class="page-hero__crumb mono">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
+          <span class="page-hero__crumb-sep">/</span>
+          <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+          <span class="page-hero__crumb-sep">/</span>
+          <span>Web Development</span>
+        </div>
+        <div class="eyebrow"><span class="eyebrow__num mono">S/01</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Service · Development</span></div>
+        <h1 class="dev-hero__h">Websites that load fast,<br><em class="serif">rank well, and don't break.</em></h1>
+        <p class="dev-hero__sub">
+          Mobile-first builds with SEO structure baked in from the first commit. We ship with Core Web Vitals targets, JSON-LD schema, accessibility passes, and clean code your next developer will thank us for.
         </p>
-        <button onclick="window.location.href='<?php echo get_page_link(get_page_by_path('contact')->ID); ?>'" class="bg-indigo-600 text-white font-medium py-3 px-8 rounded-lg hover:bg-indigo-700 transition-colors">
-          Start Your Project
-        </button>
+        <div class="dev-hero__ctas">
+          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start a project <span aria-hidden="true">→</span></a>
+          <a href="#stack" class="btn btn--ghost btn--lg">View tech stack <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+
+      <aside class="dev-spec" aria-label="Build specifications">
+        <div class="dev-spec__bar">
+          <span class="dev-spec__dot dev-spec__dot--r"></span>
+          <span class="dev-spec__dot dev-spec__dot--y"></span>
+          <span class="dev-spec__dot dev-spec__dot--g"></span>
+          <span class="dev-spec__path mono">~/local-vocal/build.spec</span>
+        </div>
+        <div class="dev-spec__body mono">
+          <div class="dev-spec__row"><span class="dev-spec__k">stack</span><span class="dev-spec__v">WordPress + custom theme</span></div>
+          <div class="dev-spec__row"><span class="dev-spec__k">framework</span><span class="dev-spec__v">PHP · Tailwind v4 · GSAP</span></div>
+          <div class="dev-spec__row"><span class="dev-spec__k">target</span><span class="dev-spec__v">Lighthouse <span class="dev-spec__hi">90+</span> all axes</span></div>
+          <div class="dev-spec__row"><span class="dev-spec__k">bundle</span><span class="dev-spec__v">&lt; 200 KB gzipped</span></div>
+          <div class="dev-spec__row"><span class="dev-spec__k">schema</span><span class="dev-spec__v">JSON-LD · LocalBusiness</span></div>
+          <div class="dev-spec__row"><span class="dev-spec__k">a11y</span><span class="dev-spec__v">WCAG 2.1 AA targeted</span></div>
+          <div class="dev-spec__row dev-spec__row--last"><span class="dev-spec__k">ship</span><span class="dev-spec__v"><span class="dev-spec__hi">14 — 28 days</span></span></div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BUILD MODES — deployment-card grid
+       ============================================================ -->
+  <section class="dev-modes">
+    <div class="lvm-container">
+      <div class="dev-section-head">
+        <div class="eyebrow"><span class="eyebrow__num mono">01</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Build modes</span></div>
+        <h2 class="section-h">Three ship modes,<br><em class="serif">one set of standards.</em></h2>
+        <p class="section-lead">Pick the build that matches your stage. Same engineering bar across every one — speed, structure, and SEO are not optional.</p>
+      </div>
+
+      <div class="dev-modes__grid">
+        <?php
+        $modes = array(
+          array(
+            'tag'  => 'mode_01',
+            'name' => 'Marketing site',
+            'lead' => 'A focused 5–8 page brochure site that explains what you do, where you do it, and how to call you.',
+            'time' => '14 days',
+            'pages'=> '5 — 8 pages',
+            'best' => 'New businesses, rebrands, single-service shops',
+            'incl' => array(
+              'Custom design system in your brand',
+              'Mobile-first responsive layouts',
+              'On-page SEO + JSON-LD schema',
+              'Contact form + spam protection',
+              'Google Analytics 4 wired in',
+            ),
+          ),
+          array(
+            'tag'  => 'mode_02',
+            'name' => 'Conversion site',
+            'lead' => 'Service-led site with location pages, booking flow, and the technical SEO scaffolding to rank in the map pack.',
+            'time' => '21 days',
+            'pages'=> '8 — 18 pages',
+            'best' => 'Service businesses with multi-county coverage',
+            'incl' => array(
+              'Everything in Marketing site',
+              'Per-service + per-location pages',
+              'Booking / quote flow integration',
+              'Internal linking architecture',
+              'Core Web Vitals tuning + a11y pass',
+              'Editor training + handoff doc',
+            ),
+            'featured' => true,
+          ),
+          array(
+            'tag'  => 'mode_03',
+            'name' => 'Full WordPress build',
+            'lead' => 'Custom WordPress theme with editor blocks, integrations, and the maintenance plan to keep it shipping.',
+            'time' => '28 — 42 days',
+            'pages'=> '18+ pages · custom blocks',
+            'best' => 'Established brands ready for a real platform',
+            'incl' => array(
+              'Everything in Conversion site',
+              'Custom Gutenberg blocks',
+              'CRM / email / payment integrations',
+              'Staging + version control workflow',
+              'Quarterly maintenance + uptime monitoring',
+              'Editorial CMS training for your team',
+            ),
+          ),
+        );
+        foreach ( $modes as $m ) :
+          $featured = ! empty( $m['featured'] );
+          ?>
+          <article class="dev-mode<?php echo $featured ? ' dev-mode--featured' : ''; ?>">
+            <header class="dev-mode__h">
+              <span class="dev-mode__tag mono"><?php echo esc_html( $m['tag'] ); ?></span>
+              <?php if ( $featured ) : ?>
+                <span class="dev-mode__star mono">most picked</span>
+              <?php endif; ?>
+            </header>
+            <h3 class="dev-mode__name"><?php echo esc_html( $m['name'] ); ?></h3>
+            <p class="dev-mode__lead"><?php echo esc_html( $m['lead'] ); ?></p>
+
+            <dl class="dev-mode__specs">
+              <div><dt class="mono">ship</dt><dd><?php echo esc_html( $m['time'] ); ?></dd></div>
+              <div><dt class="mono">scope</dt><dd><?php echo esc_html( $m['pages'] ); ?></dd></div>
+            </dl>
+
+            <p class="dev-mode__best mono"><span>best for /</span> <?php echo esc_html( $m['best'] ); ?></p>
+
+            <ul class="dev-mode__incl">
+              <?php foreach ( $m['incl'] as $line ) : ?>
+                <li><span aria-hidden="true">+</span><?php echo esc_html( $line ); ?></li>
+              <?php endforeach; ?>
+            </ul>
+
+            <a class="dev-mode__cta" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">
+              Pick this build <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        <?php endforeach; ?>
       </div>
     </div>
   </section>
 
-  <!-- Development Services Grid -->
-  <section class="py-16 px-4 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl font-bold text-gray-900">Our Development Solutions</h2>
-        <p class="mt-4 text-xl text-gray-600">Comprehensive web development services to grow your business</p>
+  <!-- ============================================================
+       ARCHITECTURE — CSS-only system diagram
+       ============================================================ -->
+  <section class="dev-arch" id="stack">
+    <div class="lvm-container">
+      <div class="dev-section-head">
+        <div class="eyebrow"><span class="eyebrow__num mono">02</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Architecture</span></div>
+        <h2 class="section-h">Boring stack,<br><em class="serif">long shelf life.</em></h2>
+        <p class="section-lead">We pick the simplest tools that do the job. Every layer below is auditable, replaceable, and well-documented.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Custom Website Development -->
-        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <div class="text-indigo-600 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
+      <div class="dev-arch__diagram" role="img" aria-label="System architecture diagram">
+
+        <div class="dev-arch__layer">
+          <span class="dev-arch__num mono">L1</span>
+          <div class="dev-arch__node">
+            <span class="dev-arch__node-name mono">VISITOR</span>
+            <span class="dev-arch__node-desc">Mobile · Desktop · Tablet</span>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Website Development</h3>
-          <p class="text-gray-600">Tailored websites that perfectly match your brand and business requirements.</p>
         </div>
 
-        <!-- E-commerce Solutions -->
-        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <div class="text-indigo-600 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
+        <span class="dev-arch__line" aria-hidden="true"></span>
+
+        <div class="dev-arch__layer">
+          <span class="dev-arch__num mono">L2</span>
+          <div class="dev-arch__node dev-arch__node--accent">
+            <span class="dev-arch__node-name mono">EDGE / CDN</span>
+            <span class="dev-arch__node-desc">Cached HTML · Asset delivery · TLS</span>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">E-commerce Solutions</h3>
-          <p class="text-gray-600">Powerful online stores with seamless shopping experiences and secure payments.</p>
         </div>
 
-        <!-- WordPress Development -->
-        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <div class="text-indigo-600 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
+        <span class="dev-arch__line" aria-hidden="true"></span>
+
+        <div class="dev-arch__layer dev-arch__layer--split">
+          <span class="dev-arch__num mono">L3</span>
+          <div class="dev-arch__node">
+            <span class="dev-arch__node-name mono">FRONTEND</span>
+            <span class="dev-arch__node-desc">PHP templates · Tailwind v4 · Vanilla JS / GSAP</span>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">WordPress Development</h3>
-          <p class="text-gray-600">Custom WordPress themes and plugins tailored to your specific needs.</p>
+          <div class="dev-arch__node">
+            <span class="dev-arch__node-name mono">SEO LAYER</span>
+            <span class="dev-arch__node-desc">JSON-LD · OpenGraph · sitemap.xml · robots.txt</span>
+          </div>
+        </div>
+
+        <span class="dev-arch__line" aria-hidden="true"></span>
+
+        <div class="dev-arch__layer">
+          <span class="dev-arch__num mono">L4</span>
+          <div class="dev-arch__node">
+            <span class="dev-arch__node-name mono">WORDPRESS CORE</span>
+            <span class="dev-arch__node-desc">Custom theme · Custom blocks · ACF · WP REST API</span>
+          </div>
+        </div>
+
+        <span class="dev-arch__line" aria-hidden="true"></span>
+
+        <div class="dev-arch__layer dev-arch__layer--split">
+          <span class="dev-arch__num mono">L5</span>
+          <div class="dev-arch__node">
+            <span class="dev-arch__node-name mono">DATABASE</span>
+            <span class="dev-arch__node-desc">MySQL / MariaDB · Daily backups · 30-day retention</span>
+          </div>
+          <div class="dev-arch__node">
+            <span class="dev-arch__node-name mono">INTEGRATIONS</span>
+            <span class="dev-arch__node-desc">Stripe · HubSpot · Mailchimp · GA4 · Search Console</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PERFORMANCE PROMISE — Lighthouse-style gauges
+       ============================================================ -->
+  <section class="dev-perf">
+    <div class="lvm-container">
+      <div class="dev-section-head">
+        <div class="eyebrow"><span class="eyebrow__num mono">03</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Performance promise</span></div>
+        <h2 class="section-h">Numbers we ship by,<br><em class="serif">not numbers we hope for.</em></h2>
+        <p class="section-lead">Every site we deliver passes these targets in production on a real mobile device — not just in a lab.</p>
+      </div>
+
+      <div class="dev-gauges">
+        <?php
+        $gauges = array(
+          array( 'Performance',      96, '< 2.5s LCP · < 200ms TBT' ),
+          array( 'Accessibility',    98, 'WCAG 2.1 AA · Keyboard safe' ),
+          array( 'Best Practices',   100, 'HTTPS · No console errors · CSP' ),
+          array( 'SEO',              100, 'Schema · Meta · Crawlable · Mobile' ),
+        );
+        foreach ( $gauges as $g ) : ?>
+          <div class="dev-gauge">
+            <div class="dev-gauge__ring" style="--score: <?php echo (int) $g[1]; ?>;">
+              <span class="dev-gauge__num mono"><?php echo (int) $g[1]; ?></span>
+            </div>
+            <h3 class="dev-gauge__name"><?php echo esc_html( $g[0] ); ?></h3>
+            <p class="dev-gauge__sub mono"><?php echo esc_html( $g[2] ); ?></p>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
+      <div class="dev-guarantees">
+        <div class="dev-guarantee"><span class="mono">+</span> Mobile-first, never an afterthought</div>
+        <div class="dev-guarantee"><span class="mono">+</span> JSON-LD schema on every public page</div>
+        <div class="dev-guarantee"><span class="mono">+</span> Image optimization &amp; lazy loading by default</div>
+        <div class="dev-guarantee"><span class="mono">+</span> No render-blocking 3rd-party scripts</div>
+        <div class="dev-guarantee"><span class="mono">+</span> Semantic HTML &amp; visible focus states</div>
+        <div class="dev-guarantee"><span class="mono">+</span> 99.9% uptime monitoring on all maintained sites</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS — terminal-style log
+       ============================================================ -->
+  <section class="dev-proc">
+    <div class="lvm-container">
+      <div class="dev-section-head">
+        <div class="eyebrow"><span class="eyebrow__num mono">04</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Process</span></div>
+        <h2 class="section-h">From kickoff to launch,<br><em class="serif">no surprises.</em></h2>
+        <p class="section-lead">A four-phase build with weekly check-ins and a single point of contact. You always know what's shipping next.</p>
+      </div>
+
+      <div class="dev-term">
+        <div class="dev-term__bar">
+          <span class="dev-spec__dot dev-spec__dot--r"></span>
+          <span class="dev-spec__dot dev-spec__dot--y"></span>
+          <span class="dev-spec__dot dev-spec__dot--g"></span>
+          <span class="dev-spec__path mono">~/local-vocal/process.sh</span>
+        </div>
+        <div class="dev-term__body mono">
+          <p><span class="dev-term__prompt">$</span> <span class="dev-term__cmd">project init</span><span class="dev-term__meta">— phase 01 / discovery</span></p>
+          <p class="dev-term__ok"><span>✓</span> Stakeholder interviews + audit of current site</p>
+          <p class="dev-term__ok"><span>✓</span> Goals, audiences, conversion paths defined</p>
+          <p class="dev-term__ok"><span>✓</span> Scope, milestones, and success metrics signed</p>
+
+          <p><span class="dev-term__prompt">$</span> <span class="dev-term__cmd">project design</span><span class="dev-term__meta">— phase 02 / design system</span></p>
+          <p class="dev-term__ok"><span>✓</span> Brand-aligned design system (color, type, spacing)</p>
+          <p class="dev-term__ok"><span>✓</span> Page wireframes + final visual designs</p>
+          <p class="dev-term__ok"><span>✓</span> Component library prepped for handoff</p>
+
+          <p><span class="dev-term__prompt">$</span> <span class="dev-term__cmd">project build</span><span class="dev-term__meta">— phase 03 / development</span></p>
+          <p class="dev-term__ok"><span>✓</span> Frontend templates + custom blocks built</p>
+          <p class="dev-term__ok"><span>✓</span> Backend integrations + form pipelines wired</p>
+          <p class="dev-term__ok"><span>✓</span> Schema, sitemap, redirects, analytics installed</p>
+
+          <p><span class="dev-term__prompt">$</span> <span class="dev-term__cmd">project ship</span><span class="dev-term__meta">— phase 04 / launch</span></p>
+          <p class="dev-term__ok"><span>✓</span> Cross-browser + mobile-device QA pass</p>
+          <p class="dev-term__ok"><span>✓</span> Lighthouse + a11y + Core Web Vitals targets met</p>
+          <p class="dev-term__ok dev-term__ok--final"><span>✓</span> Domain cutover + 30-day post-launch monitoring</p>
+
+          <p class="dev-term__final"><span class="dev-term__prompt">$</span> <span class="dev-term__cursor" aria-hidden="true">▌</span></p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- Main Content Section -->
-  <section class="py-16 px-4">
-    <div class="max-w-4xl mx-auto prose prose-lg">
-      <?php
-      if (have_posts()) {
-        while (have_posts()) {
-          the_post();
-          the_content();
-        }
-      }
-      ?>
-    </div>
-  </section>
-
-
-  <!-- Development Process -->
-  <section class="py-16 px-4 bg-gray-100">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Our Development Process</h2>
-        <p class="mt-4 text-xl text-gray-600">A systematic approach to delivering quality solutions</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">1. Discovery & Planning</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Requirements gathering and analysis</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Project scope definition</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Technology stack selection</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Timeline and milestone planning</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">2. Design & Development</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">UI/UX design creation</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Frontend development</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Backend implementation</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Database architecture</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">3. Testing & QA</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Functionality testing</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Performance optimization</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Security testing</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Cross-browser compatibility</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">4. Launch & Support</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Deployment preparation</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Go-live execution</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Post-launch monitoring</span>
-            </li>
-            <li class="flex items-start group">
-              <span class="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2.5 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-              <span class="text-gray-600 group-hover:text-indigo-600 transition-colors">Ongoing maintenance</span>
-            </li>
-          </ul>
-        </div>
+  <!-- ============================================================
+       CTA
+       ============================================================ -->
+  <section class="cta" id="cta">
+    <div class="cta__glow" aria-hidden="true"></div>
+    <div class="lvm-container cta__inner">
+      <div class="cta__eyebrow mono">↳ Project brief</div>
+      <h2 class="cta__h">Ready to start<br><em class="serif">your website project?</em></h2>
+      <p class="cta__p">Tell us about your business and what you need. We'll come back with a clear scope, a fair price, and a real timeline.</p>
+      <div class="cta__actions">
+        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Contact us today <span aria-hidden="true">→</span></a>
+        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
       </div>
     </div>
   </section>
 
-  <!-- Technologies -->
-  <section class="py-16 px-4 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Technologies We Use</h2>
-        <p class="mt-4 text-xl text-gray-600">Modern tools and frameworks for robust solutions</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-        <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Frontend</h4>
-          <ul class="space-y-2">
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">React</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">Vue.js</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">Angular</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Backend</h4>
-          <ul class="space-y-2">
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">PHP</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">Node.js</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">Python</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Database</h4>
-          <ul class="space-y-2">
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">MySQL</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">MongoDB</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">PostgreSQL</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">CMS</h4>
-          <ul class="space-y-2">
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">WordPress</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">Drupal</span>
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2"></span>
-              <span class="text-gray-600">Custom</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="bg-indigo-600 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl text-white font-bold mb-4">Ready to Start Your <br/>Development Project?</h2>
-      <p class="text-xl mb-8 max-w-3xl mx-auto">
-        Let's discuss your project requirements and create a solution<br/> that perfectly fits your needs.
-      </p>
-      <button onclick="window.location.href='<?php echo get_page_link(get_page_by_path('contact')->ID); ?>'" class="bg-black text-indigo-600 font-medium py-3 px-8 rounded-lg hover:bg-gray-800 transition-colors">
-        Contact Us Today
-      </button>
-    </div>
-  </section>
-
-  
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();
