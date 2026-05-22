@@ -24,7 +24,7 @@ get_header(); ?>
         <span class="ct-mast__top-rule"></span>
         <span><?php echo esc_html( gmdate( 'l, F j' ) ); ?></span>
         <span class="ct-mast__top-rule"></span>
-        <span>Annapolis · MD · USA</span>
+        <span>Baltimore · MD · USA</span>
         <span class="ct-mast__top-rule"></span>
         <span>Reply ≤ 1 business day</span>
       </div>

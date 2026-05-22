@@ -33,23 +33,23 @@
       <div>
         <div class="footer__heading mono">Industries</div>
         <ul>
-          <li><a href="<?php echo esc_url( home_url( '/#industries' ) ); ?>">Contractors</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/#industries' ) ); ?>">HVAC</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/#industries' ) ); ?>">Law Firms</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/#industries' ) ); ?>">Dentists</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/#industries' ) ); ?>">Home Care</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/#industries' ) ); ?>">Auto Glass</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/Contractors' ) ); ?>">Contractors</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/HVAC' ) ); ?>">HVAC</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/law-firms' ) ); ?>">Law Firms</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/dentists' ) ); ?>">Dentists</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/home-care' ) ); ?>">Home Care</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/auto-glass' ) ); ?>">Auto Glass</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__heading mono">Maryland SEO</div>
         <ul>
-          <li><a href="#">Annapolis</a></li>
-          <li><a href="#">Severna Park</a></li>
-          <li><a href="#">Glen Burnie</a></li>
-          <li><a href="#">Easton</a></li>
-          <li><a href="#">Ocean City</a></li>
-          <li><a href="#">Baltimore</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/annapolis' ) ); ?>">Annapolis</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/severna-park' ) ); ?>">Severna Park</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/glen-burnie' ) ); ?>">Glen Burnie</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/easton' ) ); ?>">Easton</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/ocean-city' ) ); ?>">Ocean City</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/baltimore' ) ); ?>">Baltimore</a></li>
         </ul>
       </div>
       <div>

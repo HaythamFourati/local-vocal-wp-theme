@@ -32,14 +32,14 @@ get_header(); ?>
 
       <h1 class="ab-mast__h">
         <span class="ab-mast__line">A small Maryland studio</span>
-        <span class="ab-mast__line ab-mast__line--accent serif">building the boring,<br>durable web</span>
+        <span class="ab-mast__line ab-mast__line--accent serif">building the stable,<br>durable web</span>
         <span class="ab-mast__line">for service businesses.</span>
       </h1>
 
       <div class="ab-mast__sig">
         <span class="ab-mast__sig-num mono">↳ since 2010</span>
         <span class="ab-mast__sig-rule"></span>
-        <span class="ab-mast__sig-meta mono">Annapolis · Severna Park · the Bay</span>
+        <span class="ab-mast__sig-meta mono">Baltimore · Glyndon · the Bay</span>
       </div>
     </div>
   </section>
@@ -101,7 +101,7 @@ get_header(); ?>
             'years' => 'Front-end · WordPress',
             'spec'  => 'Engineering · Performance · SEO',
             'bio'   => 'Haytham builds the sites. Front-end engineering, WordPress, and the on-page SEO foundations every Local Vocal site is judged on. If a site loads fast and ranks well, it\'s usually because of the decisions made before the first commit.',
-            'quote' => 'Boring stack, long shelf life. Every site we ship is auditable, replaceable, and well-documented.',
+            'quote' => 'Stable stack, long shelf life. Every site we ship is auditable, replaceable, and well-documented.',
             'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2025/02/WhatsApp-Image-2023-02-20-at-12.00.54.jpg',
           ),
           array(
@@ -168,8 +168,8 @@ get_header(); ?>
       <ol class="ab-prin__list">
         <?php
         $principles = array(
-          array( '01', 'Build the boring stack.',
-            'We pick the simplest tools that do the job. Boring choices have long shelf lives — your next developer will thank us.' ),
+          array( '01', 'Build the stable stack.',
+            'We pick the simplest tools that do the job. Stable choices have long shelf lives — your next developer will thank us.' ),
           array( '02', 'One brief, one team.',
             'Three of us work on every project. No account-manager carousel, no offshore handoffs, no Slack threads with strangers.' ),
           array( '03', 'Ship, then iterate.',
@@ -235,10 +235,10 @@ get_header(); ?>
           <span class="ab-section-bar__rule"></span>
           <span class="ab-section-bar__lbl">Where we are</span>
         </div>
-        <h2 class="ab-place__h">Anchored in <em class="serif">Annapolis,</em><br>working across the Bay.</h2>
+        <h2 class="ab-place__h">Anchored in <em class="serif">Baltimore,</em><br>working across the Bay.</h2>
         <p class="ab-place__p">We're based in Maryland and serve service businesses across Anne Arundel, Baltimore, Howard, and the surrounding counties. If you call us, the person who answers lives within an hour of your shop.</p>
         <ul class="ab-place__list mono">
-          <li>↳ Annapolis · Severna Park · Pasadena</li>
+          <li>↳ Baltimore · Glyndon · Pasadena</li>
           <li>↳ Glen Burnie · Edgewater · Crofton</li>
           <li>↳ Baltimore County · Howard County</li>
           <li>↳ Eastern Shore · the Bay region</li>
@@ -264,7 +264,7 @@ get_header(); ?>
             </svg>
           </div>
           <dl class="ab-place__card-list mono">
-            <div><dt>Studio</dt><dd>Annapolis, MD</dd></div>
+            <div><dt>Studio</dt><dd>Baltimore, MD</dd></div>
             <div><dt>Hours</dt><dd>Mon — Fri · 9 to 6</dd></div>
             <div><dt>Calls</dt><dd>(443) 852-1000</dd></div>
             <div class="ab-place__card-list-last"><dt>Coverage</dt><dd>Statewide · MD</dd></div>

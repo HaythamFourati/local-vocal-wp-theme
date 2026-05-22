@@ -73,12 +73,11 @@
 
     $lvm_nav_items = array(
       array( 'label' => 'Home',            'url' => home_url( '/' ) ),
-      array( 'label' => 'Advertise',       'url' => home_url( '/grow-your-small-business-online/' ) ),
       array( 'label' => 'Services',        'url' => home_url( '/services/' ), 'children' => $lvm_services ),
-      array( 'label' => 'Invoice Payment', 'url' => home_url( '/payment-page/' ) ),
       array( 'label' => 'Requests',        'url' => home_url( '/intake-form/' ) ),
       array( 'label' => 'About Us',        'url' => home_url( '/about-us/' ) ),
       array( 'label' => 'Blog',            'url' => home_url( '/blog/' ) ),
+      array( 'label' => 'Contact',         'url' => home_url( '/contact/' ) ),
     );
     ?>
     <nav class="nav__links" aria-label="Primary">
