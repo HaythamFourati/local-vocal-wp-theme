@@ -94,7 +94,7 @@ get_header();
       <div class="hero-dash">
         <div class="hero-dash__chrome">
           <div class="hero-dash__dots"><span></span><span></span><span></span></div>
-          <div class="hero-dash__url"><span class="mono">tidewater‑hvac.com · indexed · annapolis, md</span></div>
+          <div class="hero-dash__url"><span class="mono">securitytrainingclasses.com · indexed · baltimore, md</span></div>
           <div class="hero-dash__status">
             <span class="hero-dash__status-dot" aria-hidden="true"></span>
             <span class="mono">ranking</span>
@@ -114,19 +114,19 @@ get_header();
                 <span class="sitefull__bdot"></span>
                 <span class="sitefull__bdot"></span>
                 <span class="sitefull__bdot"></span>
-                <span class="sitefull__burl mono">tidewater‑hvac.com / annapolis</span>
+                <span class="sitefull__burl mono">securitytrainingclasses.com / baltimore</span>
               </div>
 
               <div class="sitefull__nav">
                 <div class="sitefull__brand">
                   <span class="sitefull__logo" aria-hidden="true"></span>
-                  <span class="sitefull__brandname">Tidewater HVAC</span>
+                  <span class="sitefull__brandname">Security Training Academy</span>
                 </div>
                 <div class="sitefull__links">
                   <span>Services</span>
                   <span>About</span>
                   <span>Reviews</span>
-                  <span class="sitefull__phone mono">(410) 555‑0142</span>
+                  <span class="sitefull__phone mono">(443) 702-7891</span>
                 </div>
               </div>
 
@@ -134,10 +134,10 @@ get_header();
                 <span class="sitefull__pin sitefull__pin--02" aria-hidden="true">02</span>
                 <div class="sitefull__tag mono">★ 4.9 · serving Annapolis since 2008</div>
                 <h2 class="sitefull__h1">
-                  AC Repair &amp; Installation
-                  <span class="sitefull__h1-mark"> in Annapolis, MD</span>
+                  Security Training &amp; Certification
+                  <span class="sitefull__h1-mark"> in Baltimore, MD</span>
                 </h2>
-                <p class="sitefull__sub">Same‑day service. Licensed &amp; insured technicians. Honest estimates with no surprise fees.</p>
+                <p class="sitefull__sub">Professional certification courses. Licensed instructors. Flexible scheduling for working professionals.</p>
                 <div class="sitefull__ctas">
                   <span class="sitefull__cta sitefull__cta--primary">Get a free quote</span>
                   <span class="sitefull__cta sitefull__cta--ghost">Call now <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg></span>
@@ -147,9 +147,9 @@ get_header();
               <div class="sitefull__svcs">
                 <?php
                 $sf_svcs = array(
-                  array( 'AC repair', 'Same‑day · 7 days a week' ),
-                  array( 'New installation', 'Lennox &amp; Trane certified' ),
-                  array( 'Tune‑ups', 'Spring &amp; fall maintenance' ),
+                  array( 'Security Guard Training', 'Weekend & evening classes' ),
+                  array( 'CPR Certification', 'American Heart Association certified' ),
+                  array( 'Firearms Training', 'MD State Police approved' ),
                 );
                 foreach ( $sf_svcs as $s ) : ?>
                   <div class="sitefull__svc">
@@ -168,9 +168,9 @@ get_header();
                   <span class="sitefull__rev-num"><b>4.9</b> · 184 Google reviews</span>
                 </div>
                 <div class="sitefull__rev-list">
-                  <span>"Same‑day fix — couldn't ask for more." — Karen M.</span>
+                  <span>"Great instructors - very thorough training." — Marcus R.</span>
                   <span class="sitefull__rev-divider"></span>
-                  <span>"Honest, fair pricing." — James P.</span>
+                  <span>"Flexible schedule worked perfectly." — Sarah T.</span>
                 </div>
               </div>
 
@@ -178,15 +178,15 @@ get_header();
                 <span class="sitefull__pin sitefull__pin--03" aria-hidden="true">03</span>
                 <div class="sitefull__blog-label mono">From the blog</div>
                 <div class="sitefull__blog-list">
-                  <span>How to Know When Your AC Needs Repair →</span>
-                  <span>5 Signs Your Furnace Is Failing Early →</span>
+                  <span>How to Choose the Right Security Training Program →</span>
+                  <span>5 Benefits of Professional Security Certification →</span>
                 </div>
               </div>
 
               <div class="sitefull__foot">
                 <span class="sitefull__pin sitefull__pin--04" aria-hidden="true">04</span>
-                <span class="mono">Anne Arundel County · Annapolis · Severna Park</span>
-                <span class="sitefull__social mono">@tidewaterhvac</span>
+                <span class="mono">Baltimore County · Baltimore · Glyndon</span>
+                <span class="sitefull__social mono">@securitytrainingmd</span>
               </div>
             </div>
           </div>
@@ -199,13 +199,13 @@ get_header();
                 <span class="ch__label">Local SEO</span>
                 <span class="ch__meta mono">visibility</span>
               </header>
-              <div class="ch__kicker mono">"hvac repair near me" · Annapolis MD</div>
+              <div class="ch__kicker mono">"security training baltimore" · Baltimore MD</div>
               <div class="ch__body">
                 <div class="mappack">
                   <div class="mappack__row mappack__row--you">
                     <span class="mappack__pin">A</span>
                     <div>
-                      <div class="mappack__name">Tidewater HVAC</div>
+                      <div class="mappack__name">Security Training Academy</div>
                       <div class="mappack__meta mono">★ 4.9 · 184 reviews</div>
                     </div>
                     <span class="mappack__pos mono">#1</span>
@@ -213,7 +213,7 @@ get_header();
                   <div class="mappack__row">
                     <span class="mappack__pin">B</span>
                     <div>
-                      <div class="mappack__name">Capital Air &amp; Heat</div>
+                      <div class="mappack__name">Baltimore Security Institute</div>
                       <div class="mappack__meta mono">★ 4.6 · 92 reviews</div>
                     </div>
                     <span class="mappack__pos mono">#2</span>
@@ -239,8 +239,8 @@ get_header();
               <div class="ch__kicker mono">Service guide · Maryland</div>
               <div class="ch__body">
                 <div class="ch-blog">
-                  <div class="ch-blog__title">How to Know When Your AC Needs Repair</div>
-                  <div class="ch-blog__meta mono">8 min · ranks #2 for "ac repair annapolis"</div>
+                  <div class="ch-blog__title">How to Choose the Right Security Training Program</div>
+                  <div class="ch-blog__meta mono">8 min · ranks #2 for "security training baltimore"</div>
                 </div>
               </div>
             </section>
@@ -256,7 +256,7 @@ get_header();
                 <div class="ch-social">
                   <div class="ch-social__avatar" aria-hidden="true">TH</div>
                   <div class="ch-social__body">
-                    <div class="ch-social__name">Tidewater HVAC <span class="ch-social__dot"></span></div>
+                    <div class="ch-social__name">Security Training Academy <span class="ch-social__dot"></span></div>
                     <p class="ch-social__text">Spring tune‑ups 20% off. Same‑day in Annapolis.</p>
                   </div>
                 </div>
@@ -277,15 +277,15 @@ get_header();
       <ul class="hm-hero__roster-list">
         <?php
         $logos = array(
-          array( 'Security Training Academy',        'Pasadena'    ),
-          array( 'Care Giving Angels of Maryland',  'Annapolis'  ),
-          array( 'Cullen M Burke Law Office',      'Ocean City' ),
-          array( 'Extreme Vivid Auto Glass',           'Reisterstown'    ),
+          array( 'Security Training Academy',        'Pasadena',      'https://www.securitytrainingclasses.com/' ),
+          array( 'Care Giving Angels of Maryland',  'Annapolis',     'https://caregivingangelsofmd.com/' ),
+          array( 'Cullen M Burke Law Office',      'Ocean City',    'https://www.cullenburke.com/' ),
+          array( 'Extreme Vivid Auto Glass',           'Reisterstown',  'https://ev-autoglass.com/' ),
         );
         foreach ( $logos as $i => $l ) : ?>
           <li class="hm-hero__roster-item">
             <span class="hm-hero__roster-id mono">№ <?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
-            <span class="hm-hero__roster-name"><?php echo esc_html( $l[0] ); ?></span>
+            <a href="<?php echo esc_url( $l[2] ); ?>" target="_blank" rel="noopener noreferrer" class="hm-hero__roster-name"><?php echo esc_html( $l[0] ); ?></a>
             <span class="hm-hero__roster-loc mono">· <?php echo esc_html( $l[1] ); ?></span>
           </li>
         <?php endforeach; ?>
@@ -535,11 +535,11 @@ get_header();
                 <div class="anno__tag mono">★ 4.9 · 87 Google reviews · Licensed in MD</div>
                 <div class="anno__h1">
                   Roofing Services
-                  <span class="anno__hl"> in Annapolis, MD</span>
+                  <span class="anno__hl"> in Baltimore, MD</span>
                 </div>
                 <div class="anno__sub">
-                  Storm damage, repairs, and replacements. Free inspections this week
-                  across Anne Arundel County.
+                  Professional security training and certification. Free course catalog this week
+                  across Baltimore County.
                 </div>
                 <div class="anno__ctas">
                   <span class="anno__cta anno__cta--primary">Get a free inspection</span>
@@ -550,10 +550,10 @@ get_header();
               <div class="anno__svcs">
                 <?php
                 $anno_svcs = array(
-                  array( 'Repairs', 'Same‑week appointments' ),
-                  array( 'Replacement', 'GAF &amp; Owens Corning' ),
-                  array( 'Inspections', 'Free, no obligation' ),
-                  array( 'Storm damage', 'Insurance claim help' ),
+                  array( 'Guard Training', 'Weekend classes available' ),
+                  array( 'CPR Certification', 'AHA certified instructors' ),
+                  array( 'Firearms Training', 'State approved curriculum' ),
+                  array( 'Group Classes', 'Corporate discounts available' ),
                 );
                 foreach ( $anno_svcs as $s ) : ?>
                   <div class="anno__svc">
@@ -566,8 +566,8 @@ get_header();
               <div class="anno__blog">
                 <div class="anno__blog-title mono">From the blog</div>
                 <div class="anno__blog-list">
-                  <span>How to know when your roof needs repair in Maryland →</span>
-                  <span>What storm damage costs in Anne Arundel County →</span>
+                  <span>How to choose the right security training program in Maryland →</span>
+                  <span>What security certification costs in Baltimore County →</span>
                 </div>
               </div>
 
@@ -631,8 +631,8 @@ get_header();
         <!-- LEFT: Radar console -->
         <div class="hm-radar__console">
           <header class="hm-radar__console-head mono">
-            <span class="hm-radar__query">› "hvac repair near me"</span>
-            <span class="hm-radar__loc">Annapolis, MD</span>
+            <span class="hm-radar__query">› "security training baltimore"</span>
+            <span class="hm-radar__loc">Baltimore, MD</span>
           </header>
 
           <div class="hm-radar__scope" aria-hidden="true">
@@ -678,9 +678,9 @@ get_header();
             <?php
             $feed_rows = array(
               array( 1, 'Your business',         '★ 4.9 · 184',  '+6',  'you'  ),
-              array( 2, 'Capital Air &amp; Heat',    '★ 4.6 · 92',   '−1',  'down' ),
-              array( 3, 'Bay Mechanical',         '★ 4.4 · 51',   '—',   'flat' ),
-              array( 4, 'Tidewater HVAC Co.',     '★ 4.2 · 38',   '−2',  'down' ),
+              array( 2, 'Baltimore Security Institute', '★ 4.6 · 92',   '−1',  'down' ),
+              array( 3, 'Maryland Protection Services',  '★ 4.4 · 51',   '—',   'flat' ),
+              array( 4, 'Security Training Academy', '★ 4.2 · 38',   '−2',  'down' ),
             );
             foreach ( $feed_rows as $r ) : ?>
               <div class="hm-radar__feed-row<?php echo $r[4] === 'you' ? ' is-you' : ''; ?>">
@@ -766,7 +766,7 @@ get_header();
       <div class="hm-press__rack">
         <?php
         $posts = array(
-          array( 'Roofing · Maryland',     'How to Know When Your Roof Needs Repair in Maryland',         '9 min read',  '#3', 'MD',  'Ed. 042' ),
+          array( 'Security · Maryland',   'How to Choose the Right Security Training Program in Maryland',         '9 min read',  '#3', 'MD',  'Ed. 042' ),
           array( 'Legal · Ocean City',     'What to Do After a DUI Arrest in Ocean City',                 '7 min read',  '#1', 'MD',  'Ed. 041' ),
           array( 'Auto Glass · National',  'Five Signs Your Windshield Needs Replacement',                '6 min read',  '#2', 'US',  'Ed. 040' ),
           array( 'Home Care · Maryland',   'How Home Care Helps Seniors Stay Independent',                '8 min read',  '#4', 'MD',  'Ed. 039' ),
@@ -879,7 +879,7 @@ get_header();
       <div class="hm-board__pins">
         <?php
         $sposts = array(
-          array( 'TH', 'Tidewater HVAC',    '@tidewaterhvac',  'Mon · 09:14a',  'Spring tune‑ups 20% off through April. Same‑day appointments still open.',                              '#Annapolis #HVAC',           184, 12,  8, 'PRO' ),
+          array( 'STA', 'Security Training Academy', '@securitytrainingmd',  'Mon · 09:14a',  'Professional security training and certification courses. Enrolling now for summer classes.',                              '#Security #Training',           184, 12,  8, 'PRO' ),
           array( 'CL', 'Calvert Law',       '@calvertlaw',     'Wed · 02:30p',  'Free 15‑minute consultation for personal injury cases this month. Call or book online.',              '#Maryland #PersonalInjury',   62,  4, 21, 'OFR' ),
           array( 'RD', 'Riverside Dental',  '@riversidedental', 'Fri · 11:00a', 'Now accepting new patients — most insurance plans accepted, evening appointments available.',          '#Severna #Dentist',           98,  7,  3, 'NEW' ),
         );
@@ -1046,9 +1046,9 @@ get_header();
             '/contractors', 'CON',
           ),
           array(
-            'HVAC Companies', 'Show up when homeowners need urgent repair — not three pages in.',
+            'Security Training', 'Show up when professionals need certification — not three pages in.',
             '<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>',
-            '/hvac', 'HVC',
+            '/security-training', 'SEC',
           ),
           array(
             'Law Firms', 'Build trust and turn local searches into consultation requests.',

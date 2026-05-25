@@ -64,7 +64,7 @@ get_header(); ?>
       <div class="ct-section-bar mono">
         <span class="ct-section-bar__num">§ 01</span>
         <span class="ct-section-bar__rule"></span>
-        <span class="ct-section-bar__lbl">Three direct lines</span>
+        <span class="ct-section-bar__lbl">Two direct lines</span>
         <span class="ct-section-bar__tag">All open</span>
       </div>
 
@@ -105,24 +105,6 @@ get_header(); ?>
           <div class="ct-line__foot mono">
             <span>Mon&ndash;Fri · 9&ndash;6 ET</span>
             <span class="ct-line__foot-cta">Dial <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-
-        <a class="ct-line ct-line--03" href="https://maps.app.goo.gl/eio3U1s7NzCkutyf8" target="_blank" rel="noopener">
-          <div class="ct-line__head">
-            <span class="ct-line__num mono">03</span>
-            <span class="ct-line__status mono">
-              <span class="ct-line__status-dot"></span>
-              BY APPT
-            </span>
-          </div>
-          <div class="ct-line__channel mono">Office</div>
-          <h3 class="ct-line__t">Stop by.</h3>
-          <p class="ct-line__desc">Maryland‑based studio. Coffee's on if you call ahead. Easier than parking in DC, friendlier than another Zoom.</p>
-          <div class="ct-line__value">209 Central Ave<br>Glyndon, MD&nbsp;21071</div>
-          <div class="ct-line__foot mono">
-            <span>By appointment</span>
-            <span class="ct-line__foot-cta">Map <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg></span>
           </div>
         </a>
 

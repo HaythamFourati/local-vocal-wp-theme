@@ -8751,7 +8751,7 @@ body.lvm-redesign ::selection { background: var(--accent); color: #fff; }
 
 .lvm-redesign .svc-contact .ct-lines__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0;
   border-top: 2px solid var(--ink);
   border-left: 1px solid var(--line);
