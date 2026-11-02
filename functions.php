@@ -25,6 +25,15 @@ function lvm_load_assets() {
     array(),
     file_exists( $css_path ) ? filemtime( $css_path ) : '1.0'
   );
+  // General Sans: homepage display face + the logo wordmark on every page
+  wp_enqueue_style( 'lvm-home-fonts-display', 'https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap', array(), null );
+  if ( is_front_page() ) {
+    $home_css = get_theme_file_path( '/src/home.css' );
+    $home_js  = get_theme_file_path( '/src/scripts/home.js' );
+    wp_enqueue_style( 'lvm-home-fonts-body', 'https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap', array(), null );
+    wp_enqueue_style( 'lvm-home', get_theme_file_uri( '/src/home.css' ), array( 'lvm-redesign' ), filemtime( $home_css ) );
+    wp_enqueue_script( 'lvm-home', get_theme_file_uri( '/src/scripts/home.js' ), array(), filemtime( $home_js ), true );
+  }
   wp_enqueue_script(
     'lvm-redesign',
     get_theme_file_uri( '/src/scripts/lvm-redesign.js' ),
@@ -34,6 +43,38 @@ function lvm_load_assets() {
   );
 }
 add_action( 'wp_enqueue_scripts', 'lvm_load_assets' );
+
+/**
+ * Local Vocal MD logo (inline SVG, shared by header and footer).
+ * Wordmark uses currentColor; the pin uses --logo-accent. Animation
+ * lives in lvm-redesign.css (.lvlogo*): one cycle on load, loops on hover.
+ */
+function lvm_logo( $class = '' ) {
+  // Squircle tile + pin with voice bars, then a two-tone wordmark.
+  // textLength pins the wordmark width so a fallback font can't overflow the viewBox.
+  ?>
+  <svg class="lvlogo <?php echo esc_attr( $class ); ?>" viewBox="0 0 178 40" role="img" aria-label="Local Vocal Marketing">
+    <rect class="lvlogo__tile" width="40" height="40" rx="11"/>
+    <rect width="40" height="40" rx="11" fill="url(#lvlogo-sheen)"/>
+    <rect x=".5" y=".5" width="39" height="39" rx="10.5" fill="none" stroke="#fff" stroke-opacity=".22"/>
+    <g class="lvlogo__pin">
+      <path d="M20 7a10 10 0 0 0-10 10c0 6.3 5.2 10.7 10 15 4.8-4.3 10-8.7 10-15A10 10 0 0 0 20 7z" fill="#0E0E0C"/>
+      <g class="lvlogo__bars">
+        <rect class="lvlogo__bar lvlogo__bar--a" x="14.4" y="14" width="2.4" height="6" rx="1.2"/>
+        <rect class="lvlogo__bar lvlogo__bar--c" x="18.8" y="11.5" width="2.4" height="11" rx="1.2"/>
+        <rect class="lvlogo__bar lvlogo__bar--b" x="23.2" y="13" width="2.4" height="8" rx="1.2"/>
+      </g>
+    </g>
+    <text class="lvlogo__word" x="52" y="27.6" font-size="21.5" textLength="124" lengthAdjust="spacingAndGlyphs">Local <tspan class="lvlogo__dim">Vocal</tspan></text>
+    <defs>
+      <linearGradient id="lvlogo-sheen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".3"/>
+        <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <?php
+}
 
 function lvm_theme_support() {
   add_theme_support( 'title-tag' );

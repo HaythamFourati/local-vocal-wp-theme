@@ -6,10 +6,8 @@
 <footer class="footer">
   <div class="lvm-container footer__inner">
     <div class="footer__brand">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav__brand">
-        <span class="nav__mark" aria-hidden="true"><span></span><span></span><span></span></span>
-        <span class="nav__name">Local Vocal</span>
-        <span class="nav__suffix mono">MD</span>
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav__brand" aria-label="Local Vocal Marketing — home">
+        <?php lvm_logo( 'footer__logo' ); ?>
       </a>
       <p class="footer__tag">
         Maryland web design &amp; SEO for local businesses. We help small businesses

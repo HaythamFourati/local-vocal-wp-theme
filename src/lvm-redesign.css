@@ -411,6 +411,8 @@ body.lvm-redesign ::selection { background: var(--accent); color: #fff; }
   .lvm-redesign .nav__toggle { display: inline-flex; }
 }
 @media (max-width: 720px) { .lvm-redesign .nav__actions .btn--ghost { display: none; } }
+/* Keep the Menu toggle on screen on phones; the hero carries the CTA there */
+@media (max-width: 520px) { .lvm-redesign .nav__actions .btn--primary { display: none; } }
 
 /* Mobile drawer */
 .lvm-redesign .nav__drawer {
@@ -430,6 +432,131 @@ body.lvm-redesign ::selection { background: var(--accent); color: #fff; }
   padding: 12px 0;
   border-bottom: 1px solid var(--line);
 }
+
+/* ------- HEADER: floating pill nav (2026) -------
+   Logo left, glass pill of links centred, pill actions right.
+   Transparent at the top, frosted once scrolled. Colours come from
+   --hdr-* tokens so a page can retheme it (the homepage goes dark). */
+.lvm-redesign :is(.nav, .nav__drawer) {
+  --hdr-pill: rgba(255, 255, 255, 0.62);
+  --hdr-ring: rgba(14, 14, 12, 0.08);
+  --hdr-hover: rgba(14, 14, 12, 0.05);
+  --hdr-cta-bg: var(--ink);
+  --hdr-cta-ink: #fff;
+  --hdr-ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+.lvm-redesign .nav {
+  --hdr-pill: rgba(255, 255, 255, 0.62);
+  --hdr-ring: rgba(14, 14, 12, 0.08);
+  --hdr-hover: rgba(14, 14, 12, 0.05);
+  --hdr-cta-bg: var(--ink);
+  --hdr-cta-ink: #fff;
+  --hdr-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  background: transparent;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+.lvm-redesign .nav.is-scrolled {
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  -webkit-backdrop-filter: saturate(160%) blur(16px); backdrop-filter: saturate(160%) blur(16px);
+  border-bottom-color: var(--hdr-ring);
+}
+.lvm-redesign .nav__inner { height: 72px; max-width: 1360px; }
+.lvm-redesign .nav__brand { flex: none; color: var(--ink); border-radius: 10px; }
+.lvm-redesign .nav__logo { display: block; width: auto; height: 32px; }
+.lvm-redesign .nav__links {
+  gap: 2px; padding: 5px; border-radius: 999px; font-size: 14px;
+  background: var(--hdr-pill);
+  -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: inset 0 0 0 1px var(--hdr-ring), 0 10px 30px -22px rgba(0, 0, 0, 0.5);
+}
+.lvm-redesign .nav__links > a,
+.lvm-redesign .nav__links .nav__link {
+  padding: 8px 14px; border-radius: 999px; color: var(--muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.lvm-redesign .nav__links > a:hover,
+.lvm-redesign .nav__links .nav__link:hover,
+.lvm-redesign .nav__item--has-children:focus-within .nav__link--has-children { color: var(--ink); background: var(--hdr-hover); }
+.lvm-redesign .nav__links > a[aria-current="page"] { color: var(--ink); background: var(--hdr-hover); }
+
+.lvm-redesign .nav__actions { gap: 8px; }
+.lvm-redesign .nav__phone,
+.lvm-redesign .nav__toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; padding: 0 14px; border: 0; border-radius: 999px;
+  font-size: 14px; color: var(--ink); text-decoration: none;
+  background: var(--hdr-pill);
+  box-shadow: inset 0 0 0 1px var(--hdr-ring);
+  transition: background-color 0.2s ease, transform 160ms var(--hdr-ease);
+}
+.lvm-redesign .nav__phone svg { color: var(--accent); flex: none; }
+.lvm-redesign .nav__cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 40px; padding: 0 4px 0 16px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap;
+  color: var(--hdr-cta-ink); background: var(--hdr-cta-bg); text-decoration: none;
+  transition: transform 160ms var(--hdr-ease), box-shadow 0.25s ease;
+}
+.lvm-redesign .nav__cta-icon {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  color: #0E0E0C; background: var(--accent);
+  transition: transform 200ms var(--hdr-ease);
+}
+.lvm-redesign .nav__cta:active,
+.lvm-redesign .nav__phone:active,
+.lvm-redesign .nav__toggle:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .lvm-redesign .nav__phone:hover, .lvm-redesign .nav__toggle:hover { background: var(--hdr-hover); }
+  .lvm-redesign .nav__cta:hover { box-shadow: 0 10px 28px -12px color-mix(in oklab, var(--accent) 70%, transparent); }
+  .lvm-redesign .nav__cta:hover .nav__cta-icon { transform: translateX(2px); }
+}
+.lvm-redesign .nav a:focus-visible, .lvm-redesign .nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.lvm-redesign .nav__toggle { display: none; padding: 0 14px 0 12px; cursor: pointer; }
+.lvm-redesign .nav__toggle-lines { display: grid; gap: 4px; }
+.lvm-redesign .nav__toggle-lines i { display: block; width: 14px; height: 1.5px; border-radius: 1px; background: currentColor; transition: transform 250ms var(--hdr-ease); }
+.lvm-redesign .nav__toggle[aria-expanded="true"] .nav__toggle-lines i:first-child { transform: translateY(2.75px) rotate(45deg); }
+.lvm-redesign .nav__toggle[aria-expanded="true"] .nav__toggle-lines i:last-child { transform: translateY(-2.75px) rotate(-45deg); }
+
+.lvm-redesign .nav__drawer { inset: 72px 0 0 0; }
+.lvm-redesign .nav__drawer-summary { font-size: 19px; }
+.lvm-redesign .nav__drawer-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+/* Out-rank the drawer's generic `a` rule (colour, padding, border) */
+.lvm-redesign .nav__drawer .nav__drawer-actions .nav__phone { font-size: 15px; border-bottom: 0; padding: 0 16px; color: var(--ink); }
+.lvm-redesign .nav__drawer .nav__drawer-actions .nav__cta { font-size: 15px; border-bottom: 0; padding: 0 4px 0 18px; color: var(--hdr-cta-ink); }
+
+@media (max-width: 1080px) {
+  .lvm-redesign .nav__links { display: none; }
+  .lvm-redesign .nav__toggle { display: inline-flex; }
+}
+@media (max-width: 720px) {
+  .lvm-redesign .nav__actions .nav__phone { width: 40px; padding: 0; justify-content: center; }
+  .lvm-redesign .nav__actions .nav__phone span { display: none; }
+}
+@media (max-width: 520px) {
+  .lvm-redesign .nav__actions .nav__cta { display: none; }
+  .lvm-redesign .nav__logo { height: 28px; }
+}
+
+/* ------- LOGO (lvm_logo()) -------
+   Bars pulse one cycle on load; loop while the logo is hovered/focused. */
+.lvlogo { --logo-accent: var(--accent); overflow: visible; }
+.lvlogo__tile { fill: var(--logo-accent); }
+.lvlogo__bars { fill: var(--logo-accent); }
+.lvlogo__word { fill: currentColor; font-family: "General Sans", "Geist", ui-sans-serif, system-ui, sans-serif; font-weight: 500; }
+.lvlogo__dim { fill-opacity: 0.56; }
+.lvlogo__bar { transform-box: fill-box; transform-origin: center; }
+.lvlogo__bar--a { animation: lvlogo-bar-a 1.6s ease-in-out 2; }
+.lvlogo__bar--b { animation: lvlogo-bar-b 1.6s ease-in-out 2; }
+.lvlogo__bar--c { animation: lvlogo-bar-c 1.6s ease-in-out 2; }
+a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: infinite; }
+@keyframes lvlogo-bar-a { 0%, 100% { transform: scaleY(1); } 35% { transform: scaleY(0.55); } 70% { transform: scaleY(1.25); } }
+@keyframes lvlogo-bar-b { 0%, 100% { transform: scaleY(1); } 30% { transform: scaleY(1.3); } 65% { transform: scaleY(0.6); } }
+@keyframes lvlogo-bar-c { 0%, 100% { transform: scaleY(1); } 45% { transform: scaleY(0.62); } 75% { transform: scaleY(1.08); } }
+@media (prefers-reduced-motion: reduce) { .lvlogo * { animation: none !important; } }
+.lvm-redesign .footer__logo { display: block; height: 36px; width: auto; color: var(--ink); }
 
 /* ------- TYPE / SECTIONS ------- */
 .lvm-redesign .section-h {

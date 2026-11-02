@@ -55,10 +55,8 @@
 
 <header class="nav" id="lvm-nav">
   <div class="nav__inner lvm-container">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav__brand">
-      <span class="nav__mark" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="nav__name">Local Vocal</span>
-      <span class="nav__suffix mono">MD</span>
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav__brand" aria-label="Local Vocal Marketing — home">
+      <?php lvm_logo( 'nav__logo' ); ?>
     </a>
 
     <?php
@@ -112,16 +110,24 @@
             </div>
           </div>
         <?php else : ?>
-          <a class="nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+          <?php $is_current = untrailingslashit( $item['url'] ) === untrailingslashit( home_url( add_query_arg( array(), $GLOBALS['wp']->request ) ) ); ?>
+          <a class="nav__link" href="<?php echo esc_url( $item['url'] ); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html( $item['label'] ); ?></a>
         <?php endif;
       endforeach; ?>
     </nav>
 
     <div class="nav__actions">
-      <a href="tel:+14438521000" class="btn btn--ghost"><span aria-hidden="true">↳</span> (443) 852‑1000</a>
-      <a href="#cta" class="btn btn--primary">Free website &amp; SEO review <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg></a>
+      <a href="tel:+14438521000" class="nav__phone" aria-label="Call (443) 852-1000">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+        <span>(443) 852‑1000</span>
+      </a>
+      <a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" class="nav__cta">
+        <span>Free SEO review</span>
+        <span class="nav__cta-icon" aria-hidden="true"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
       <button class="nav__toggle" type="button" aria-controls="lvm-drawer" aria-expanded="false" aria-label="Open menu">
-        <span class="mono">Menu</span>
+        <span class="nav__toggle-lines" aria-hidden="true"><i></i><i></i></span>
+        <span>Menu</span>
       </button>
     </div>
   </div>
@@ -153,6 +159,8 @@
       <a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
     <?php endif;
   endforeach; ?>
-  <a href="tel:+14438521000" class="btn btn--ghost" style="margin-top:16px;">↳ (443) 852‑1000</a>
-  <a href="#cta" class="btn btn--primary" style="margin-top:8px;">Free website &amp; SEO review</a>
+  <div class="nav__drawer-actions">
+    <a href="tel:+14438521000" class="nav__phone">(443) 852‑1000</a>
+    <a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" class="nav__cta"><span>Free SEO review</span><span class="nav__cta-icon" aria-hidden="true"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+  </div>
 </div>

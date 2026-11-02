@@ -1,1455 +1,979 @@
 <?php
 /**
- * Front Page — Local Vocal Marketing redesign
+ * Front Page — Local Vocal Marketing
  * Maryland Web Design & SEO for Local Businesses.
+ *
+ * Dark "cinematic" system: inset shader stage, light display type,
+ * pill controls, card libraries, stepper + stage panels.
+ * Styles: src/home.css (scoped to .lvh). Behaviour: src/scripts/home.js.
  */
 get_header();
+
+$assets  = get_template_directory_uri() . '/assets/projects/';
+$contact = esc_url( home_url( '/contact' ) );
+$arrow   = '<svg class="lvh-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+
+$icon = function ( $paths ) {
+  return '<svg class="lvh-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $paths . '</svg>';
+};
+// Browser-window mockup. Screenshots live in assets/projects/screens/ and are never cropped.
+$window = function ( $img, $url, $alt = '', $class = '' ) use ( $assets ) {
+  return '<figure class="lvh-window ' . esc_attr( $class ) . '">'
+    . '<div class="lvh-window__bar"><span class="lvh-window__dots"><i></i><i></i><i></i></span>'
+    . '<span class="lvh-window__url"><svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" aria-hidden="true"><path d="M5 7V5a3 3 0 0 1 6 0v2h.5A1.5 1.5 0 0 1 13 8.5v5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7H5zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2z"/></svg>' . esc_html( $url ) . '</span><span></span></div>'
+    . '<img src="' . esc_url( $assets . 'screens/' . $img ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy">'
+    . '</figure>';
+};
+$platforms = array(
+  'facebook'  => array( 'Facebook',        '#1877F2', '<path fill="#fff" d="M15.1 8.2h-1.5c-.6 0-.8.4-.8.9v1.6h2.3l-.3 2.4h-2V20h-2.6v-6.9H8.4v-2.4h1.8V8.9c0-2 1.2-3.1 3-3.1.9 0 1.6.1 1.9.1z"/>' ),
+  'instagram' => array( 'Instagram',       'linear-gradient(45deg,#feda75,#fa7e1e 30%,#d62976 60%,#962fbf 85%,#4f5bd5)', '<rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1" fill="#fff"/>' ),
+  'youtube'   => array( 'YouTube',         '#FF0033', '<path fill="#fff" d="M10 8.6v6.8l5.8-3.4z"/>' ),
+  'google'    => array( 'Google Business', '#ffffff', '<path fill="#EA4335" d="M12 4a5.5 5.5 0 0 0-5.5 5.5c0 4 5.5 10.5 5.5 10.5s5.5-6.5 5.5-10.5A5.5 5.5 0 0 0 12 4z"/><circle cx="12" cy="9.5" r="2.1" fill="#fff"/>' ),
+  'linkedin'  => array( 'LinkedIn',        '#0A66C2', '<rect x="6" y="10" width="2.6" height="8" fill="#fff"/><circle cx="7.3" cy="7.2" r="1.5" fill="#fff"/><path fill="#fff" d="M10.6 10h2.5v1.2c.4-.7 1.3-1.4 2.6-1.4 2.2 0 2.7 1.4 2.7 3.3V18h-2.6v-4.4c0-1-.2-1.8-1.2-1.8s-1.4.7-1.4 1.8V18h-2.6z"/>' ),
+  'tiktok'    => array( 'TikTok',          '#111111', '<path fill="#fff" d="M14.2 5c.3 1.8 1.4 3 3.3 3.2v2.4c-1.2 0-2.3-.4-3.3-1v4.8a4.2 4.2 0 1 1-4.2-4.2h.5v2.5a1.7 1.7 0 1 0 1.2 1.6V5z"/>' ),
+);
+$app = function ( $key, $class = '' ) use ( $platforms ) {
+  $p = $platforms[ $key ];
+  return '<span class="lvh-app ' . esc_attr( $class ) . '" style="--app:' . esc_attr( $p[1] ) . '" title="' . esc_attr( $p[0] ) . '"><svg viewBox="0 0 24 24" aria-hidden="true">' . $p[2] . '</svg></span>';
+};
+// Two-tone section title: bright lead + dimmed tail.
+$title = function ( $lead, $tail, $tag = 'h2', $class = '' ) {
+  return '<' . $tag . ' class="lvh-title ' . esc_attr( $class ) . '" data-reveal>' . $lead . ' <span class="lvh-dim">' . $tail . '</span></' . $tag . '>';
+};
+$eyebrow = function ( $text ) {
+  return '<span class="lvh-eyebrow" data-reveal>' . $text . '</span>';
+};
 ?>
 
-<main class="lvm-home">
+<main class="lvh">
+  <script>if ('IntersectionObserver' in window) document.documentElement.classList.add('lvh-js');</script>
 
   <!-- ============================================================
-       HERO — FIELD OFFICE / MARKET DOSSIER
-       Visual language: a working field office. Dossier topline,
-       coordinate strip, ledger-style services, then the live workstation.
+       HERO — inset shader stage
        ============================================================ -->
-  <section class="hm-hero hero" id="top">
-    <div class="hero__grid-bg" aria-hidden="true"></div>
-
-  
-
-    <div class="lvm-container hero__inner hm-hero__inner">
-
-      <div class="hm-hero__copy">
-        <div class="eyebrow hm-hero__eyebrow">
-          <span class="eyebrow__num mono">00</span>
-          <span class="eyebrow__rule"></span>
-          <span class="eyebrow__label mono">Local Vocal · Maryland practice</span>
+  <section class="lvh-hero" id="top">
+    <div class="lvh-stage">
+      <canvas class="lvh-shader" data-shader="stage" aria-hidden="true"></canvas>
+      <div class="lvh-stage__grid">
+        <div class="lvh-hero__copy">
+          <span class="lvh-eyebrow lvh-eyebrow--live" data-reveal><i></i>Web design &amp; local SEO · Glyndon, Maryland</span>
+          <?php
+          // Each word enters on its own stagger (--w).
+          $w = 0;
+          $words = function ( $text ) use ( &$w ) {
+            $out = array();
+            foreach ( explode( ' ', $text ) as $word ) {
+              $out[] = '<span class="lvh-w" style="--w:' . $w++ . '">' . $word . '</span>';
+            }
+            return implode( ' ', $out );
+          };
+          ?>
+          <h1 class="lvh-title lvh-title--hero" data-reveal>
+            <?php echo $words( 'Maryland web design &amp; SEO' ); ?>
+            <span class="lvh-dim"><?php echo $words( 'that gets local businesses found first.' ); ?></span>
+          </h1>
+          <p class="lvh-deck" data-reveal>
+            We build fast, search‑ready websites and keep them climbing with local SEO,
+            blog content, social media, and ongoing support — so your phone rings with
+            people already searching for what you do.
+          </p>
+          <div class="lvh-actions" data-reveal>
+            <a href="#cta" class="lvh-btn lvh-btn--glow"><span>Get my free website &amp; SEO review</span><span class="lvh-btn__icon"><?php echo $arrow; ?></span></a>
+            <a href="#work" class="lvh-btn lvh-btn--ghost">See our work</a>
+          </div>
+          <ul class="lvh-meta" data-reveal>
+            <li>Since 2010</li>
+            <li>One 3‑person team</li>
+            <li>Free review, report in 48 hours</li>
+          </ul>
         </div>
 
-        <h1 class="hero__h1 hm-hero__h1">
-          Maryland <em class="serif">Web Design</em> &amp; SEO<br>for Local Businesses.
-        </h1>
-
-        <p class="hero__sub hm-hero__sub">
-          Local Vocal Marketing helps small businesses build better websites, improve
-          Google visibility, publish SEO‑focused content, and stay active online with
-          ongoing support. Maryland‑based, serving Maryland and nearby U.S. service areas.
-        </p>
-
-        <div class="hero__cta hm-hero__cta">
-          <a href="#cta" class="btn btn--primary btn--lg">Request a free website &amp; SEO review <span aria-hidden="true">→</span></a>
-          <a href="#services" class="btn btn--ghost btn--lg">View the services menu</a>
-        </div>
-      </div>
-
-      <!-- Right: market brief card -->
-      <aside class="hm-hero__brief mono" aria-label="Market brief">
-        <header class="hm-hero__brief-head">
-          <span><strong>MARKET BRIEF</strong></span>
-          <span class="hm-hero__brief-stamp">Q3 / OPEN</span>
-        </header>
-        <dl class="hm-hero__brief-list">
-          <div><dt>Region</dt><dd>Maryland · MD</dd></div>
-          <div><dt>Areas</dt><dd>Annapolis · Severna Park · Baltimore</dd></div>
-          <div><dt>Sectors</dt><dd>10 service trades</dd></div>
-          <div><dt>Cadence</dt><dd>Weekly check-in · monthly report</dd></div>
-          <div class="hm-hero__brief-list-last"><dt>Owner</dt><dd>info@localvocal</dd></div>
-        </dl>
-        <footer class="hm-hero__brief-foot">
-          <span>↳ Brief signed · 06.28</span>
-          <span class="hm-hero__brief-foot-v">v.04</span>
-        </footer>
-      </aside>
-    </div>
-
-    <!-- Services ledger -->
-    <div class="lvm-container hm-hero__ledger">
-      <div class="hm-hero__ledger-head mono">
-        <span><strong>SERVICES IN PRACTICE</strong></span>
-        <span class="hm-hero__ledger-rule"></span>
-        <span>5 lines · all live</span>
-      </div>
-      <ol class="hm-hero__ledger-row">
         <?php
-        $trust_items = array(
-          array( 'Web design',         'foundation' ),
-          array( 'Local SEO',          'visibility' ),
-          array( 'Blog content',       'authority'  ),
-          array( 'Social media',       'presence'   ),
-          array( 'Ongoing support',    'upkeep'     ),
+        // Map-pack demo. First query is server-rendered; home.js cycles the rest.
+        $queries = array(
+          array( 'q' => 'roofing contractor annapolis', 'r' => array(
+            array( 'Your business',             '4.9', '87',  '1.2' ),
+            array( 'Bay Ridge Roofing',         '4.6', '52',  '2.8' ),
+            array( 'Severn Exteriors',          '4.4', '31',  '3.5' ),
+          ) ),
+          array( 'q' => 'dentist severna park', 'r' => array(
+            array( 'Your business',             '4.9', '212', '0.8' ),
+            array( 'Magothy Dental Group',      '4.7', '140', '1.9' ),
+            array( 'Park Smiles Family Dental', '4.5', '96',  '2.4' ),
+          ) ),
+          array( 'q' => 'dui lawyer ocean city', 'r' => array(
+            array( 'Your business',             '5.0', '64',  '0.5' ),
+            array( 'Coastal Defense Law',       '4.6', '41',  '1.1' ),
+            array( 'Worcester Legal Group',     '4.3', '22',  '2.0' ),
+          ) ),
+          array( 'q' => 'auto glass repair baltimore', 'r' => array(
+            array( 'Your business',             '4.9', '143', '2.1' ),
+            array( 'Charm City Glass',          '4.5', '77',  '3.0' ),
+            array( 'Harbor Auto Glass',         '4.3', '40',  '4.2' ),
+          ) ),
         );
-        foreach ( $trust_items as $i => $t ) : ?>
-          <li class="hm-hero__ledger-item">
-            <span class="hm-hero__ledger-num mono">S/0<?php echo esc_html( $i + 1 ); ?></span>
-            <span class="hm-hero__ledger-name"><?php echo esc_html( $t[0] ); ?></span>
-            <span class="hm-hero__ledger-tag mono"><?php echo esc_html( $t[1] ); ?></span>
-          </li>
-        <?php endforeach; ?>
-      </ol>
-    </div>
-
-    <!-- Hero dashboard mockup -->
-    <div class="lvm-container hero__visual-wrap">
-      <div class="hero-dash">
-        <div class="hero-dash__chrome">
-          <div class="hero-dash__dots"><span></span><span></span><span></span></div>
-          <div class="hero-dash__url"><span class="mono">securitytrainingclasses.com · indexed · baltimore, md</span></div>
-          <div class="hero-dash__status">
-            <span class="hero-dash__status-dot" aria-hidden="true"></span>
-            <span class="mono">ranking</span>
-          </div>
-        </div>
-
-        <div class="hero-dash__split">
-          <!-- LEFT: full website preview -->
-          <div class="hero-dash__left">
-            <div class="hero-dash__leftlbl">
-              <span class="mono hd-bigtag">01 — Website design</span>
-              <span class="mono hd-bigmeta">foundation</span>
+        // Desktop results-page details per search (the browser beside the phone).
+        // Addresses and 555 phone numbers are fictional.
+        $serp = array(
+          array( 'cat' => 'Roofing contractor in Annapolis, MD', 'crumb' => 'yourbusiness.com › roofing-annapolis', 'title' => 'Roofing Contractor in Annapolis, MD | Your business',
+                 'desc' => 'Licensed, insured roofers serving Annapolis. Free inspections, storm repair and new roofs — on your roof within 24 hours.',
+                 'addr' => '120 Bay Ridge Ave, Annapolis, MD', 'hours' => 'Open · Closes 6 PM', 'tel' => '(410) 555‑0142', 'count' => '1,240,000', 'secs' => '0.41' ),
+          array( 'cat' => 'Dentist in Severna Park, MD', 'crumb' => 'yourbusiness.com › dentist-severna-park', 'title' => 'Family Dentist in Severna Park, MD | Your business',
+                 'desc' => 'Gentle family dentistry with evening and Saturday visits. New patients welcome — most PPO plans accepted.',
+                 'addr' => '540 Ritchie Hwy, Severna Park, MD', 'hours' => 'Open · Closes 7 PM', 'tel' => '(410) 555‑0187', 'count' => '862,000', 'secs' => '0.38' ),
+          array( 'cat' => 'DUI attorney in Ocean City, MD', 'crumb' => 'yourbusiness.com › dui-lawyer-ocean-city', 'title' => 'DUI Defense Lawyer in Ocean City, MD | Your business',
+                 'desc' => 'Charged with a DUI in Ocean City? Free, confidential consultation with an experienced defense attorney — day or night.',
+                 'addr' => '9 Philadelphia Ave, Ocean City, MD', 'hours' => 'Open 24 hours', 'tel' => '(410) 555‑0119', 'count' => '412,000', 'secs' => '0.44' ),
+          array( 'cat' => 'Auto glass shop in Baltimore, MD', 'crumb' => 'yourbusiness.com › auto-glass-baltimore', 'title' => 'Mobile Auto Glass Repair in Baltimore | Your business',
+                 'desc' => 'Same-day windshield repair and replacement. We come to your home or work anywhere in Baltimore.',
+                 'addr' => 'Mobile service · Baltimore, MD', 'hours' => 'Open · Closes 8 PM', 'tel' => '(410) 555‑0163', 'count' => '1,030,000', 'secs' => '0.39' ),
+        );
+        foreach ( $serp as $i => $d ) { $queries[ $i ]['site'] = $d; }
+        ?>
+        <div class="lvh-hero__visual" aria-hidden="true">
+          <?php
+          // Desktop search results that mirror the phone: same query, same
+          // ranking, "Your business" on top. home.js swaps the fields per search.
+          $s0  = $queries[0]['site'];
+          $r0  = $queries[0]['r'];
+          $tel_icon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>';
+          $glass = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>';
+          ?>
+          <figure class="lvh-site lvh-gs-win">
+            <div class="lvh-window__bar">
+              <span class="lvh-window__dots"><i></i><i></i><i></i></span>
+              <span class="lvh-window__url"><svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor"><path d="M5 7V5a3 3 0 0 1 6 0v2h.5A1.5 1.5 0 0 1 13 8.5v5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7H5zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2z"/></svg><span class="lvh-site__url">google.com/search</span></span>
+              <span class="lvh-site__load" aria-hidden="true"></span>
             </div>
-
-            <div class="sitefull">
-              <div class="sitefull__bar">
-                <span class="sitefull__bdot"></span>
-                <span class="sitefull__bdot"></span>
-                <span class="sitefull__bdot"></span>
-                <span class="sitefull__burl mono">securitytrainingclasses.com / baltimore</span>
+            <div class="lvh-site__page lvh-gs">
+              <div class="lvh-gs__head">
+                <svg class="lvh-gs__mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                <span class="lvh-gs__box"><?php echo $glass; ?><span class="lvh-gs__q"><?php echo esc_html( $queries[0]['q'] ); ?></span><span class="lvh-gs__caret"></span></span>
               </div>
+              <div class="lvh-gs__tabs"><i class="is-on">All</i><i>Maps</i><i>Images</i><i>Reviews</i><i>News</i></div>
 
-              <div class="sitefull__nav">
-                <div class="sitefull__brand">
-                  <span class="sitefull__logo" aria-hidden="true"></span>
-                  <span class="sitefull__brandname">Security Training Academy</span>
-                </div>
-                <div class="sitefull__links">
-                  <span>Services</span>
-                  <span>About</span>
-                  <span>Reviews</span>
-                  <span class="sitefull__phone mono">(443) 702-7891</span>
-                </div>
-              </div>
+              <div class="lvh-gs__body">
+                <div class="lvh-gs__main">
+                  <span class="lvh-gs__stats lvh-gs__in" style="--o:0">About <span data-s="count"><?php echo esc_html( $s0['count'] ); ?></span> results (<span data-s="secs"><?php echo esc_html( $s0['secs'] ); ?></span> seconds)</span>
 
-              <div class="sitefull__hero">
-                <span class="sitefull__pin sitefull__pin--02" aria-hidden="true">02</span>
-                <div class="sitefull__tag mono">★ 4.9 · serving Annapolis since 2008</div>
-                <h2 class="sitefull__h1">
-                  Security Training &amp; Certification
-                  <span class="sitefull__h1-mark"> in Baltimore, MD</span>
-                </h2>
-                <p class="sitefull__sub">Professional certification courses. Licensed instructors. Flexible scheduling for working professionals.</p>
-                <div class="sitefull__ctas">
-                  <span class="sitefull__cta sitefull__cta--primary">Get a free quote</span>
-                  <span class="sitefull__cta sitefull__cta--ghost">Call now <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg></span>
-                </div>
-              </div>
-
-              <div class="sitefull__svcs">
-                <?php
-                $sf_svcs = array(
-                  array( 'Security Guard Training', 'Weekend & evening classes' ),
-                  array( 'CPR Certification', 'American Heart Association certified' ),
-                  array( 'Firearms Training', 'MD State Police approved' ),
-                );
-                foreach ( $sf_svcs as $s ) : ?>
-                  <div class="sitefull__svc">
-                    <span class="sitefull__svc-ic" aria-hidden="true"></span>
-                    <div class="sitefull__svc-tx">
-                      <div class="sitefull__svc-name"><?php echo $s[0]; ?></div>
-                      <div class="sitefull__svc-desc"><?php echo $s[1]; ?></div>
+                  <div class="lvh-gs__pack lvh-gs__in" style="--o:1">
+                    <span class="lvh-gs__label">Places</span>
+                    <div class="lvh-gs__map">
+                      <span class="lvh-gs__pin" style="--x:22%;--y:34%"></span>
+                      <span class="lvh-gs__pin" style="--x:74%;--y:62%"></span>
+                      <span class="lvh-gs__pin lvh-gs__pin--you" style="--x:48%;--y:46%"><b>1</b></span>
                     </div>
+                    <?php foreach ( $r0 as $i => $r ) : ?>
+                      <div class="lvh-gs__place<?php echo 0 === $i ? ' is-you' : ''; ?>"<?php echo 0 === $i ? ' data-t="you"' : ''; ?>>
+                        <span class="lvh-gs__pos"><?php echo (int) $i + 1; ?></span>
+                        <span class="lvh-gs__pname"><b data-s="p<?php echo (int) $i; ?>"><?php echo esc_html( $r[0] ); ?></b><small><span class="lvh-gs__stars">★★★★★</span> <span data-s="p<?php echo (int) $i; ?>m">★ <?php echo esc_html( $r[1] ); ?> (<?php echo esc_html( $r[2] ); ?>) · <?php echo esc_html( $r[3] ); ?> mi</span></small></span>
+                        <?php if ( 0 === $i ) : ?><span class="lvh-gs__open">Open</span><?php endif; ?>
+                      </div>
+                    <?php endforeach; ?>
                   </div>
-                <?php endforeach; ?>
+
+                  <div class="lvh-gs__result lvh-gs__in" style="--o:2">
+                    <span class="lvh-gs__site"><i>Y</i><span>Your business<small data-s="crumb"><?php echo esc_html( $s0['crumb'] ); ?></small></span></span>
+                    <b class="lvh-gs__title" data-s="title"><?php echo esc_html( $s0['title'] ); ?></b>
+                    <p data-s="desc"><?php echo esc_html( $s0['desc'] ); ?></p>
+                    <span class="lvh-gs__links"><i>Services</i><i>Reviews</i><i>Free quote</i><i>Contact</i></span>
+                  </div>
+                </div>
+
+                <aside class="lvh-gs__panel lvh-gs__in" style="--o:1">
+                  <div class="lvh-gs__photo"><span><i>Y</i></span></div>
+                  <b class="lvh-gs__pn">Your business</b>
+                  <span class="lvh-gs__rate"><b data-s="rating"><?php echo esc_html( $r0[0][1] ); ?></b> <span class="lvh-gs__stars">★★★★★</span> <span data-s="reviews">(<?php echo esc_html( $r0[0][2] ); ?>)</span></span>
+                  <span class="lvh-gs__cat" data-s="cat"><?php echo esc_html( $s0['cat'] ); ?></span>
+                  <span class="lvh-gs__acts">
+                    <i data-t="web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>Website</i>
+                    <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2l9 9-9 9-9-9z"/><path d="M9 13v-2h5l-2-2m2 2l-2 2"/></svg>Directions</i>
+                    <i data-call><?php echo $tel_icon; ?>Call</i>
+                  </span>
+                  <span class="lvh-gs__info"><b>Address</b><span data-s="addr"><?php echo esc_html( $s0['addr'] ); ?></span></span>
+                  <span class="lvh-gs__info"><b>Hours</b><span data-s="hours" class="lvh-gs__hours"><?php echo esc_html( $s0['hours'] ); ?></span></span>
+                  <span class="lvh-gs__info"><b>Phone</b><span data-s="tel"><?php echo esc_html( $s0['tel'] ); ?></span></span>
+                </aside>
               </div>
 
-              <div class="sitefull__reviews">
-                <div class="sitefull__rev-head">
-                  <span class="sitefull__rev-stars">★★★★★</span>
-                  <span class="sitefull__rev-num"><b>4.9</b> · 184 Google reviews</span>
-                </div>
-                <div class="sitefull__rev-list">
-                  <span>"Great instructors - very thorough training." — Marcus R.</span>
-                  <span class="sitefull__rev-divider"></span>
-                  <span>"Flexible schedule worked perfectly." — Sarah T.</span>
-                </div>
-              </div>
+              <span class="lvh-cursor lvh-cursor--a" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2.5l15.5 8.3-6.6 1.9-3 6.3z"/></svg><b>Visitor</b></span>
+            </div>
+          </figure>
 
-              <div class="sitefull__blog">
-                <span class="sitefull__pin sitefull__pin--03" aria-hidden="true">03</span>
-                <div class="sitefull__blog-label mono">From the blog</div>
-                <div class="sitefull__blog-list">
-                  <span>How to Choose the Right Security Training Program →</span>
-                  <span>5 Benefits of Professional Security Certification →</span>
+          <div class="lvh-device" data-reveal>
+            <div class="lvh-tilt">
+            <div class="lvh-phone" data-queries="<?php echo esc_attr( wp_json_encode( $queries ) ); ?>">
+              <span class="lvh-phone__btn lvh-phone__btn--action"></span>
+              <span class="lvh-phone__btn lvh-phone__btn--volup"></span>
+              <span class="lvh-phone__btn lvh-phone__btn--voldown"></span>
+              <span class="lvh-phone__btn lvh-phone__btn--power"></span>
+              <span class="lvh-phone__btn lvh-phone__btn--camera"></span>
+              <div class="lvh-phone__bezel">
+                <div class="lvh-phone__screen">
+                  <div class="lvh-phone__status">
+                    <span>9:41</span>
+                    <span class="lvh-phone__icons">
+                      <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                      <svg viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.4c2.3 0 4.4.9 6 2.4l1.2-1.3A10.2 10.2 0 0 0 8 .6 10.2 10.2 0 0 0 .8 3.5L2 4.8a8.4 8.4 0 0 1 6-2.4zm0 3.5c1.3 0 2.5.5 3.5 1.3l1.2-1.3A6.9 6.9 0 0 0 8 4.1a6.9 6.9 0 0 0-4.7 1.8l1.2 1.3c1-.8 2.2-1.3 3.5-1.3zm0 3.4c-.5 0-1 .2-1.3.5L8 11.2l1.3-1.4A1.9 1.9 0 0 0 8 9.3z"/></svg>
+                      <span class="lvh-phone__battery"><i></i></span>
+                    </span>
+                  </div>
+
+                  <div class="lvh-island">
+                    <span class="lvh-island__avatar">Y</span>
+                    <span class="lvh-island__text"><small>Calling…</small>Your business</span>
+                    <span class="lvh-island__end">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.850-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.956.956 0 0 1 0-1.36C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.72c.18.18.29.44.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28a11.27 11.27 0 0 0-2.66-1.85.996.996 0 0 1-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/></svg>
+                    </span>
+                  </div>
+
+                  <div class="lvh-phone__search">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>
+                    <span class="lvh-phone__typed"><?php echo esc_html( $queries[0]['q'] ); ?></span><span class="lvh-phone__caret"></span>
+                  </div>
+                  <div class="lvh-phone__chips"><span class="is-on">Open now</span><span>Top rated</span><span>Nearby</span></div>
+
+                  <div class="lvh-phone__map">
+                    <span class="lvh-phone__pin" style="--x:20%;--y:28%;--i:0"></span>
+                    <span class="lvh-phone__pin" style="--x:76%;--y:64%;--i:1"></span>
+                    <span class="lvh-phone__pin" style="--x:64%;--y:22%;--i:2"></span>
+                    <span class="lvh-phone__pin lvh-phone__pin--you" style="--x:44%;--y:50%;--i:3"><b>1</b></span>
+                  </div>
+
+                  <ol class="lvh-phone__results">
+                    <?php foreach ( $queries[0]['r'] as $i => $r ) : ?>
+                      <li style="--i:<?php echo (int) $i; ?>"<?php echo 0 === $i ? ' class="is-you"' : ''; ?>>
+                        <span class="lvh-phone__pos"><?php echo (int) $i + 1; ?></span>
+                        <span class="lvh-phone__name"><?php echo esc_html( $r[0] ); ?><small>★ <?php echo esc_html( $r[1] ); ?> (<?php echo esc_html( $r[2] ); ?>) · <?php echo esc_html( $r[3] ); ?> mi · Open</small></span>
+                        <?php if ( 0 === $i ) : ?><span class="lvh-phone__call">Call</span><?php endif; ?>
+                      </li>
+                    <?php endforeach; ?>
+                  </ol>
+                  <div class="lvh-phone__tabs"><span class="is-on">Explore</span><span>Go</span><span>Saved</span><span>Updates</span></div>
+                  <span class="lvh-phone__home"></span>
                 </div>
               </div>
-
-              <div class="sitefull__foot">
-                <span class="sitefull__pin sitefull__pin--04" aria-hidden="true">04</span>
-                <span class="mono">Baltimore County · Baltimore · Glyndon</span>
-                <span class="sitefull__social mono">@securitytrainingmd</span>
-              </div>
+            </div>
             </div>
           </div>
 
-          <!-- RIGHT: channels column -->
-          <aside class="hero-dash__right">
-            <section class="ch">
-              <header class="ch__head">
-                <span class="ch__num mono">02</span>
-                <span class="ch__label">Local SEO</span>
-                <span class="ch__meta mono">visibility</span>
-              </header>
-              <div class="ch__kicker mono">"security training baltimore" · Baltimore MD</div>
-              <div class="ch__body">
-                <div class="mappack">
-                  <div class="mappack__row mappack__row--you">
-                    <span class="mappack__pin">A</span>
-                    <div>
-                      <div class="mappack__name">Security Training Academy</div>
-                      <div class="mappack__meta mono">★ 4.9 · 184 reviews</div>
-                    </div>
-                    <span class="mappack__pos mono">#1</span>
-                  </div>
-                  <div class="mappack__row">
-                    <span class="mappack__pin">B</span>
-                    <div>
-                      <div class="mappack__name">Baltimore Security Institute</div>
-                      <div class="mappack__meta mono">★ 4.6 · 92 reviews</div>
-                    </div>
-                    <span class="mappack__pos mono">#2</span>
-                  </div>
-                  <div class="mappack__row">
-                    <span class="mappack__pin">C</span>
-                    <div>
-                      <div class="mappack__name">Bay Mechanical</div>
-                      <div class="mappack__meta mono">★ 4.4 · 51 reviews</div>
-                    </div>
-                    <span class="mappack__pos mono">#3</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="ch">
-              <header class="ch__head">
-                <span class="ch__num mono">03</span>
-                <span class="ch__label">Blog content</span>
-                <span class="ch__meta mono">traffic</span>
-              </header>
-              <div class="ch__kicker mono">Service guide · Maryland</div>
-              <div class="ch__body">
-                <div class="ch-blog">
-                  <div class="ch-blog__title">How to Choose the Right Security Training Program</div>
-                  <div class="ch-blog__meta mono">8 min · ranks #2 for "security training baltimore"</div>
-                </div>
-              </div>
-            </section>
-
-            <section class="ch">
-              <header class="ch__head">
-                <span class="ch__num mono">04</span>
-                <span class="ch__label">Social</span>
-                <span class="ch__meta mono">trust</span>
-              </header>
-              <div class="ch__kicker mono">Posted today · 9:14a</div>
-              <div class="ch__body">
-                <div class="ch-social">
-                  <div class="ch-social__avatar" aria-hidden="true">TH</div>
-                  <div class="ch-social__body">
-                    <div class="ch-social__name">Security Training Academy <span class="ch-social__dot"></span></div>
-                    <p class="ch-social__text">Spring tune‑ups 20% off. Same‑day in Annapolis.</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </aside>
+          <div class="lvh-toast">
+            <span class="lvh-toast__icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+            </span>
+            <span><small>Your business line · now</small><strong>New customer calling</strong><small>Found you on Google Maps</small></span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Client roster -->
-    <div class="lvm-container hm-hero__roster">
-      <header class="hm-hero__roster-head mono">
-        <span><strong>CLIENT ROSTER · LIVE</strong></span>
-        <span class="hm-hero__roster-rule"></span>
-        <span>Trusted by local operators across Maryland</span>
-      </header>
-      <ul class="hm-hero__roster-list">
+    <div class="lvh-wrap lvh-roster" data-reveal>
+      <span class="lvh-roster__lbl">Trusted by businesses like</span>
+      <ul>
         <?php
         $logos = array(
-          array( 'Security Training Academy',        'Pasadena',      'https://www.securitytrainingclasses.com/' ),
-          array( 'Care Giving Angels of Maryland',  'Annapolis',     'https://caregivingangelsofmd.com/' ),
-          array( 'Cullen M Burke Law Office',      'Ocean City',    'https://www.cullenburke.com/' ),
-          array( 'Extreme Vivid Auto Glass',           'Reisterstown',  'https://ev-autoglass.com/' ),
+          array( 'Hug in the Mail',                'https://huginthemail.com/' ),
+          array( 'Success Circles',                'https://www.successcircles.com/' ),
+          array( 'Caregiving Angels of Maryland',  'https://caregivingangelsofmd.com/' ),
+          array( 'Security Training Academy',      'https://www.securitytrainingclasses.com/' ),
+          array( 'Cullen M Burke Law Office',      'https://www.cullenburke.com/' ),
+          array( 'Extreme Vivid Auto Glass',       'https://ev-autoglass.com/' ),
         );
-        foreach ( $logos as $i => $l ) : ?>
-          <li class="hm-hero__roster-item">
-            <span class="hm-hero__roster-id mono">№ <?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
-            <a href="<?php echo esc_url( $l[2] ); ?>" target="_blank" rel="noopener noreferrer" class="hm-hero__roster-name"><?php echo esc_html( $l[0] ); ?></a>
-            <span class="hm-hero__roster-loc mono">· <?php echo esc_html( $l[1] ); ?></span>
-          </li>
+        foreach ( $logos as $l ) : ?>
+          <li><a href="<?php echo esc_url( $l[1] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $l[0] ); ?></a></li>
         <?php endforeach; ?>
       </ul>
     </div>
   </section>
 
   <!-- ============================================================
-       PROBLEM — DIAGNOSTIC CHART
-       Visual language: a clinical / audit chart with symptoms,
-       severity ratings, and "vitals" readings.
+       RECENT WORK — pinned reel (scroll drives the track sideways)
        ============================================================ -->
-  <section class="hm-diag" id="problem">
-    <div class="lvm-container">
-
-      <div class="hm-diag__topline mono">
-        <span><strong>SITE DIAGNOSTIC</strong></span>
-        <span class="hm-diag__topline-rule"></span>
-        <span>Chart · LV-CHK-01</span>
-        <span class="hm-diag__topline-rule"></span>
-        <span>Intake · symptoms reported</span>
-      </div>
-
-      <div class="hm-diag__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">01</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">The problem</span></div>
-        <h2 class="section-h">Your customers are searching.<br><em class="serif">Can they find you?</em></h2>
-        <p class="section-lead">
-          Most local businesses have a website. Fewer have one that ranks, loads fast,
-          reads well on mobile, and brings in calls. Here's the symptom chart we see most often.
-        </p>
-      </div>
-
-      <div class="hm-diag__board">
-        <header class="hm-diag__board-head mono">
-          <span class="hm-diag__col-id">CODE</span>
-          <span class="hm-diag__col-sym">SYMPTOM</span>
-          <span class="hm-diag__col-note">CLINICAL NOTE</span>
-          <span class="hm-diag__col-sev">SEVERITY</span>
-        </header>
-
-        <?php
-        $problems = array(
-          array( "You don't show up for local searches",       'Customers Google your service in your city — and find someone else first.',          'critical', 'CRIT' ),
-          array( 'Competitors outrank you on Google',           'A few SEO basics decide who appears in the map pack and who scrolls by.',           'critical', 'CRIT' ),
-          array( 'Your site looks outdated on mobile',          'Most local searches happen on a phone. Slow, cramped sites lose the click.',       'high',     'HIGH' ),
-          array( 'Service pages feel thin',                     "Generic copy doesn't tell Google — or customers — what you actually do.",          'high',     'HIGH' ),
-          array( "Your blog isn't targeting real searches",     "Without intent‑driven topics, content sits unread and unranked.",                   'med',      'MED'  ),
-          array( 'Updates take weeks, not hours',               "New service? Seasonal promo? You shouldn't have to wait on a freelancer.",          'med',      'MED'  ),
-        );
-        foreach ( $problems as $i => $p ) :
-          $code = 'SX-' . str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
-          ?>
-          <article class="hm-diag__row hm-diag__row--<?php echo esc_attr( $p[2] ); ?>">
-            <span class="hm-diag__row-id mono"><?php echo esc_html( $code ); ?></span>
-            <h3 class="hm-diag__row-sym"><?php echo esc_html( $p[0] ); ?></h3>
-            <p class="hm-diag__row-note"><?php echo esc_html( $p[1] ); ?></p>
-            <span class="hm-diag__row-sev mono" aria-label="Severity <?php echo esc_attr( $p[3] ); ?>">
-              <span class="hm-diag__sev-dot" aria-hidden="true"></span>
-              <span><?php echo esc_html( $p[3] ); ?></span>
-            </span>
-          </article>
-        <?php endforeach; ?>
-      </div>
-
-      <footer class="hm-diag__vitals mono">
-        <div class="hm-diag__vital">
-          <span class="hm-diag__vital-lbl">Visibility</span>
-          <span class="hm-diag__vital-val hm-diag__vital-val--low">low</span>
+  <?php
+  // [client, tag, scope, screenshot, url, one-liner, new?, alt]
+  $work = array(
+    array( 'Hug in the Mail',               'Subscription',  'Web design',      'huginthemail.jpg',   'huginthemail.com',          'A warm, tactile brand for a monthly mail subscription.',          true,  'Hug in the Mail website — a monthly envelope of warmth' ),
+    array( 'Success Circles',               'Coaching',      'Web design',      'successcircles.jpg', 'successcircles.com',        'A confident, video‑led home for an entrepreneur community.',     true,  'Success Circles website — advisory community for established entrepreneurs' ),
+    array( 'Caregiving Angels of Maryland', 'Home Care',     'Web + Local SEO', 'caregiving.jpg',     'caregivingangelsofmd.com',  'Trust‑led design that ranks across 40+ home‑care searches.',      true,  'Caregiving Angels of Maryland website — licensed in-home care' ),
+    array( 'Extreme Vivid Auto Glass',      'Auto Glass',    'Web + SEO',       'ev-autoglass.jpg',   'ev-autoglass.com',          'Mobile windshield service built for urgent local search.',       false, 'Extreme Vivid Auto Glass website — mobile autoglass service in Baltimore County' ),
+    array( 'Cullen Burke, Attorney at Law', 'Legal',         'Web + Content',   'cullen.jpg',         'cullenburke.com',           'An authority‑first identity for a three‑decade defender.',       false, 'Cullen Burke Attorney at Law website — criminal defense Maryland' ),
+    array( 'Reflect Neuropsychology',       'Healthcare',    'Web + SEO',       'reflect.jpg',        'reflectneuropsych.com',     'A calm, clinical site that books the next step in two clicks.',  false, 'Reflect Neuropsychology website — assessment through the lifespan' ),
+    array( 'Precision Aesthetics',          'Aesthetics',    'Web + Content',   'pa.jpg',             'precisionaesthetics.com',   'Editorial‑grade aesthetics, as seen in Vogue and Elle.',         false, 'Precision Aesthetics website — non-invasive aesthetic treatments NYC' ),
+    array( 'Kidzz Kreations',               'Entertainment', 'Web + Local SEO', 'kids.jpg',           'kidzzkreations.com',        'A playful, booking‑first kids entertainment brand.',             false, 'Kidzz Kreations website — kids entertainment agency' ),
+  );
+  ?>
+  <section class="lvh-sec lvh-reel" id="work">
+    <div class="lvh-reel__pin">
+      <header class="lvh-wrap lvh-head lvh-head--row lvh-reel__head">
+        <div>
+          <?php echo $eyebrow( 'New builds every month' ); ?>
+          <?php echo $title( 'Websites', 'we\'ve shipped.' ); ?>
         </div>
-        <div class="hm-diag__vital">
-          <span class="hm-diag__vital-lbl">Mobile UX</span>
-          <span class="hm-diag__vital-val hm-diag__vital-val--low">strained</span>
+        <div class="lvh-reel__meta" data-reveal>
+          <span class="lvh-reel__count" aria-hidden="true"><b class="lvh-reel__n">01</b><span>/ <?php echo str_pad( count( $work ), 2, '0', STR_PAD_LEFT ); ?></span></span>
+          <a class="lvh-textlink" href="<?php echo $contact; ?>">Start your project <?php echo $arrow; ?></a>
         </div>
-        <div class="hm-diag__vital">
-          <span class="hm-diag__vital-lbl">Content health</span>
-          <span class="hm-diag__vital-val hm-diag__vital-val--mid">thin</span>
-        </div>
-        <div class="hm-diag__vital">
-          <span class="hm-diag__vital-lbl">Recommended</span>
-          <span class="hm-diag__vital-val hm-diag__vital-val--rx">audit + plan</span>
-        </div>
-        <div class="hm-diag__stamp">
-          <span>Awaiting Rx</span>
-        </div>
-      </footer>
+      </header>
 
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SERVICES — SHOP MENU
-       Visual language: a printed shop menu / price card.
-       Services as line items with leader dots and tagged results.
-       ============================================================ -->
-  <section class="hm-menu" id="services">
-    <div class="lvm-container">
-
-      <div class="hm-menu__head">
-        <div class="hm-menu__head-l">
-          <div class="eyebrow"><span class="eyebrow__num mono">02</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Services</span></div>
-          <h2 class="section-h">Web design, SEO, content, and support<br><em class="serif">built for local growth.</em></h2>
-          <p class="section-lead">
-            Five focused services. Buy one, the rest get sharper. Combine them and you
-            stop competing for attention and start competing for the click.
-          </p>
-        </div>
-        <aside class="hm-menu__card mono" aria-label="Menu key">
-          <div class="hm-menu__card-row"><span>Establishment</span><span>Local Vocal · MD</span></div>
-          <div class="hm-menu__card-row"><span>Doc</span><span>SVC-MENU-26</span></div>
-          <div class="hm-menu__card-row"><span>Currency</span><span>Local visibility</span></div>
-          <div class="hm-menu__card-row hm-menu__card-row--last"><span>Service</span><span>By appointment</span></div>
-          <div class="hm-menu__card-stamp">Today's specials ★</div>
-        </aside>
-      </div>
-
-      <div class="hm-menu__sheet">
-
-        <header class="hm-menu__sheet-head">
-          <span class="hm-menu__sheet-title">— The Services Menu —</span>
-          <span class="hm-menu__sheet-sub mono">five line items · order any one, combine any two</span>
-        </header>
-
-        <ol class="hm-menu__list">
-          <?php
-          $services = array(
-            array(
-              't' => 'Website Design',
-              'd' => 'Modern, mobile‑friendly websites that build trust, explain your services clearly, and help visitors take action.',
-              'best' => 'Service businesses on outdated or template sites',
-              'res' => 'Cleaner design, faster pages, more phone clicks',
-              'link' => '/development',
-              'tag' => 'foundation',
-            ),
-            array(
-              't' => 'Local SEO',
-              'd' => 'On‑page SEO, keyword strategy, metadata, internal linking, and Google Business Profile support — built around your service area.',
-              'best' => 'Maryland businesses that want to show up locally',
-              'res' => 'Higher map‑pack visibility and qualified search traffic',
-              'link' => '/seo-optimization',
-              'tag' => 'visibility',
-            ),
-            array(
-              't' => 'SEO Blog Articles',
-              'd' => 'Ongoing blog content written around real customer questions, service keywords, and local search intent — not filler.',
-              'best' => 'Businesses building topical authority over time',
-              'res' => 'Long‑term organic traffic and supported service pages',
-              'link' => '/content-creation',
-              'tag' => 'authority',
-            ),
-            array(
-              't' => 'Social Media Management',
-              'd' => 'Consistent posting that keeps your business visible — service updates, blog promotion, seasonal content, and customer education.',
-              'best' => 'Local brands that need to stay active, not viral',
-              'res' => 'Steady online presence and a trust signal for searchers',
-              'link' => '/social-media-management',
-              'tag' => 'presence',
-            ),
-            array(
-              't' => 'Ongoing Website Support',
-              'd' => 'Updates, fixes, new pages, security patches, content changes, and performance tuning — handled without the headache.',
-              'best' => 'Owners who want a long‑term partner, not a one‑off',
-              'res' => 'A healthy website that stays current and search‑friendly',
-              'link' => '/analytics-reporting',
-              'tag' => 'upkeep',
-            ),
-          );
-          foreach ( $services as $i => $s ) :
-            $code = 'S/' . str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
-            ?>
-            <li class="hm-menu__item">
-              <div class="hm-menu__item-line">
-                <span class="hm-menu__item-num mono"><?php echo esc_html( $code ); ?></span>
-                <h3 class="hm-menu__item-name"><?php echo esc_html( $s['t'] ); ?></h3>
-                <span class="hm-menu__item-leader" aria-hidden="true"></span>
-                <span class="hm-menu__item-tag mono"><?php echo esc_html( $s['tag'] ); ?></span>
+      <div class="lvh-reel__view">
+        <ol class="lvh-reel__track">
+          <?php foreach ( $work as $i => $c ) : ?>
+            <li class="lvh-shot" data-reveal>
+              <figure class="lvh-shot__win">
+                <div class="lvh-window__bar"><span class="lvh-window__dots"><i></i><i></i><i></i></span><span class="lvh-window__url"><?php echo esc_html( $c[4] ); ?></span><span></span></div>
+                <div class="lvh-shot__img"><img src="<?php echo esc_url( $assets . 'screens/' . $c[3] ); ?>" alt="<?php echo esc_attr( $c[7] ); ?>" loading="lazy" draggable="false"></div>
+                <?php if ( $c[6] ) : ?><span class="lvh-badge">New</span><?php endif; ?>
+              </figure>
+              <div class="lvh-shot__meta">
+                <span class="lvh-shot__num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
+                <div>
+                  <h3><?php echo esc_html( $c[0] ); ?></h3>
+                  <span><?php echo esc_html( $c[1] ); ?> · <?php echo esc_html( $c[2] ); ?></span>
+                </div>
+                <p><?php echo esc_html( $c[5] ); ?></p>
               </div>
-              <p class="hm-menu__item-desc"><?php echo esc_html( $s['d'] ); ?></p>
-              <dl class="hm-menu__item-meta mono">
-                <div><dt>Best for</dt><dd><?php echo esc_html( $s['best'] ); ?></dd></div>
-                <div><dt>You get</dt><dd><?php echo esc_html( $s['res'] ); ?></dd></div>
-              </dl>
-              <a class="hm-menu__item-link" href="<?php echo esc_url( home_url( $s['link'] ) ); ?>">
-                <span>See full menu page</span>
-                <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg>
-              </a>
             </li>
           <?php endforeach; ?>
         </ol>
-
-        <footer class="hm-menu__sheet-foot mono">
-          <span>↳ All services served fresh by the same three people.</span>
-          <span class="hm-menu__sheet-foot-sig">Chef · LVM</span>
-        </footer>
       </div>
-
+      <div class="lvh-wrap lvh-reel__foot" aria-hidden="true"><span class="lvh-reel__bar"><i></i></span><span class="lvh-reel__hint">Scroll</span></div>
     </div>
   </section>
 
   <!-- ============================================================
-       WEBSITES THAT RANK
+       PROBLEM — each issue drops you down the results
        ============================================================ -->
-  <section class="webrank" id="web-design">
-    <div class="lvm-container">
-      <div class="webrank__layout">
-        <div class="webrank__left">
-          <div class="eyebrow"><span class="eyebrow__num mono">03</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Website design</span></div>
-          <h2 class="section-h">Websites designed to look good<br><em class="serif">and rank better.</em></h2>
-          <p class="section-lead">
-            A good website should do more than look professional. It should be
-            structured so Google can understand your services, your locations,
-            and your expertise — and so a homeowner on a phone can call you in
-            under ten seconds.
-          </p>
-          <div class="webrank__meta">
-            <span class="webrank__meta-num mono">5 / 5</span>
-            <span class="webrank__meta-lbl mono">SEO fundamentals built into every page</span>
-          </div>
+  <section class="lvh-sec lvh-sec--bay" id="problem">
+    <div class="lvh-bay">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'The problem' ); ?>
+          <?php echo $title( 'Your customers are searching.', 'Can they find you?' ); ?>
         </div>
+        <p class="lvh-deck" data-reveal>
+          Most local businesses have a website. Fewer have one that ranks, loads fast,
+          reads well on mobile, and brings in calls. Every gap below costs you a place.
+        </p>
+      </header>
 
-        <div class="webrank__right">
-          <div class="anno">
-            <div class="anno__rail" aria-hidden="true">
-              <span class="anno__pin anno__pin--01" data-target=".anno__h1" style="opacity:0">
-                <span class="mono">01</span><span class="anno__tick"></span>
-              </span>
-              <span class="anno__pin anno__pin--02" data-target=".anno__ctas" style="opacity:0">
-                <span class="mono">02</span><span class="anno__tick"></span>
-              </span>
-              <span class="anno__pin anno__pin--03" data-target=".anno__svcs" style="opacity:0">
-                <span class="mono">03</span><span class="anno__tick"></span>
-              </span>
-              <span class="anno__pin anno__pin--04" data-target=".anno__blog" style="opacity:0">
-                <span class="mono">04</span><span class="anno__tick"></span>
-              </span>
-              <span class="anno__pin anno__pin--05" data-target=".anno__foot" style="opacity:0">
-                <span class="mono">05</span><span class="anno__tick"></span>
-              </span>
+      <div class="lvh-fall">
+        <div class="lvh-fall__aside">
+          <div class="lvh-board" data-reveal aria-hidden="true">
+            <div class="lvh-board__q">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>
+              <span>plumber near me</span><small>Annapolis, MD</small>
             </div>
-
-            <div class="anno__site">
-              <div class="anno__chrome">
-                <div class="anno__dots"><span></span><span></span><span></span></div>
-                <div class="anno__url mono">marylandcontractor.com / services / roofing‑annapolis</div>
-              </div>
-
-              <div class="anno__hero">
-                <div class="anno__tag mono">★ 4.9 · 87 Google reviews · Licensed in MD</div>
-                <div class="anno__h1">
-                  Roofing Services
-                  <span class="anno__hl"> in Baltimore, MD</span>
-                </div>
-                <div class="anno__sub">
-                  Professional security training and certification. Free course catalog this week
-                  across Baltimore County.
-                </div>
-                <div class="anno__ctas">
-                  <span class="anno__cta anno__cta--primary">Get a free inspection</span>
-                  <span class="anno__cta anno__cta--ghost">Call (410) 555‑7732</span>
-                </div>
-              </div>
-
-              <div class="anno__svcs">
-                <?php
-                $anno_svcs = array(
-                  array( 'Guard Training', 'Weekend classes available' ),
-                  array( 'CPR Certification', 'AHA certified instructors' ),
-                  array( 'Firearms Training', 'State approved curriculum' ),
-                  array( 'Group Classes', 'Corporate discounts available' ),
-                );
-                foreach ( $anno_svcs as $s ) : ?>
-                  <div class="anno__svc">
-                    <div class="anno__svc-name"><?php echo $s[0]; ?></div>
-                    <div class="anno__svc-desc"><?php echo $s[1]; ?></div>
-                  </div>
-                <?php endforeach; ?>
-              </div>
-
-              <div class="anno__blog">
-                <div class="anno__blog-title mono">From the blog</div>
-                <div class="anno__blog-list">
-                  <span>How to choose the right security training program in Maryland →</span>
-                  <span>What security certification costs in Baltimore County →</span>
-                </div>
-              </div>
-
-              <div class="anno__foot">
-                <span class="mono">Serving Annapolis · Severna Park · Davidsonville</span>
-                <span class="anno__foot-tag mono">schema · localBusiness</span>
-              </div>
-            </div>
-
-            <ol class="anno__legend">
+            <ol class="lvh-board__list">
               <?php
-              $legend = array(
-                array( '01', 'Keyword‑rich H1 with location modifier' ),
-                array( '02', 'Conversion CTAs above the fold' ),
-                array( '03', 'Service &amp; location pages — not one thin page' ),
-                array( '04', 'Internal links from blog to services' ),
-                array( '05', 'Service‑area schema + metadata' ),
+              $rivals = array(
+                array( 'Chesapeake Plumbing Co.', '4.9' ), array( 'Annapolis Drain Pros', '4.8' ), array( 'Bay Ridge Plumbing', '4.8' ),
+                array( 'Severn Valley Plumbing', '4.7' ), array( 'Capital City Rooter', '4.7' ), array( 'Arundel Pipe &amp; Drain', '4.6' ),
+                array( 'Harbor Plumbing Services', '4.6' ), array( 'Eastport Plumbing', '4.5' ), array( 'Crofton Rooter', '4.4' ), array( 'Broadneck Plumbing', '4.3' ),
               );
-              foreach ( $legend as $l ) : ?>
-                <li>
-                  <span class="anno__legendnum mono"><?php echo $l[0]; ?></span>
-                  <span><?php echo $l[1]; ?></span>
-                </li>
+              foreach ( $rivals as $i => $r ) : ?>
+                <li class="lvh-board__row" style="transform:translateY(<?php echo ( $i < 1 ? $i : $i + 1 ) * 100; ?>%)"><span class="lvh-board__pos"><?php echo $i < 1 ? $i + 1 : $i + 2; ?></span><span class="lvh-board__name"><?php echo $r[0]; ?></span><small>★ <?php echo $r[1]; ?></small></li>
               <?php endforeach; ?>
+              <li class="lvh-board__row is-you" style="transform:translateY(100%)"><span class="lvh-board__pos">2</span><span class="lvh-board__name">Your business</span><small class="lvh-board__where">Page 1</small></li>
             </ol>
+            <div class="lvh-board__fold"><span>Below the fold</span></div>
+            <div class="lvh-board__foot">
+              <span>Your visibility</span>
+              <b class="lvh-board__pct">74%</b>
+              <span class="lvh-board__meter"><i style="transform:scaleX(.74)"></i></span>
+            </div>
           </div>
+        </div>
+
+        <ol class="lvh-fall__steps">
+          <?php
+          // [title, line, severity, icon, rank after this issue, visibility %]
+          $problems = array(
+            array( "You don't show up for local searches",   'Customers Google your service in your city — and find someone else first.', 'Critical', '<path d="M12 21s-6-5.3-6-10a6 6 0 0 1 10.4-4.1"/><path d="M17.7 9.3c.2.5.3 1.1.3 1.7 0 4.7-6 10-6 10"/><path d="M3 3l18 18"/>', 4, 52 ),
+            array( 'Competitors outrank you on Google',       'A few SEO basics decide who appears in the map pack and who scrolls by.',  'Critical', '<path d="M3 7l6 6 4-4 8 8"/><path d="M15 17h6v-6"/>', 6, 33 ),
+            array( 'Your site looks outdated on mobile',      'Most local searches happen on a phone. Slow, cramped sites lose the click.','High',     '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>', 8, 19 ),
+            array( 'Service pages feel thin',                 "Generic copy doesn't tell Google — or customers — what you actually do.",  'High',     '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>', 11, 8 ),
+            array( "Your blog isn't targeting real searches", 'Without intent‑driven topics, content sits unread and unranked.',           'Medium',   '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/>', 17, 3 ),
+            array( 'Updates take weeks, not hours',           "New service? Seasonal promo? You shouldn't have to wait on a freelancer.",  'Medium',   '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>', 26, 1 ),
+          );
+          foreach ( $problems as $i => $p ) : ?>
+            <li class="lvh-fall__step" data-rank="<?php echo (int) $p[4]; ?>" data-pct="<?php echo (int) $p[5]; ?>">
+              <div class="lvh-fall__top">
+                <span class="lvh-fall__num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
+                <span class="lvh-tile-ico lvh-tile-ico--sm"><?php echo $icon( $p[3] ); ?></span>
+                <span class="lvh-chip lvh-chip--<?php echo esc_attr( strtolower( $p[2] ) ); ?>"><?php echo esc_html( $p[2] ); ?></span>
+              </div>
+              <h3><?php echo esc_html( $p[0] ); ?></h3>
+              <p><?php echo esc_html( $p[1] ); ?></p>
+            </li>
+          <?php endforeach; ?>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES — typographic index + cursor preview
+       ============================================================ -->
+  <section class="lvh-sec" id="services">
+    <div class="lvh-wrap">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Services' ); ?>
+          <?php echo $title( 'Five services.', 'One team, built for local growth.' ); ?>
+        </div>
+        <p class="lvh-deck" data-reveal>
+          Buy one, the rest get sharper. Combine them and you stop competing for
+          attention and start competing for the click.
+        </p>
+      </header>
+
+      <?php
+      $services = array(
+        array( 'Website Design',          'Modern, mobile‑friendly websites that build trust, explain your services clearly, and help visitors take action.',                     'Service businesses on outdated or template sites',   'Cleaner design, faster pages, more phone clicks',            '/development' ),
+        array( 'Local SEO',               'On‑page SEO, keyword strategy, metadata, internal linking, and Google Business Profile support — built around your service area.',   'Maryland businesses that want to show up locally',   'Higher map‑pack visibility and qualified search traffic',     '/seo-optimization' ),
+        array( 'SEO Blog Articles',       'Ongoing blog content written around real customer questions, service keywords, and local search intent — not filler.',              'Businesses building topical authority over time',    'Long‑term organic traffic and supported service pages',       '/content-creation' ),
+        array( 'Social Media Management', 'Consistent posting that keeps your business visible — service updates, blog promotion, seasonal content, and customer education.', 'Local brands that need to stay active, not viral',   'Steady online presence and a trust signal for searchers',     '/social-media-management' ),
+        array( 'Ongoing Website Support', 'Updates, fixes, new pages, security patches, content changes, and performance tuning — handled without the headache.',              'Owners who want a long‑term partner, not a one‑off', 'A healthy website that stays current and search‑friendly',   '/analytics-reporting' ),
+      );
+      ?>
+      <ol class="lvh-index">
+        <?php foreach ( $services as $i => $s ) : ?>
+          <li data-reveal>
+            <a class="lvh-index__row" href="<?php echo esc_url( home_url( $s[4] ) ); ?>" data-peek="<?php echo (int) $i; ?>">
+              <span class="lvh-index__num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
+              <span class="lvh-index__title"><?php echo esc_html( $s[0] ); ?></span>
+              <span class="lvh-index__text">
+                <span><?php echo esc_html( $s[1] ); ?></span>
+                <span class="lvh-index__dl"><span><small>Best for</small><?php echo esc_html( $s[2] ); ?></span><span><small>You get</small><?php echo esc_html( $s[3] ); ?></span></span>
+              </span>
+              <span class="lvh-index__go"><?php echo $arrow; ?></span>
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ol>
+    </div>
+
+    <div class="lvh-peek" aria-hidden="true">
+      <div class="lvh-peek__card">
+        <div class="lvh-peek__pane is-on"><?php echo $window( 'successcircles.jpg', 'successcircles.com', '' ); ?></div>
+        <div class="lvh-peek__pane">
+          <div class="lvh-rank">
+            <div class="lvh-rank__top"><span>security training baltimore</span></div>
+            <?php
+            $feed_rows = array(
+              array( 1, 'Your business',                '★ 4.9 · 184 reviews', '+6' ),
+              array( 2, 'Baltimore Security Institute', '★ 4.6 · 92 reviews',  '−1' ),
+              array( 3, 'Maryland Protection Services', '★ 4.4 · 51 reviews',  '—'  ),
+            );
+            foreach ( $feed_rows as $r ) : ?>
+              <div class="lvh-rank__row<?php echo 1 === $r[0] ? ' is-you' : ''; ?>">
+                <span class="lvh-rank__pos"><?php echo (int) $r[0]; ?></span>
+                <span class="lvh-rank__name"><?php echo esc_html( $r[1] ); ?><small><?php echo esc_html( $r[2] ); ?></small></span>
+                <span class="lvh-rank__delta"><?php echo esc_html( $r[3] ); ?></span>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="lvh-peek__pane">
+          <div class="lvh-doc">
+            <span class="lvh-doc__tag">Guide · Maryland</span>
+            <strong>How to Choose the Right Security Training Program in Maryland</strong>
+            <i></i><i></i><i></i><i style="width:64%"></i>
+            <span class="lvh-doc__rank">Ranks #3 · 9 min read</span>
+          </div>
+        </div>
+        <div class="lvh-peek__pane"><div class="lvh-apps"><?php foreach ( array( 'facebook', 'instagram', 'google', 'youtube', 'linkedin', 'tiktok' ) as $k ) { echo $app( $k ); } ?></div></div>
+        <div class="lvh-peek__pane">
+          <ul class="lvh-status">
+            <li>Plugins &amp; theme updated</li>
+            <li>Backups verified</li>
+            <li>Security scan clean</li>
+            <li>Page speed checked</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       LOCAL SEO — MAP PACK RADAR
-       Visual language: a radar / coordinate console. Live local
-       monitor with pinned competitors and a ranking feed.
+       LOCAL SEO — full-bleed 3D map stage
        ============================================================ -->
-  <section class="hm-radar" id="seo">
-    <div class="lvm-container">
-
-      <div class="hm-radar__topline mono">
-        <span><strong>LOCAL RADAR</strong></span>
-        <span class="hm-radar__topline-rule"></span>
-        <span>Console · LV-RDR-26</span>
-        <span class="hm-radar__topline-rule"></span>
-        <span>38.978° N · 76.492° W</span>
-        <span class="hm-radar__topline-rule"></span>
-        <span class="hm-radar__live"><span class="hm-radar__live-dot" aria-hidden="true"></span>LIVE · pinging</span>
-      </div>
-
-      <div class="hm-radar__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">04</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Local SEO</span></div>
-        <h2 class="section-h">Local SEO that helps Maryland businesses<br><em class="serif">get found.</em></h2>
-        <p class="section-lead">
+  <section class="lvh-sec lvh-sec--bay" id="seo">
+    <div class="lvh-bay lvh-mapbay">
+      <div class="lvh-mapbay__copy">
+        <?php echo $eyebrow( 'Local SEO' ); ?>
+        <?php echo $title( 'Local SEO that helps Maryland businesses', 'get found.' ); ?>
+        <p class="lvh-deck" data-reveal>
           Local customers search with intent. They want a business nearby, with real
           reviews, that answers the phone. We make sure that's you — at the top of the map pack.
         </p>
-      </div>
-
-      <div class="hm-radar__grid">
-
-        <!-- LEFT: Radar console -->
-        <div class="hm-radar__console">
-          <header class="hm-radar__console-head mono">
-            <span class="hm-radar__query">› "security training baltimore"</span>
-            <span class="hm-radar__loc">Baltimore, MD</span>
-          </header>
-
-          <div class="hm-radar__scope" aria-hidden="true">
-            <div class="hm-radar__rings">
-              <span class="hm-radar__ring hm-radar__ring--1"></span>
-              <span class="hm-radar__ring hm-radar__ring--2"></span>
-              <span class="hm-radar__ring hm-radar__ring--3"></span>
-              <span class="hm-radar__cross hm-radar__cross--h"></span>
-              <span class="hm-radar__cross hm-radar__cross--v"></span>
-              <span class="hm-radar__sweep"></span>
-            </div>
-
-            <span class="hm-radar__pin hm-radar__pin--you" style="top: 48%; left: 50%;">
-              <span class="hm-radar__pin-mark">A</span>
-              <span class="hm-radar__pin-tag mono">You · #1</span>
-            </span>
-            <span class="hm-radar__pin" style="top: 32%; left: 68%;">
-              <span class="hm-radar__pin-mark">B</span>
-              <span class="hm-radar__pin-tag mono">B · #2</span>
-            </span>
-            <span class="hm-radar__pin" style="top: 64%; left: 30%;">
-              <span class="hm-radar__pin-mark">C</span>
-              <span class="hm-radar__pin-tag mono">C · #3</span>
-            </span>
-            <span class="hm-radar__pin" style="top: 76%; left: 64%;">
-              <span class="hm-radar__pin-mark">D</span>
-              <span class="hm-radar__pin-tag mono">D · #4</span>
-            </span>
-
-            <span class="hm-radar__coord hm-radar__coord--tl mono">38.99 N</span>
-            <span class="hm-radar__coord hm-radar__coord--tr mono">76.48 W</span>
-            <span class="hm-radar__coord hm-radar__coord--bl mono">38.96 N</span>
-            <span class="hm-radar__coord hm-radar__coord--br mono">76.50 W</span>
-          </div>
-
-          <div class="hm-radar__feed">
-            <header class="hm-radar__feed-head mono">
-              <span>POS</span>
-              <span>BUSINESS</span>
-              <span>SIGNAL</span>
-              <span>Δ</span>
-            </header>
-            <?php
-            $feed_rows = array(
-              array( 1, 'Your business',         '★ 4.9 · 184',  '+6',  'you'  ),
-              array( 2, 'Baltimore Security Institute', '★ 4.6 · 92',   '−1',  'down' ),
-              array( 3, 'Maryland Protection Services',  '★ 4.4 · 51',   '—',   'flat' ),
-              array( 4, 'Security Training Academy', '★ 4.2 · 38',   '−2',  'down' ),
-            );
-            foreach ( $feed_rows as $r ) : ?>
-              <div class="hm-radar__feed-row<?php echo $r[4] === 'you' ? ' is-you' : ''; ?>">
-                <span class="hm-radar__feed-pos mono">#<?php echo (int) $r[0]; ?></span>
-                <span class="hm-radar__feed-name"><?php echo $r[1]; ?></span>
-                <span class="hm-radar__feed-sig mono"><?php echo $r[2]; ?></span>
-                <span class="hm-radar__feed-delta mono hm-radar__feed-delta--<?php echo esc_attr( $r[4] ); ?>"><?php echo esc_html( $r[3] ); ?></span>
-              </div>
-            <?php endforeach; ?>
-          </div>
-
-          <footer class="hm-radar__console-foot mono">
-            <span>↳ Tracked weekly · 38 local keywords</span>
-            <span>Service area: Anne Arundel County</span>
-          </footer>
-        </div>
-
-        <!-- RIGHT: Ops manifest -->
-        <aside class="hm-radar__ops" aria-label="Local SEO operations">
-          <header class="hm-radar__ops-head mono">
-            <span><strong>OPS MANIFEST</strong></span>
-            <span class="hm-radar__ops-count">06 / 06</span>
-          </header>
-          <ol class="hm-radar__ops-list">
-            <?php
-            $seo_items = array(
-              array( 'Google Business Profile',     'Categories, photos, posts, services, and review velocity — tuned.', 'GBP' ),
-              array( 'Local keyword targeting',     'Maps the searches your customers actually use, by city and category.', 'KW'  ),
-              array( 'Service‑area SEO',            'Dedicated pages for each city and service you cover — not one thin page.', 'SVC' ),
-              array( 'On‑page SEO',                 'Headings, metadata, internal links, and schema, fixed page by page.', 'OP'  ),
-              array( 'Content structure',           'Pages built to be readable by humans and crawlable by Google.', 'CMS' ),
-              array( 'Review &amp; reputation support', 'Steady review flow without spammy templates or fake names.', 'REV' ),
-            );
-            foreach ( $seo_items as $i => $it ) :
-              $code = 'OP-' . str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
-              ?>
-              <li class="hm-radar__ops-item">
-                <span class="hm-radar__ops-id mono"><?php echo esc_html( $code ); ?></span>
-                <div class="hm-radar__ops-body">
-                  <h3 class="hm-radar__ops-name"><?php echo $it[0]; ?></h3>
-                  <p class="hm-radar__ops-desc"><?php echo $it[1]; ?></p>
-                </div>
-                <span class="hm-radar__ops-tag mono"><?php echo esc_html( $it[2] ); ?></span>
-              </li>
-            <?php endforeach; ?>
-          </ol>
-          <footer class="hm-radar__ops-foot mono">
-            <span class="hm-radar__ops-status">↳ All systems engaged</span>
-            <span class="hm-radar__ops-stamp">CLEARED · LVM</span>
-          </footer>
-        </aside>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       BLOG — NEWSSTAND / PRESS RACK
-       Visual language: a press rack of editions. Each article is a
-       folded paper with masthead, dateline, headline, and rank stamp.
-       ============================================================ -->
-  <section class="hm-press" id="blog">
-    <div class="lvm-container">
-
-      <div class="hm-press__topline mono">
-        <span><strong>THE LVM PRESS</strong></span>
-        <span class="hm-press__topline-rule"></span>
-        <span>Vol. III · Issue 04</span>
-        <span class="hm-press__topline-rule"></span>
-        <span>Distributed weekly · Maryland edition</span>
-      </div>
-
-      <div class="hm-press__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">05</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Blog content</span></div>
-        <h2 class="section-h">SEO blog articles that target<br><em class="serif">real customer searches.</em></h2>
-        <p class="section-lead">
-          Your blog isn't a place to write about industry news. It's where you answer
-          the questions your customers Google before they call you — and where Google
-          decides you're an authority on your service area.
-        </p>
-      </div>
-
-      <div class="hm-press__rack">
-        <?php
-        $posts = array(
-          array( 'Security · Maryland',   'How to Choose the Right Security Training Program in Maryland',         '9 min read',  '#3', 'MD',  'Ed. 042' ),
-          array( 'Legal · Ocean City',     'What to Do After a DUI Arrest in Ocean City',                 '7 min read',  '#1', 'MD',  'Ed. 041' ),
-          array( 'Auto Glass · National',  'Five Signs Your Windshield Needs Replacement',                '6 min read',  '#2', 'US',  'Ed. 040' ),
-          array( 'Home Care · Maryland',   'How Home Care Helps Seniors Stay Independent',                '8 min read',  '#4', 'MD',  'Ed. 039' ),
-          array( 'Wellness · Maryland',    'What to Expect During an ADHD Evaluation',                    '10 min read', '#5', 'MD',  'Ed. 038' ),
-          array( 'Dental · Maryland',      'When to Take Your Child to the Dentist for the First Time',  '5 min read',  '#2', 'MD',  'Ed. 037' ),
-        );
-        foreach ( $posts as $i => $p ) : ?>
-          <article class="hm-press__paper">
-            <header class="hm-press__paper-mast">
-              <span class="hm-press__paper-edition mono"><?php echo esc_html( $p[5] ); ?></span>
-              <span class="hm-press__paper-mark">★</span>
-              <span class="hm-press__paper-cat mono"><?php echo esc_html( $p[0] ); ?></span>
-            </header>
-
-            <div class="hm-press__paper-fold" aria-hidden="true"></div>
-
-            <h3 class="hm-press__paper-h"><?php echo esc_html( $p[1] ); ?></h3>
-
-            <div class="hm-press__paper-byline mono">
-              <span>By LVM Editorial</span>
-              <span class="hm-press__paper-dot"></span>
-              <span><?php echo esc_html( $p[2] ); ?></span>
-            </div>
-
-            <footer class="hm-press__paper-foot">
-              <span class="hm-press__paper-stamp">
-                <span class="hm-press__paper-stamp-rank mono"><?php echo esc_html( $p[3] ); ?></span>
-                <span class="hm-press__paper-stamp-loc mono">RANK · <?php echo esc_html( $p[4] ); ?></span>
-              </span>
-              <span class="hm-press__paper-cta mono">Read →</span>
-            </footer>
-          </article>
-        <?php endforeach; ?>
-      </div>
-
-      <div class="hm-press__bands mono">
-        <?php
-        $bands = array(
-          'Target real search intent',
-          'Support and link to service pages',
-          'Build topical authority over time',
-          'Answer real customer questions',
-          'Improve long‑term organic visibility',
-        );
-        foreach ( $bands as $i => $b ) : ?>
-          <div class="hm-press__band">
-            <span class="hm-press__band-num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
-            <span><?php echo esc_html( $b ); ?></span>
-          </div>
-        <?php endforeach; ?>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SOCIAL — POSTING BOARD / EDITORIAL CALENDAR
-       Visual language: a pin board with scheduled posts, plus a
-       weekly cadence rail showing consistency at a glance.
-       ============================================================ -->
-  <section class="hm-board" id="social">
-    <div class="lvm-container">
-
-      <div class="hm-board__topline mono">
-        <span><strong>POSTING BOARD</strong></span>
-        <span class="hm-board__topline-rule"></span>
-        <span>Calendar · WK 14</span>
-        <span class="hm-board__topline-rule"></span>
-        <span>Cadence · 12 posts / wk · 3 brands</span>
-      </div>
-
-      <div class="hm-board__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">06</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Social media</span></div>
-        <h2 class="section-h">Consistent social media<br><em class="serif">that keeps your business visible.</em></h2>
-        <p class="section-lead">
-          Social media won't replace SEO — but it keeps you active, shares your blog,
-          highlights new services, and adds the trust signal a searcher needs before
-          they tap "Call."
-        </p>
-      </div>
-
-      <!-- WEEKLY CADENCE RAIL -->
-      <div class="hm-board__rail" aria-label="Weekly posting cadence">
-        <span class="hm-board__rail-lbl mono">↳ Week 14 · M T W T F S S</span>
-        <ol class="hm-board__rail-week mono">
+        <ul class="lvh-feats">
           <?php
-          $week = array(
-            array( 'M', array( 'TH', 'CL'       ) ),
-            array( 'T', array( 'RD'             ) ),
-            array( 'W', array( 'TH', 'RD'       ) ),
-            array( 'T', array( 'CL'             ) ),
-            array( 'F', array( 'TH', 'CL', 'RD' ) ),
-            array( 'S', array(                  ) ),
-            array( 'S', array( 'TH'             ) ),
+          $seo_items = array(
+            array( 'Google Business Profile',         'Categories, photos, posts, services, and review velocity — tuned.',         '<path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>' ),
+            array( 'Local keyword targeting',         'The searches your customers actually use, by city and category.',           '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4"/>' ),
+            array( 'Service‑area SEO',                'Dedicated pages for each city and service you cover — not one thin page.',  '<path d="M9 4L3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/>' ),
+            array( 'On‑page SEO',                     'Headings, metadata, internal links, and schema, fixed page by page.',       '<path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/>' ),
+            array( 'Content structure',               'Pages built to be readable by humans and crawlable by Google.',             '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16M10 10v10"/>' ),
+            array( 'Review &amp; reputation support', 'Steady review flow without spammy templates or fake names.',                '<path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/>' ),
           );
-          foreach ( $week as $d ) : ?>
-            <li class="hm-board__rail-day<?php echo empty( $d[1] ) ? ' is-empty' : ''; ?>">
-              <span class="hm-board__rail-letter"><?php echo esc_html( $d[0] ); ?></span>
-              <span class="hm-board__rail-pins" aria-hidden="true">
-                <?php foreach ( $d[1] as $brand ) : ?>
-                  <span class="hm-board__rail-pin"><?php echo esc_html( $brand ); ?></span>
-                <?php endforeach; ?>
-              </span>
-            </li>
+          foreach ( $seo_items as $it ) : ?>
+            <li data-reveal><span class="lvh-tile-ico lvh-tile-ico--sm"><?php echo $icon( $it[2] ); ?></span><strong><?php echo $it[0]; ?></strong><span><?php echo esc_html( $it[1] ); ?></span></li>
           <?php endforeach; ?>
-        </ol>
+        </ul>
       </div>
 
-      <!-- PINNED POSTS -->
-      <div class="hm-board__pins">
-        <?php
-        $sposts = array(
-          array( 'STA', 'Security Training Academy', '@securitytrainingmd',  'Mon · 09:14a',  'Professional security training and certification courses. Enrolling now for summer classes.',                              '#Security #Training',           184, 12,  8, 'PRO' ),
-          array( 'CL', 'Calvert Law',       '@calvertlaw',     'Wed · 02:30p',  'Free 15‑minute consultation for personal injury cases this month. Call or book online.',              '#Maryland #PersonalInjury',   62,  4, 21, 'OFR' ),
-          array( 'RD', 'Riverside Dental',  '@riversidedental', 'Fri · 11:00a', 'Now accepting new patients — most insurance plans accepted, evening appointments available.',          '#Severna #Dentist',           98,  7,  3, 'NEW' ),
-        );
-        foreach ( $sposts as $i => $p ) : ?>
-          <article class="hm-board__post">
-            <span class="hm-board__post-pin" aria-hidden="true"></span>
-            <span class="hm-board__post-tape mono"><?php echo esc_html( $p[9] ); ?></span>
-
-            <header class="hm-board__post-head">
-              <div class="hm-board__post-avatar" aria-hidden="true"><?php echo esc_html( $p[0] ); ?></div>
-              <div class="hm-board__post-who">
-                <div class="hm-board__post-name"><?php echo esc_html( $p[1] ); ?></div>
-                <div class="hm-board__post-handle mono"><?php echo esc_html( $p[2] ); ?> · <?php echo esc_html( $p[3] ); ?></div>
-              </div>
-            </header>
-
-            <p class="hm-board__post-text"><?php echo esc_html( $p[4] ); ?></p>
-            <div class="hm-board__post-tags mono"><?php echo esc_html( $p[5] ); ?></div>
-
-            <footer class="hm-board__post-foot mono">
-              <span>♥ <?php echo (int) $p[6]; ?></span>
-              <span>💬 <?php echo (int) $p[7]; ?></span>
-              <span>↗ <?php echo (int) $p[8]; ?></span>
-              <span class="hm-board__post-status">Scheduled</span>
-            </footer>
-          </article>
-        <?php endforeach; ?>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SUPPORT — MAINTENANCE LOG / SERVICE JOURNAL
-       Visual language: a service journal book with timestamped
-       entries, technician initials, and "DONE" stamps.
-       ============================================================ -->
-  <section class="hm-log" id="support">
-    <div class="lvm-container">
-
-      <div class="hm-log__topline mono">
-        <span><strong>SERVICE JOURNAL</strong></span>
-        <span class="hm-log__topline-rule"></span>
-        <span>Book · LV-MNT-2026</span>
-        <span class="hm-log__topline-rule"></span>
-        <span>Tech · LVM</span>
-      </div>
-
-      <div class="hm-log__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">07</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Ongoing support</span></div>
-        <h2 class="section-h">Ongoing website support<br><em class="serif">without the headaches.</em></h2>
-        <p class="section-lead">
-          A website isn't a one‑time project. Plugins update, browsers change, services
-          get added. Here's the running journal we keep on every supported site.
-        </p>
-      </div>
-
-      <div class="hm-log__book">
-        <?php
-        $log_groups = array(
-          array(
-            'cadence'    => 'Every month',
-            'cadence_id' => 'M',
-            'sub'        => 'Routine — recurring maintenance',
-            'items'      => array(
-              array( 'Plugin &amp; theme updates',         '01.04 · 09:14' ),
-              array( 'Security scans &amp; patches',      '03.04 · 10:02' ),
-              array( 'Backups verified',                  '07.04 · 11:38' ),
-              array( 'Broken link &amp; redirect audit',  '14.04 · 14:21' ),
-              array( 'Page speed checks',                 '21.04 · 16:55' ),
-            ),
-          ),
-          array(
-            'cadence'    => 'On request',
-            'cadence_id' => 'R',
-            'sub'        => 'Ad-hoc — owner-initiated tickets',
-            'items'      => array(
-              array( 'Content updates &amp; new pages',       'as filed' ),
-              array( 'Service &amp; pricing changes',         'as filed' ),
-              array( 'New blog post publishing',              'as filed' ),
-              array( 'Photo &amp; gallery updates',           'as filed' ),
-              array( 'Seasonal banner &amp; promo swaps',     'as filed' ),
-            ),
-          ),
-          array(
-            'cadence'    => 'Quarterly',
-            'cadence_id' => 'Q',
-            'sub'        => 'Health check — deeper review',
-            'items'      => array(
-              array( 'On‑page SEO review',                       'Q1 · 03.31' ),
-              array( 'Internal linking refresh',                 'Q1 · 03.31' ),
-              array( 'Local citation audit',                     'Q1 · 03.31' ),
-              array( 'Performance &amp; Core Web Vitals report', 'Q1 · 03.31' ),
-              array( 'Recommendation report sent to you',        'Q1 · 03.31' ),
-            ),
-          ),
-        );
-        foreach ( $log_groups as $gi => $g ) : ?>
-          <article class="hm-log__entry">
-            <header class="hm-log__entry-head">
-              <span class="hm-log__entry-id mono"><?php echo esc_html( $g['cadence_id'] ); ?></span>
-              <div class="hm-log__entry-titles">
-                <h3 class="hm-log__entry-cadence"><?php echo esc_html( $g['cadence'] ); ?></h3>
-                <span class="hm-log__entry-sub mono"><?php echo esc_html( $g['sub'] ); ?></span>
-              </div>
-              <span class="hm-log__stamp" aria-hidden="true">
-                <span><?php echo $g['cadence_id'] === 'R' ? 'OPEN' : 'DONE'; ?></span>
+      <div class="lvh-iso" data-reveal aria-hidden="true">
+        <div class="lvh-iso__stage">
+          <div class="lvh-iso__plane">
+            <span class="lvh-iso__water"></span>
+            <span class="lvh-iso__road" style="--x:0;--y:44;--w:100;--d:5"></span>
+            <span class="lvh-iso__road" style="--x:58;--y:0;--w:5;--d:100"></span>
+            <span class="lvh-iso__road" style="--x:22;--y:0;--w:4;--d:44"></span>
+            <span class="lvh-iso__road" style="--x:0;--y:76;--w:58;--d:4"></span>
+            <?php
+            $blocks = array(
+              array( 4, 6, 15, 14, 51 ), array( 29, 8, 24, 12, 84 ), array( 68, 6, 14, 16, 63 ), array( 85, 12, 11, 22, 105 ),
+              array( 4, 26, 14, 14, 36 ), array( 30, 26, 22, 13, 45 ), array( 68, 28, 24, 11, 39 ),
+              array( 6, 54, 14, 18, 69 ), array( 26, 54, 26, 16, 33 ), array( 68, 54, 13, 14, 78 ),
+              array( 6, 84, 20, 12, 42 ), array( 32, 84, 20, 12, 57 ),
+            );
+            foreach ( $blocks as $b ) : ?>
+              <span class="lvh-iso__block" style="--x:<?php echo $b[0]; ?>;--y:<?php echo $b[1]; ?>;--w:<?php echo $b[2]; ?>;--d:<?php echo $b[3]; ?>;--h:<?php echo $b[4]; ?>px"><i></i><i></i><i></i><i></i><i></i></span>
+            <?php endforeach; ?>
+            <span class="lvh-iso__pin" style="--x:40;--y:47;--i:1"><span class="lvh-iso__up"><b>2</b></span></span>
+            <span class="lvh-iso__pin" style="--x:60;--y:90;--i:2"><span class="lvh-iso__up"><b>3</b></span></span>
+            <span class="lvh-iso__pin" style="--x:88;--y:80;--i:3"><span class="lvh-iso__up"><b>4</b></span></span>
+            <span class="lvh-iso__pin lvh-iso__pin--you" style="--x:60;--y:46;--i:0">
+              <span class="lvh-iso__ring"></span>
+              <span class="lvh-iso__up">
+                <b>1</b><em>Your business</em>
+                <span class="lvh-iso__qs"><i style="--q:0">plumber near me</i><i style="--q:1">emergency plumber annapolis</i><i style="--q:2">water heater repair</i></span>
               </span>
-            </header>
-
-            <ul class="hm-log__list">
-              <?php foreach ( $g['items'] as $row ) : ?>
-                <li class="hm-log__row">
-                  <span class="hm-log__check" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </span>
-                  <span class="hm-log__task"><?php echo $row[0]; ?></span>
-                  <span class="hm-log__time mono"><?php echo esc_html( $row[1] ); ?></span>
-                  <span class="hm-log__init mono">LV</span>
-                </li>
-              <?php endforeach; ?>
-            </ul>
-          </article>
-        <?php endforeach; ?>
-
-        <footer class="hm-log__foot mono">
-          <span>↳ Logged on every supported site. Yours can start in week one.</span>
-          <span class="hm-log__foot-sig">Signed · LVM Maintenance</span>
-        </footer>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       INDUSTRIES — FILING CABINET
-       Visual language: a tabbed filing cabinet. Each industry is
-       its own folder with sector code, tab, icon, and playbook link.
-       ============================================================ -->
-  <section class="hm-files" id="industries">
-    <div class="lvm-container">
-
-      <div class="hm-files__topline mono">
-        <span><strong>SECTOR INDEX</strong></span>
-        <span class="hm-files__topline-rule"></span>
-        <span>Drawer · IND-MD</span>
-        <span class="hm-files__topline-rule"></span>
-        <span>10 folders · sorted A–Z by trade</span>
-      </div>
-
-      <div class="hm-files__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">08</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Industries</span></div>
-        <h2 class="section-h">Built for local service businesses<br><em class="serif">across Maryland.</em></h2>
-        <p class="section-lead">Pull a folder. Each one has a working playbook — keywords we chase, pages we build, and the local signals that move the needle for that trade.</p>
-      </div>
-
-      <div class="hm-files__grid">
-        <?php
-        // Each entry: [title, description, inner SVG markup, slug, sector-code]
-        $inds = array(
-          array(
-            'Contractors', 'Rank for the services homeowners search for most.',
-            '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
-            '/contractors', 'CON',
-          ),
-          array(
-            'Security Training', 'Show up when professionals need certification — not three pages in.',
-            '<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>',
-            '/security-training', 'SEC',
-          ),
-          array(
-            'Law Firms', 'Build trust and turn local searches into consultation requests.',
-            '<path d="M12 3v18M5 21h14"/><path d="M6 8l-3 6a3 3 0 0 0 6 0L6 8zM18 8l-3 6a3 3 0 0 0 6 0l-3-6z"/><path d="M3 6h18"/>',
-            '/law-firms', 'LAW',
-          ),
-          array(
-            'Dentists', 'Help nearby patients find your practice and book online.',
-            '<path d="M12 5.5c-2 -2 -5 -2 -7 0c-2 2 -2 5 0 8c1 1.5 1.5 3 2 5c.5 2 1 3 2 3c1 0 1.5 -1.5 2 -3.5l1 -3l1 3c.5 2 1 3.5 2 3.5c1 0 1.5 -1 2 -3c.5 -2 1 -3.5 2 -5c2 -3 2 -6 0 -8c-2 -2 -5 -2 -7 0z"/>',
-            '/dentists', 'DNT',
-          ),
-          array(
-            'Medical Clinics', 'Get found by patients researching specific care in your area.',
-            '<path d="M9 3v6H3v6h6v6h6v-6h6V9h-6V3z"/>',
-            '#', 'MED',
-          ),
-          array(
-            'Auto Glass', 'Show up when drivers need urgent repair or replacement.',
-            '<path d="M5 17h14M5 17l1.5-6a2 2 0 0 1 2-1.5h7a2 2 0 0 1 2 1.5L19 17M5 17v3M19 17v3M8 13h8"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/>',
-            '/auto-glass', 'AGL',
-          ),
-          array(
-            'Home Care Agencies', 'Create content that builds trust with families.',
-            '<path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-3v-7H8v7H5a2 2 0 0 1-2-2z"/><path d="M12 13.5l-1.5-1.5a1.5 1.5 0 0 1 2.12-2.12L12 10l-.62-.62a1.5 1.5 0 1 1 2.12 2.12L12 13.5z" fill="currentColor"/>',
-            '/home-care', 'HMC',
-          ),
-          array(
-            'Restaurants', 'Make your menu and local presence easier to find.',
-            '<path d="M7 3v8a2 2 0 0 0 2 2v8M11 3v6M7 3h4M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"/>',
-            '#', 'RST',
-          ),
-          array(
-            'Security Companies', 'Reach customers researching protection at home or work.',
-            '<path d="M12 2l8 3v7c0 5-3.5 9-8 10-4.5-1-8-5-8-10V5z"/><path d="M9 12l2 2 4-4"/>',
-            '#', 'SEC',
-          ),
-          array(
-            'Local Service Businesses', 'If customers Google your category by city, this is for you.',
-            '<path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M8 14h3v6H8z"/>',
-            '/contact', 'LSB',
-          ),
-        );
-        foreach ( $inds as $i => $row ) :
-          $href = $row[3] === '#' ? '#' : esc_url( home_url( $row[3] ) );
-          $num  = str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
-          ?>
-          <a class="hm-files__folder" href="<?php echo $href; ?>">
-            <span class="hm-files__tab mono">
-              <span class="hm-files__tab-num"><?php echo esc_html( $num ); ?></span>
-              <span class="hm-files__tab-code"><?php echo esc_html( $row[4] ); ?></span>
             </span>
-            <div class="hm-files__folder-body">
-              <div class="hm-files__folder-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><?php echo $row[2]; ?></svg>
-              </div>
-              <h3 class="hm-files__folder-title"><?php echo esc_html( $row[0] ); ?></h3>
-              <p class="hm-files__folder-desc"><?php echo esc_html( $row[1] ); ?></p>
-              <div class="hm-files__folder-foot mono">
-                <span>↳ SEO playbook</span>
-                <svg class="lvm-arrow-ne" viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 L11.5 4.5 M6.5 4.5 L11.5 4.5 L11.5 9.5"/></svg>
-              </div>
-            </div>
-          </a>
-        <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="lvh-pack">
+          <span class="lvh-pack__label">Places · Anne Arundel County</span>
+          <div class="lvh-pack__row is-you"><b>1</b><span>Your business<small><span class="lvh-pack__stars">★★★★★</span> 4.9 (184) · Open now</small></span><span class="lvh-pack__call"><?php echo $icon( '<path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/>' ); ?></span></div>
+          <div class="lvh-pack__row"><b>2</b><span>Annapolis Drain Pros<small>★ 4.8 (96) · Closes 6 PM</small></span></div>
+          <div class="lvh-pack__row"><b>3</b><span>Bay Ridge Plumbing<small>★ 4.6 (51) · Open now</small></span></div>
+        </div>
       </div>
-
     </div>
   </section>
 
   <!-- ============================================================
-       RECENT WORK — CASE FILE DOSSIER
-       Visual language: manila case files. Each project is a dossier
-       with project code, client metadata, and a CLOSED / SHIPPED stamp.
+       WEBSITES THAT RANK — X-ray: design vs. structure
        ============================================================ -->
-  <section class="hm-cases" id="work">
-    <div class="lvm-container">
-
-      <div class="hm-cases__topline mono">
-        <span><strong>CASE FILES</strong></span>
-        <span class="hm-cases__topline-rule"></span>
-        <span>Cabinet · LV-CASE-26</span>
-        <span class="hm-cases__topline-rule"></span>
-        <span>06 dossiers · status SHIPPED</span>
-      </div>
-
-      <div class="hm-cases__head">
-        <div class="eyebrow"><span class="eyebrow__num mono">09</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Recent work</span></div>
-        <h2 class="section-h">Real client projects<br><em class="serif">we've shipped.</em></h2>
-        <p class="section-lead">
-          Service businesses and professionals redesigned, ranked, and supported. Each
-          file below was rebuilt for local search, mobile speed, and clear conversion paths.
+  <section class="lvh-sec" id="web-design">
+    <div class="lvh-wrap">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Website design' ); ?>
+          <?php echo $title( 'Websites designed to look good', 'and rank better.' ); ?>
+        </div>
+        <p class="lvh-deck" data-reveal>
+          A good website should do more than look professional. It should be structured so
+          Google understands your services, your locations, and your expertise — and so a
+          homeowner on a phone can call you in under ten seconds.
         </p>
-      </div>
+      </header>
 
-      <div class="hm-cases__grid">
-        <?php
-        $assets = get_template_directory_uri() . '/assets/projects/';
-        $work = array(
-          array(
-            'tag'      => 'Auto Glass',
-            'client'   => 'Extreme Vivid Auto Glass',
-            'location' => 'Baltimore County · Maryland',
-            'main'     => 'Mobile windshield service',
-            'accent'   => 'built for urgent local search.',
-            'desc'     => 'A fast, mobile-first site that converts the "auto glass near me" moment into a same-day booking — across four Maryland counties.',
-            'k1_val'   => 'Top 3',
-            'k1_lbl'   => 'County rank',
-            'k2_val'   => 'Web + SEO',
-            'k2_lbl'   => 'Scope',
-            'img'      => $assets . 'extreem.png',
-            'alt'      => 'Extreme Vivid Auto Glass website — mobile autoglass service in Baltimore County',
-          ),
-          array(
-            'tag'      => 'Legal',
-            'client'   => 'Cullen Burke, Attorney at Law',
-            'location' => 'Ocean City · Maryland',
-            'main'     => 'Authority-first identity',
-            'accent'   => 'for a three-decade defender.',
-            'desc'     => 'A serious, evidence-led design system that translates 30+ years of criminal defense experience into trust on first scroll.',
-            'k1_val'   => 'Top 5',
-            'k1_lbl'   => 'DUI defense MD',
-            'k2_val'   => 'Web + Content',
-            'k2_lbl'   => 'Scope',
-            'img'      => $assets . 'cullen.png',
-            'alt'      => 'Cullen Burke Attorney at Law website — criminal defense Maryland',
-          ),
-          array(
-            'tag'      => 'Home Care',
-            'client'   => 'Caregiving Angels of Maryland',
-            'location' => 'Statewide · Maryland',
-            'main'     => 'Trust-led design',
-            'accent'   => 'for licensed CNA care.',
-            'desc'     => 'Warm, family-first storytelling paired with structured service pages that rank across 40+ home-care search terms in Maryland.',
-            'k1_val'   => '40+',
-            'k1_lbl'   => 'Care keywords ranked',
-            'k2_val'   => 'Web + Local SEO',
-            'k2_lbl'   => 'Scope',
-            'img'      => $assets . 'caregiving .png',
-            'alt'      => 'Caregiving Angels of Maryland website — licensed home care and CNA services',
-          ),
-          array(
-            'tag'      => 'Healthcare',
-            'client'   => 'Reflect Neuropsychology',
-            'location' => 'California',
-            'main'     => 'Clean, conversion-focused',
-            'accent'   => 'specialty practice site.',
-            'desc'     => 'A calm, clinical design that helps families and patients understand neuropsychological assessment — and book the next step in two clicks.',
-            'k1_val'   => 'Lifespan',
-            'k1_lbl'   => 'Patient coverage',
-            'k2_val'   => 'Web + SEO',
-            'k2_lbl'   => 'Scope',
-            'img'      => $assets . 'reflect.png',
-            'alt'      => 'Reflect Neuropsychology website — assessment through the lifespan',
-          ),
-          array(
-            'tag'      => 'Aesthetics',
-            'client'   => 'Precision Aesthetics',
-            'location' => 'New York City',
-            'main'     => 'Editorial-grade aesthetics',
-            'accent'   => 'as seen in Vogue and Elle.',
-            'desc'     => 'A high-touch site for a Vogue-featured aesthetic surgeon — black-and-white editorial photography, refined typography, premium-feel CTAs.',
-            'k1_val'   => 'Vogue · ELLE',
-            'k1_lbl'   => 'Press features',
-            'k2_val'   => 'Web + Content',
-            'k2_lbl'   => 'Scope',
-            'img'      => $assets . 'pa.png',
-            'alt'      => 'Precision Aesthetics website — non-invasive aesthetic treatments NYC',
-          ),
-          array(
-            'tag'      => 'Entertainment',
-            'client'   => 'Kidzz Kreations',
-            'location' => 'Tri-State · NJ · NY · CT',
-            'main'     => 'Playful, conversion-ready',
-            'accent'   => 'kids entertainment brand.',
-            'desc'     => 'Bright, joyful design for a tri-state kids entertainment agency — booking flow front and center, character library a thumb-flick away.',
-            'k1_val'   => '3 states',
-            'k1_lbl'   => 'Service area',
-            'k2_val'   => 'Web + Local SEO',
-            'k2_lbl'   => 'Scope',
-            'img'      => $assets . 'kids.png',
-            'alt'      => 'Kidzz Kreations website — kids entertainment agency, costume characters and balloon art',
-          ),
-        );
-        foreach ( $work as $i => $w ) :
-          $num = str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
-          $code = 'CF-' . str_pad( 26000 + $i, 5, '0', STR_PAD_LEFT );
-          ?>
-          <article class="hm-cases__file">
-            <header class="hm-cases__file-tab mono">
-              <span class="hm-cases__file-tab-id"><?php echo esc_html( $code ); ?></span>
-              <span class="hm-cases__file-tab-tag"><?php echo esc_html( $w['tag'] ); ?></span>
-            </header>
-
-            <div class="hm-cases__file-media">
-              <img src="<?php echo esc_url( $w['img'] ); ?>" alt="<?php echo esc_attr( $w['alt'] ); ?>" loading="lazy">
-              <span class="hm-cases__file-stamp" aria-hidden="true"><span>SHIPPED</span></span>
+      <?php
+      // [n, legend, box left/top/width/height in % of the screenshot, tag]
+      $legend = array(
+        array( '01', 'Keyword‑rich H1 with location modifier',           array( 0.7, 25.5, 35.5, 27.5 ), '&lt;h1&gt; service + place' ),
+        array( '02', 'Conversion CTAs above the fold',                   array( 0.7, 73, 28, 7.6 ),      'CTA · tel: link' ),
+        array( '03', 'Service &amp; location pages — not one thin page', array( 37.5, 8, 39.5, 6 ),     '&lt;nav&gt; service pages' ),
+        array( '04', 'Internal links from blog to services',             array( 0.7, 54, 35.5, 16.5 ),   '&lt;p&gt; + internal links' ),
+        array( '05', 'Service‑area schema + metadata',                   array( 0.7, 86.5, 34, 7.5 ),    'schema · reviews' ),
+      );
+      ?>
+      <div class="lvh-xray" data-reveal>
+        <figure class="lvh-window lvh-xray__win">
+          <div class="lvh-window__bar"><span class="lvh-window__dots"><i></i><i></i><i></i></span><span class="lvh-window__url">caregivingangelsofmd.com</span><span></span></div>
+          <div class="lvh-xray__view">
+            <img src="<?php echo esc_url( $assets . 'screens/caregiving.jpg' ); ?>" alt="Caregiving Angels of Maryland website built by Local Vocal Marketing" loading="lazy" draggable="false">
+            <div class="lvh-xray__bp" aria-hidden="true">
+              <span class="lvh-bp lvh-bp--title" style="--l:0;--t:0;--w:100;--h:4.7"><span class="lvh-bp__tag">&lt;title&gt; In‑Home Care in Annapolis, MD | Caregiving Angels</span></span>
+              <span class="lvh-bp" style="--l:0.5;--t:6;--w:7.5;--h:9.5"><span class="lvh-bp__tag">img alt</span></span>
+              <span class="lvh-bp" style="--l:87.5;--t:7.6;--w:11.5;--h:5.6"><span class="lvh-bp__tag">tel:</span></span>
+              <?php foreach ( $legend as $l ) : ?>
+                <span class="lvh-bp lvh-bp--k" data-k="<?php echo esc_attr( $l[0] ); ?>" style="--l:<?php echo $l[2][0]; ?>;--t:<?php echo $l[2][1]; ?>;--w:<?php echo $l[2][2]; ?>;--h:<?php echo $l[2][3]; ?>"><span class="lvh-bp__tag"><b><?php echo esc_html( $l[0] ); ?></b><?php echo $l[3]; ?></span></span>
+              <?php endforeach; ?>
+              <span class="lvh-bp lvh-bp--img" style="--l:55;--t:26;--w:44;--h:66"><span class="lvh-bp__tag">img alt · lazy · webp</span>
+                <code class="lvh-bp__code"><span>{</span>
+  <span><i>"@type"</i>: <em>"HomeHealthCareService"</em>,</span>
+  <span><i>"areaServed"</i>: <em>"Annapolis, MD"</em>,</span>
+  <span><i>"telephone"</i>: <em>"+1‑443‑891‑5530"</em>,</span>
+  <span><i>"aggregateRating"</i>: <em>5.0</em></span>
+<span>}</span></code>
+              </span>
             </div>
-
-            <div class="hm-cases__file-body">
-              <div class="hm-cases__file-index mono">
-                <span class="hm-cases__file-index-num">№ <?php echo $num; ?></span>
-                <span class="hm-cases__file-index-rule" aria-hidden="true"></span>
-                <span class="hm-cases__file-index-lbl">Dossier · <?php echo esc_html( $w['tag'] ); ?></span>
-              </div>
-
-              <h3 class="hm-cases__file-title">
-                <?php echo esc_html( $w['main'] ); ?><br>
-                <em class="serif"><?php echo esc_html( $w['accent'] ); ?></em>
-              </h3>
-
-              <div class="hm-cases__file-client mono">
-                <span class="hm-cases__file-client-lbl">Client</span>
-                <span class="hm-cases__file-client-name"><?php echo esc_html( $w['client'] ); ?></span>
-                <span class="hm-cases__file-client-dot" aria-hidden="true"></span>
-                <span class="hm-cases__file-client-loc"><?php echo esc_html( $w['location'] ); ?></span>
-              </div>
-
-              <p class="hm-cases__file-desc"><?php echo esc_html( $w['desc'] ); ?></p>
-
-              <dl class="hm-cases__file-metrics mono">
-                <div>
-                  <dt><?php echo esc_html( $w['k1_lbl'] ); ?></dt>
-                  <dd><?php echo esc_html( $w['k1_val'] ); ?></dd>
-                </div>
-                <div>
-                  <dt><?php echo esc_html( $w['k2_lbl'] ); ?></dt>
-                  <dd><?php echo esc_html( $w['k2_val'] ); ?></dd>
-                </div>
-              </dl>
-            </div>
-          </article>
-        <?php endforeach; ?>
-      </div>
-
-      <div class="hm-cases__foot mono">
-        <span>↳ Filed and closed. Yours could be the next dossier.</span>
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--ghost btn--lg">
-          Open your file <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       TEAM
-       ============================================================ -->
-  <section class="team" id="team">
-    <div class="lvm-container">
-      <div class="eyebrow"><span class="eyebrow__num mono">10</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Team</span></div>
-      <h2 class="section-h">A small team,<br><em class="serif">close to your business.</em></h2>
-      <p class="section-lead">
-        You'll work with the same three people from your first call through every blog post,
-        design tweak, and SEO update. No account‑manager carousel, no offshore handoffs.
-      </p>
-
-      <div class="team__grid">
-        <?php
-        $members = array(
-          array(
-            'name' => 'Garey Simmons',
-            'role' => 'CEO &amp; Founder',
-            'bio'  => 'Over 15 years of experience in digital marketing and business strategy. Leads the agency\'s overall direction and works directly with founders on growth strategy.',
-            'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2023/08/GareySimmons-smile-1.jpg',
-          ),
-          array(
-            'name' => 'Haytham Fourati',
-            'role' => 'Website Developer',
-            'bio'  => 'Expert in front‑end development, WordPress, and SEO strategy. Builds the websites and on‑page foundations every Local Vocal site is judged on.',
-            'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2025/02/WhatsApp-Image-2023-02-20-at-12.00.54.jpg',
-          ),
-          array(
-            'name' => 'David Breth',
-            'role' => 'Social Media Manager',
-            'bio'  => 'A social media expert with a knack for creating engaging content. Runs the consistent posting cadence that keeps client brands visible week to week.',
-            'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2025/02/467235083_10234123037800716_1873456959756484989_n-1.jpg',
-          ),
-        );
-        foreach ( $members as $i => $m ) : ?>
-          <article class="tcard">
-            <figure class="tcard__photo">
-              <img src="<?php echo esc_url( $m['photo'] ); ?>" alt="<?php echo esc_attr( $m['name'] . ' — ' . wp_strip_all_tags( $m['role'] ) . ', Local Vocal Marketing' ); ?>" loading="lazy">
-              <span class="tcard__photo-tag mono">0<?php echo $i + 1; ?> / 03</span>
-            </figure>
-            <div class="tcard__body">
-              <div class="tcard__role mono"><?php echo $m['role']; ?></div>
-              <h3 class="tcard__name"><?php echo esc_html( $m['name'] ); ?></h3>
-              <p class="tcard__bio"><?php echo $m['bio']; ?></p>
-            </div>
-          </article>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       WHY US — SPEC SHEET / RECEIPT (dark)
-       Visual language: a printed dark spec ticket. Six principles
-       as printed line items with codes, values, and a stamped total.
-       ============================================================ -->
-  <section class="hm-spec" id="whyus">
-    <div class="hm-spec__glow" aria-hidden="true"></div>
-    <div class="lvm-container hm-spec__inner">
-
-      <div class="hm-spec__topline mono">
-        <span><strong>OPERATING SPEC</strong></span>
-        <span class="hm-spec__topline-rule"></span>
-        <span>Sheet · LVM-OS-26</span>
-        <span class="hm-spec__topline-rule"></span>
-        <span>How we run.</span>
-      </div>
-
-      <div class="hm-spec__head">
-        <div class="eyebrow eyebrow--light"><span class="eyebrow__num mono">11</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Why Local Vocal</span></div>
-        <h2 class="section-h section-h--light">Why local businesses choose<br><em class="serif">Local Vocal Marketing.</em></h2>
-        <p class="section-lead section-lead--light">Six operating principles. Print them, frame them, hold us to them.</p>
-      </div>
-
-      <div class="hm-spec__sheet">
-        <header class="hm-spec__sheet-head mono">
-          <span class="hm-spec__col-id">ID</span>
-          <span class="hm-spec__col-name">PRINCIPLE</span>
-          <span class="hm-spec__col-val">SO IT MEANS</span>
-        </header>
-
-        <?php
-        $whyus = array(
-          array( 'We understand local search',            'Maryland service areas, map pack mechanics, and the keywords customers actually type.', 'LOCAL'  ),
-          array( 'We build websites with SEO in mind',    'Not pretty templates retrofitted later. Structure, speed, and schema from page one.',   'BUILD'  ),
-          array( 'We publish content consistently',       'Blog posts that target real searches, written to your voice — not AI filler.',          'WRITE'  ),
-          array( 'We support your website long‑term',     'Updates, fixes, new pages, and small wins, on a calendar — not on hold.',               'KEEP'   ),
-          array( 'We communicate clearly',                "No jargon. No 40‑slide reports. Just what's working, what's not, and what's next.",     'SPEAK'  ),
-          array( 'We focus on visibility, trust, and leads', 'Three measurable outcomes. Everything else is a means to those ends.',                'AIM'    ),
-        );
-        foreach ( $whyus as $i => $p ) :
-          $code = 'OS-' . str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
-          ?>
-          <article class="hm-spec__row">
-            <span class="hm-spec__row-id mono"><?php echo esc_html( $code ); ?></span>
-            <div class="hm-spec__row-body">
-              <h3 class="hm-spec__row-name"><?php echo esc_html( $p[0] ); ?></h3>
-              <p class="hm-spec__row-desc"><?php echo esc_html( $p[1] ); ?></p>
-            </div>
-            <span class="hm-spec__row-val mono"><?php echo esc_html( $p[2] ); ?></span>
-          </article>
-        <?php endforeach; ?>
-
-        <footer class="hm-spec__sheet-foot mono">
-          <div class="hm-spec__total">
-            <span class="hm-spec__total-lbl">↳ Total promise</span>
-            <span class="hm-spec__total-val">Visibility · Trust · Leads</span>
+            <span class="lvh-xray__lab lvh-xray__lab--l" aria-hidden="true">What visitors see</span>
+            <span class="lvh-xray__lab lvh-xray__lab--r" aria-hidden="true">What Google sees</span>
+            <span class="lvh-xray__handle" aria-hidden="true"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4L2 8l4 4M10 4l4 4-4 4"/></svg></i></span>
+            <input class="lvh-xray__range" type="range" min="0" max="100" value="100" step="0.1" aria-label="Slide to compare the design with the structure Google reads">
           </div>
-          <div class="hm-spec__stamp">
-            <span>Signed · LVM</span>
-          </div>
-        </footer>
+        </figure>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       PROCESS
-       ============================================================ -->
-  <section class="process" id="process">
-    <div class="lvm-container">
-      <div class="eyebrow"><span class="eyebrow__num mono">12</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Process</span></div>
-      <h2 class="section-h">A simple process for improving<br><em class="serif">your online presence.</em></h2>
-
-      <ol class="process__list">
-        <?php
-        $steps = array(
-          array( 'Review',   "We audit your current website, SEO, content, and local visibility — and write down what's actually broken.", 'Week 1' ),
-          array( 'Plan',     'We identify the biggest opportunities to improve rankings, design, and content, sized to your budget.', 'Week 2' ),
-          array( 'Build',    'We design or improve your website with SEO‑focused structure, fast pages, and clear conversion paths.', 'Week 3–6' ),
-          array( 'Optimize', 'We sharpen headings, metadata, internal links, service pages, and local content as data comes in.', 'Week 7+' ),
-          array( 'Support',  'We keep going — blog posts, social, updates, and ongoing improvements that compound.', 'Ongoing' ),
-        );
-        foreach ( $steps as $i => $s ) : ?>
-          <li class="process__item">
-            <div class="process__num mono"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></div>
-            <div class="process__rule"></div>
-            <div class="process__body">
-              <h3 class="process__title"><?php echo esc_html( $s[0] ); ?></h3>
-              <p class="process__desc"><?php echo esc_html( $s[1] ); ?></p>
-            </div>
-            <div class="process__meta mono"><?php echo esc_html( $s[2] ); ?></div>
-          </li>
+      <ol class="lvh-keys">
+        <?php foreach ( $legend as $l ) : ?>
+          <li data-reveal data-k="<?php echo esc_attr( $l[0] ); ?>"><span><?php echo esc_html( $l[0] ); ?></span><?php echo $l[1]; ?></li>
         <?php endforeach; ?>
       </ol>
     </div>
   </section>
 
   <!-- ============================================================
+       BLOG CONTENT — editorial covers
+       ============================================================ -->
+  <section class="lvh-sec" id="blog">
+    <div class="lvh-wrap">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Blog content' ); ?>
+          <?php echo $title( 'SEO blog articles that target', 'real customer searches.' ); ?>
+        </div>
+        <p class="lvh-deck" data-reveal>
+          Your blog is where you answer the questions customers Google before they call —
+          and where Google decides you're an authority on your service area.
+        </p>
+      </header>
+
+      <div class="lvh-mags">
+        <?php
+        // [category, title, read time, rank, sparkline]
+        $posts = array(
+          array( 'Security · Maryland',   'How to Choose the Right Security Training Program in Maryland', '9 min read',  '3', 'M0 34 C14 33 22 30 32 28 S52 26 62 20 S82 12 100 6' ),
+          array( 'Legal · Ocean City',    'What to Do After a DUI Arrest in Ocean City',                   '7 min read',  '1', 'M0 36 C12 35 20 33 30 29 S50 18 60 16 S84 6 100 3' ),
+          array( 'Auto Glass · National', 'Five Signs Your Windshield Needs Replacement',                  '6 min read',  '2', 'M0 33 C10 34 22 28 34 27 S56 22 66 14 S88 9 100 5' ),
+          array( 'Home Care · Maryland',  'How Home Care Helps Seniors Stay Independent',                  '8 min read',  '4', 'M0 35 C16 34 24 31 36 30 S58 24 70 19 S90 12 100 10' ),
+          array( 'Wellness · Maryland',   'What to Expect During an ADHD Evaluation',                      '10 min read', '5', 'M0 36 C14 36 26 33 38 31 S60 27 72 22 S90 16 100 13' ),
+          array( 'Dental · Maryland',     'When to Take Your Child to the Dentist for the First Time',     '5 min read',  '2', 'M0 34 C12 33 20 31 30 26 S54 20 64 15 S86 8 100 4' ),
+        );
+        foreach ( $posts as $i => $p ) : ?>
+          <article class="lvh-mag" data-reveal>
+            <span class="lvh-mag__big" aria-hidden="true"><?php echo esc_html( $p[3] ); ?></span>
+            <div class="lvh-mag__top"><span><?php echo esc_html( $p[0] ); ?></span><span class="lvh-mag__rank">Ranks #<?php echo esc_html( $p[3] ); ?></span></div>
+            <h3><?php echo esc_html( $p[1] ); ?></h3>
+            <div class="lvh-mag__foot">
+              <span><?php echo esc_html( $p[2] ); ?></span>
+              <svg class="lvh-mag__spark" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path class="lvh-mag__area" d="<?php echo esc_attr( $p[4] ); ?> V40 H0 Z"/><path class="lvh-mag__line" d="<?php echo esc_attr( $p[4] ); ?>" pathLength="1"/></svg>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <div class="lvh-ticker" data-reveal>
+      <ul class="lvh-ticker__track">
+        <?php
+        $benefits = array( 'Target real search intent', 'Support and link to service pages', 'Build topical authority over time', 'Answer real customer questions', 'Improve long‑term organic visibility' );
+        foreach ( array( '', ' aria-hidden="true"' ) as $dup ) {
+          foreach ( $benefits as $b ) { echo '<li' . $dup . '>' . esc_html( $b ) . '</li>'; }
+        }
+        ?>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCIAL — content calendar
+       ============================================================ -->
+  <section class="lvh-sec lvh-sec--bay" id="social">
+    <div class="lvh-bay lvh-split">
+      <div class="lvh-split__copy">
+        <?php echo $eyebrow( 'Social media' ); ?>
+        <?php echo $title( 'Consistent social media', 'that keeps your business visible.' ); ?>
+        <p class="lvh-deck" data-reveal>
+          Social media won't replace SEO — but it keeps you active, shares your blog,
+          highlights new services, and adds the trust signal a searcher needs before
+          they tap “Call.”
+        </p>
+        <ul class="lvh-platforms" data-reveal>
+          <?php foreach ( $platforms as $k => $p ) : ?>
+            <li><?php echo $app( $k, 'lvh-app--sm' ); ?><?php echo esc_html( $p[0] ); ?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+
+      <div class="lvh-cal" data-reveal aria-hidden="true">
+        <div class="lvh-cal__head">
+          <span><b>This week</b> · 3 brands · 6 platforms</span>
+          <span class="lvh-cal__count"><b class="lvh-cal__n">0</b> / 12 published</span>
+        </div>
+        <div class="lvh-cal__grid">
+          <?php
+          // day => [[platform, brand, time], ...]
+          $week = array(
+            'Mon' => array( array( 'facebook', 'Security Training', '9:14' ), array( 'google', 'Riverside Dental', '12:30' ) ),
+            'Tue' => array( array( 'instagram', 'Riverside Dental', '10:00' ) ),
+            'Wed' => array( array( 'google', 'Calvert Law', '2:30' ), array( 'linkedin', 'Security Training', '4:00' ) ),
+            'Thu' => array( array( 'youtube', 'Security Training', '11:15' ), array( 'facebook', 'Calvert Law', '3:45' ) ),
+            'Fri' => array( array( 'instagram', 'Riverside Dental', '11:00' ), array( 'tiktok', 'Riverside Dental', '5:20' ) ),
+            'Sat' => array( array( 'facebook', 'Riverside Dental', '10:30' ) ),
+            'Sun' => array( array( 'google', 'Calvert Law', '9:00' ), array( 'instagram', 'Security Training', '6:00' ) ),
+          );
+          $n = 0; $d = 0;
+          foreach ( $week as $day => $items ) : ?>
+            <div class="lvh-cal__day<?php echo 2 === $d ? ' is-today' : ''; ?>">
+              <span class="lvh-cal__d"><?php echo esc_html( $day ); ?><b><?php echo 10 + $d++; ?></b></span>
+              <?php foreach ( $items as $it ) : ?>
+                <span class="lvh-cal__post" style="--i:<?php echo $n++; ?>"><?php echo $app( $it[0], 'lvh-app--xs' ); ?><span><b><?php echo esc_html( $it[1] ); ?></b><small><?php echo esc_html( $it[2] ); ?></small></span></span>
+              <?php endforeach; ?>
+            </div>
+          <?php endforeach; ?>
+        </div>
+        <div class="lvh-cal__preview">
+          <span class="lvh-post__avatar">RD</span>
+          <span class="lvh-cal__pv"><b>Riverside Dental</b> Now accepting new patients — most insurance plans accepted, evening appointments available. <em>#Severna #Dentist</em></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SUPPORT — live status console
+       ============================================================ -->
+  <section class="lvh-sec" id="support">
+    <div class="lvh-wrap">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Ongoing support' ); ?>
+          <?php echo $title( 'Ongoing website support', 'without the headaches.' ); ?>
+        </div>
+        <p class="lvh-deck" data-reveal>
+          A website isn't a one‑time project. Plugins update, browsers change, services get
+          added. Here's what we take care of on every supported site.
+        </p>
+      </header>
+
+      <?php
+      $log_groups = array(
+        array( 'Every month', 'Routine maintenance',  array( 'Plugin &amp; theme updates', 'Security scans &amp; patches', 'Backups verified', 'Broken link &amp; redirect audit', 'Page speed checks' ) ),
+        array( 'On request',  'Whenever you need it', array( 'Content updates &amp; new pages', 'Service &amp; pricing changes', 'New blog post publishing', 'Photo &amp; gallery updates', 'Seasonal banner &amp; promo swaps' ) ),
+        array( 'Quarterly',   'Deeper health check',  array( 'On‑page SEO review', 'Internal linking refresh', 'Local citation audit', 'Performance &amp; Core Web Vitals report', 'Recommendation report sent to you' ) ),
+      );
+      $pool = array();
+      foreach ( $log_groups as $g ) { foreach ( $g[2] as $row ) { $pool[] = array( html_entity_decode( $row ), $g[0] ); } }
+      ?>
+      <div class="lvh-console" data-reveal>
+        <div class="lvh-console__main">
+          <div class="lvh-console__top">
+            <span class="lvh-console__ok"><i></i>All systems normal</span>
+            <span class="lvh-console__site">yourbusiness.com</span>
+          </div>
+          <div class="lvh-uptime" aria-hidden="true">
+            <?php for ( $u = 0; $u < 64; $u++ ) { echo '<i' . ( in_array( $u, array( 17, 41 ), true ) ? ' class="is-maint"' : '' ) . ' style="--u:' . $u . '"></i>'; } ?>
+          </div>
+          <div class="lvh-uptime__axis" aria-hidden="true"><span>90 days ago</span><span>Uptime 99.98%</span><span>Today</span></div>
+          <dl class="lvh-console__stats">
+            <div><dt>Last backup</dt><dd>2 hours ago</dd></div>
+            <div><dt>Security scan</dt><dd>Clean</dd></div>
+            <div><dt>Page speed</dt><dd>94 / 100</dd></div>
+            <div><dt>Plugins</dt><dd>Up to date</dd></div>
+          </dl>
+        </div>
+        <div class="lvh-console__log" aria-hidden="true">
+          <div class="lvh-console__loghead"><span>Activity</span><span class="lvh-console__live"><i></i>Live</span></div>
+          <ol class="lvh-log" data-pool="<?php echo esc_attr( wp_json_encode( $pool ) ); ?>">
+            <?php foreach ( array( 0, 5, 10, 1, 6, 2 ) as $j => $pi ) : ?>
+              <li><time><?php echo esc_html( sprintf( '%02d:%02d', 9 - $j, ( 47 - $j * 7 ) % 60 ) ); ?></time><span><?php echo esc_html( $pool[ $pi ][0] ); ?></span><small><?php echo esc_html( $pool[ $pi ][1] ); ?></small></li>
+            <?php endforeach; ?>
+          </ol>
+        </div>
+      </div>
+
+      <div class="lvh-cadence">
+        <?php foreach ( $log_groups as $g ) : ?>
+          <div class="lvh-cadence__col" data-reveal>
+            <h3><?php echo esc_html( $g[0] ); ?><small><?php echo esc_html( $g[1] ); ?></small></h3>
+            <ul>
+              <?php foreach ( $g[2] as $row ) : ?>
+                <li><?php echo $row; ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INDUSTRIES — trades in display type
+       ============================================================ -->
+  <section class="lvh-sec" id="industries">
+    <div class="lvh-wrap">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Industries' ); ?>
+          <?php echo $title( 'Built for local service businesses', 'across Maryland.' ); ?>
+        </div>
+        <p class="lvh-deck lvh-trades__cap" data-reveal aria-live="off"><span class="lvh-trades__line">Each trade has its own playbook — the keywords we chase, the pages we build, and
+          the local signals that move the needle.</span></p>
+      </header>
+
+      <div class="lvh-trades">
+        <ul class="lvh-trades__list">
+          <?php
+          $inds = array(
+            array( 'Contractors',              'Rank for the services homeowners search for most.',                    '/contractors', '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>' ),
+            array( 'Security Training',        'Show up when professionals need certification — not three pages in.', '/contact',     '<path d="M12 2l8 3v7c0 5-3.5 9-8 10-4.5-1-8-5-8-10V5z"/><path d="M9 12l2 2 4-4"/>' ),
+            array( 'Law Firms',                'Build trust and turn local searches into consultation requests.',     '/law-firms',   '<path d="M12 3v18M5 21h14"/><path d="M6 8l-3 6a3 3 0 0 0 6 0L6 8zM18 8l-3 6a3 3 0 0 0 6 0l-3-6z"/><path d="M3 6h18"/>' ),
+            array( 'Dentists',                 'Help nearby patients find your practice and book online.',             '/dentists',    '<path d="M12 5.5c-2-2-5-2-7 0s-2 5 0 8c1 1.5 1.5 3 2 5s1 3 2 3 1.5-1.5 2-3.5l1-3 1 3c.5 2 1 3.5 2 3.5s1.5-1 2-3 1-3.5 2-5c2-3 2-6 0-8s-5-2-7 0z"/>' ),
+            array( 'Medical Clinics',          'Get found by patients researching specific care in your area.',       '/contact',     '<path d="M9 3v6H3v6h6v6h6v-6h6V9h-6V3z"/>' ),
+            array( 'Auto Glass',               'Show up when drivers need urgent repair or replacement.',              '/auto-glass',  '<path d="M5 17h14M5 17l1.5-6a2 2 0 0 1 2-1.5h7a2 2 0 0 1 2 1.5L19 17M5 17v3M19 17v3"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/>' ),
+            array( 'Home Care Agencies',       'Create content that builds trust with families.',                      '/home-care',   '<path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-3v-7H8v7H5a2 2 0 0 1-2-2z"/>' ),
+            array( 'Restaurants',              'Make your menu and local presence easier to find.',                    '/contact',     '<path d="M7 3v8a2 2 0 0 0 2 2v8M11 3v6M7 3h4M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"/>' ),
+            array( 'Security Companies',       'Reach customers researching protection at home or work.',              '/contact',     '<rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>' ),
+            array( 'Local Service Businesses', 'If customers Google your category by city, this is for you.',          '/contact',     '<path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 14h6v6H9z"/>' ),
+          );
+          foreach ( $inds as $row ) : ?>
+            <li data-reveal>
+              <a class="lvh-trade" href="<?php echo esc_url( home_url( $row[2] ) ); ?>">
+                <span class="lvh-trade__ico"><?php echo $icon( $row[3] ); ?></span><span class="lvh-trade__name"><?php echo esc_html( $row[0] ); ?></span><small><?php echo esc_html( $row[1] ); ?></small>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS — scroll-filled timeline
+       ============================================================ -->
+  <section class="lvh-sec lvh-sec--bay" id="process">
+    <div class="lvh-bay">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Process' ); ?>
+          <?php echo $title( 'A simple process for improving', 'your online presence.' ); ?>
+        </div>
+        <p class="lvh-deck" data-reveal>Five steps, one team, and a plan you can read in five minutes. Most sites go live in about six weeks.</p>
+      </header>
+      <ol class="lvh-time">
+        <?php
+        $steps = array(
+          array( 'Review',   "We audit your current website, SEO, content, and local visibility — and write down what's actually broken.", 'Week 1' ),
+          array( 'Plan',     'We identify the biggest opportunities to improve rankings, design, and content, sized to your budget.',      'Week 2' ),
+          array( 'Build',    'We design or improve your website with SEO‑focused structure, fast pages, and clear conversion paths.',     'Weeks 3–6' ),
+          array( 'Optimize', 'We sharpen headings, metadata, internal links, service pages, and local content as data comes in.',         'Week 7+' ),
+          array( 'Support',  'We keep going — blog posts, social, updates, and ongoing improvements that compound.',                      'Ongoing' ),
+        );
+        foreach ( $steps as $i => $s ) : ?>
+          <li class="lvh-time__step">
+            <span class="lvh-time__dot" aria-hidden="true"></span>
+            <span class="lvh-time__when"><?php echo esc_html( $s[2] ); ?></span>
+            <span class="lvh-time__num" aria-hidden="true"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
+            <h3><?php echo esc_html( $s[0] ); ?></h3>
+            <p><?php echo esc_html( $s[1] ); ?></p>
+          </li>
+        <?php endforeach; ?>
+        <li class="lvh-time__rail" aria-hidden="true"><i></i></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEAM + WHY US
+       ============================================================ -->
+  <section class="lvh-sec" id="team">
+    <div class="lvh-wrap">
+      <header class="lvh-head lvh-head--row">
+        <div>
+          <?php echo $eyebrow( 'Team' ); ?>
+          <?php echo $title( 'A small team,', 'close to your business.' ); ?>
+        </div>
+        <p class="lvh-deck" data-reveal>
+          You'll work with the same three people from your first call through every blog post,
+          design tweak, and SEO update. No account‑manager carousel, no offshore handoffs.
+        </p>
+      </header>
+
+      <div class="lvh-team">
+        <?php
+        $members = array(
+          array( 'Garey Simmons',   'CEO &amp; Founder',    'Over 15 years of experience in digital marketing and business strategy. Leads the agency\'s overall direction and works directly with founders on growth strategy.', 'https://localvocalmarketing.com/wp-content/uploads/2023/08/GareySimmons-smile-1.jpg' ),
+          array( 'Haytham Fourati', 'Website Developer',    'Expert in front‑end development, WordPress, and SEO strategy. Builds the websites and on‑page foundations every Local Vocal site is judged on.', 'https://localvocalmarketing.com/wp-content/uploads/2025/02/WhatsApp-Image-2023-02-20-at-12.00.54.jpg' ),
+          array( 'David Breth',     'Social Media Manager', 'A social media expert with a knack for creating engaging content. Runs the consistent posting cadence that keeps client brands visible week to week.', 'https://localvocalmarketing.com/wp-content/uploads/2025/02/467235083_10234123037800716_1873456959756484989_n-1.jpg' ),
+        );
+        foreach ( $members as $m ) : ?>
+          <article class="lvh-person" data-reveal>
+            <figure>
+              <img src="<?php echo esc_url( $m[3] ); ?>" alt="<?php echo esc_attr( $m[0] . ' — ' . wp_strip_all_tags( $m[1] ) . ', Local Vocal Marketing' ); ?>" loading="lazy">
+              <figcaption><strong><?php echo esc_html( $m[0] ); ?></strong><span><?php echo $m[1]; ?></span></figcaption>
+            </figure>
+            <p><?php echo esc_html( $m[2] ); ?></p>
+          </article>
+        <?php endforeach; ?>
+      </div>
+
+      <div class="lvh-why">
+        <h3 class="lvh-why__head" data-reveal>Why local businesses choose <span class="lvh-dim">Local Vocal Marketing</span></h3>
+        <ol class="lvh-why__list">
+          <?php
+          $whyus = array(
+            array( 'We understand local search',               'Maryland service areas, map pack mechanics, and the keywords customers actually type.' ),
+            array( 'We build websites with SEO in mind',       'Not pretty templates retrofitted later. Structure, speed, and schema from page one.' ),
+            array( 'We publish content consistently',          'Blog posts that target real searches, written to your voice — not AI filler.' ),
+            array( 'We support your website long‑term',        'Updates, fixes, new pages, and small wins, on a calendar — not on hold.' ),
+            array( 'We communicate clearly',                   "No jargon. No 40‑slide reports. Just what's working, what's not, and what's next." ),
+            array( 'We focus on visibility, trust, and leads', 'Three measurable outcomes. Everything else is a means to those ends.' ),
+          );
+          foreach ( $whyus as $i => $p ) : ?>
+            <li data-reveal><span class="lvh-why__n"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span><strong><?php echo esc_html( $p[0] ); ?></strong><span><?php echo esc_html( $p[1] ); ?></span></li>
+          <?php endforeach; ?>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA — shader stage, bookends the hero
+       ============================================================ -->
+  <section class="lvh-sec lvh-sec--bay lvh-cta" id="cta">
+    <div class="lvh-bay lvh-cta__stage">
+      <canvas class="lvh-shader" data-shader="stage" aria-hidden="true"></canvas>
+      <div class="lvh-cta__copy">
+        <?php echo $eyebrow( 'Free review' ); ?>
+        <?php echo $title( 'Ready to improve your website', 'and local SEO?', 'h2', 'lvh-title--xl' ); ?>
+        <p class="lvh-deck" data-reveal>
+          We'll review your current website, local search visibility, and content strategy —
+          and walk you through the highest‑leverage opportunities to grow. No pitch deck, no obligation.
+        </p>
+        <ol class="lvh-cta__notes" data-reveal>
+          <li><b>30‑minute walkthrough</b>Scheduled this week, at a time that suits you.</li>
+          <li><b>We show you what's costing visibility</b>On screen, with your site and your competitors.</li>
+          <li><b>Written report within 48 hours</b>The fixes, in order, whether you hire us or not.</li>
+        </ol>
+      </div>
+      <div class="lvh-cta__form" data-reveal>
+        <?php
+        if ( shortcode_exists( 'contact-form-7' ) ) {
+          echo do_shortcode( '[contact-form-7 id="aca8789" title="SEO Audit"]' );
+        } else {
+          ?>
+          <a href="<?php echo $contact; ?>" class="lvh-btn lvh-btn--glow"><span>Request a free website &amp; SEO review</span><span class="lvh-btn__icon"><?php echo $arrow; ?></span></a>
+          <?php
+        }
+        ?>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        FAQ
        ============================================================ -->
-  <section class="faq-section" id="faq">
-    <div class="lvm-container">
-      <div class="eyebrow"><span class="eyebrow__num mono">13</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">FAQ</span></div>
-      <h2 class="section-h">Maryland web design &amp; SEO<br><em class="serif">questions, answered.</em></h2>
-
-      <div class="faq">
+  <section class="lvh-sec" id="faq">
+    <div class="lvh-wrap lvh-faqwrap">
+      <header class="lvh-faqwrap__head">
+        <?php echo $eyebrow( 'FAQ' ); ?>
+        <?php echo $title( 'Maryland web design &amp; SEO', 'questions, answered.' ); ?>
+        <p class="lvh-deck" data-reveal>Something else on your mind? <a class="lvh-textlink" href="<?php echo $contact; ?>">Ask us directly <?php echo $arrow; ?></a></p>
+      </header>
+      <div class="lvh-faq">
         <?php
         $faqs = array(
           array( 'Why does a local business need SEO?', "Most customers find local services through Google. If your business doesn't appear when someone searches for what you do in your city, you're invisible to people ready to buy. Local SEO makes you visible to the right people, in the right place, at the right moment." ),
@@ -1464,62 +988,11 @@ get_header();
           array( 'Can you update and support an existing website?', "Absolutely. Many of our clients come to us with an existing site that needs SEO, content, performance, or design improvements — not a full rebuild. We'll review what you have and recommend the smallest change that creates the biggest result." ),
         );
         foreach ( $faqs as $i => $q ) : ?>
-          <div class="faq__item">
-            <button class="faq__q" type="button" aria-expanded="false">
-              <span class="faq__qnum mono"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
-              <span class="faq__qtext"><?php echo esc_html( $q[0] ); ?></span>
-              <span class="faq__qicon" aria-hidden="true"><span></span><span></span></span>
-            </button>
-            <div class="faq__a-wrap">
-              <div class="faq__a"><?php echo esc_html( $q[1] ); ?></div>
-            </div>
-          </div>
+          <details class="lvh-faq__item" name="lvh-faq"<?php echo 0 === $i ? ' open' : ''; ?>>
+            <summary><span class="lvh-faq__n"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span><span class="lvh-faq__q"><?php echo esc_html( $q[0] ); ?></span><span class="lvh-faq__icon" aria-hidden="true"></span></summary>
+            <p><?php echo esc_html( $q[1] ); ?></p>
+          </details>
         <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       CTA
-       ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free review</div>
-      <h2 class="cta__h">Ready to improve your website<br><em class="serif">and local SEO?</em></h2>
-      <p class="cta__p">
-        We'll review your current website, local search visibility, and content
-        strategy — and walk you through the highest‑leverage opportunities to grow.
-        No pitch deck, no obligation.
-      </p>
-
-      <?php
-      // Free SEO audit form
-      if ( shortcode_exists( 'contact-form-7' ) ) {
-        echo do_shortcode( '[contact-form-7 id="aca8789" title="SEO Audit"]' );
-      } else {
-        ?>
-        <div class="cta__actions">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free website &amp; SEO review <span aria-hidden="true">→</span></a>
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--dark-ghost btn--lg">Contact Local Vocal</a>
-        </div>
-        <?php
-      }
-      ?>
-
-      <div class="cta__notes">
-        <div class="cta__note">
-          <span class="mono cta__note-lbl">01</span>
-          30‑minute walkthrough, scheduled this week
-        </div>
-        <div class="cta__note">
-          <span class="mono cta__note-lbl">02</span>
-          We share what's costing you visibility, on screen
-        </div>
-        <div class="cta__note">
-          <span class="mono cta__note-lbl">03</span>
-          Written report emailed within 48 hours
-        </div>
       </div>
     </div>
   </section>
