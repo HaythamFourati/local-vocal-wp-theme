@@ -1,0 +1,53 @@
+# Deploy the theme to SiteGround on every push to main.
+# Run it by hand from the Actions tab too; "dry run" lists the changes without making them.
+#
+# Needs one repository secret: SITEGROUND_DEPLOY_KEY (the private half of the
+# "GitHub Deploy" key in Site Tools → Devs → SSH Keys Manager).
+
+name: Deploy to SiteGround
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Only list what would change
+        type: boolean
+        default: true
+
+concurrency: deploy-production # one deploy at a time, in push order
+
+env:
+  SSH_HOST: ssh.localvocalmarketing.com
+  SSH_USER: u4-gj8wdcduelff
+  SSH_PORT: "18765"
+  SITE_DIR: www/localvocalmarketing.com/public_html
+  THEME_DIR: www/localvocalmarketing.com/public_html/wp-content/themes/local-vocal-wp-theme-main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.SITEGROUND_DEPLOY_KEY }}" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          # Pinned server fingerprint: the job refuses to connect if the server ever changes.
+          echo "[ssh.localvocalmarketing.com]:18765 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJWTr78+6QnnfVQz7o/2OA/DpmUcy5vAkz/CJ2Y/ad2A" > ~/.ssh/known_hosts
+
+      - name: Upload theme
+        run: |
+          rsync -rlz --checksum --delete --itemize-changes \
+            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }} \
+            --exclude '.git*' --exclude '.github' --exclude 'node_modules' --exclude '.DS_Store' \
+            --exclude 'package*.json' --exclude '*.md' \
+            -e "ssh -i ~/.ssh/deploy -p $SSH_PORT" \
+            ./ "$SSH_USER@$SSH_HOST:$THEME_DIR/"
+
+      - name: Clear SiteGround cache
+        if: github.event.inputs.dry_run != 'true'
+        run: ssh -i ~/.ssh/deploy -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "cd $SITE_DIR && wp sg purge"
