@@ -134,6 +134,40 @@ if ( ! defined( 'LVMI_VERSION' ) ) {
 }
 
 /**
+ * Pages whose slug differs between sites (live About is
+ * /maryland-digital-marketing-agency/), found by their template instead.
+ */
+function lvm_page_templates() {
+	return array( 'contact' => 'contact.php', 'about-us' => 'page-about-us.php' );
+}
+
+/**
+ * URL of the Contact or About page, wherever it lives; /{key}/ otherwise.
+ *
+ * @param string $key 'contact' or 'about-us'.
+ * @return string
+ */
+function lvm_url( $key ) {
+	static $cache = array();
+	if ( ! isset( $cache[ $key ] ) ) {
+		$tpl           = lvm_page_templates()[ $key ] ?? '';
+		$ids           = $tpl ? get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'meta_key' => '_wp_page_template', 'meta_value' => $tpl, 'numberposts' => 1, 'fields' => 'ids' ) ) : array(); // phpcs:ignore WordPress.DB.SlowDBQuery
+		$cache[ $key ] = $ids ? get_permalink( $ids[0] ) : home_url( '/' . $key . '/' );
+	}
+	return $cache[ $key ];
+}
+
+/**
+ * Is this the Contact or About page (by slug or by template)?
+ *
+ * @param string $key 'contact' or 'about-us'.
+ * @return bool
+ */
+function lvm_is_page( $key ) {
+	return is_page( $key ) || is_page_template( lvm_page_templates()[ $key ] ?? '' );
+}
+
+/**
  * Platform app icons: official marks and colours, used by the homepage and
  * inner pages. [label, tile background, svg (24 box), glyph size %]
  *

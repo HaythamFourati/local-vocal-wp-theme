@@ -44,9 +44,9 @@
       array( 'label' => 'Home',            'url' => home_url( '/' ) ),
       array( 'label' => 'Services',        'url' => home_url( '/services/' ), 'children' => $lvm_services ),
       array( 'label' => 'Requests',        'url' => home_url( '/intake-form/' ) ),
-      array( 'label' => 'About Us',        'url' => home_url( '/about-us/' ) ),
+      array( 'label' => 'About Us',        'url' => lvm_url( 'about-us' ) ),
       array( 'label' => 'Blog',            'url' => home_url( '/blog/' ) ),
-      array( 'label' => 'Contact',         'url' => home_url( '/contact/' ) ),
+      array( 'label' => 'Contact',         'url' => lvm_url( 'contact' ) ),
     );
     ?>
     <nav class="nav__links" aria-label="Primary">

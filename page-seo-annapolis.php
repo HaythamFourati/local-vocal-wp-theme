@@ -24,9 +24,9 @@ get_header(); ?>
       <div class="page-hero__crumb mono seo-geo__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/seo' ) ); ?>">SEO</a>
+        <a href="<?php echo esc_url( home_url( '/seo-optimization/' ) ); ?>">SEO</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Annapolis</span>
       </div>
@@ -40,7 +40,7 @@ get_header(); ?>
             Maryland's capital is competitive — law firms, restaurants, maritime services, and tourism all fighting for the same local searches. We help Annapolis businesses dominate the map pack and organic results with hyper-local SEO that understands the city's unique search behavior.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>

@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="page-hero__crumb mono">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
           <span class="page-hero__crumb-sep">/</span>
-          <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+          <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
           <span class="page-hero__crumb-sep">/</span>
           <span>Web Development</span>
         </div>
@@ -28,7 +28,7 @@ get_header(); ?>
           Mobile-first websites for Baltimore and Maryland businesses, with SEO structure baked in from the first commit. We ship with Core Web Vitals targets, JSON-LD schema, accessibility passes, and clean code your next developer will thank us for.
         </p>
         <div class="dev-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Start a project <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Start a project <span aria-hidden="true">→</span></a>
           <a href="#stack" class="btn btn--ghost btn--lg">View tech stack <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -143,7 +143,7 @@ get_header(); ?>
               <?php endforeach; ?>
             </ul>
 
-            <a class="dev-mode__cta" href="<?php echo esc_url( home_url( '/contact' ) ); ?>" data-lvm-intake>
+            <a class="dev-mode__cta" href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" data-lvm-intake>
               Pick this build <span aria-hidden="true">→</span>
             </a>
           </article>

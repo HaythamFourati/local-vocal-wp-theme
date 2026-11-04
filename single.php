@@ -77,7 +77,7 @@ if ( have_posts() ) : the_post();
       <div class="page-hero__crumb mono bl-art-head__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>">Field Notes</a>
+        <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Field Notes</a>
         <?php if ( $primary ) : ?>
           <span class="page-hero__crumb-sep">/</span>
           <a href="<?php echo esc_url( get_category_link( $primary->term_id ) ); ?>"><?php echo esc_html( $primary->name ); ?></a>
@@ -192,7 +192,7 @@ if ( have_posts() ) : the_post();
               <h3 class="bl-cta-banner__h">Reading is good. <em class="serif">Doing is better.</em></h3>
               <p class="bl-cta-banner__p">Want this exact playbook applied to your own site? We'll audit your website and local SEO and show you the highest-leverage moves first — no decks, no fluff.</p>
               <div class="bl-cta-banner__actions">
-                <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary" data-lvm-intake>Get a free review <span aria-hidden="true">→</span></a>
+                <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary" data-lvm-intake>Get a free review <span aria-hidden="true">→</span></a>
                 <a href="tel:+14438521000" class="bl-cta-banner__phone mono">↳ (443) 852‑1000</a>
               </div>
             </div>

@@ -24,7 +24,7 @@ get_header(); ?>
       <div class="page-hero__crumb mono ind-brief__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Industries</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Industries</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Auto Glass</span>
       </div>
@@ -38,7 +38,7 @@ get_header(); ?>
             Auto glass is a high-intent, local search business. Customers need service now — and they Google it. We make sure your Maryland shop is the first one they find, call, and choose over Safelite and the competition.
           </p>
           <div class="ind-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#services" class="btn btn--ghost btn--lg">See what we do <span aria-hidden="true">↓</span></a>
           </div>
         </div>

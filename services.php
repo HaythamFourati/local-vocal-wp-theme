@@ -116,7 +116,7 @@ get_header(); ?>
 
         foreach ( $services as $s ) : ?>
           <li class="idx-row">
-            <a class="idx-row__link" href="<?php echo esc_url( home_url( '/' . $s['slug'] ) ); ?>" aria-label="<?php echo esc_attr( $s['name'] ); ?> — <?php echo esc_attr( $s['sig'] ); ?>">
+            <a class="idx-row__link" href="<?php echo esc_url( home_url( '/' . $s['slug'] . '/' ) ); ?>" aria-label="<?php echo esc_attr( $s['name'] ); ?> — <?php echo esc_attr( $s['sig'] ); ?>">
 
               <div class="idx-row__service">
                 <span class="idx-row__num mono"><?php echo esc_html( $s['num'] ); ?></span>

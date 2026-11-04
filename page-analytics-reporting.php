@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="page-hero__crumb mono">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
           <span class="page-hero__crumb-sep">/</span>
-          <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+          <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
           <span class="page-hero__crumb-sep">/</span>
           <span>Analytics &amp; Reporting</span>
         </div>
@@ -28,7 +28,7 @@ get_header(); ?>
           Tracking installed correctly. The KPIs that matter for Maryland service businesses, not vanity metrics. A monthly written report telling you what worked, what didn't, and what's next — in plain English.
         </p>
         <div class="an-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free review <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free review <span aria-hidden="true">→</span></a>
           <a href="#funnel" class="btn btn--ghost btn--lg">See sample report <span aria-hidden="true">↓</span></a>
         </div>
       </div>

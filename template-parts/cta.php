@@ -68,7 +68,7 @@ $a = wp_parse_args(
             echo do_shortcode( '[contact-form-7 id="aca8789" title="SEO Audit"]' );
           } else {
             ?>
-            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="lvh-btn lvh-btn--glow"><span>Request a free website &amp; SEO review</span><span class="lvh-btn__icon"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="lvh-btn lvh-btn--glow"><span>Request a free website &amp; SEO review</span><span class="lvh-btn__icon"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
             <?php
           }
           ?>

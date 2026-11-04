@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="page-hero__crumb mono">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
           <span class="page-hero__crumb-sep">/</span>
-          <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+          <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
           <span class="page-hero__crumb-sep">/</span>
           <span>Social Media</span>
         </div>
@@ -28,7 +28,7 @@ get_header(); ?>
           Consistent, on-brand posting that keeps your business top-of-mind for local customers across Baltimore and Maryland — service updates, blog promotion, seasonal content, and community moments. We're not chasing trends. We're building a steady local presence.
         </p>
         <div class="sm-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free social audit <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free social audit <span aria-hidden="true">→</span></a>
           <a href="#calendar" class="btn btn--ghost btn--lg">See a sample calendar <span aria-hidden="true">↓</span></a>
         </div>
       </div>

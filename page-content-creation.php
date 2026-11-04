@@ -23,7 +23,7 @@ get_header(); ?>
       <div class="page-hero__crumb mono cn-mast__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Content &amp; Blog</span>
       </div>
@@ -46,7 +46,7 @@ get_header(); ?>
       </div>
 
       <div class="cn-mast__ctas">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a content plan <span aria-hidden="true">→</span></a>
+        <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a content plan <span aria-hidden="true">→</span></a>
         <a href="#articles" class="btn btn--ghost btn--lg">Read sample articles <span aria-hidden="true">↓</span></a>
       </div>
     </div>

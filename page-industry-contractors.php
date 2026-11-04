@@ -24,7 +24,7 @@ get_header(); ?>
       <div class="page-hero__crumb mono ind-brief__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Industries</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Industries</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Contractors</span>
       </div>
@@ -38,7 +38,7 @@ get_header(); ?>
             Maryland contractors live and die by referrals — until they don't. We build the digital presence that fills the gaps between word-of-mouth, keeps your pipeline predictable, and makes sure the right jobs find you first.
           </p>
           <div class="ind-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#services" class="btn btn--ghost btn--lg">See what we do <span aria-hidden="true">↓</span></a>
           </div>
         </div>

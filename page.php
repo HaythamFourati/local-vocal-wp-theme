@@ -22,7 +22,7 @@ get_header(); ?>
       <?php endif; ?>
       <div class="page-hero__ctas">
         <a href="tel:+14438521000" class="btn btn--primary btn--lg">↳ Call (443) 852‑1000</a>
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--ghost btn--lg">Get in touch →</a>
+        <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--ghost btn--lg">Get in touch →</a>
       </div>
     </div>
   </section>

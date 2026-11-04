@@ -26,7 +26,7 @@ get_header(); ?>
       <div class="page-hero__crumb mono dm-brief__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Digital Marketing</span>
       </div>
@@ -40,7 +40,7 @@ get_header(); ?>
             A focused mix of SEO, social, content, and paid for Maryland businesses — tied to one set of business outcomes. We write the brief, run the channels, and report on the only thing that matters: did the phone ring more this quarter than last.
           </p>
           <div class="dm-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#mix" class="btn btn--ghost btn--lg">View channel mix <span aria-hidden="true">↓</span></a>
           </div>
         </div>

@@ -53,7 +53,7 @@ get_header(); ?>
       ?>
       <?php if ( ! empty( $cats ) ) : ?>
         <nav class="bl-mast__nav" aria-label="Article categories">
-          <a class="bl-cat<?php echo ! $current_cat_id ? ' bl-cat--active' : ''; ?>" href="<?php echo esc_url( home_url( '/blog' ) ); ?>">
+          <a class="bl-cat<?php echo ! $current_cat_id ? ' bl-cat--active' : ''; ?>" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">
             <span class="bl-cat__lbl">All</span>
             <span class="bl-cat__count mono"><?php echo (int) wp_count_posts()->publish; ?></span>
           </a>
@@ -255,7 +255,7 @@ get_header(); ?>
           <span class="bl-empty__tag mono">Empty archive · 00 issues filed</span>
           <h2 class="bl-empty__h">Nothing here<br><em class="serif">just yet.</em></h2>
           <p class="bl-empty__p">We're working on the first set of articles. In the meantime, get in touch — we'll likely answer your question with a post next week.</p>
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Ask a question <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg">Ask a question <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>

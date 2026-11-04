@@ -24,9 +24,9 @@ get_header(); ?>
       <div class="page-hero__crumb mono seo-geo__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/seo' ) ); ?>">SEO</a>
+        <a href="<?php echo esc_url( home_url( '/seo-optimization/' ) ); ?>">SEO</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Severna Park</span>
       </div>
@@ -40,7 +40,7 @@ get_header(); ?>
             Severna Park's affluent residential market means high-value local searches — home services, professional services, and family-focused businesses. We help Severna Park companies capture these premium customers through targeted local SEO that speaks to suburban search behavior.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>

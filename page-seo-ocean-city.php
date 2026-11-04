@@ -24,9 +24,9 @@ get_header(); ?>
       <div class="page-hero__crumb mono seo-geo__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/seo' ) ); ?>">SEO</a>
+        <a href="<?php echo esc_url( home_url( '/seo-optimization/' ) ); ?>">SEO</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>Ocean City</span>
       </div>
@@ -40,7 +40,7 @@ get_header(); ?>
             Ocean City's extreme seasonality — 8 million summer visitors, 8,000 winter residents — creates unique SEO challenges and opportunities. We help Ocean City businesses dominate the intense summer search season while maintaining year-round visibility through strategic seasonal SEO that captures tourist intent and local business.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>

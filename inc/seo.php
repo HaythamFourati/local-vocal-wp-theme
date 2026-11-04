@@ -189,7 +189,7 @@ function lvm_seo_business_node() {
 		),
 		'areaServed'                => array_map( 'lvm_seo_place', $b['areas'] ),
 		'knowsAbout'                => $b['knows_about'],
-		'founder'                   => array( '@id' => home_url( '/about-us/#garey-simmons' ) ),
+		'founder'                   => array( '@id' => lvm_url( 'about-us' ) . '#garey-simmons' ),
 		'sameAs'                    => $b['same_as'],
 	);
 }
@@ -205,7 +205,7 @@ function lvm_seo_people() {
 		function ( $p ) {
 			return array(
 				'@type'      => 'Person',
-				'@id'        => home_url( '/about-us/#' . $p[0] ),
+				'@id'        => lvm_url( 'about-us' ) . '#' . $p[0],
 				'name'       => $p[1],
 				'jobTitle'   => $p[2],
 				'image'      => lvm_seo_img( 'team/' . $p[0] . '.jpg' ),
@@ -317,7 +317,7 @@ function lvm_seo_page_nodes() {
 	}
 
 	// Team on About
-	if ( is_page( 'about-us' ) ) {
+	if ( lvm_is_page( 'about-us' ) ) {
 		foreach ( lvm_seo_people() as $i => $person ) {
 			$nodes[ 'lvm_person_' . $i ] = $person;
 		}
@@ -341,7 +341,7 @@ function lvm_seo_print_schema() {
 	);
 	if ( $url ) {
 		$webpage = array(
-			'@type'      => is_page( 'about-us' ) ? 'AboutPage' : ( is_page( 'contact' ) ? 'ContactPage' : 'WebPage' ),
+			'@type'      => lvm_is_page( 'about-us' ) ? 'AboutPage' : ( lvm_is_page( 'contact' ) ? 'ContactPage' : 'WebPage' ),
 			'@id'        => $url . '#webpage',
 			'url'        => $url,
 			'name'       => lvm_seo_title() ? lvm_seo_title() : wp_get_document_title(),
@@ -443,7 +443,7 @@ function lvm_seo_llms_txt() {
 	$b     = lvm_business();
 	$pages = lvm_seo_pages();
 	$link  = function ( $key, $label ) use ( $pages ) {
-		$url = 'home' === $key ? home_url( '/' ) : home_url( '/' . $key . '/' );
+		$url = 'home' === $key ? home_url( '/' ) : ( isset( lvm_page_templates()[ $key ] ) ? lvm_url( $key ) : home_url( '/' . $key . '/' ) );
 		$d   = $pages[ $key ]['desc'] ?? '';
 		return '- [' . $label . '](' . $url . '): ' . $d;
 	};

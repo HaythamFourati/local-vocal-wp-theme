@@ -23,10 +23,10 @@ $lvm_head = $lvm_page['faq_h'] ?? array( 'Common', 'questions, answered.' );
       <header class="lvh-faqwrap__head">
         <span class="lvh-eyebrow">FAQ</span>
         <h2 class="lvh-title" id="lvm-faq-h"><?php echo wp_kses_post( $lvm_head[0] ); ?> <span class="lvh-dim"><?php echo wp_kses_post( $lvm_head[1] ); ?></span></h2>
-        <?php if ( is_page( 'contact' ) ) : $lvm_biz = lvm_business(); ?>
+        <?php if ( lvm_is_page( 'contact' ) ) : $lvm_biz = lvm_business(); ?>
         <p class="lvh-deck">Still unsure? <a class="lvh-textlink" href="tel:<?php echo esc_attr( $lvm_biz['phone'] ); ?>">Call <?php echo esc_html( $lvm_biz['phone_human'] ); ?></a> and talk to one of the team.</p>
         <?php else : ?>
-        <p class="lvh-deck">Something else on your mind? <a class="lvh-textlink" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Ask us directly <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+        <p class="lvh-deck">Something else on your mind? <a class="lvh-textlink" href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>">Ask us directly <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
         <?php endif; ?>
       </header>
       <div class="lvh-faq">

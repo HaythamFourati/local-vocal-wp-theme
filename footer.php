@@ -56,7 +56,7 @@
           <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a></li>
           <li><a href="<?php echo esc_url( home_url( '/#blog' ) ); ?>">Blog</a></li>
           <li><a href="<?php echo esc_url( home_url( '/#faq' ) ); ?>">FAQ</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
+          <li><a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>">Contact</a></li>
           <li><a href="<?php echo esc_url( get_privacy_policy_url() ?: home_url( '/privacy-policy/' ) ); ?>">Privacy</a></li>
           <li><a href="<?php echo esc_url( home_url( '/terms-of-service-2/' ) ); ?>">Terms</a></li>
         </ul>

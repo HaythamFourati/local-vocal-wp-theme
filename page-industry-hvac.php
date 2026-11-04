@@ -24,7 +24,7 @@ get_header(); ?>
       <div class="page-hero__crumb mono ind-brief__crumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
         <span class="page-hero__crumb-sep">/</span>
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Industries</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Industries</a>
         <span class="page-hero__crumb-sep">/</span>
         <span>HVAC</span>
       </div>
@@ -38,7 +38,7 @@ get_header(); ?>
             HVAC is seasonal, competitive, and hyper-local. We make sure your company is the first one Maryland homeowners find — and trust — when the AC dies in July or the furnace quits in January.
           </p>
           <div class="ind-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#services" class="btn btn--ghost btn--lg">See what we do <span aria-hidden="true">↓</span></a>
           </div>
         </div>

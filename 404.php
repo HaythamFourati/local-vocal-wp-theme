@@ -14,17 +14,17 @@ get_header(); ?>
         <p class="err404__p">The page you&rsquo;re looking for doesn&rsquo;t exist or has been moved. Try one of these instead.</p>
 
         <div class="err404__links">
-          <a class="err404__link" href="<?php echo esc_url( home_url( '/services' ) ); ?>">
+          <a class="err404__link" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">
             <span class="err404__link-num mono">01</span>
             <span class="err404__link-t">Our services</span>
             <span class="err404__link-d">Web design, SEO, content, social, support.</span>
           </a>
-          <a class="err404__link" href="<?php echo esc_url( home_url( '/blog' ) ); ?>">
+          <a class="err404__link" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">
             <span class="err404__link-num mono">02</span>
             <span class="err404__link-t">Latest blog posts</span>
             <span class="err404__link-d">Local SEO insights and case studies.</span>
           </a>
-          <a class="err404__link" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">
+          <a class="err404__link" href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>">
             <span class="err404__link-num mono">03</span>
             <span class="err404__link-t">Contact us</span>
             <span class="err404__link-d">Send a message or call directly.</span>

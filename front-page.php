@@ -10,7 +10,7 @@
 get_header();
 
 $assets  = get_template_directory_uri() . '/assets/projects/';
-$contact = esc_url( home_url( '/contact' ) );
+$contact = esc_url( lvm_url( 'contact' ) );
 $arrow   = '<svg class="lvh-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
 
 $icon = function ( $paths ) {
@@ -464,7 +464,7 @@ $eyebrow = function ( $text ) {
       <ol class="lvh-index">
         <?php foreach ( $services as $i => $s ) : ?>
           <li data-reveal>
-            <a class="lvh-index__row" href="<?php echo esc_url( home_url( $s[4] ) ); ?>" data-peek="<?php echo (int) $i; ?>">
+            <a class="lvh-index__row" href="<?php echo esc_url( trailingslashit( home_url( $s[4] ) ) ); ?>" data-peek="<?php echo (int) $i; ?>">
               <span class="lvh-index__num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
               <span class="lvh-index__title"><?php echo esc_html( $s[0] ); ?></span>
               <span class="lvh-index__text">
@@ -959,7 +959,7 @@ $eyebrow = function ( $text ) {
           );
           foreach ( $inds as $row ) : ?>
             <li data-reveal>
-              <a class="lvh-trade" href="<?php echo esc_url( home_url( $row[2] ) ); ?>">
+              <a class="lvh-trade" href="<?php echo esc_url( '/contact' === $row[2] ? lvm_url( 'contact' ) : home_url( $row[2] . '/' ) ); ?>">
                 <span class="lvh-trade__ico"><?php echo $icon( $row[3] ); ?></span><span class="lvh-trade__name"><?php echo esc_html( $row[0] ); ?></span><small><?php echo esc_html( $row[1] ); ?></small>
               </a>
             </li>

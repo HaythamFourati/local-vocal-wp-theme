@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="page-hero__crumb mono">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Local Vocal</a>
           <span class="page-hero__crumb-sep">/</span>
-          <a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a>
+          <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
           <span class="page-hero__crumb-sep">/</span>
           <span>Local SEO</span>
         </div>
@@ -28,7 +28,7 @@ get_header(); ?>
           Local SEO that gets Baltimore and Maryland businesses found in the map pack and on page one for the searches that actually convert. Built around your service area, your service list, and your real customers — not generic checklists.
         </p>
         <div class="seo-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free audit <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free audit <span aria-hidden="true">→</span></a>
           <a href="#serp" class="btn btn--ghost btn--lg">See a sample report <span aria-hidden="true">↓</span></a>
         </div>
       </div>
