@@ -36,8 +36,8 @@ get_header(); ?>
       </div>
 
       <h1 class="ct-mast__h">
-        <span>Get in</span>
-        <em class="serif">touch.</em>
+        <span>Contact our</span>
+        <em class="serif">Maryland team.</em>
       </h1>
 
       <div class="ct-mast__sub-row">
@@ -122,7 +122,7 @@ get_header(); ?>
         <span class="ct-section-bar__num">§ 02</span>
         <span class="ct-section-bar__rule"></span>
         <span class="ct-section-bar__lbl">Project brief</span>
-        <span class="ct-section-bar__tag">Form · 04 fields</span>
+        <span class="ct-section-bar__tag">Form · 4 short steps</span>
       </div>
 
       <div class="ct-brief__grid">
@@ -162,20 +162,15 @@ get_header(); ?>
 
           <div class="ct-brief__form contact-form">
             <?php
-            if ( function_exists( 'wpcf7_contact_form' ) ) {
+            // Multi-step intake (same questions this section lists); CF7, then email and phone, as fallbacks
+            if ( shortcode_exists( 'lvm_seo_intake' ) ) {
+              echo do_shortcode( '[lvm_seo_intake]' );
+            } elseif ( function_exists( 'wpcf7_contact_form' ) ) {
               echo do_shortcode( '[contact-form-7 id="1570408" title="Contact Form"]' );
             } else {
-              ?>
-              <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
-                <p><label class="mono">Full name<input type="text" name="name" placeholder="Jane Doe" required></label></p>
-                <p><label class="mono">Email address<input type="email" name="email" placeholder="jane@business.com" required></label></p>
-                <p><label class="mono">Phone (optional)<input type="tel" name="phone" placeholder="(443) 555 0100"></label></p>
-                <p><label class="mono">Tell us what you're working on<textarea name="message" rows="6" placeholder="A few sentences about your business and what you'd like help with…" required></textarea></label></p>
-                <input type="hidden" name="action" value="submit_contact_form">
-                <?php wp_nonce_field( 'contact_form_submit' ); ?>
-                <p><input type="submit" value="Send brief →"></p>
-              </form>
-              <?php
+              // ponytail: last resort if both form plugins are off; nothing handles a raw POST here.
+              $lvm_biz = lvm_business();
+              echo '<p>Email <a href="mailto:' . esc_attr( $lvm_biz['email'] ) . '">' . esc_html( $lvm_biz['email'] ) . '</a> or call <a href="tel:' . esc_attr( $lvm_biz['phone'] ) . '">' . esc_html( $lvm_biz['phone_human'] ) . '</a>.</p>';
             }
             ?>
           </div>
@@ -266,41 +261,7 @@ get_header(); ?>
   <!-- ============================================================
        FAQ
        ============================================================ -->
-  <section class="ct-faq">
-    <div class="lvm-container">
-
-      <div class="ct-section-bar mono">
-        <span class="ct-section-bar__num">§ 04</span>
-        <span class="ct-section-bar__rule"></span>
-        <span class="ct-section-bar__lbl">FAQ</span>
-        <span class="ct-section-bar__tag">06 questions</span>
-      </div>
-
-      <h2 class="ct-faq__h">Quick answers<br><em class="serif">before you write.</em></h2>
-
-      <div class="faq ct-faq__list">
-        <?php
-        $faqs = array(
-          array( 'What makes Local Vocal different?', 'We combine local Maryland expertise with proven SEO + web design practices. You work with the same three people from first call through every blog post, design tweak, and SEO update — no juniors, no offshoring.' ),
-          array( 'How do I get started?', 'Send us a message or call. We\'ll schedule a 30-minute call, review your current setup live, and email a written recommendation within 48 hours. No deck, no pressure.' ),
-          array( 'What services do you offer?', 'Website design, local SEO, blog content, social media management, analytics &amp; reporting, and digital marketing strategy &mdash; for local Maryland businesses and U.S. service brands.' ),
-          array( 'Can you customize for my business?', 'Yes. Every engagement starts with a review, not a template. Service-area pages, blog topics, and design choices are tailored to your business and your customers.' ),
-          array( 'How is pricing structured?', 'Pricing depends on scope &mdash; we share a flat number after the first call so there are no surprises. Most clients fall into recurring monthly retainers; one-off projects are available too.' ),
-          array( 'Do you offer package deals?', 'Yes &mdash; bundles for businesses combining web design with ongoing SEO + content, at a meaningful discount vs. piecing them out.' ),
-        );
-        foreach ( $faqs as $i => $q ) : ?>
-          <div class="faq__item">
-            <button class="faq__q" type="button" aria-expanded="false">
-              <span class="faq__qnum mono"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
-              <span class="faq__qtext"><?php echo $q[0]; ?></span>
-              <span class="faq__qicon" aria-hidden="true"><span></span><span></span></span>
-            </button>
-            <div class="faq__a-wrap"><div class="faq__a"><?php echo $q[1]; ?></div></div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); ?>
 
   <!-- ============================================================
        FINAL CTA

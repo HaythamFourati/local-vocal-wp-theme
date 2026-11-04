@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="seo-geo__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">MD/06</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">SEO · Baltimore Market</span></div>
-          <h1 class="seo-geo__h">Dominate Baltimore's<br><em class="serif">complex urban search.</em></h1>
+          <h1 class="seo-geo__h">Baltimore SEO &amp; web design<br><em class="serif">that wins local search.</em></h1>
           <p class="seo-geo__sub">
             Baltimore's diverse neighborhoods, major institutions, and competitive business environment create complex local SEO challenges. From Federal Hill to Fells Point, Johns Hopkins to the Inner Harbor, Baltimore businesses need hyper-local strategies that understand neighborhood boundaries, institutional search patterns, and urban search behavior.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -215,18 +215,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free Baltimore SEO audit</div>
-      <h2 class="cta__h">Ready to dominate<br><em class="serif">Baltimore search?</em></h2>
-      <p class="cta__p">We'll analyze your Baltimore search presence, identify neighborhood and institutional opportunities competitors miss, and create a hyper-local strategy to capture more urban business.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start your audit today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free Baltimore SEO audit',
+    'lead'    => 'Ready to dominate',
+    'tail'    => 'Baltimore search?',
+    'deck'    => 'We\'ll analyze your Baltimore search presence, identify neighborhood and institutional opportunities competitors miss, and create a hyper-local strategy to capture more urban business.',
+  ) );
+  ?>
 
 </main>
 

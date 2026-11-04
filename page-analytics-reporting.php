@@ -23,12 +23,12 @@ get_header(); ?>
           <span>Analytics &amp; Reporting</span>
         </div>
         <div class="eyebrow"><span class="eyebrow__num mono">S/05</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Service · Analytics</span></div>
-        <h1 class="an-hero__h">A dashboard you'll actually open,<br><em class="serif">and a report you'll actually read.</em></h1>
+        <h1 class="an-hero__h">SEO reporting &amp; analytics<br><em class="serif">you'll actually read.</em></h1>
         <p class="an-hero__sub">
-          Tracking installed correctly. The KPIs that matter for service businesses, not vanity metrics. A monthly written report telling you what worked, what didn't, and what's next — in plain English.
+          Tracking installed correctly. The KPIs that matter for Maryland service businesses, not vanity metrics. A monthly written report telling you what worked, what didn't, and what's next — in plain English.
         </p>
         <div class="an-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free review <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free review <span aria-hidden="true">→</span></a>
           <a href="#funnel" class="btn btn--ghost btn--lg">See sample report <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -292,18 +292,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free analytics review</div>
-      <h2 class="cta__h">Ready to make<br><em class="serif">data-driven decisions?</em></h2>
-      <p class="cta__p">We'll review your current analytics, find the gaps, and show you the numbers that actually matter for your business.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free review <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free analytics review',
+    'lead'    => 'Ready to make',
+    'tail'    => 'data-driven decisions?',
+    'deck'    => 'We\'ll review your current analytics, find the gaps, and show you the numbers that actually matter for your business.',
+  ) );
+  ?>
 
 </main>
 

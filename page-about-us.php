@@ -92,7 +92,7 @@ get_header(); ?>
             'spec'  => 'Strategy · Sales · Client growth',
             'bio'   => 'Garey runs the agency. 15+ years in digital marketing and business strategy, and the person founders end up on a call with when they need a clear answer. He picks the work we say yes to and decides which problems we solve first.',
             'quote' => 'If we can\'t make the phone ring more, we shouldn\'t be on the invoice.',
-            'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2023/08/GareySimmons-smile-1.jpg',
+            'photo' => get_theme_file_uri( '/assets/images/team/garey-simmons.jpg' ),
           ),
           array(
             'num'   => '02',
@@ -102,7 +102,7 @@ get_header(); ?>
             'spec'  => 'Engineering · Performance · SEO',
             'bio'   => 'Haytham builds the sites. Front-end engineering, WordPress, and the on-page SEO foundations every Local Vocal site is judged on. If a site loads fast and ranks well, it\'s usually because of the decisions made before the first commit.',
             'quote' => 'Stable stack, long shelf life. Every site we ship is auditable, replaceable, and well-documented.',
-            'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2025/02/WhatsApp-Image-2023-02-20-at-12.00.54.jpg',
+            'photo' => get_theme_file_uri( '/assets/images/team/haytham-fourati.jpg' ),
           ),
           array(
             'num'   => '03',
@@ -112,7 +112,7 @@ get_header(); ?>
             'spec'  => 'Content · Calendars · Community',
             'bio'   => 'David runs the social side. Plans the calendar, writes the captions, edits the photo, replies to the comments. He keeps client brands visible without chasing trends — the steady, on-brand presence that builds trust between launches.',
             'quote' => 'Predictable cadence beats viral every time. Show up on the same day every week.',
-            'photo' => 'https://localvocalmarketing.com/wp-content/uploads/2025/02/467235083_10234123037800716_1873456959756484989_n-1.jpg',
+            'photo' => get_theme_file_uri( '/assets/images/team/david-breth.jpg' ),
           ),
         );
         foreach ( $members as $i => $m ) : ?>
@@ -277,18 +277,14 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free consultation</div>
-      <h2 class="cta__h">Want to work<br><em class="serif">with a small team?</em></h2>
-      <p class="cta__p">Tell us a bit about your business. We'll be honest about whether we're the right fit — and which service to start with if we are.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get in touch <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free consultation',
+    'lead'    => 'Want to work',
+    'tail'    => 'with a small team?',
+    'deck'    => 'Tell us a bit about your business. We\'ll be honest about whether we\'re the right fit — and which service to start with if we are.',
+  ) );
+  ?>
 
 </main>
 

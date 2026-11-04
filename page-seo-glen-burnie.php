@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="seo-geo__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">MD/03</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">SEO · Glen Burnie Market</span></div>
-          <h1 class="seo-geo__h">Capture Glen Burnie's<br><em class="serif">high-volume local searches.</em></h1>
+          <h1 class="seo-geo__h">Glen Burnie SEO &amp; web design<br><em class="serif">for high-volume local search.</em></h1>
           <p class="seo-geo__sub">
             Glen Burnie's high traffic location on I-97 and proximity to BWI make it a hub for retail, auto services, and convenience businesses. We help Glen Burnie companies dominate the intense local search competition through strategic SEO that captures both residents and pass-through traffic.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -215,18 +215,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free Glen Burnie SEO audit</div>
-      <h2 class="cta__h">Ready to dominate<br><em class="serif">Glen Burnie search?</em></h2>
-      <p class="cta__p">We'll analyze your Glen Burnie search presence, identify where high-volume competitors are winning, and create a strategy to capture more local and pass-through traffic.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start your audit today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free Glen Burnie SEO audit',
+    'lead'    => 'Ready to dominate',
+    'tail'    => 'Glen Burnie search?',
+    'deck'    => 'We\'ll analyze your Glen Burnie search presence, identify where high-volume competitors are winning, and create a strategy to capture more local and pass-through traffic.',
+  ) );
+  ?>
 
 </main>
 

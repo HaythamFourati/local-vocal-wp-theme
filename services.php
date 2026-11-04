@@ -19,9 +19,9 @@ get_header(); ?>
         <span>Services</span>
       </div>
       <div class="eyebrow"><span class="eyebrow__num mono">00</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Services index</span></div>
-      <h1 class="idx-hero__h">Six focused services<br><em class="serif">for local growth.</em></h1>
+      <h1 class="idx-hero__h">Web design, SEO &amp; marketing<br><em class="serif">services in Maryland.</em></h1>
       <p class="idx-hero__sub">
-        Buy one and the rest get sharper. Combine them and you stop competing for attention — you start competing for the click. Each service has a dedicated page with its own playbook, sample work, and KPI targets.
+        Web design, local SEO, content and social for Baltimore and Maryland businesses. Buy one and the rest get sharper. Combine them and you stop competing for attention — you start competing for the click. Each service has a dedicated page with its own playbook, sample work, and KPI targets.
       </p>
       <div class="idx-hero__ctas">
         <a href="#index" class="btn btn--primary btn--lg">Browse the index <span aria-hidden="true">↓</span></a>
@@ -165,18 +165,14 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free consultation</div>
-      <h2 class="cta__h">Not sure where<br><em class="serif">to start?</em></h2>
-      <p class="cta__p">Tell us about your business. We'll recommend the single highest-leverage service to start with — and what to ignore for now.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Contact us today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free consultation',
+    'lead'    => 'Not sure where',
+    'tail'    => 'to start?',
+    'deck'    => 'Tell us about your business. We\'ll recommend the single highest-leverage service to start with — and what to ignore for now.',
+  ) );
+  ?>
 
 </main>
 

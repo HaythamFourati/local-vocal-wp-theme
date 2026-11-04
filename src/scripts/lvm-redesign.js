@@ -3,6 +3,7 @@
    - Mobile nav drawer
    - FAQ accordion
    - Annotated website pin positioning
+   - Inner-page scroll reveal
 */
 (function () {
   'use strict';
@@ -91,6 +92,30 @@
         window.addEventListener('load', positionPins);
         setTimeout(positionPins, 300);
       }
+    }
+
+    /* ---------- Inner pages: scroll reveal (homepage has its own) ----------
+       Each block in a section below the hero fades up as it enters,
+       staggered per batch. Off for reduced motion; the hero animates
+       in with CSS (site.css). */
+    var blocks = document.querySelectorAll('body.lvm-redesign:not(.home) main > :not(:first-child) > .lvm-container > *');
+    if (blocks.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('lvm-js');
+      var revealIO = new IntersectionObserver(function (entries) {
+        var n = 0;
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.style.setProperty('--d', Math.min(n++ * 70, 350) + 'ms');
+          e.target.classList.add('is-in');
+          revealIO.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -6% 0px' });
+      blocks.forEach(function (el) {
+        // Already on screen (anchor jump, refresh mid-page): show at once.
+        if (el.getBoundingClientRect().top < window.innerHeight) return;
+        el.setAttribute('data-lvm-reveal', '');
+        revealIO.observe(el);
+      });
     }
   });
 })();

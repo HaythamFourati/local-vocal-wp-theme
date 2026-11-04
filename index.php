@@ -29,7 +29,7 @@ get_header(); ?>
         <span>Blog</span>
       </div>
 
-      <h1 class="bl-mast__h">Field<br><em class="serif">Notes.</em></h1>
+      <h1 class="bl-mast__h">Local SEO &amp; web design<br><em class="serif">notes for Maryland businesses.</em></h1>
 
       <div class="bl-mast__sub-row">
         <p class="bl-mast__sub">
@@ -265,18 +265,14 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free review</div>
-      <h2 class="cta__h">Want this applied<br><em class="serif">to your own site?</em></h2>
-      <p class="cta__p">Reading is good. Doing is better. We'll review your current website and local SEO and show you the highest-leverage moves first.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Contact us today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free review',
+    'lead'    => 'Want this applied',
+    'tail'    => 'to your own site?',
+    'deck'    => 'Reading is good. Doing is better. We\'ll review your current website and local SEO and show you the highest-leverage moves first.',
+  ) );
+  ?>
 
 </main>
 

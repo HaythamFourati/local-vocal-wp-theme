@@ -29,7 +29,7 @@ get_header(); ?>
       </div>
 
       <h1 class="cn-mast__h">
-        Blog content<br>
+        SEO blog writing in Maryland<br>
         <em class="serif">that earns its index slot.</em>
       </h1>
 
@@ -46,7 +46,7 @@ get_header(); ?>
       </div>
 
       <div class="cn-mast__ctas">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a content plan <span aria-hidden="true">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a content plan <span aria-hidden="true">→</span></a>
         <a href="#articles" class="btn btn--ghost btn--lg">Read sample articles <span aria-hidden="true">↓</span></a>
       </div>
     </div>
@@ -271,18 +271,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free content plan</div>
-      <h2 class="cta__h">Ready for blog content<br><em class="serif">that actually ranks?</em></h2>
-      <p class="cta__p">Tell us your services and service area — we'll send back a 30-day content plan with topics, target keywords, and where they fit in your funnel.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get a free content plan <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free content plan',
+    'lead'    => 'Ready for blog content',
+    'tail'    => 'that actually ranks?',
+    'deck'    => 'Tell us your services and service area — we\'ll send back a 30-day content plan with topics, target keywords, and where they fit in your funnel.',
+  ) );
+  ?>
 
 </main>
 

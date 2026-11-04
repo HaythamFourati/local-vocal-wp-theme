@@ -33,12 +33,12 @@ get_header(); ?>
 
         <div class="ind-brief__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">IND/05</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Industry · Home Care</span></div>
-          <h1 class="ind-brief__h">Families find you<br><em class="serif">when it matters most.</em></h1>
+          <h1 class="ind-brief__h">Home care marketing &amp; SEO:<br><em class="serif">found when it matters most.</em></h1>
           <p class="ind-brief__sub">
-            Home care decisions are emotional, urgent, and deeply personal. We help agencies build the digital trust and visibility that families need — so when they're searching at midnight, you're the name they call.
+            Home care decisions are emotional, urgent, and deeply personal. We help Maryland home care agencies build the digital trust and visibility that families need — so when they're searching at midnight, you're the name they call.
           </p>
           <div class="ind-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#services" class="btn btn--ghost btn--lg">See what we do <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -175,18 +175,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free consultation</div>
-      <h2 class="cta__h">Ready to grow<br><em class="serif">your agency?</em></h2>
-      <p class="cta__p">We'll audit your current online presence, show you where families are choosing competitors, and build a plan to earn their trust first.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get started today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free consultation',
+    'lead'    => 'Ready to grow',
+    'tail'    => 'your agency?',
+    'deck'    => 'We\'ll audit your current online presence, show you where families are choosing competitors, and build a plan to earn their trust first.',
+  ) );
+  ?>
 
 </main>
 

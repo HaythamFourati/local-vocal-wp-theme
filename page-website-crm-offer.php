@@ -11,7 +11,7 @@ get_header(); ?>
     <div class="page-hero__grid-bg" aria-hidden="true"></div>
     <div class="lvm-container page-hero__inner" style="max-width:920px;">
       <div class="page-hero__crumb mono">
-        <span style="background:var(--accent);color:var(--accent-ink);padding:4px 10px;border-radius:999px;letter-spacing:0.04em;">LIMITED OFFER · FIRST 10 GET FREE SETUP ($299 VALUE)</span>
+        <span style="background:var(--accent);color:#0A0A09;padding:4px 10px;border-radius:999px;letter-spacing:0.04em;">LIMITED OFFER · FIRST 10 GET FREE SETUP ($299 VALUE)</span>
       </div>
       <h1 class="page-hero__h" style="max-width:24ch;">Get a website that works<br><em class="serif">as hard as you do.</em></h1>
       <p class="page-hero__sub" style="max-width:62ch;">

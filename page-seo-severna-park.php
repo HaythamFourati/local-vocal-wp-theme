@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="seo-geo__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">MD/02</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">SEO · Severna Park Market</span></div>
-          <h1 class="seo-geo__h">Dominate Severna Park searches<br><em class="serif">in this competitive suburb.</em></h1>
+          <h1 class="seo-geo__h">Severna Park SEO &amp; web design<br><em class="serif">for a competitive suburb.</em></h1>
           <p class="seo-geo__sub">
             Severna Park's affluent residential market means high-value local searches — home services, professional services, and family-focused businesses. We help Severna Park companies capture these premium customers through targeted local SEO that speaks to suburban search behavior.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -215,18 +215,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free Severna Park SEO audit</div>
-      <h2 class="cta__h">Ready to own<br><em class="serif">Severna Park search?</em></h2>
-      <p class="cta__p">We'll analyze your Severna Park search presence, identify where local competitors are winning, and create a strategy to capture more high-value residential customers.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start your audit today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free Severna Park SEO audit',
+    'lead'    => 'Ready to own',
+    'tail'    => 'Severna Park search?',
+    'deck'    => 'We\'ll analyze your Severna Park search presence, identify where local competitors are winning, and create a strategy to capture more high-value residential customers.',
+  ) );
+  ?>
 
 </main>
 

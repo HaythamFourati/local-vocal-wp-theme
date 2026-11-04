@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="seo-geo__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">MD/04</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">SEO · Easton Market</span></div>
-          <h1 class="seo-geo__h">Own Eastern Shore search<br><em class="serif">from Easton's historic center.</em></h1>
+          <h1 class="seo-geo__h">Easton SEO &amp; web design<br><em class="serif">for the Eastern Shore.</em></h1>
           <p class="seo-geo__sub">
             Easton serves as the commercial and cultural hub of Maryland's Eastern Shore. With its historic downtown, medical center, and tourism appeal, Easton businesses compete for both local residents and regional visitors. We help Easton companies dominate this unique market through targeted local SEO that captures Shore-specific search patterns.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -215,18 +215,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free Easton SEO audit</div>
-      <h2 class="cta__h">Ready to dominate<br><em class="serif">Eastern Shore search?</em></h2>
-      <p class="cta__p">We'll analyze your Easton search presence, identify regional opportunities competitors miss, and create a strategy to capture more local and tourist business.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start your audit today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free Easton SEO audit',
+    'lead'    => 'Ready to dominate',
+    'tail'    => 'Eastern Shore search?',
+    'deck'    => 'We\'ll analyze your Easton search presence, identify regional opportunities competitors miss, and create a strategy to capture more local and tourist business.',
+  ) );
+  ?>
 
 </main>
 

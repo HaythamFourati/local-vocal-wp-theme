@@ -11,45 +11,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap">
 
-  <link rel="shortcut icon" type="image/x-icon"
-        href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png">
-  <link rel="apple-touch-icon"
-        href="https://localvocalmarketing.com/wp-content/uploads/2025/02/LVM-indigo-color.png">
+  <?php // Current logo mark (assets/images/favicon.svg); PNG for browsers without SVG icons and iOS home screens ?>
+  <link rel="icon" type="image/svg+xml" href="<?php echo esc_url( get_theme_file_uri( '/assets/images/favicon.svg' ) ); ?>">
+  <link rel="icon" type="image/png" sizes="180x180" href="<?php echo esc_url( get_theme_file_uri( '/assets/images/apple-touch-icon.png' ) ); ?>">
+  <link rel="apple-touch-icon" href="<?php echo esc_url( get_theme_file_uri( '/assets/images/apple-touch-icon.png' ) ); ?>">
 
   <?php wp_head(); ?>
 
-  <!-- LocalBusiness Schema Markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Local Vocal Marketing",
-    "description": "Maryland web design and SEO services for local businesses.",
-    "url": "<?php echo esc_url( home_url( '/' ) ); ?>",
-    "telephone": "+1-443-852-1000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "209 Central Ave",
-      "addressLocality": "Glyndon",
-      "addressRegion": "MD",
-      "postalCode": "21071",
-      "addressCountry": "US"
-    },
-    "areaServed": [
-      "Annapolis MD","Severna Park MD","Glen Burnie MD","Easton MD",
-      "Ocean City MD","Baltimore MD","Frederick MD","Glyndon MD",
-      "Reisterstown MD","Anne Arundel County MD","Baltimore County MD"
-    ],
-    "openingHours": ["Mo-Fr 09:00-18:00","Sa 10:00-15:00"],
-    "servicesOffered": [
-      "Web Design","Local SEO","SEO Blog Articles",
-      "Social Media Management","Ongoing Website Support"
-    ],
-    "priceRange": "$$"
-  }
-  </script>
+  <?php // Business schema lives in inc/seo.php (one entity, matching the contact page) ?>
 </head>
 <body <?php body_class( 'lvm-redesign' ); ?>>
 
@@ -121,7 +92,7 @@
         <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
         <span>(443) 852‑1000</span>
       </a>
-      <a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" class="nav__cta">
+      <a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" class="nav__cta" data-lvm-intake>
         <span>Free SEO review</span>
         <span class="nav__cta-icon" aria-hidden="true"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
       </a>
@@ -161,6 +132,6 @@
   endforeach; ?>
   <div class="nav__drawer-actions">
     <a href="tel:+14438521000" class="nav__phone">(443) 852‑1000</a>
-    <a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" class="nav__cta"><span>Free SEO review</span><span class="nav__cta-icon" aria-hidden="true"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    <a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" class="nav__cta" data-lvm-intake><span>Free SEO review</span><span class="nav__cta-icon" aria-hidden="true"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
   </div>
 </div>

@@ -1,13 +1,15 @@
 /* Local Vocal — homepage behaviour (front-page.php only)
    - Scroll reveal (staggered per batch)
    - Phone demo: search → map pack → tap Call → Dynamic Island → owner notification
-   - Hero stage WebGL shader (relief surface, pointer light, grain)
    - Spring-smoothed pointer tilt / parallax
-   - Sections: pinned work reel, rank-drop story, cursor preview, x-ray
-     slider, publish counter, live support log, timeline fill
+   - Sections: pinned work reel, rank-climb story, cursor preview, layer
+     explainer, live publishing loop, live support log, timeline fill
    All motion is decorative, pauses off-screen, and respects reduced motion. */
 (function () {
   'use strict';
+
+  // Sibling module URL (same folder and cache-busting version as this file)
+  var cityModule = document.currentScript ? document.currentScript.src.replace(/home\.js/, 'home-city.js') : '';
 
   function ready(fn) {
     if (document.readyState !== 'loading') fn();
@@ -238,120 +240,6 @@
     }
 
 
-    /* ---------- Hero stage shader ----------
-       A lit relief surface: fbm height field, normals from finite
-       differences, a soft key light that follows the pointer, a warm
-       specular sheen, vignette and animated grain. Half-res render,
-       paused off-screen / in hidden tabs, one still frame under reduced
-       motion. Without WebGL the CSS gradients underneath remain. */
-    var STAGE_FS = [
-      'precision highp float;',
-      'uniform vec2 u_res; uniform float u_t; uniform vec2 u_mouse;',
-      'uniform vec3 u_c0; uniform vec3 u_c1; uniform vec3 u_c2; uniform vec3 u_c3;',
-      'vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}',
-      'vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}',
-      'vec3 permute(vec3 x){return mod289(((x*34.)+1.)*x);}',
-      'float snoise(vec2 v){',
-      '  const vec4 C=vec4(.211324865405187,.366025403784439,-.577350269189626,.024390243902439);',
-      '  vec2 i=floor(v+dot(v,C.yy)); vec2 x0=v-i+dot(i,C.xx);',
-      '  vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);',
-      '  vec4 x12=x0.xyxy+C.xxzz; x12.xy-=i1; i=mod289(i);',
-      '  vec3 p=permute(permute(i.y+vec3(0.,i1.y,1.))+i.x+vec3(0.,i1.x,1.));',
-      '  vec3 m=max(.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.); m=m*m; m=m*m;',
-      '  vec3 x=2.*fract(p*C.www)-1.; vec3 h=abs(x)-.5; vec3 ox=floor(x+.5); vec3 a0=x-ox;',
-      '  m*=1.79284291400159-.85373472095314*(a0*a0+h*h);',
-      '  vec3 g; g.x=a0.x*x0.x+h.x*x0.y; g.yz=a0.yz*x12.xz+h.yz*x12.yw;',
-      '  return 130.*dot(m,g);',
-      '}',
-      'float fbm(vec2 p){float f=0.,a=.5;for(int i=0;i<4;i++){f+=a*snoise(p);p*=2.03;a*=.5;}return f;}',
-      'float height(vec2 p,float t){return fbm(p*.55+vec2(t*.03,-t*.02)+.5*fbm(p*.35-vec2(t*.015,0.)));}',
-      'void main(){',
-      '  vec2 uv=gl_FragCoord.xy/u_res; float asp=u_res.x/u_res.y; vec2 p=vec2(uv.x*asp,uv.y);',
-      '  float e=.004; float h=height(p,u_t);',
-      '  float hx=height(p+vec2(e,0.),u_t)-h; float hy=height(p+vec2(0.,e),u_t)-h;',
-      '  vec3 n=normalize(vec3(-hx/e*.03,-hy/e*.03,1.));',
-      '  vec2 m=vec2(u_mouse.x*asp,u_mouse.y);',
-      '  vec3 L=normalize(vec3(m-p,.75));',
-      '  float diff=clamp(dot(n,L),0.,1.);',
-      '  float spec=pow(clamp(dot(n,normalize(L+vec3(0.,0.,1.))),0.,1.),70.);',
-      '  float glow=exp(-2.2*length(m-p));',
-      '  float k=clamp(h*.55+.5,0.,1.);',
-      '  vec3 col=mix(u_c0,u_c1,smoothstep(.1,.9,k));',
-      '  col=mix(col,u_c2,smoothstep(.55,1.,k)*.32);',
-      '  col*=.8+.3*diff;',
-      '  col+=u_c3*(spec*.18+glow*.2);',
-      '  vec2 q=uv-.5; col*=1.-dot(q,q)*.85;',
-      '  float g=fract(sin(dot(gl_FragCoord.xy+fract(u_t*7.)*91.,vec2(12.9898,78.233)))*43758.5453);',
-      '  col+=(g-.5)*.04;',
-      '  gl_FragColor=vec4(col,1.);',
-      '}'
-    ].join('\n');
-
-    document.querySelectorAll('.lvh-shader[data-shader="stage"]').forEach(function (canvas) {
-      var gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' });
-      if (!gl) return;
-      var compile = function (type, src) {
-        var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
-        return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
-      };
-      var vs = compile(gl.VERTEX_SHADER, 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}');
-      var fs = compile(gl.FRAGMENT_SHADER, STAGE_FS);
-      if (!vs || !fs) return;
-      var prog = gl.createProgram();
-      gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-      gl.useProgram(prog);
-      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW); // one big triangle
-      var loc = gl.getAttribLocation(prog, 'a');
-      gl.enableVertexAttribArray(loc);
-      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-      var u = function (n) { return gl.getUniformLocation(prog, n); };
-      gl.uniform3fv(u('u_c0'), [0.050, 0.049, 0.046]);  // near-black
-      gl.uniform3fv(u('u_c1'), [0.150, 0.145, 0.137]);  // graphite
-      gl.uniform3fv(u('u_c2'), [0.560, 0.540, 0.510]);  // warm silver
-      gl.uniform3fv(u('u_c3'), [0.941, 0.553, 0.259]);  // brand orange light
-      var uRes = u('u_res'), uT = u('u_t'), uMouse = u('u_mouse');
-
-      // ponytail: half-res is plenty for a soft surface; raise the 0.5 if it looks mushy on 4K
-      var resize = function () {
-        var scale = 0.5 * Math.min(window.devicePixelRatio || 1, 1.5);
-        canvas.width = Math.max(1, Math.round(canvas.clientWidth * scale));
-        canvas.height = Math.max(1, Math.round(canvas.clientHeight * scale));
-        gl.viewport(0, 0, canvas.width, canvas.height);
-        gl.uniform2f(uRes, canvas.width, canvas.height);
-      };
-      // Pointer light, eased toward its target each frame (y is flipped for GL).
-      var mx = 0.74, my = 0.62, tx = mx, ty = my;
-      var stage = canvas.parentElement;
-      if (!reduceMotion) {
-        stage.addEventListener('pointermove', function (e) {
-          var r = stage.getBoundingClientRect();
-          tx = (e.clientX - r.left) / r.width; ty = 1 - (e.clientY - r.top) / r.height;
-        });
-        stage.addEventListener('pointerleave', function () { tx = 0.74; ty = 0.62; });
-      }
-      var draw = function (t) {
-        mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
-        gl.uniform2f(uMouse, mx, my); gl.uniform1f(uT, t);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-      };
-      resize(); draw(12);
-      canvas.classList.add('is-ready');
-      window.addEventListener('resize', function () { resize(); draw(12); });
-      if (reduceMotion) return;
-
-      var visible = false, raf = null, t0 = performance.now() - 12000;
-      var loop = function (now) {
-        draw((now - t0) / 1000);
-        raf = visible && !document.hidden ? requestAnimationFrame(loop) : null;
-      };
-      var kick = function () { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(loop); };
-      new IntersectionObserver(function (e) { visible = e[0].isIntersecting; kick(); }).observe(canvas);
-      document.addEventListener('visibilitychange', kick);
-    });
-
     /* ---------- Sections: one rAF-batched scroll loop ---------- */
     var onScroll = [];
     var scrollRaf = null;
@@ -369,18 +257,17 @@
     /* ---------- Work: pinned reel ----------
        Desktop with a fine pointer: the section is as tall as the track
        is wide, the inner frame sticks, and scroll progress slides the
-       track. Screens drift inside their windows for depth. Elsewhere it
+       track. Elsewhere it
        is a native swipe track; the counter follows either way. */
     var reel = document.querySelector('.lvh-reel');
     if (reel) {
       var reelView = reel.querySelector('.lvh-reel__view');
       var track = reel.querySelector('.lvh-reel__track');
       var shots = Array.prototype.slice.call(track.children);
-      var shotImgs = shots.map(function (s) { return s.querySelector('img'); });
       var reelN = reel.querySelector('.lvh-reel__n');
       var reelBar = reel.querySelector('.lvh-reel__bar i');
       var pinMQ = window.matchMedia('(min-width: 961px) and (hover: hover) and (pointer: fine)');
-      var reelDist = 0, reelLast = -1, shotMid = [];
+      var reelDist = 0, reelLast = -1;
       var reelCount = function (p) {
         var i = Math.round(p * (shots.length - 1));
         if (i !== reelLast) { reelLast = i; reelN.textContent = pad2(i + 1); }
@@ -393,20 +280,14 @@
         var p = clamp01(-r.top / Math.max(1, r.height - innerHeight));
         var x = -p * reelDist;
         track.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
-        shots.forEach(function (s, i) {
-          var d = (shotMid[i] + x - innerWidth / 2) / innerWidth;
-          shotImgs[i].style.transform = 'translate3d(' + (d * -5).toFixed(2) + '%,0,0) scale(1.12)';
-        });
         reelCount(p);
       };
       var reelLayout = function () {
         var on = pinMQ.matches && !reduceMotion;
         reel.classList.toggle('is-pinned', on);
         track.style.transform = '';
-        shotImgs.forEach(function (im) { im.style.transform = ''; });
         if (!on) { reel.style.height = ''; return; }
         reelDist = Math.max(0, track.scrollWidth - innerWidth);
-        shotMid = shots.map(function (s) { return s.offsetLeft + s.offsetWidth / 2; });
         reel.style.height = Math.round(innerHeight + reelDist) + 'px';
         reelUpdate();
       };
@@ -420,9 +301,11 @@
       reelLayout();
     }
 
-    /* ---------- Problem: each issue drops you down the results ----------
-       The step crossing 55% of the viewport sets your rank; rivals slide
-       up past you (strong in-out, it's on-screen movement). */
+    /* ---------- Problem: each fix climbs you up the results ----------
+       You start on page 3. The step crossing the trigger line counts as
+       fixed: you climb past rivals (strong in-out, it's on-screen
+       movement) and visibility rises to 100% at the last fix. The line
+       sits lower on one-column layouts, below the stuck board. */
     var board = document.querySelector('.lvh-board');
     var fallSteps = Array.prototype.slice.call(document.querySelectorAll('.lvh-fall__step'));
     if (board && fallSteps.length) {
@@ -430,10 +313,15 @@
       var you = board.querySelector('.lvh-board__row.is-you');
       var youPos = you.querySelector('.lvh-board__pos');
       var youWhere = you.querySelector('.lvh-board__where');
+      var youUp = you.querySelector('.lvh-board__up');
       var pctEl = board.querySelector('.lvh-board__pct');
       var meter = board.querySelector('.lvh-board__meter i');
-      var fallCur = -2, shownPct = 74, pctRaf = null;
-      var setRank = function (rank, pct) {
+      var pips = board.querySelectorAll('.lvh-board__pips i');
+      var stepEl = board.querySelector('.lvh-board__step');
+      var stackMQ = window.matchMedia('(max-width: 960px)');
+      var START_RANK = 26, START_PCT = 4;
+      var fallCur = -2, curRank = START_RANK, shownPct = START_PCT, pctRaf = null;
+      var setRank = function (rank, pct, on) {
         var vis = parseFloat(getComputedStyle(board).getPropertyValue('--vis')) || 8;
         var k = Math.min(rank - 1, vis);
         rivals.forEach(function (row, i) {
@@ -445,7 +333,16 @@
         youPos.textContent = rank;
         youWhere.textContent = 'Page ' + Math.ceil(rank / 10);
         board.classList.toggle('is-lost', rank > 10);
+        board.classList.toggle('is-top', rank === 1);
+        // Climbed: show how far and pulse the row once
+        youUp.textContent = rank < curRank ? '▲ ' + (curRank - rank) : '';
+        if (rank < curRank && !reduceMotion) {
+          you.classList.remove('is-bump'); void you.offsetWidth; you.classList.add('is-bump');
+        }
+        curRank = rank;
         meter.style.transform = 'scaleX(' + pct / 100 + ')';
+        for (var p = 0; p < pips.length; p++) pips[p].classList.toggle('is-on', p <= on);
+        stepEl.textContent = (on + 1) + ' of ' + fallSteps.length + ' fixed';
         var from = shownPct, t0 = performance.now();
         cancelAnimationFrame(pctRaf);
         var tick = function (now) {
@@ -457,13 +354,16 @@
         pctRaf = requestAnimationFrame(tick);
       };
       onScroll.push(function () {
-        var line = innerHeight * 0.55, on = -1;
+        var line = innerHeight * (stackMQ.matches ? 0.68 : 0.42), on = -1;
         fallSteps.forEach(function (s, i) { if (s.getBoundingClientRect().top < line) on = i; });
         if (on === fallCur) return;
         fallCur = on;
-        fallSteps.forEach(function (s, i) { s.classList.toggle('is-on', i === on); });
-        if (on < 0) setRank(2, 74);
-        else setRank(+fallSteps[on].dataset.rank, +fallSteps[on].dataset.pct);
+        fallSteps.forEach(function (s, i) {
+          s.classList.toggle('is-on', i === on);
+          s.classList.toggle('is-done', i < on);
+        });
+        if (on < 0) setRank(START_RANK, START_PCT, on);
+        else setRank(+fallSteps[on].dataset.rank, +fallSteps[on].dataset.pct, on);
       });
     }
 
@@ -482,8 +382,8 @@
         pkRaf = Math.abs(pkTX - pkX) + Math.abs(pkTY - pkY) + Math.abs(pkVX) + Math.abs(pkVY) > 0.1 ? requestAnimationFrame(pkStep) : null;
       };
       index.addEventListener('pointermove', function (e) {
-        pkTX = e.clientX + (e.clientX > innerWidth * 0.55 ? -400 : 40);
-        pkTY = e.clientY - 125;
+        pkTX = e.clientX + (e.clientX > innerWidth * 0.55 ? -(peek.offsetWidth + 40) : 40);
+        pkTY = e.clientY - peek.offsetHeight / 2;
         if (pkFresh) { pkX = pkTX; pkY = pkTY; pkFresh = false; }
         if (!pkRaf) pkRaf = requestAnimationFrame(pkStep);
       });
@@ -498,45 +398,41 @@
       window.addEventListener('scroll', function () { if (peek.classList.contains('is-on')) { peek.classList.remove('is-on'); pkFresh = true; } }, { passive: true });
     }
 
-    /* ---------- Web design: X-ray slider ----------
-       A native range input drives the split (keyboard + touch for free).
-       First view plays a short sweep; legend items reveal their box. */
-    var xray = document.querySelector('.lvh-xray');
-    if (xray) {
-      var xv = xray.querySelector('.lvh-xray__view');
-      var xr = xray.querySelector('.lvh-xray__range');
-      var xNow = 100, xRaf = null;
-      var setX = function (v) { xNow = v; xv.style.setProperty('--x', v.toFixed(2)); xr.value = v; };
-      var sweep = function (to, ms) {
-        cancelAnimationFrame(xRaf);
-        if (reduceMotion) { setX(to); return; }
-        var from = xNow, t0 = performance.now();
-        var tick = function (now) {
-          var t = Math.min(1, (now - t0) / ms);
-          var e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; // ease-in-out
-          setX(from + (to - from) * e);
-          if (t < 1) xRaf = requestAnimationFrame(tick);
-        };
-        xRaf = requestAnimationFrame(tick);
+    /* ---------- Local SEO: WebGL city ----------
+       Three.js is ~150 KB gzipped, so the module loads only once the
+       section is close. Without WebGL (or if the CDN fails) the CSS
+       city stays. */
+    var iso = document.querySelector('.lvh-iso');
+    if (iso && cityModule && iso.querySelector('.lvh-city') && window.WebGLRenderingContext) {
+      new IntersectionObserver(function (e, io) {
+        if (!e[0].isIntersecting) return;
+        io.disconnect();
+        import(cityModule).then(function (m) { m.default(iso); }).catch(function () {});
+      }, { rootMargin: '600px 0px' }).observe(iso);
+    }
+
+    /* ---------- Web design: exploded layers ----------
+       Steps pick the slide; the active step's bar runs while the
+       section is on screen (it keeps running under the cursor so the
+       story plays through) and its animationend advances to the next. Reduced motion: no autoplay. */
+    var layers = document.querySelector('.lvh-layers');
+    if (layers) {
+      var stack = layers.querySelector('.lvh-stack');
+      var lSteps = Array.prototype.slice.call(layers.querySelectorAll('.lvh-layers__step'));
+      var setSlide = function (n) {
+        stack.dataset.slide = n;
+        lSteps.forEach(function (b, i) {
+          b.classList.toggle('is-on', i === n);
+          b.setAttribute('aria-selected', i === n ? 'true' : 'false');
+        });
       };
-      setX(100);
-      xr.addEventListener('input', function () { cancelAnimationFrame(xRaf); setX(+xr.value); });
-      once(xray, function () {
-        setTimeout(function () {
-          sweep(28, 1300);
-          setTimeout(function () { if (+xr.value < 30) sweep(52, 900); }, 1450);
-        }, 500);
-      }, 0.5);
-      xray.parentNode.querySelectorAll('.lvh-keys li').forEach(function (li) {
-        var box = xray.querySelector('.lvh-bp[data-k="' + li.dataset.k + '"]');
-        var hot = function (on) {
-          li.classList.toggle('is-hot', on); box.classList.toggle('is-hot', on);
-          if (on) { var left = parseFloat(box.style.getPropertyValue('--l')) || 0; if (xNow > left - 2) sweep(Math.max(0, left - 2), 600); }
-        };
-        li.addEventListener('pointerenter', function () { hot(true); });
-        li.addEventListener('pointerleave', function () { hot(false); });
-        li.addEventListener('click', function () { hot(true); setTimeout(function () { hot(false); }, 1600); });
+      lSteps.forEach(function (b, i) {
+        b.addEventListener('click', function () { setSlide(i); });
+        b.querySelector('.lvh-layers__bar i').addEventListener('animationend', function () { setSlide((i + 1) % lSteps.length); });
       });
+      if (!reduceMotion) {
+        new IntersectionObserver(function (e) { layers.classList.toggle('is-playing', e[0].isIntersecting); }, { threshold: 0.45 }).observe(layers);
+      }
     }
 
     /* ---------- Blog: pointer spotlight on covers ---------- */
@@ -550,17 +446,79 @@
       });
     }
 
-    /* ---------- Social: publish counter, in step with the CSS dots ---------- */
+    /* ---------- Social: live publishing loop ----------
+       Posts go out one by one through the week: the card lights up, its
+       dot turns green, the counter ticks, today's column follows, and
+       the preview swaps to that post with its engagement counting up.
+       After the last one it holds, resets and goes again. Runs only on
+       screen; reduced motion shows the week fully published. */
     var cal = document.querySelector('.lvh-cal');
     if (cal) {
       var calN = cal.querySelector('.lvh-cal__n');
-      var calTotal = cal.querySelectorAll('.lvh-cal__post').length;
-      if (reduceMotion || !root.classList.contains('lvh-js')) calN.textContent = calTotal;
-      else once(cal, function () {
-        for (var c = 1; c <= calTotal; c++) {
-          (function (c) { setTimeout(function () { calN.textContent = c; }, 1400 + (c - 1) * 170 + 300); })(c);
+      var posts = Array.prototype.slice.call(cal.querySelectorAll('.lvh-cal__post'));
+      var days = Array.prototype.slice.call(cal.querySelectorAll('.lvh-cal__day'));
+      var calGrid = cal.querySelector('.lvh-cal__grid');
+      var pv = cal.querySelector('.lvh-cal__preview');
+      var pvEl = {
+        avatar: pv.querySelector('.lvh-post__avatar'), brand: pv.querySelector('.lvh-cal__brand'),
+        plat: pv.querySelector('.lvh-cal__plat'), when: pv.querySelector('.lvh-cal__when'), cap: pv.querySelector('.lvh-cal__cap'),
+        likes: pv.querySelector('.lvh-cal__likes'), comments: pv.querySelector('.lvh-cal__comments'), shares: pv.querySelector('.lvh-cal__shares')
+      };
+      var calNext = 0, calTimer = null, calOn = false, statRaf = null;
+      var initials = function (name) { return name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2); };
+      var countUp = function (likes) {
+        var c = Math.round(likes / 9) + 1, sh = Math.round(likes / 22), t0 = performance.now();
+        cancelAnimationFrame(statRaf);
+        var tick = function (now) {
+          var t = Math.min(1, (now - t0) / 1300), e = 1 - Math.pow(1 - t, 3);
+          pvEl.likes.textContent = Math.round(likes * e);
+          pvEl.comments.textContent = Math.round(c * e);
+          pvEl.shares.textContent = Math.round(sh * e);
+          if (t < 1) statRaf = requestAnimationFrame(tick);
+        };
+        statRaf = requestAnimationFrame(tick);
+      };
+      var publish = function (i) {
+        var p = posts[i], brand = p.querySelector('b').textContent;
+        posts.forEach(function (q) { q.classList.remove('is-live'); });
+        p.classList.add('is-pub', 'is-live');
+        days.forEach(function (d) { d.classList.toggle('is-today', d.contains(p)); });
+        // Narrow screens scroll the week sideways: glide to the live day
+        if (calGrid.scrollWidth > calGrid.clientWidth) {
+          var day = p.parentNode;
+          calGrid.scrollTo({ left: day.offsetLeft - (calGrid.clientWidth - day.offsetWidth) / 2, behavior: 'smooth' });
         }
-      }, 0.25);
+        calN.textContent = i + 1;
+        pvEl.avatar.textContent = initials(brand);
+        pvEl.brand.textContent = brand;
+        pvEl.plat.replaceChildren(p.querySelector('.lvh-app').cloneNode(true));
+        pvEl.when.textContent = 'Published · ' + p.dataset.when;
+        pvEl.cap.textContent = p.dataset.cap;
+        pv.classList.remove('is-swap'); void pv.offsetWidth; pv.classList.add('is-swap');
+        countUp(+p.dataset.likes);
+      };
+      var calStep = function () {
+        calTimer = null;
+        if (!calOn || document.hidden) return;
+        if (calNext >= posts.length) { // week done: hold, then start the week over
+          posts.forEach(function (q) { q.classList.remove('is-pub', 'is-live'); });
+          calN.textContent = 0; calNext = 0;
+          calTimer = setTimeout(calStep, 900);
+          return;
+        }
+        publish(calNext++);
+        calTimer = setTimeout(calStep, calNext >= posts.length ? 3200 : 1900);
+      };
+      if (reduceMotion || !root.classList.contains('lvh-js')) {
+        posts.forEach(function (q) { q.classList.add('is-pub'); });
+        calN.textContent = posts.length;
+      } else {
+        new IntersectionObserver(function (e) {
+          calOn = e[0].isIntersecting;
+          if (calOn && !calTimer) calTimer = setTimeout(calStep, calNext ? 600 : 1500); // first run waits for the cards to land
+        }, { threshold: 0.3 }).observe(cal);
+        document.addEventListener('visibilitychange', function () { if (!document.hidden && calOn && !calTimer) calTimer = setTimeout(calStep, 600); });
+      }
     }
 
     /* ---------- Support: live activity log ----------

@@ -1,0 +1,204 @@
+/* Local Vocal — Free SEO review intake
+   Self-contained (own tokens) so it works on any page of the theme.
+   Pop-up (dialog.lvmi): step rail + form in one glass panel; phones get a
+   full-screen sheet. Inline (.lvmi--inline): just the form, sized by the
+   section it sits in. */
+
+html.lvmi-open { overflow: hidden; }
+
+.lvmi {
+  --bg: #121211;
+  --hair: rgba(255, 255, 255, 0.08);
+  --hair-2: rgba(255, 255, 255, 0.16);
+  --t1: #F3F0EA;
+  --t2: #C9C5BD;
+  --t3: #8E8A83;
+  --acc: #FF8A3D;
+  --acc-hi: #FFB27A;
+  --acc-wash: rgba(255, 138, 61, 0.12);
+  --ok: #8FE0AE;
+  --bad: #FF9A8C;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+  color: var(--t1);
+  font-family: inherit; font-size: 15px; line-height: 1.5;
+}
+dialog.lvmi {
+  width: min(940px, calc(100vw - 32px)); max-width: none; max-height: none;
+  margin: auto; padding: 0; border: 0; overflow: visible; background: transparent;
+}
+.lvmi::backdrop { background: rgba(6, 6, 5, 0.66); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.lvmi[open] { animation: lvmi-in 420ms var(--ease); }
+.lvmi[open]::backdrop { animation: lvmi-fade 300ms ease; }
+.lvmi.is-closing { animation: lvmi-out 220ms ease forwards; }
+.lvmi.is-closing::backdrop { animation: lvmi-fade 220ms ease reverse forwards; }
+@keyframes lvmi-in { from { opacity: 0; transform: translateY(16px) scale(0.97); } }
+@keyframes lvmi-out { to { opacity: 0; transform: translateY(10px) scale(0.98); } }
+@keyframes lvmi-fade { from { opacity: 0; } }
+
+.lvmi *, .lvmi *::before, .lvmi *::after { box-sizing: border-box; }
+.lvmi__shell {
+  position: relative; display: grid; grid-template-columns: 270px minmax(0, 1fr);
+  height: min(720px, calc(100svh - 32px)); overflow: hidden; border-radius: 28px;
+  background:
+    radial-gradient(60% 50% at 100% 0%, rgba(255, 138, 61, 0.16), transparent 70%),
+    radial-gradient(50% 60% at 0% 100%, rgba(255, 255, 255, 0.04), transparent 70%),
+    var(--bg);
+  box-shadow: inset 0 0 0 1px var(--hair-2), inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 60px 140px -40px rgba(0, 0, 0, 0.95);
+}
+
+/* ---------- Rail ---------- */
+.lvmi__rail { display: flex; flex-direction: column; padding: 32px 26px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 60%); box-shadow: inset -1px 0 0 var(--hair); }
+.lvmi__eyebrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 6px 12px; border-radius: 999px; font-size: 12px; color: var(--t2); box-shadow: inset 0 0 0 1px var(--hair); }
+.lvmi__eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 3px var(--acc-wash); }
+.lvmi__steps { position: relative; display: grid; gap: 22px; margin: 34px 0 0; padding: 0; list-style: none; }
+.lvmi__steps::before { content: ""; position: absolute; left: 13px; top: 14px; bottom: 14px; width: 1px; background: var(--hair-2); }
+.lvmi__steps li { position: relative; display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--t3); transition: color 300ms ease; }
+.lvmi__dot {
+  position: relative; display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%;
+  font-size: 12px; font-weight: 600; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair-2);
+  transition: background-color 300ms ease, box-shadow 300ms ease, color 300ms ease;
+}
+.lvmi__dot svg { position: absolute; opacity: 0; transform: scale(0.5); transition: opacity 250ms ease, transform 350ms var(--ease); }
+.lvmi__dot b { font-weight: 600; transition: opacity 200ms ease; }
+.lvmi__steps li.is-on { color: var(--t1); }
+.lvmi__steps li.is-on .lvmi__dot { color: var(--acc-hi); background: #1b1512; box-shadow: inset 0 0 0 1px rgba(255, 138, 61, 0.6), 0 0 0 4px var(--acc-wash); }
+.lvmi__steps li.is-done { color: var(--t2); }
+.lvmi__steps li.is-done .lvmi__dot { color: #0A0A09; background: var(--ok); box-shadow: none; }
+.lvmi__steps li.is-done .lvmi__dot b { opacity: 0; }
+.lvmi__steps li.is-done .lvmi__dot svg { opacity: 1; transform: none; }
+.lvmi__promise { display: grid; gap: 10px; margin: auto 0 0; padding: 20px 0 0; list-style: none; border-top: 1px solid var(--hair); font-size: 12.5px; color: var(--t3); }
+.lvmi__promise li { display: flex; align-items: center; gap: 9px; }
+.lvmi__promise svg { flex: none; color: var(--ok); }
+
+/* ---------- Form side ---------- */
+.lvmi__form { display: flex; flex-direction: column; min-height: 0; margin: 0; padding: 24px 36px 26px; }
+.lvmi__top { display: flex; align-items: center; justify-content: space-between; }
+.lvmi__count { font-size: 12.5px; color: var(--t3); font-variant-numeric: tabular-nums; }
+.lvmi__count b { color: var(--t1); font-weight: 500; }
+.lvmi__close {
+  display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  color: var(--t2); background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px var(--hair);
+  transition: background-color 200ms ease, color 200ms ease, transform 160ms var(--ease);
+}
+.lvmi__close:active { transform: scale(0.92); }
+@media (hover: hover) { .lvmi__close:hover { color: var(--t1); background: rgba(255, 255, 255, 0.08); } }
+.lvmi__bar { height: 3px; margin: 14px 0 0; overflow: hidden; border-radius: 3px; background: rgba(255, 255, 255, 0.06); }
+.lvmi__bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--acc), var(--acc-hi)); transform-origin: left; transform: scaleX(0.25); transition: transform 600ms var(--ease); }
+.lvmi.is-done .lvmi__bar i { background: var(--ok); }
+.lvmi.is-done .lvmi__count { visibility: hidden; }
+
+.lvmi__panes { flex: 1; min-height: 0; overflow-x: hidden; overflow-y: auto; margin: 0 -8px; padding: 26px 8px 8px; scrollbar-width: thin; }
+.lvmi__pane.is-on { animation: lvmi-step 450ms var(--ease); }
+.lvmi__pane[data-dir="back"].is-on { animation-name: lvmi-step-back; }
+@keyframes lvmi-step { from { opacity: 0; transform: translateX(22px); } }
+@keyframes lvmi-step-back { from { opacity: 0; transform: translateX(-22px); } }
+.lvmi__title { margin: 0; font-family: "General Sans", inherit; font-size: clamp(24px, 3vw, 30px); font-weight: 400; line-height: 1.15; letter-spacing: -0.03em; color: var(--t1); }
+.lvmi__lead { margin: 8px 0 0; font-size: 14.5px; color: var(--t3); }
+.lvmi__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; margin-top: 26px; }
+.lvmi__field { grid-column: 1 / -1; min-width: 0; margin: 0; padding: 0; border: 0; }
+.lvmi__field.is-half { grid-column: span 1; }
+.lvmi__label { display: block; margin: 0 0 8px; padding: 0; font-size: 13px; font-weight: 500; color: var(--t2); }
+.lvmi__label em { margin-left: 4px; font-style: normal; font-weight: 400; color: var(--t3); }
+.lvmi input:not([type=checkbox]):not([type=radio]), .lvmi textarea {
+  display: block; width: 100%; height: 50px; margin: 0; padding: 0 16px; border: 0; border-radius: 14px;
+  font: inherit; font-size: 15px; color: var(--t1); background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--hair); outline: none;
+  transition: box-shadow 200ms ease, background-color 200ms ease;
+}
+.lvmi textarea { height: auto; min-height: 96px; padding: 13px 16px; resize: vertical; line-height: 1.5; }
+.lvmi input::placeholder, .lvmi textarea::placeholder { color: var(--t3); opacity: 1; }
+@media (hover: hover) { .lvmi input:not([type=checkbox]):not([type=radio]):hover, .lvmi textarea:hover { box-shadow: inset 0 0 0 1px var(--hair-2); } }
+.lvmi input:not([type=checkbox]):not([type=radio]):focus, .lvmi textarea:focus { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px rgba(255, 138, 61, 0.7), 0 0 0 4px var(--acc-wash); }
+.lvmi__hint { display: block; margin-top: 6px; font-size: 12px; color: var(--t3); }
+.lvmi__msg { display: block; min-height: 0; font-size: 12.5px; color: var(--bad); }
+.lvmi__msg:not(:empty) { margin-top: 6px; }
+.lvmi__field.is-invalid input, .lvmi__field.is-invalid textarea { box-shadow: inset 0 0 0 1px rgba(255, 118, 118, 0.6); }
+.lvmi__field.is-invalid .lvmi__hint { display: none; }
+
+/* Chips: real radios/checkboxes, styled */
+.lvmi__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.lvmi__chip { position: relative; display: inline-flex; cursor: pointer; user-select: none; }
+.lvmi__chip input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.lvmi__chip span {
+  display: inline-flex; align-items: center; gap: 0; padding: 10px 15px; border-radius: 999px;
+  font-size: 14px; color: var(--t2); background: rgba(255, 255, 255, 0.03); box-shadow: inset 0 0 0 1px var(--hair-2);
+  transition: background-color 200ms ease, box-shadow 200ms ease, color 200ms ease, gap 250ms var(--ease), transform 160ms var(--ease);
+}
+.lvmi__chip span::before {
+  content: ""; width: 0; height: 14px; overflow: hidden;
+  background: center / 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23FFB27A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-7'/%3E%3C/svg%3E");
+  transition: width 250ms var(--ease);
+}
+@media (hover: hover) { .lvmi__chip:hover span { color: var(--t1); background: rgba(255, 255, 255, 0.06); } }
+.lvmi__chip:active span { transform: scale(0.97); }
+.lvmi__chip input:checked + span { gap: 7px; color: var(--t1); background: var(--acc-wash); box-shadow: inset 0 0 0 1px rgba(255, 138, 61, 0.6); }
+.lvmi__chip input:checked + span::before { width: 14px; }
+.lvmi__chip input:focus-visible + span { outline: 2px solid var(--acc-hi); outline-offset: 2px; }
+.lvmi__field.is-invalid .lvmi__chip span { box-shadow: inset 0 0 0 1px rgba(255, 118, 118, 0.45); }
+
+/* ---------- Footer nav ---------- */
+.lvmi__error { margin: 12px 0 0; padding: 10px 14px; border-radius: 12px; font-size: 13px; color: var(--bad); background: rgba(255, 118, 118, 0.07); box-shadow: inset 0 0 0 1px rgba(255, 118, 118, 0.3); }
+.lvmi__nav { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 18px; border-top: 1px solid var(--hair); }
+.lvmi.is-done .lvmi__nav { display: none; }
+.lvmi__hint-nav { flex: 1; text-align: center; font-size: 12.5px; color: var(--t3); }
+.lvmi__btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 22px; border: 0; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap;
+  transition: transform 160ms var(--ease), filter 200ms ease, box-shadow 250ms ease, background-color 200ms ease, color 200ms ease;
+}
+.lvmi__btn:active { transform: scale(0.97); }
+.lvmi__btn:focus-visible { outline: 2px solid var(--acc-hi); outline-offset: 3px; }
+.lvmi__btn--primary { color: #0A0A09; background: linear-gradient(180deg, var(--acc-hi), var(--acc)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 16px 40px -14px rgba(255, 138, 61, 0.7); }
+@media (hover: hover) { .lvmi__btn--primary:hover { filter: brightness(1.06); } }
+.lvmi__btn--ghost { padding: 0 16px; color: var(--t2); background: transparent; box-shadow: inset 0 0 0 1px var(--hair); }
+@media (hover: hover) { .lvmi__btn--ghost:hover { color: var(--t1); background: rgba(255, 255, 255, 0.05); } }
+.lvmi__btn[disabled] { cursor: default; }
+/* Sending: the arrow turns into a spinner */
+.lvmi.is-busy [data-lvmi-next] svg { animation: lvmi-spin 700ms linear infinite; }
+.lvmi.is-busy [data-lvmi-next] svg path { d: path("M8 2.5a5.5 5.5 0 1 1-5.5 5.5"); }
+@keyframes lvmi-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Done ---------- */
+.lvmi__done { display: flex; flex-direction: column; align-items: flex-start; }
+.lvmi__tick { width: 64px; height: 64px; margin-bottom: 22px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lvmi__tick circle { stroke: rgba(143, 224, 174, 0.3); stroke-width: 2; fill: rgba(143, 224, 174, 0.08); }
+.lvmi__tick path { stroke: var(--ok); stroke-width: 3.5; stroke-dasharray: 40; stroke-dashoffset: 0; }
+.lvmi__done.is-on .lvmi__tick path { animation: lvmi-draw 700ms var(--ease) 200ms both; }
+.lvmi__done.is-on .lvmi__tick { animation: lvmi-pop 500ms var(--ease); }
+@keyframes lvmi-draw { from { stroke-dashoffset: 40; } }
+@keyframes lvmi-pop { from { opacity: 0; transform: scale(0.6); } }
+.lvmi__next { display: grid; gap: 0; width: 100%; margin: 22px 0 28px; padding: 0; list-style: none; counter-reset: n; }
+.lvmi__next li { counter-increment: n; display: grid; grid-template-columns: 32px 1fr; gap: 2px 10px; padding: 14px 0; border-top: 1px solid var(--hair); font-size: 14px; color: var(--t3); }
+.lvmi__next li::before { content: counter(n); grid-row: span 2; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 11.5px; font-weight: 600; color: var(--acc-hi); background: var(--acc-wash); }
+.lvmi__next b { font-weight: 500; color: var(--t1); }
+
+.lvmi__hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+
+/* ---------- Phones: full-screen sheet, no rail ---------- */
+@media (max-width: 760px) {
+  dialog.lvmi { width: 100vw; height: 100svh; margin: 0; }
+  .lvmi[open] { animation-name: lvmi-sheet; }
+  @keyframes lvmi-sheet { from { transform: translateY(40px); opacity: 0; } }
+  .lvmi__shell { grid-template-columns: minmax(0, 1fr); height: 100svh; border-radius: 0; }
+  .lvmi__rail { display: none; }
+  dialog.lvmi .lvmi__form { padding: 16px 20px calc(16px + env(safe-area-inset-bottom)); }
+  .lvmi__grid { grid-template-columns: minmax(0, 1fr); }
+  .lvmi__field.is-half { grid-column: 1 / -1; }
+  .lvmi__hint-nav { display: none; }
+  .lvmi__nav { justify-content: space-between; }
+  .lvmi__btn--primary { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lvmi[open], .lvmi[open]::backdrop, .lvmi__pane.is-on, .lvmi__done.is-on .lvmi__tick, .lvmi__done.is-on .lvmi__tick path { animation: none; }
+}
+
+/* ---------- Inline (in a page section) ---------- */
+.lvmi--inline .lvmi__form { padding: 0; }
+.lvmi--inline .lvmi__panes { flex: none; min-height: 380px; margin: 0; padding: 22px 0 4px; overflow: visible; overflow-x: clip; }
+.lvmi--inline .lvmi__pane > h2.lvmi__title { font-size: clamp(22px, 2.4vw, 26px); }
+/* Host themes style headings aggressively (some with !important); hold ours */
+.lvmi .lvmi__pane > h2.lvmi__title { margin: 0; font-weight: 400 !important; letter-spacing: -0.03em; }
+.lvmi--inline.is-done .lvmi__panes { min-height: 0; }
+.lvmi--inline .lvmi__next { margin-bottom: 0; }

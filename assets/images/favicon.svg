@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <!-- Logo mark from lvm_logo() in functions.php: orange tile, dark pin, orange voice bars -->
+  <defs>
+    <linearGradient id="s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".3"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="11" fill="#F67F2F"/>
+  <rect width="40" height="40" rx="11" fill="url(#s)"/>
+  <path d="M20 7a10 10 0 0 0-10 10c0 6.3 5.2 10.7 10 15 4.8-4.3 10-8.7 10-15A10 10 0 0 0 20 7z" fill="#0E0E0C"/>
+  <g fill="#F67F2F">
+    <rect x="14.4" y="14" width="2.4" height="6" rx="1.2"/>
+    <rect x="18.8" y="11.5" width="2.4" height="11" rx="1.2"/>
+    <rect x="23.2" y="13" width="2.4" height="8" rx="1.2"/>
+  </g>
+</svg>

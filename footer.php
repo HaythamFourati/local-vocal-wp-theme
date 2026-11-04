@@ -20,45 +20,45 @@
       <div>
         <div class="footer__heading mono">Services</div>
         <ul>
-          <li><a href="<?php echo esc_url( home_url( '/development' ) ); ?>">Website Design</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/seo-optimization' ) ); ?>">Local SEO</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/content-creation' ) ); ?>">SEO Blog Articles</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/social-media-management' ) ); ?>">Social Media</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/analytics-reporting' ) ); ?>">Analytics &amp; Reporting</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>">Free SEO Review</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/development/' ) ); ?>">Website Design</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/seo-optimization/' ) ); ?>">Local SEO</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/content-creation/' ) ); ?>">SEO Blog Articles</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/social-media-management/' ) ); ?>">Social Media</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/analytics-reporting/' ) ); ?>">Analytics &amp; Reporting</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" data-lvm-intake>Free SEO Review</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__heading mono">Industries</div>
         <ul>
-          <li><a href="<?php echo esc_url( home_url( '/Contractors' ) ); ?>">Contractors</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/HVAC' ) ); ?>">HVAC</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/law-firms' ) ); ?>">Law Firms</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/dentists' ) ); ?>">Dentists</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/home-care' ) ); ?>">Home Care</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/auto-glass' ) ); ?>">Auto Glass</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/contractors/' ) ); ?>">Contractors</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/hvac/' ) ); ?>">HVAC</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/law-firms/' ) ); ?>">Law Firms</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/dentists/' ) ); ?>">Dentists</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/home-care/' ) ); ?>">Home Care</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/auto-glass/' ) ); ?>">Auto Glass</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__heading mono">Maryland SEO</div>
         <ul>
-          <li><a href="<?php echo esc_url( home_url( '/annapolis' ) ); ?>">Annapolis</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/severna-park' ) ); ?>">Severna Park</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/glen-burnie' ) ); ?>">Glen Burnie</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/easton' ) ); ?>">Easton</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/ocean-city' ) ); ?>">Ocean City</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/baltimore' ) ); ?>">Baltimore</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/annapolis/' ) ); ?>">Annapolis</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/severna-park/' ) ); ?>">Severna Park</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/glen-burnie/' ) ); ?>">Glen Burnie</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/easton/' ) ); ?>">Easton</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/ocean-city/' ) ); ?>">Ocean City</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/baltimore/' ) ); ?>">Baltimore</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__heading mono">Company</div>
         <ul>
-          <li><a href="<?php echo esc_url( home_url( '/services' ) ); ?>">Services</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a></li>
           <li><a href="<?php echo esc_url( home_url( '/#blog' ) ); ?>">Blog</a></li>
           <li><a href="<?php echo esc_url( home_url( '/#faq' ) ); ?>">FAQ</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/contact' ) ); ?>">Contact</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>">Privacy</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>">Terms</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
+          <li><a href="<?php echo esc_url( get_privacy_policy_url() ?: home_url( '/privacy-policy/' ) ); ?>">Privacy</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/terms-of-service-2/' ) ); ?>">Terms</a></li>
         </ul>
       </div>
     </div>

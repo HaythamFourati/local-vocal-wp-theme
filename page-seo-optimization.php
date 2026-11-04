@@ -23,12 +23,12 @@ get_header(); ?>
           <span>Local SEO</span>
         </div>
         <div class="eyebrow"><span class="eyebrow__num mono">S/02</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Service · Local SEO</span></div>
-        <h1 class="seo-hero__h">Page-one rankings,<br><em class="serif">in your service area.</em></h1>
+        <h1 class="seo-hero__h">Local SEO services in Maryland,<br><em class="serif">page one in your service area.</em></h1>
         <p class="seo-hero__sub">
-          Local SEO that gets you found in the map pack and on page one for the searches that actually convert. Built around your service area, your service list, and your real customers — not generic checklists.
+          Local SEO that gets Baltimore and Maryland businesses found in the map pack and on page one for the searches that actually convert. Built around your service area, your service list, and your real customers — not generic checklists.
         </p>
         <div class="seo-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free audit <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free audit <span aria-hidden="true">→</span></a>
           <a href="#serp" class="btn btn--ghost btn--lg">See a sample report <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -344,18 +344,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free SEO audit</div>
-      <h2 class="cta__h">Ready to elevate<br><em class="serif">your local SEO?</em></h2>
-      <p class="cta__p">We'll audit your current rankings, technical health, and competitor positions — and show you the highest-impact moves first. Free. No commitment.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free audit <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free SEO audit',
+    'lead'    => 'Ready to elevate',
+    'tail'    => 'your local SEO?',
+    'deck'    => 'We\'ll audit your current rankings, technical health, and competitor positions — and show you the highest-impact moves first. Free. No commitment.',
+  ) );
+  ?>
 
 </main>
 

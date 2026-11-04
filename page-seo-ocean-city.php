@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="seo-geo__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">MD/05</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">SEO · Ocean City Market</span></div>
-          <h1 class="seo-geo__h">Capture summer's peak<br><em class="serif">in Ocean City search.</em></h1>
+          <h1 class="seo-geo__h">Ocean City SEO &amp; web design<br><em class="serif">for summer's peak.</em></h1>
           <p class="seo-geo__sub">
             Ocean City's extreme seasonality — 8 million summer visitors, 8,000 winter residents — creates unique SEO challenges and opportunities. We help Ocean City businesses dominate the intense summer search season while maintaining year-round visibility through strategic seasonal SEO that captures tourist intent and local business.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -215,18 +215,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free Ocean City SEO audit</div>
-      <h2 class="cta__h">Ready to dominate<br><em class="serif">summer search?</em></h2>
-      <p class="cta__p">We'll analyze your Ocean City search presence, identify seasonal opportunities competitors miss, and create a strategy to capture more tourist business during peak season and beyond.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start your audit today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free Ocean City SEO audit',
+    'lead'    => 'Ready to dominate',
+    'tail'    => 'summer search?',
+    'deck'    => 'We\'ll analyze your Ocean City search presence, identify seasonal opportunities competitors miss, and create a strategy to capture more tourist business during peak season and beyond.',
+  ) );
+  ?>
 
 </main>
 

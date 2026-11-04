@@ -192,7 +192,7 @@ if ( have_posts() ) : the_post();
               <h3 class="bl-cta-banner__h">Reading is good. <em class="serif">Doing is better.</em></h3>
               <p class="bl-cta-banner__p">Want this exact playbook applied to your own site? We'll audit your website and local SEO and show you the highest-leverage moves first — no decks, no fluff.</p>
               <div class="bl-cta-banner__actions">
-                <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary">Get a free review <span aria-hidden="true">→</span></a>
+                <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary" data-lvm-intake>Get a free review <span aria-hidden="true">→</span></a>
                 <a href="tel:+14438521000" class="bl-cta-banner__phone mono">↳ (443) 852‑1000</a>
               </div>
             </div>
@@ -324,18 +324,14 @@ if ( have_posts() ) : the_post();
   <!-- ============================================================
        FINAL CTA
        ============================================================ -->
-  <section class="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free review</div>
-      <h2 class="cta__h">Ready to apply this<br><em class="serif">to your business?</em></h2>
-      <p class="cta__p">Get a free review of your website and local SEO. We'll show you exactly where the leverage is, on screen.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Contact us today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free review',
+    'lead'    => 'Ready to apply this',
+    'tail'    => 'to your business?',
+    'deck'    => 'Get a free review of your website and local SEO. We\'ll show you exactly where the leverage is, on screen.',
+  ) );
+  ?>
 
 </main>
 

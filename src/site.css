@@ -1,0 +1,159 @@
+/* ============================================================
+   SITE LAYER — every page, loaded after lvm-redesign.css
+
+   Brings the inner page templates onto the homepage system
+   (src/home.css): near-black surfaces, General Sans display
+   headings with a dimmed tail, content aligned to the hero
+   stage edges, inset "stage" panels for heroes and CTAs, and
+   the same scroll reveal. Colors come from the dark tokens on
+   body.lvm-redesign in lvm-redesign.css.
+   ============================================================ */
+
+body.lvm-redesign {
+  --gutter: 16px;
+  --pad: clamp(24px, 5vw, 80px);              /* hero stage's inner padding */
+  --edge: calc(var(--gutter) + var(--pad));   /* content edge = stage content edge */
+  --display: "General Sans", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --warm-hi: color-mix(in oklab, var(--accent), white 35%);
+  --warm-wash: color-mix(in oklab, var(--accent) 14%, transparent);
+  --warm-glow: color-mix(in oklab, var(--accent) 45%, transparent);
+}
+@media (max-width: 960px) { body.lvm-redesign { --pad: 24px; } }
+@media (max-width: 640px) { body.lvm-redesign { --gutter: 8px; --pad: 18px; } }
+
+/* ---------- Header + footer ----------
+   Header spans the stage width: 16px gutter, contents inset by the
+   stage padding so the logo lines up with page content. Scrolled, it
+   frosts into a floating panel. The footer is an inset panel. */
+body.lvm-redesign :is(.nav, .nav__drawer) {
+  --bg-2: #171715;
+  --card: #171715;
+  --hdr-pill: rgba(30, 30, 28, 0.55);
+  --hdr-ring: rgba(255, 255, 255, 0.08);
+  --hdr-hover: rgba(255, 255, 255, 0.07);
+  --hdr-cta-bg: #F3F0EA;
+  --hdr-cta-ink: #0A0A09;
+}
+body.lvm-redesign .nav,
+body.lvm-redesign .nav.is-scrolled {
+  padding: 8px var(--gutter) 0;
+  background: transparent; border-bottom: 0;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+body.lvm-redesign .nav__inner {
+  max-width: none; height: 60px;
+  padding: 0 var(--pad);
+  border-radius: 18px;
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}
+body.lvm-redesign .nav.is-scrolled .nav__inner {
+  background: rgba(17, 17, 16, 0.82);
+  -webkit-backdrop-filter: saturate(160%) blur(18px); backdrop-filter: saturate(160%) blur(18px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 18px 40px -24px rgba(0, 0, 0, 0.9);
+}
+body.lvm-redesign .nav.is-scrolled .nav__links { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.lvm-redesign .nav__drawer { inset: 68px 0 0 0; background: #0A0A09; }
+body.lvm-redesign .nav__panel { background: #171715; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 32px 80px -32px rgba(0, 0, 0, 0.8); }
+@media (max-width: 640px) {
+  body.lvm-redesign .nav, body.lvm-redesign .nav.is-scrolled { padding: 6px 8px 0; }
+  body.lvm-redesign .nav__inner { height: 56px; padding: 0 10px 0 18px; border-radius: 16px; }
+  body.lvm-redesign .nav__drawer { inset: 62px 0 0 0; }
+}
+body.lvm-redesign .footer {
+  margin: 0 var(--gutter) var(--gutter); border-top: 0;
+  border-radius: 24px; background: #111110; color: #F3F0EA;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+body.lvm-redesign .footer .lvm-container { max-width: none; padding-inline: var(--pad); }
+
+/* ---------- Inner pages ---------- */
+body.lvm-redesign:not(.home) { background: var(--bg); }
+body.lvm-redesign:not(.home) main .lvm-container { max-width: none; padding-left: var(--edge); padding-right: var(--edge); }
+/* Small labels use the body face like the homepage; code-like mockups keep mono */
+body.lvm-redesign:not(.home) main .mono { font-family: var(--font-sans) !important; letter-spacing: 0.02em; }
+body.lvm-redesign:not(.home) main :is([class*="term"], pre, code) .mono,
+body.lvm-redesign:not(.home) main :is([class*="term"], pre, code) { font-family: var(--font-mono) !important; }
+
+/* Display headings, as on the homepage (legacy rules force Geist with !important) */
+body.lvm-redesign:not(.home) main :is(h1, h2) {
+  font-family: var(--display) !important; font-weight: 300 !important;
+  letter-spacing: -0.035em; text-wrap: balance;
+}
+body.lvm-redesign:not(.home) main h3 { font-family: var(--display) !important; font-weight: 400; letter-spacing: -0.02em; }
+/* The old serif-italic accent becomes the homepage's dimmed tail */
+body.lvm-redesign:not(.home) .serif { font-family: inherit !important; font-style: normal !important; font-weight: inherit; letter-spacing: inherit; }
+body.lvm-redesign:not(.home) main :is(h1, h2, h3) :is(.serif, em) { font-style: normal !important; color: var(--muted) !important; }
+
+/* Retire the old system's ornaments: corner brackets, title underline, section rules */
+body.lvm-redesign:not(.home) main > section > .lvm-container::before,
+body.lvm-redesign:not(.home) main > section > .lvm-container::after,
+body.lvm-redesign:not(.home) .section-h::after { display: none; }
+body.lvm-redesign:not(.home) main > section + section { border-top: 0; }
+
+/* Eyebrows: the homepage's soft pill */
+body.lvm-redesign:not(.home) main .eyebrow {
+  width: fit-content; padding: 6px 12px; border-radius: 999px;
+  font-size: 12px; letter-spacing: 0.04em; color: var(--muted);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 45%);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+/* ---------- Stages: hero + CTA panels ----------
+   The first section of every template and the closing CTA become
+   inset stages: 16px gutter, 24px radius, the hero's lighting and
+   grain. Their content keeps the stage padding only. */
+body.lvm-redesign:not(.home) main > :is(.idx-hero, .dev-hero, .seo-hero, .an-hero, .cn-mast, .sm-hero, .dm-brief,
+  .ab-mast, .ct-mast, .bl-mast, .bl-art-head, .page-hero, .err404, .ind-brief, .seo-geo, .cta) {
+  position: relative; isolation: isolate; overflow: clip;
+  margin: 12px var(--gutter) 0;
+  border-radius: 24px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E"),
+    radial-gradient(72% 86% at 8% 12%, rgba(216, 214, 210, 0.13) 0%, rgba(168, 166, 162, 0.04) 42%, transparent 72%),
+    radial-gradient(78% 96% at 95% 100%, color-mix(in oklab, var(--accent) 20%, transparent) 0%, rgba(154, 150, 146, 0.05) 44%, transparent 76%),
+    #111110 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+}
+body.lvm-redesign:not(.home) main > .cta { margin: 0 var(--gutter) var(--gutter); }
+body.lvm-redesign:not(.home) main > :is(.idx-hero, .dev-hero, .seo-hero, .an-hero, .cn-mast, .sm-hero, .dm-brief,
+  .ab-mast, .ct-mast, .bl-mast, .bl-art-head, .page-hero, .err404, .ind-brief, .seo-geo, .cta) > .lvm-container {
+  padding-left: var(--pad); padding-right: var(--pad);
+}
+
+/* Mid-page bands become inset panels (like the homepage's bays);
+   bands that sit right against a stage go flat so panels never stack. */
+body.lvm-redesign:not(.home) main > :is(.ab-prin, .seo-opps, .ct-brief, .cn-quote, .ind-why) {
+  margin: 0 var(--gutter);
+  border-radius: 24px;
+  background:
+    radial-gradient(70% 60% at 0% 0%, rgba(216, 214, 210, 0.07), transparent 62%),
+    radial-gradient(60% 70% at 100% 100%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 72%),
+    #111110 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+body.lvm-redesign:not(.home) main > :is(.ab-prin, .seo-opps, .ct-brief, .cn-quote, .ind-why) > .lvm-container { padding-left: var(--pad); padding-right: var(--pad); }
+body.lvm-redesign:not(.home) main > :is(.ab-origin, .idx-note, .seo-gap) { background: transparent !important; }
+
+/* ---------- Motion ----------
+   Hero content settles in on load; later sections reveal on scroll
+   (lvm-redesign.js tags them). Transform/opacity/blur only. */
+@keyframes lvm-in { from { opacity: 0; transform: translateY(14px); filter: blur(6px); } }
+body.lvm-redesign:not(.home) main > :first-child > .lvm-container > *,
+body.lvm-redesign:not(.home) main > .bl-art-head > .lvm-container > * {
+  animation: lvm-in 900ms var(--ease-out) both;
+}
+body.lvm-redesign:not(.home) main > * > .lvm-container > :nth-child(2) { animation-delay: 80ms; }
+body.lvm-redesign:not(.home) main > * > .lvm-container > :nth-child(3) { animation-delay: 160ms; }
+body.lvm-redesign:not(.home) main > * > .lvm-container > :nth-child(n+4) { animation-delay: 240ms; }
+.lvm-js [data-lvm-reveal] {
+  opacity: 0; transform: translateY(16px); filter: blur(6px);
+  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out), filter 900ms var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.lvm-js [data-lvm-reveal].is-in { opacity: 1; transform: none; filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  body.lvm-redesign main > * > .lvm-container > * { animation: none !important; }
+  .lvm-js [data-lvm-reveal] { transform: none; filter: none; transition: opacity 300ms ease; }
+}

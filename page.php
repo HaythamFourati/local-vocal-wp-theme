@@ -89,18 +89,14 @@ get_header(); ?>
     </div>
   </section>
 
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Ready to talk</div>
-      <h2 class="cta__h">Ready to get<br><em class="serif">started?</em></h2>
-      <p class="cta__p">Join our satisfied clients and experience the difference focused work makes for a local business.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Contact us today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Ready to talk',
+    'lead'    => 'Ready to get',
+    'tail'    => 'started?',
+    'deck'    => 'Join our satisfied clients and experience the difference focused work makes for a local business.',
+  ) );
+  ?>
 
 </main>
 

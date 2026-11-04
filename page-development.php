@@ -23,12 +23,12 @@ get_header(); ?>
           <span>Web Development</span>
         </div>
         <div class="eyebrow"><span class="eyebrow__num mono">S/01</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Service · Development</span></div>
-        <h1 class="dev-hero__h">Websites that load fast,<br><em class="serif">rank well, and don't break.</em></h1>
+        <h1 class="dev-hero__h">Website design in Baltimore<br><em class="serif">&amp; Maryland that loads fast and ranks.</em></h1>
         <p class="dev-hero__sub">
-          Mobile-first builds with SEO structure baked in from the first commit. We ship with Core Web Vitals targets, JSON-LD schema, accessibility passes, and clean code your next developer will thank us for.
+          Mobile-first websites for Baltimore and Maryland businesses, with SEO structure baked in from the first commit. We ship with Core Web Vitals targets, JSON-LD schema, accessibility passes, and clean code your next developer will thank us for.
         </p>
         <div class="dev-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start a project <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Start a project <span aria-hidden="true">→</span></a>
           <a href="#stack" class="btn btn--ghost btn--lg">View tech stack <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -143,7 +143,7 @@ get_header(); ?>
               <?php endforeach; ?>
             </ul>
 
-            <a class="dev-mode__cta" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">
+            <a class="dev-mode__cta" href="<?php echo esc_url( home_url( '/contact' ) ); ?>" data-lvm-intake>
               Pick this build <span aria-hidden="true">→</span>
             </a>
           </article>
@@ -314,18 +314,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Project brief</div>
-      <h2 class="cta__h">Ready to start<br><em class="serif">your website project?</em></h2>
-      <p class="cta__p">Tell us about your business and what you need. We'll come back with a clear scope, a fair price, and a real timeline.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Contact us today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Project brief',
+    'lead'    => 'Ready to start',
+    'tail'    => 'your website project?',
+    'deck'    => 'Tell us about your business and what you need. We\'ll come back with a clear scope, a fair price, and a real timeline.',
+  ) );
+  ?>
 
 </main>
 

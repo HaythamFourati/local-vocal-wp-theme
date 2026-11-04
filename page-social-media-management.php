@@ -23,12 +23,12 @@ get_header(); ?>
           <span>Social Media</span>
         </div>
         <div class="eyebrow"><span class="eyebrow__num mono">S/04</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Service · Social Media</span></div>
-        <h1 class="sm-hero__h">Stay visible<br><em class="serif">without going viral.</em></h1>
+        <h1 class="sm-hero__h">Social media management<br><em class="serif">that keeps you visible.</em></h1>
         <p class="sm-hero__sub">
-          Consistent, on-brand posting that keeps your business top-of-mind for local customers — service updates, blog promotion, seasonal content, and community moments. We're not chasing trends. We're building a steady local presence.
+          Consistent, on-brand posting that keeps your business top-of-mind for local customers across Baltimore and Maryland — service updates, blog promotion, seasonal content, and community moments. We're not chasing trends. We're building a steady local presence.
         </p>
         <div class="sm-hero__ctas">
-          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free social audit <span aria-hidden="true">→</span></a>
+          <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free social audit <span aria-hidden="true">→</span></a>
           <a href="#calendar" class="btn btn--ghost btn--lg">See a sample calendar <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -100,17 +100,17 @@ get_header(); ?>
       <div class="sm-plats__grid">
         <?php
         $platforms = array(
-          array( 'F',  'Facebook',          'Local discovery, community posts, and event reach. Still where most Maryland homeowners 35+ live online.', '+38%', 'page reach' ),
-          array( 'IG', 'Instagram',         'Visual storytelling, reels, and behind-the-scenes. Builds trust faster than any other channel.', '+62%', 'profile visits', true ),
-          array( 'in', 'LinkedIn',          'B2B reach, partnership posts, and credibility for owners selling into commercial accounts.', '+24%', 'impressions' ),
-          array( 'G',  'Google Business',   'Map pack visibility, photo updates, posts, and Q&A — the social platform Google actually ranks.', '+184%', 'discovery searches' ),
+          array( 'facebook',  'Facebook',          'Local discovery, community posts, and event reach. Still where most Maryland homeowners 35+ live online.', '+38%', 'page reach' ),
+          array( 'instagram', 'Instagram',         'Visual storytelling, reels, and behind-the-scenes. Builds trust faster than any other channel.', '+62%', 'profile visits', true ),
+          array( 'linkedin',  'LinkedIn',          'B2B reach, partnership posts, and credibility for owners selling into commercial accounts.', '+24%', 'impressions' ),
+          array( 'google',    'Google Business',   'Map pack visibility, photo updates, posts, and Q&A — the social platform Google actually ranks.', '+184%', 'discovery searches' ),
         );
         foreach ( $platforms as $p ) :
           $featured = isset( $p[5] ) && $p[5];
           ?>
           <article class="sm-plat<?php echo $featured ? ' sm-plat--featured' : ''; ?>">
             <div class="sm-plat__head">
-              <span class="sm-plat__icon mono"><?php echo esc_html( $p[0] ); ?></span>
+              <?php echo lvm_app_icon( $p[0], 'sm-plat__app' ); // official mark, same as the homepage ?>
               <span class="sm-plat__live mono"><span class="sm-plat__live-dot"></span> active</span>
             </div>
             <h3 class="sm-plat__name"><?php echo esc_html( $p[1] ); ?></h3>
@@ -141,7 +141,7 @@ get_header(); ?>
         // [ tag, color, category, caption, likes, comments, headline, foot-line, unsplash_photo_id, alt ]
         $posts = array(
           array( 'service',   '#FF6B4A', 'Service spotlight', 'Beat the March rush — $89 spring tune-up.',                    '184', '22', "Beat the\nMarch rush.",                       '$89 spring tune-up · book by Mar 31',   'photo-1561400555-786780284b67', 'HVAC technician at work' ),
-          array( 'review',    '#4A90FF', 'Customer review',   '"They came out the same day and fixed it under warranty."',    '92',  '8',  '"Same day.\nFixed under\nwarranty."',         '★★★★★ · Maria H. · Annapolis',          'photo-1521790797524-b2497295b8a0', 'Two people shaking hands' ),
+          array( 'review',    '#4A90FF', 'Customer review',   '"They came out the same day and fixed it under warranty."',    '92',  '8',  "&ldquo;Same day.\nFixed under\nwarranty.&rdquo;",         '★★★★★ · Maria H. · Annapolis',          'photo-1521790797524-b2497295b8a0', 'Two people shaking hands' ),
           array( 'bts',       '#7AC74F', 'Behind the scenes', 'Truck #04 ready for the day. New techs, same standards.',     '76',  '14', "Truck&nbsp;#04,\nready.",                     'Crew of 3 · 6:42 am roll-out',          'photo-1574757974346-45bae947d89a', 'Work truck loaded up' ),
           array( 'edu',       '#A067E5', 'Education',         '5 signs your AC is about to give up before summer.',           '218', '34', "5 signs your\nAC&rsquo;s done.",              'Save before May · 4-min read',          'photo-1650682009477-52fd77302b78', 'Thermostat on the wall' ),
           array( 'seasonal',  '#F5A623', 'Seasonal',          'First frost just hit Annapolis. Heat-pump checklist inside.',  '142', '19', "First frost.\nLet&rsquo;s talk\nheat pumps.", 'Checklist inside · Annapolis, MD',      'photo-1634282215801-00c6f4ce0d32', 'Frost on autumn leaves' ),
@@ -309,18 +309,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free social audit</div>
-      <h2 class="cta__h">Ready to boost<br><em class="serif">your social presence?</em></h2>
-      <p class="cta__p">Let's create a social media strategy that connects with your audience and drives real local visibility.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get started today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free social audit',
+    'lead'    => 'Ready to boost',
+    'tail'    => 'your social presence?',
+    'deck'    => 'Let\'s create a social media strategy that connects with your audience and drives real local visibility.',
+  ) );
+  ?>
 
 </main>
 

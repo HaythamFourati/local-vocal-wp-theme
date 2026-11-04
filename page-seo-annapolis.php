@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="seo-geo__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">MD/01</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">SEO · Annapolis Market</span></div>
-          <h1 class="seo-geo__h">Own Annapolis search<br><em class="serif">before your competitors do.</em></h1>
+          <h1 class="seo-geo__h">Annapolis SEO &amp; web design<br><em class="serif">before your competitors do.</em></h1>
           <p class="seo-geo__sub">
             Maryland's capital is competitive — law firms, restaurants, maritime services, and tourism all fighting for the same local searches. We help Annapolis businesses dominate the map pack and organic results with hyper-local SEO that understands the city's unique search behavior.
           </p>
           <div class="seo-geo__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get your free SEO audit <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get your free SEO audit <span aria-hidden="true">→</span></a>
             <a href="#analysis" class="btn btn--ghost btn--lg">See market analysis <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -215,18 +215,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free Annapolis SEO audit</div>
-      <h2 class="cta__h">Ready to dominate<br><em class="serif">Annapolis search?</em></h2>
-      <p class="cta__p">We'll analyze your Annapolis search presence, identify where competitors are outranking you, and create a hyper-local strategy to capture more business from residents and visitors.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start your audit today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free Annapolis SEO audit',
+    'lead'    => 'Ready to dominate',
+    'tail'    => 'Annapolis search?',
+    'deck'    => 'We\'ll analyze your Annapolis search presence, identify where competitors are outranking you, and create a hyper-local strategy to capture more business from residents and visitors.',
+  ) );
+  ?>
 
 </main>
 

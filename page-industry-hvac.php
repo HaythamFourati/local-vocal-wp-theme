@@ -33,12 +33,12 @@ get_header(); ?>
 
         <div class="ind-brief__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">IND/02</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Industry · HVAC</span></div>
-          <h1 class="ind-brief__h">More calls when<br><em class="serif">the weather turns.</em></h1>
+          <h1 class="ind-brief__h">HVAC marketing &amp; SEO:<br><em class="serif">more calls when the weather turns.</em></h1>
           <p class="ind-brief__sub">
-            HVAC is seasonal, competitive, and hyper-local. We make sure your company is the first one homeowners find — and trust — when the AC dies in July or the furnace quits in January.
+            HVAC is seasonal, competitive, and hyper-local. We make sure your company is the first one Maryland homeowners find — and trust — when the AC dies in July or the furnace quits in January.
           </p>
           <div class="ind-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#services" class="btn btn--ghost btn--lg">See what we do <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -175,18 +175,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free consultation</div>
-      <h2 class="cta__h">Ready to own<br><em class="serif">your service area?</em></h2>
-      <p class="cta__p">We'll audit your current online presence, show you where calls are going to competitors, and build a plan to capture them.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get started today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free consultation',
+    'lead'    => 'Ready to own',
+    'tail'    => 'your service area?',
+    'deck'    => 'We\'ll audit your current online presence, show you where calls are going to competitors, and build a plan to capture them.',
+  ) );
+  ?>
 
 </main>
 

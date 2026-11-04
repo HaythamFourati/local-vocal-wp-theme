@@ -33,12 +33,12 @@ get_header(); ?>
 
         <div class="ind-brief__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">IND/04</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Industry · Dentists</span></div>
-          <h1 class="ind-brief__h">Fill chairs with<br><em class="serif">the right patients.</em></h1>
+          <h1 class="ind-brief__h">Dental SEO &amp; marketing<br><em class="serif">that fills chairs.</em></h1>
           <p class="ind-brief__sub">
-            Dental practices compete on trust, convenience, and visibility. We build the online presence that makes new patients choose you — through local search dominance, a modern website, and consistent social proof.
+            Maryland dental practices compete on trust, convenience, and visibility. We build the online presence that makes new patients choose you — through local search dominance, a modern website, and consistent social proof.
           </p>
           <div class="ind-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Get a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#services" class="btn btn--ghost btn--lg">See what we do <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -175,18 +175,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free consultation</div>
-      <h2 class="cta__h">Ready to fill<br><em class="serif">your schedule?</em></h2>
-      <p class="cta__p">We'll audit your current online presence, show you where new patients are going to competing practices, and build a plan to win them back.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Get started today <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free consultation',
+    'lead'    => 'Ready to fill',
+    'tail'    => 'your schedule?',
+    'deck'    => 'We\'ll audit your current online presence, show you where new patients are going to competing practices, and build a plan to win them back.',
+  ) );
+  ?>
 
 </main>
 

@@ -3,7 +3,7 @@
    Combined: styles.css + polish.css (from design package)
    Scoped under .lvm-redesign body class to avoid bleed into
    legacy service pages.
-   Type:  Geist (UI) + Geist Mono (tags) + Newsreader italic (accent)
+   Type:  Onest (UI) + General Sans (display + accent) + Geist Mono (code)
    ============================================================ */
 
 html:has(body.lvm-redesign) {
@@ -15,24 +15,25 @@ html:has(body.lvm-redesign) {
 }
 
 body.lvm-redesign {
-  --bg:           #FAFAF7;
-  --bg-2:         #F5F3ED;
-  --ink:          #0E0E0C;
-  --ink-2:        #1B1B18;
-  --muted:        #6B6B66;
-  --muted-2:      #94938C;
-  --line:         #E8E4DC;
-  --line-strong:  #D8D3C8;
-  --card:         #FFFFFF;
-  --dark-bg:      #0F0F0E;
-  --dark-bg-2:    #161614;
-  --dark-line:    #262521;
-  --dark-muted:   #8A8880;
-  --dark-ink:     #F2EFE7;
+  /* Dark system shared with the homepage (src/home.css) */
+  --bg:           #0A0A09;
+  --bg-2:         #111110;
+  --ink:          #F3F0EA;
+  --ink-2:        #D8D4CC;
+  --muted:        #A8A49C;
+  --muted-2:      #827F78;
+  --line:         rgba(255, 255, 255, 0.08);
+  --line-strong:  rgba(255, 255, 255, 0.16);
+  --card:         #111110;
+  --dark-bg:      #111110;
+  --dark-bg-2:    #171715;
+  --dark-line:    rgba(255, 255, 255, 0.08);
+  --dark-muted:   #A8A49C;
+  --dark-ink:     #F3F0EA;
 
   --accent:       oklch(0.72 0.17 50);
-  --accent-ink:   oklch(0.32 0.12 50);
-  --accent-soft:  oklch(0.96 0.04 70);
+  --accent-ink:   color-mix(in oklab, var(--accent), white 35%);
+  --accent-soft:  color-mix(in oklab, var(--accent) 14%, transparent);
 
   --radius-sm: 6px;
   --radius:    10px;
@@ -46,9 +47,9 @@ body.lvm-redesign {
   --gap-9: 96px;
   --gap-10: 128px;
 
-  --font-sans: "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: "Onest", "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-serif: "Newsreader", "Times New Roman", Georgia, serif;
+  --font-serif: "General Sans", "Geist", ui-sans-serif, system-ui, sans-serif; /* the old serif accent now uses the display face */
 
   background: var(--bg);
   color: var(--ink);
@@ -103,12 +104,12 @@ body.lvm-redesign h6 {
   font-weight: inherit;
 }
 
-/* Keep the italic display accents on Newsreader */
+/* The old italic accent classes now use the display face (see --font-serif) */
 body.lvm-redesign .serif,
 body.lvm-redesign em.serif,
 body.lvm-redesign .tcard__name {
-  font-family: "Newsreader", "Times New Roman", Georgia, serif !important;
-  font-style: italic;
+  font-family: "General Sans", "Geist", ui-sans-serif, system-ui, sans-serif !important;
+  font-style: normal;
 }
 
 /* Mono stays Geist Mono */
@@ -138,12 +139,12 @@ body.lvm-redesign svg { display: block; max-width: 100%; }
 .lvm-redesign .mono { font-family: var(--font-mono); font-feature-settings: "ss01"; letter-spacing: 0.01em; }
 .lvm-redesign .serif {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
-body.lvm-redesign ::selection { background: var(--accent); color: #fff; }
+body.lvm-redesign ::selection { background: var(--accent); color: #0A0A09; }
 
 /* ------- BUTTONS ------- */
 .lvm-redesign .btn {
@@ -161,14 +162,14 @@ body.lvm-redesign ::selection { background: var(--accent); color: #fff; }
 }
 .lvm-redesign .btn--lg { padding: 14px 22px; font-size: 15px; }
 .lvm-redesign .btn--primary {
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 1px 0 rgba(0,0,0,.04), 0 1px 12px -2px rgba(0,0,0,.18);
 }
 .lvm-redesign .btn--primary:hover { background: #000; transform: translateY(-1px); }
 .lvm-redesign .btn--ghost {
   background: transparent; color: var(--ink); border-color: var(--line-strong);
 }
-.lvm-redesign .btn--ghost:hover { background: #fff; border-color: var(--ink); }
+.lvm-redesign .btn--ghost:hover { background: #171715; border-color: var(--ink); }
 .lvm-redesign .btn--dark-ghost {
   background: transparent; color: var(--dark-ink); border-color: rgba(255,255,255,.16);
 }
@@ -236,7 +237,7 @@ body.lvm-redesign ::selection { background: var(--accent); color: #fff; }
   left: 50%;
   transform: translate(-50%, 8px);
   min-width: 420px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   box-shadow: 0 32px 80px -32px rgba(20,18,14,.28);
@@ -682,7 +683,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .hero__pill {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 6px 12px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 11.5px;
@@ -741,12 +742,12 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .hero-dash {
   position: relative;
   background:
-    linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,1)) padding-box,
-    linear-gradient(180deg, var(--line), color-mix(in oklab, var(--line-strong) 60%, white)) border-box;
+    linear-gradient(180deg, #171715, #171715) padding-box,
+    linear-gradient(180deg, var(--line), color-mix(in oklab, var(--line-strong) 60%, #171715)) border-box;
   border: 1px solid transparent;
   border-radius: var(--radius-xl);
   box-shadow:
-    0 1px 0 #fff inset,
+    0 1px 0 #171715 inset,
     0 30px 60px -30px rgba(20, 18, 14, 0.18),
     0 12px 30px -18px rgba(20, 18, 14, 0.12);
   overflow: hidden;
@@ -755,7 +756,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, #FBFAF6, #fff);
+  background: linear-gradient(180deg, #131312, #171715);
 }
 .lvm-redesign .hero-dash__dots { display: flex; gap: 6px; }
 .lvm-redesign .hero-dash__dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
@@ -776,7 +777,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 1px;
 }
 .lvm-redesign .hero-dash__left {
-  background: linear-gradient(180deg, #FBFAF6 0%, #fff 100%);
+  background: linear-gradient(180deg, #131312 0%, #171715 100%);
   position: relative;
   padding: 18px 20px 20px;
   display: flex; flex-direction: column; gap: 14px;
@@ -799,14 +800,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 
 .lvm-redesign .hero-dash__right {
-  background: #fff;
+  background: #171715;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   gap: 1px;
   background-color: var(--line);
 }
 .lvm-redesign .ch {
-  background: #fff;
+  background: #171715;
   padding: 18px 20px;
   display: flex; flex-direction: column; gap: 10px;
   min-height: 0;
@@ -865,17 +866,17 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 /* SiteFull preview */
 .lvm-redesign .sitefull {
   position: relative;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 0 #fff inset, 0 20px 40px -28px rgba(20,18,14,.18);
+  box-shadow: 0 1px 0 #171715 inset, 0 20px 40px -28px rgba(20,18,14,.18);
 }
 .lvm-redesign .sitefull__bar {
   display: flex; align-items: center; gap: 8px;
   padding: 7px 12px;
   border-bottom: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
 }
 .lvm-redesign .sitefull__bdot { width: 7px; height: 7px; border-radius: 50%; background: var(--line-strong); }
 .lvm-redesign .sitefull__burl {
@@ -887,7 +888,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .sitefull__brand { display: flex; align-items: center; gap: 8px; }
 .lvm-redesign .sitefull__logo {
@@ -897,7 +898,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .sitefull__brandname { font-size: 12.5px; font-weight: 600; letter-spacing: -0.005em; color: var(--ink); }
 .lvm-redesign .sitefull__links { display: flex; gap: 14px; align-items: center; font-size: 11px; color: var(--muted); }
 .lvm-redesign .sitefull__phone {
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   padding: 5px 10px; border-radius: 999px;
   letter-spacing: 0.02em; font-size: 10.5px;
   white-space: nowrap;
@@ -908,7 +909,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   padding: 22px 22px 20px;
   display: flex; flex-direction: column; gap: 10px;
-  background: linear-gradient(180deg, #FCFBF7 0%, #fff 100%);
+  background: linear-gradient(180deg, #131312 0%, #171715 100%);
 }
 .lvm-redesign .sitefull__tag {
   display: inline-flex; align-items: center;
@@ -928,7 +929,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .sitefull__h1-mark {
   color: var(--accent-ink);
-  background: color-mix(in oklab, var(--accent-soft) 80%, white);
+  background: color-mix(in oklab, var(--accent-soft) 80%, #171715);
   padding: 0 4px; border-radius: 4px;
 }
 .lvm-redesign .sitefull__sub {
@@ -941,7 +942,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 7px 12px; border-radius: 999px;
   white-space: nowrap;
 }
-.lvm-redesign .sitefull__cta--primary { background: var(--accent); color: var(--accent-ink); }
+.lvm-redesign .sitefull__cta--primary { background: var(--accent); color: #0A0A09; }
 .lvm-redesign .sitefull__cta--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
 
 .lvm-redesign .sitefull__svcs {
@@ -949,11 +950,11 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 8px;
   padding: 14px;
   border-top: 1px solid var(--line);
-  background: #FAF9F4;
+  background: #131312;
 }
 .lvm-redesign .sitefull__svc {
   display: flex; gap: 10px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px;
@@ -972,7 +973,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; flex-direction: column; gap: 6px;
   padding: 12px 16px;
   border-top: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .sitefull__rev-head {
   display: flex; align-items: center; gap: 8px;
@@ -990,7 +991,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   padding: 12px 16px;
   border-top: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
 }
 .lvm-redesign .sitefull__blog-label {
   font-size: 9.5px; color: var(--muted);
@@ -1007,7 +1008,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; justify-content: space-between; align-items: center;
   padding: 10px 16px 10px 46px;
   border-top: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
   font-size: 9.5px;
   color: var(--muted);
   letter-spacing: 0.04em;
@@ -1025,13 +1026,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   width: 22px; height: 22px;
   border-radius: 50%;
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   font-family: var(--font-mono);
   font-size: 9.5px; font-weight: 700;
   display: grid; place-items: center;
   z-index: 3;
   box-shadow:
-    0 0 0 3px rgba(255,255,255,1),
+    0 0 0 3px #171715,
     0 0 0 4px color-mix(in oklab, var(--accent) 40%, transparent),
     0 4px 10px -2px rgba(0,0,0,.12);
   animation: lvmPinPulse 2.4s ease-in-out infinite;
@@ -1040,8 +1041,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .sitefull__pin--03 { top: 12px; right: 14px; animation-delay: .6s; }
 .lvm-redesign .sitefull__pin--04 { top: 50%; left: 14px; transform: translateY(-50%); animation-delay: 1.2s; }
 @keyframes lvmPinPulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,1), 0 0 0 4px color-mix(in oklab, var(--accent) 40%, transparent), 0 4px 10px -2px rgba(0,0,0,.12); }
-  50%      { box-shadow: 0 0 0 3px rgba(255,255,255,1), 0 0 0 10px color-mix(in oklab, var(--accent) 0%, transparent), 0 4px 10px -2px rgba(0,0,0,.12); }
+  0%, 100% { box-shadow: 0 0 0 3px #171715, 0 0 0 4px color-mix(in oklab, var(--accent) 40%, transparent), 0 4px 10px -2px rgba(0,0,0,.12); }
+  50%      { box-shadow: 0 0 0 3px #171715, 0 0 0 10px color-mix(in oklab, var(--accent) 0%, transparent), 0 4px 10px -2px rgba(0,0,0,.12); }
 }
 
 .lvm-redesign .mappack { display: flex; flex-direction: column; gap: 6px; }
@@ -1052,21 +1053,21 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 12px;
   padding: 10px 12px;
   border-radius: 10px;
-  background: #FAF9F4;
+  background: #131312;
   border: 1px solid var(--line);
 }
 .lvm-redesign .mappack__row--you {
-  background: color-mix(in oklab, var(--accent-soft) 80%, white);
+  background: color-mix(in oklab, var(--accent-soft) 80%, #171715);
   border-color: color-mix(in oklab, var(--accent) 30%, var(--line));
 }
 .lvm-redesign .mappack__pin {
   display: grid; place-items: center;
   width: 22px; height: 22px;
   border-radius: 50%;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10px; font-weight: 600; font-family: var(--font-mono);
 }
-.lvm-redesign .mappack__row--you .mappack__pin { background: var(--accent); color: var(--accent-ink); }
+.lvm-redesign .mappack__row--you .mappack__pin { background: var(--accent); color: #0A0A09; }
 .lvm-redesign .mappack__name { font-size: 13px; font-weight: 500; }
 .lvm-redesign .mappack__meta { font-size: 10.5px; color: var(--muted); }
 .lvm-redesign .mappack__pos { font-size: 11px; color: var(--muted); }
@@ -1086,7 +1087,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 7px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255,255,255,.6);
+  background: rgba(23, 23, 21, 0.6);
   letter-spacing: -0.005em;
   font-weight: 500;
 }
@@ -1106,7 +1107,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px -18px rgba(20,18,14,0.06);
 }
 .lvm-redesign .problem__card {
-  background: #fff;
+  background: #171715;
   padding: 32px 28px;
   display: flex; flex-direction: column; gap: 10px;
   min-height: 220px;
@@ -1115,14 +1116,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   counter-increment: lvm-problem;
   transition: background .3s, transform .3s;
 }
-.lvm-redesign .problem__card:hover { background: #FBFAF5; transform: translateY(-1px); }
+.lvm-redesign .problem__card:hover { background: #131312; transform: translateY(-1px); }
 .lvm-redesign .problem__card::before {
   content: counter(lvm-problem, decimal-leading-zero);
   position: absolute;
   right: -8px;
   bottom: -22px;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   font-size: 96px;
   line-height: 1;
@@ -1165,7 +1166,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px -18px rgba(20,18,14,0.06);
 }
 .lvm-redesign .svc-card {
-  background: #fff;
+  background: #171715;
   padding: 28px 24px;
   display: flex; flex-direction: column; gap: 14px;
   min-height: 320px;
@@ -1173,7 +1174,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   overflow: hidden;
   transition: background .25s ease, transform .25s ease;
 }
-.lvm-redesign .svc-card:hover { background: #FBFAF5; transform: translateY(-2px); }
+.lvm-redesign .svc-card:hover { background: #131312; transform: translateY(-2px); }
 .lvm-redesign .svc-card::before {
   content: "";
   position: absolute;
@@ -1287,7 +1288,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   width: 28px; height: 28px;
   border-radius: 50%;
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   font-family: var(--font-mono);
   font-size: 10.5px; font-weight: 700;
   display: grid; place-items: center;
@@ -1315,7 +1316,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 .lvm-redesign .anno__site {
   position: relative;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1325,7 +1326,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; align-items: center; gap: 12px;
   padding: 10px 14px;
   border-bottom: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
 }
 .lvm-redesign .anno__dots { display: flex; gap: 5px; }
 .lvm-redesign .anno__dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
@@ -1335,7 +1336,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   padding: 26px 28px 24px;
   display: flex; flex-direction: column; gap: 10px;
-  background: linear-gradient(180deg, #FCFBF7, #fff);
+  background: linear-gradient(180deg, #131312, #171715);
 }
 .lvm-redesign .anno__tag {
   display: inline-flex; align-items: center;
@@ -1354,7 +1355,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   text-wrap: balance;
 }
 .lvm-redesign .anno__hl {
-  background: color-mix(in oklab, var(--accent-soft) 80%, white);
+  background: color-mix(in oklab, var(--accent-soft) 80%, #171715);
   color: var(--accent-ink);
   padding: 0 6px; border-radius: 4px;
 }
@@ -1368,7 +1369,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 8px 14px; border-radius: 999px;
   white-space: nowrap;
 }
-.lvm-redesign .anno__cta--primary { background: var(--ink); color: #fff; }
+.lvm-redesign .anno__cta--primary { background: var(--ink); color: #0A0A09; }
 .lvm-redesign .anno__cta--ghost {
   background: transparent; color: var(--ink);
   border: 1px solid var(--line-strong);
@@ -1378,10 +1379,10 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
   padding: 16px;
   border-top: 1px solid var(--line);
-  background: #FAF9F4;
+  background: #131312;
 }
 .lvm-redesign .anno__svc {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 12px;
@@ -1393,7 +1394,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .anno__blog {
   padding: 18px 20px;
   border-top: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .anno__blog-title { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
 .lvm-redesign .anno__blog-list { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--accent-ink); }
@@ -1402,7 +1403,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; justify-content: space-between; align-items: center;
   padding: 12px 20px;
   border-top: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
   font-size: 10px;
   color: var(--muted);
   letter-spacing: 0.04em;
@@ -1424,7 +1425,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   overflow: hidden;
 }
 .lvm-redesign .anno__legend li {
-  background: #fff;
+  background: #171715;
   padding: 14px 14px;
   display: flex; flex-direction: column; gap: 6px;
   font-size: 12px; color: var(--ink-2);
@@ -1470,7 +1471,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .seo__d { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin-top: 4px; }
 
 .lvm-redesign .srank {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1480,7 +1481,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 18px;
   border-bottom: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
 }
 .lvm-redesign .srank__query { color: var(--ink); font-size: 13px; }
 .lvm-redesign .srank__loc { color: var(--muted); font-size: 11px; }
@@ -1491,7 +1492,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   align-items: center; gap: 14px;
   padding: 12px 14px;
   border-radius: 10px;
-  background: #FAF9F4;
+  background: #131312;
   border: 1px solid var(--line);
 }
 .lvm-redesign .srank__row.is-you {
@@ -1504,13 +1505,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .srank__stars { font-size: 11px; color: var(--muted); }
 .lvm-redesign .srank__delta {
   font-size: 11px; padding: 2px 6px; border-radius: 4px;
-  color: oklch(0.4 0.12 145); background: color-mix(in oklab, oklch(0.65 0.13 145) 18%, white);
+  color: oklch(0.4 0.12 145); background: color-mix(in oklab, oklch(0.65 0.13 145) 18%, #171715);
 }
 .lvm-redesign .srank__foot {
   padding: 12px 18px;
   border-top: 1px solid var(--line);
   font-size: 11px; color: var(--muted);
-  background: #FBFAF6;
+  background: #131312;
 }
 
 @media (max-width: 960px) {
@@ -1533,7 +1534,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px -18px rgba(20,18,14,0.06);
 }
 .lvm-redesign .bpost {
-  background: #fff;
+  background: #171715;
   padding: 28px 24px;
   display: flex; flex-direction: column; gap: 14px;
   min-height: 240px;
@@ -1541,7 +1542,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   overflow: hidden;
   transition: background .25s, transform .25s;
 }
-.lvm-redesign .bpost:hover { background: #FBFAF5; transform: translateY(-2px); }
+.lvm-redesign .bpost:hover { background: #131312; transform: translateY(-2px); }
 .lvm-redesign .bpost__cat {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 10px 4px 8px;
@@ -1598,7 +1599,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .blog__band {
   display: flex; flex-direction: column; gap: 8px;
   padding: 18px 20px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   font-size: 13.5px;
@@ -1618,7 +1619,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 16px;
 }
 .lvm-redesign .spost {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 22px 22px 18px;
@@ -1626,7 +1627,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   min-height: 220px;
   transition: background .25s, transform .25s, border-color .25s;
 }
-.lvm-redesign .spost:hover { background: #FBFAF5; transform: translateY(-2px); border-color: var(--line-strong); }
+.lvm-redesign .spost:hover { background: #131312; transform: translateY(-2px); border-color: var(--line-strong); }
 .lvm-redesign .spost__head { display: flex; gap: 12px; align-items: center; }
 .lvm-redesign .spost__avatar {
   width: 38px; height: 38px; border-radius: 999px;
@@ -1675,7 +1676,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px -18px rgba(20,18,14,0.06);
 }
 .lvm-redesign .checklist__col {
-  background: #fff;
+  background: #171715;
   padding: 32px 28px;
 }
 .lvm-redesign .checklist__title {
@@ -1724,12 +1725,12 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   overflow: hidden;
 }
 .lvm-redesign .tcard {
-  background: #fff;
+  background: #171715;
   display: flex; flex-direction: column;
   position: relative;
   transition: background .25s;
 }
-.lvm-redesign .tcard:hover { background: #FBFAF5; }
+.lvm-redesign .tcard:hover { background: #131312; }
 .lvm-redesign .tcard__photo {
   position: relative;
   aspect-ratio: 4 / 4;
@@ -1754,7 +1755,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   z-index: 2;
   font-size: 10px;
   color: var(--ink);
-  background: rgba(255,255,255,.85);
+  background: rgba(23, 23, 21, 0.85);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: 4px 8px; border-radius: 4px;
@@ -1787,7 +1788,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 4px 0 6px;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-redesign .tcard__bio {
   font-size: 14px;
@@ -1814,14 +1815,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px -18px rgba(20,18,14,0.06);
 }
 .lvm-redesign .ind-card {
-  background: #fff;
+  background: #171715;
   padding: 24px 20px;
   display: flex; flex-direction: column; gap: 10px;
   min-height: 220px;
   position: relative;
   transition: background .25s, transform .25s;
 }
-.lvm-redesign .ind-card:hover { background: #FBFAF5; transform: translateY(-2px); }
+.lvm-redesign .ind-card:hover { background: #131312; transform: translateY(-2px); }
 .lvm-redesign .ind-card:hover .ind-card__cta span:last-child { transform: translateX(3px); }
 .lvm-redesign .ind-card__icon {
   width: 34px; height: 34px;
@@ -1835,7 +1836,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .ind-card:hover .ind-card__icon {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
 }
 .lvm-redesign .ind-card::before {
   content: "";
@@ -1905,7 +1906,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   overflow: hidden;
   transition: background .25s;
 }
-.lvm-redesign .whyus:not(.whyus--dark) .whyus__item { background: #fff; }
+.lvm-redesign .whyus:not(.whyus--dark) .whyus__item { background: #171715; }
 .lvm-redesign .whyus__item::before {
   content: "";
   position: absolute;
@@ -1918,12 +1919,12 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .whyus__item:hover::before { transform: scaleY(1); }
 .lvm-redesign .whyus--dark .whyus__item:hover { background: var(--dark-bg-2); }
-.lvm-redesign .whyus:not(.whyus--dark) .whyus__item:hover { background: #FBFAF5; }
+.lvm-redesign .whyus:not(.whyus--dark) .whyus__item:hover { background: #131312; }
 .lvm-redesign .whyus__item::after {
   content: counter(lvm-why, decimal-leading-zero);
   grid-row: 1; grid-column: 2;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 28px;
   line-height: 1;
   color: color-mix(in oklab, var(--accent) 40%, transparent);
@@ -2086,7 +2087,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
    ============================================================ */
 .lvm-redesign .cta {
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -2122,9 +2123,9 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .cta__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
 .lvm-redesign .cta__actions .btn--primary {
-  background: var(--accent); color: var(--accent-ink); font-weight: 600;
+  background: var(--accent); color: #0A0A09; font-weight: 600;
 }
-.lvm-redesign .cta__actions .btn--primary:hover { background: color-mix(in oklab, var(--accent), white 5%); }
+.lvm-redesign .cta__actions .btn--primary:hover { background: color-mix(in oklab, var(--accent), white 8%); }
 .lvm-redesign .cta__notes {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -2165,14 +2166,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   outline: none; border-color: var(--accent); background: rgba(255,255,255,.1);
 }
 .lvm-redesign .cta .wpcf7-form input[type="submit"] {
-  background: var(--accent); color: var(--accent-ink);
+  background: var(--accent); color: #0A0A09;
   border: 0; padding: 14px 22px;
   border-radius: 999px;
   font-weight: 600; cursor: pointer;
   font-size: 15px;
   width: auto;
 }
-.lvm-redesign .cta .wpcf7-form input[type="submit"]:hover { background: color-mix(in oklab, var(--accent), white 5%); }
+.lvm-redesign .cta .wpcf7-form input[type="submit"]:hover { background: color-mix(in oklab, var(--accent), white 8%); }
 
 /* ============================================================
    FOOTER
@@ -2254,7 +2255,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   aspect-ratio: 16 / 11;
   background:
-    radial-gradient(120% 100% at 50% 0%, #F1ECDF 0%, #E8E1D0 70%, #DDD4BE 100%);
+    radial-gradient(120% 100% at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 70%, rgba(255, 255, 255, 0.08) 100%);
   border-radius: 20px;
   overflow: hidden;
   isolation: isolate;
@@ -2274,7 +2275,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.16em;
-  color: rgba(20,18,14,.32);
+  color: rgba(243, 240, 234, 0.32);
   z-index: 2;
 }
 
@@ -2283,7 +2284,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   content: "";
   position: absolute;
   inset: 18px;
-  border: 1px dashed rgba(20,18,14,.08);
+  border: 1px dashed rgba(255, 255, 255, 0.128);
   border-radius: 12px;
   pointer-events: none;
   z-index: 1;
@@ -2325,10 +2326,10 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
-  background: #fff;
+  background: #171715;
   padding: 8px 12px 8px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(20,18,14,.08);
+  border: 1px solid rgba(255, 255, 255, 0.128);
   box-shadow: 0 6px 20px -8px rgba(20,18,14,.18);
   z-index: 3;
 }
@@ -2382,7 +2383,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 0;
 }
 .lvm-redesign .work-case__title em.serif {
-  font-style: italic;
+  font-style: normal;
   color: var(--ink);
   /* slight optical lift for the italic line */
   display: inline-block;
@@ -2509,7 +2510,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .seo__photo-cap {
   position: absolute;
   left: 16px; bottom: 16px;
-  background: rgba(255,255,255,.92);
+  background: rgba(23, 23, 21, 0.92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,.6);
@@ -2542,7 +2543,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .hero__shot img {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -2552,7 +2553,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .hero__shot:hover img { transform: scale(1.04); filter: saturate(1.05); }
 .lvm-redesign .hero__shot-tag {
   position: absolute; left: 10px; bottom: 10px;
-  background: rgba(255,255,255,.92);
+  background: rgba(23, 23, 21, 0.92);
   color: var(--ink);
   padding: 3px 8px;
   border-radius: 999px;
@@ -2637,7 +2638,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px -18px rgba(20,18,14,0.06);
 }
 .lvm-redesign .feature-card {
-  background: #fff;
+  background: #171715;
   padding: 32px 28px;
   display: flex; flex-direction: column; gap: 14px;
   min-height: 240px;
@@ -2645,7 +2646,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   overflow: hidden;
   transition: background .25s, transform .25s;
 }
-.lvm-redesign .feature-card:hover { background: #FBFAF5; transform: translateY(-2px); }
+.lvm-redesign .feature-card:hover { background: #131312; transform: translateY(-2px); }
 .lvm-redesign .feature-card::before {
   content: "";
   position: absolute;
@@ -2668,7 +2669,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .feature-card:hover .feature-card__icon {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
 }
 .lvm-redesign .feature-card__num {
   font-size: 10px;
@@ -2696,7 +2697,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   counter-reset: lvm-proc;
 }
 .lvm-redesign .proc-card {
-  background: #fff;
+  background: #171715;
   padding: 32px 26px;
   display: flex; flex-direction: column; gap: 12px;
   min-height: 240px;
@@ -2704,13 +2705,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   counter-increment: lvm-proc;
   transition: background .25s;
 }
-.lvm-redesign .proc-card:hover { background: #FBFAF5; }
+.lvm-redesign .proc-card:hover { background: #131312; }
 .lvm-redesign .proc-card::before {
   content: counter(lvm-proc, decimal-leading-zero);
   position: absolute;
   top: 24px; right: 26px;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 26px;
   color: color-mix(in oklab, var(--accent) 40%, var(--line-strong));
   letter-spacing: -0.02em;
@@ -2752,7 +2753,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 16px;
 }
 .lvm-redesign .contact-card {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 28px 26px;
@@ -2804,7 +2805,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 20px;
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .contact-layout__hours-h {
   font-size: 11px; color: var(--muted);
@@ -2825,11 +2826,11 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .contact-layout__hours-list span:last-child { color: var(--muted); font-family: var(--font-mono); font-size: 12.5px; }
 
 .lvm-redesign .contact-form {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 32px;
-  box-shadow: 0 1px 0 #fff inset;
+  box-shadow: 0 1px 0 #171715 inset;
 }
 .lvm-redesign .contact-form .wpcf7 p { margin: 0 0 14px; }
 .lvm-redesign .contact-form input[type="text"],
@@ -2838,7 +2839,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .contact-form input[type="tel"],
 .lvm-redesign .contact-form textarea {
   width: 100%;
-  background: #FBFAF6;
+  background: #131312;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 12px 14px;
@@ -2851,11 +2852,11 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .contact-form textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .contact-form input[type="submit"] {
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   border: 0;
   padding: 14px 22px;
   border-radius: 999px;
@@ -2879,7 +2880,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 16px;
 }
 .lvm-redesign .tech-card {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 22px 22px 18px;
@@ -2922,7 +2923,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 16px;
 }
 .lvm-redesign .testi {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 28px 26px;
@@ -2943,7 +2944,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .testi__quote::before {
   content: "“";
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 28px;
   color: var(--accent);
   line-height: 0;
@@ -3049,7 +3050,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 11.5px; color: var(--muted);
   padding: 5px 12px; border-radius: 999px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
   transition: color .15s, border-color .15s;
 }
 .lvm-redesign .post__tag:hover { color: var(--ink); border-color: var(--ink); }
@@ -3071,7 +3072,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 16px;
 }
 .lvm-redesign .related__card {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -3127,7 +3128,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .err404__inner { position: relative; max-width: 720px; margin: 0 auto; }
 .lvm-redesign .err404__num {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(120px, 22vw, 240px);
   line-height: .9;
   color: var(--accent);
@@ -3138,6 +3139,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .err404__h {
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 500;
+  color: var(--ink); /* legacy h1 colour was the old light theme's navy */
   letter-spacing: -0.025em;
   margin: 0 0 16px;
   line-height: 1.1;
@@ -3155,7 +3157,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 0 auto 32px;
 }
 .lvm-redesign .err404__link {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 22px 20px;
@@ -3219,7 +3221,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 0;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -3230,12 +3232,12 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .blog-feat:hover {
   transform: translateY(-2px);
   box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.18);
-  border-color: rgba(0, 0, 0, 0.14);
+  border-color: rgba(255, 255, 255, 0.224);
 }
 .lvm-redesign .blog-feat__media {
   position: relative;
   min-height: 360px;
-  background: #f3efe8;
+  background: #131312;
   overflow: hidden;
 }
 .lvm-redesign .blog-feat__media img {
@@ -3255,9 +3257,9 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   align-items: center;
   justify-content: center;
   background:
-    repeating-linear-gradient(45deg, rgba(0,0,0,.025) 0 1px, transparent 1px 12px),
-    linear-gradient(135deg, #f5efe4, #ece4d3);
-  color: rgba(0, 0, 0, 0.32);
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 12px),
+    linear-gradient(135deg, #131312, rgba(255, 255, 255, 0.08));
+  color: rgba(243, 240, 234, 0.32);
 }
 
 .lvm-redesign .blog-feat__body {
@@ -3278,7 +3280,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .blog-feat__cat {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   padding: 4px 10px;
   border-radius: 999px;
   letter-spacing: 0.06em;
@@ -3375,7 +3377,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--ink);
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 10px;
   text-decoration: none;
@@ -3383,13 +3385,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .blog-pag__item a:hover {
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   border-color: var(--ink);
   transform: translateY(-1px);
 }
 .lvm-redesign .blog-pag__item span.page-numbers.current {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   border-color: var(--accent);
   font-weight: 500;
 }
@@ -3415,8 +3417,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(20,18,14,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20,18,14,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
@@ -3455,7 +3457,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   background: #14130F;
   color: #E9E5DA;
   border-radius: 14px;
-  border: 1px solid #2A2722;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 40px 80px -32px rgba(20,18,14,.5);
   overflow: hidden;
 }
@@ -3465,7 +3467,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 8px;
   padding: 12px 16px;
   background: #1B1A16;
-  border-bottom: 1px solid #2A2722;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-dev .dev-spec__dot {
   width: 11px; height: 11px; border-radius: 50%;
@@ -3490,7 +3492,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   grid-template-columns: 90px 1fr;
   gap: 16px;
   padding: 7px 0;
-  border-bottom: 1px dashed #2A2722;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-dev .dev-spec__row--last { border-bottom: none; padding-bottom: 0; }
 .lvm-redesign .svc-dev .dev-spec__k {
@@ -3532,7 +3534,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; flex-direction: column;
   gap: 16px;
   padding: 28px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   transition: border-color .25s, transform .25s, box-shadow .25s;
@@ -3544,7 +3546,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-dev .dev-mode--featured {
   background: #14130F;
-  border-color: #14130F;
+  border-color: rgba(255, 255, 255, 0.3);
   color: #E9E5DA;
 }
 .lvm-redesign .svc-dev .dev-mode--featured::before {
@@ -3674,16 +3676,16 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-dev .dev-mode__cta:hover {
   background: var(--ink);
   border-color: var(--ink);
-  color: #fff;
+  color: #0A0A09;
 }
 .lvm-redesign .svc-dev .dev-mode--featured .dev-mode__cta {
   border-color: var(--accent);
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
 }
 .lvm-redesign .svc-dev .dev-mode--featured .dev-mode__cta:hover {
-  background: #fff;
-  border-color: #fff;
+  background: #171715;
+  border-color: rgba(255, 255, 255, 0.08);
   color: var(--ink);
 }
 
@@ -3715,7 +3717,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border-right: 1px solid var(--line);
 }
 .lvm-redesign .svc-dev .dev-arch__node {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px 20px;
@@ -3729,7 +3731,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-dev .dev-arch__node--accent {
   background: #14130F;
-  border-color: #14130F;
+  border-color: rgba(255, 255, 255, 0.3);
   color: #E9E5DA;
 }
 .lvm-redesign .svc-dev .dev-arch__node-name {
@@ -3772,7 +3774,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 0 auto 56px;
 }
 .lvm-redesign .svc-dev .dev-gauge {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 28px 20px 24px;
@@ -3795,7 +3797,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   content: "";
   position: absolute;
   inset: 6px;
-  background: #fff;
+  background: #171715;
   border-radius: 50%;
 }
 .lvm-redesign .svc-dev .dev-gauge__num {
@@ -3851,7 +3853,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 0 auto;
   background: #14130F;
   color: #E9E5DA;
-  border: 1px solid #2A2722;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 50px 100px -40px rgba(20,18,14,.55);
@@ -3862,7 +3864,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 8px;
   padding: 12px 16px;
   background: #1B1A16;
-  border-bottom: 1px solid #2A2722;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-dev .dev-term__body {
   padding: 24px 28px 28px;
@@ -3965,8 +3967,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(20,18,14,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20,18,14,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
@@ -4001,7 +4003,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Ranking report card */
 .lvm-redesign .svc-seo .seo-rank {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -4038,7 +4040,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  background: #FBFAF6;
+  background: #131312;
 }
 .lvm-redesign .svc-seo .seo-rank__row:last-of-type { border-bottom: none; }
 .lvm-redesign .svc-seo .seo-rank__kw {
@@ -4069,7 +4071,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 11px; letter-spacing: 0.08em;
   color: var(--muted);
   border-top: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
 }
 .lvm-redesign .svc-seo .seo-rank__dot {
   display: inline-block;
@@ -4088,7 +4090,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-seo .seo-serp__demo {
   max-width: 880px;
   margin: 0 auto;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -4150,7 +4152,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-seo .seo-serp__pin--you .seo-serp__pin-num {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
 }
 .lvm-redesign .svc-seo .seo-serp__pin-body { display: flex; flex-direction: column; gap: 4px; }
@@ -4187,13 +4189,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 14px 16px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .svc-seo .seo-serp__result--you {
   border-color: color-mix(in oklab, var(--accent) 35%, var(--line));
   background:
     linear-gradient(180deg, color-mix(in oklab, var(--accent) 6%, transparent), transparent 60%),
-    #fff;
+    #171715;
 }
 .lvm-redesign .svc-seo .seo-serp__crumb {
   font-size: 10.5px;
@@ -4207,7 +4209,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 16px;
   font-weight: 500;
   letter-spacing: -0.015em;
-  color: #1B59CA;
+  color: #8AB4F8;
 }
 .lvm-redesign .svc-seo .seo-serp__result--you .seo-serp__rtitle {
   color: var(--accent-ink);
@@ -4229,7 +4231,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   display: flex; flex-direction: column; gap: 14px;
   padding: 28px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   transition: border-color .25s, transform .25s, box-shadow .25s;
@@ -4242,7 +4244,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-seo .seo-pillar--featured {
   background: #14130F;
   color: #E9E5DA;
-  border-color: #14130F;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-seo .seo-pillar--featured::before {
   content: "";
@@ -4277,7 +4279,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-seo .seo-pillar__score::before {
   content: "";
   position: absolute; inset: 4px;
-  background: #fff;
+  background: #171715;
   border-radius: 50%;
 }
 .lvm-redesign .svc-seo .seo-pillar--featured .seo-pillar__score::before {
@@ -4330,7 +4332,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-seo .seo-chart {
   max-width: 920px;
   margin: 0 auto;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px 32px 24px;
@@ -4546,8 +4548,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(20,18,14,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20,18,14,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
@@ -4580,7 +4582,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Dashboard card */
 .lvm-redesign .svc-an .an-dash {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -4678,7 +4680,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 10.5px;
   letter-spacing: 0.08em;
   color: var(--muted);
-  background: #FBFAF6;
+  background: #131312;
 }
 
 /* ---- WHAT WE TRACK ------------------------------------- */
@@ -4691,7 +4693,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   display: flex; flex-direction: column; gap: 14px;
   padding: 28px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   transition: border-color .25s, transform .25s, box-shadow .25s;
@@ -4704,7 +4706,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-an .an-track-card--featured {
   background: #14130F;
   color: #E9E5DA;
-  border-color: #14130F;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-an .an-track-card--featured::before {
   content: "";
@@ -4758,7 +4760,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 32px;
   align-items: stretch;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 36px 36px 28px;
@@ -4847,7 +4849,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-an .an-report__doc {
   max-width: 760px;
   margin: 0 auto;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 36px 44px 32px;
@@ -4935,7 +4937,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-an .an-deliv-card {
   display: flex; flex-direction: column; gap: 12px;
   padding: 28px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   position: relative;
@@ -5066,7 +5068,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-cn .cn-mast__cap {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 64px;
   line-height: 0.85;
   color: var(--accent);
@@ -5238,7 +5240,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 0;
   line-height: 1.5;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-redesign .svc-cn .cn-snip__meta {
   display: flex; align-items: center; gap: 8px;
@@ -5272,7 +5274,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 120px;
   line-height: 0.6;
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   margin-bottom: -24px;
 }
 .lvm-redesign .svc-cn .cn-quote__q {
@@ -5308,7 +5310,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex; flex-direction: column; gap: 14px;
-  background: #fff;
+  background: #171715;
   transition: background .25s;
 }
 .lvm-redesign .svc-cn .cn-type:hover { background: var(--bg-2); }
@@ -5321,7 +5323,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-cn .cn-type__num {
   font-size: 88px;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   line-height: 0.9;
   color: var(--accent);
   margin-bottom: 8px;
@@ -5412,7 +5414,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-cn .cn-proc-item__name {
   margin: 0;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 36px;
   line-height: 1;
   color: var(--ink);
@@ -5479,8 +5481,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(20,18,14,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20,18,14,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
@@ -5535,7 +5537,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   z-index: 2;
 }
 .lvm-redesign .svc-sm .sm-phone__screen {
-  background: #fff;
+  background: #171715;
   border-radius: 32px;
   overflow: hidden;
   display: flex; flex-direction: column;
@@ -5560,7 +5562,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   width: 34px; height: 34px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 40%, var(--ink)));
-  color: #fff;
+  color: #0A0A09;
   display: grid; place-items: center;
   font-size: 11px;
   font-weight: 600;
@@ -5600,7 +5602,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-sm .sm-phone__post-h {
   font-size: 32px; line-height: 0.98; color: var(--ink);
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-redesign .svc-sm .sm-phone__post-foot {
   font-size: 10px; letter-spacing: 0.06em; color: var(--muted);
@@ -5650,7 +5652,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   display: flex; flex-direction: column; gap: 12px;
   padding: 24px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   transition: border-color .25s, transform .25s, box-shadow .25s;
@@ -5663,7 +5665,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-sm .sm-plat--featured {
   background: #14130F;
   color: #E9E5DA;
-  border-color: #14130F;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-sm .sm-plat--featured::before {
   content: "";
@@ -5675,6 +5677,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-sm .sm-plat__head {
   display: flex; justify-content: space-between; align-items: center;
 }
+.lvm-redesign .svc-sm .sm-plat__app { width: 38px; } /* official platform mark (lvm_app_icon) */
 .lvm-redesign .svc-sm .sm-plat__icon {
   width: 32px; height: 32px;
   background: var(--bg-2);
@@ -5743,7 +5746,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 20px;
 }
 .lvm-redesign .svc-sm .sm-card {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -5788,7 +5791,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, color-mix(in oklab, var(--col) 10%, transparent) 0%, transparent 30%, transparent 50%, rgba(20,18,14,.55) 100%);
+    linear-gradient(180deg, color-mix(in oklab, var(--col) 10%, transparent) 0%, transparent 30%, transparent 50%, rgba(255, 255, 255, 0.12) 100%);
   pointer-events: none;
 }
 
@@ -5802,7 +5805,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.18em;
   color: var(--ink);
   padding: 5px 9px;
-  background: rgba(255,255,255,.85);
+  background: rgba(23, 23, 21, 0.85);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border-radius: 4px;
@@ -5815,7 +5818,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   z-index: 2;
   align-self: end;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   font-size: clamp(22px, 2.4vw, 30px);
   line-height: 1.05;
@@ -5848,14 +5851,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.18em;
   color: var(--ink);
   padding: 5px 9px;
-  background: rgba(255,255,255,.85);
+  background: rgba(23, 23, 21, 0.85);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border-radius: 4px;
 }
 .lvm-redesign .svc-sm .sm-card__stamp-rule {
   width: 14px; height: 1px;
-  background: rgba(20,18,14,.35);
+  background: rgba(255, 255, 255, 0.12);
 }
 .lvm-redesign .svc-sm .sm-card__stamp span:first-child {
   font-weight: 700;
@@ -5870,7 +5873,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
-  background: rgba(20,18,14,.65);
+  background: rgba(255, 255, 255, 0.12);
   padding: 5px 10px;
   border-radius: 999px;
   -webkit-backdrop-filter: blur(8px);
@@ -5905,7 +5908,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* ---- CALENDAR ----------------------------------------- */
 .lvm-redesign .svc-sm .sm-cal__board {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
@@ -5942,7 +5945,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex; flex-direction: column; gap: 8px;
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .svc-sm .sm-cal__day:nth-child(7n) { border-right: none; }
 .lvm-redesign .svc-sm .sm-cal__day:nth-last-child(-n+7) { border-bottom: none; }
@@ -5963,7 +5966,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   --col: var(--accent);
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 8px;
-  background: color-mix(in oklab, var(--col) 14%, #fff);
+  background: color-mix(in oklab, var(--col) 14%, #171715);
   border: 1px solid color-mix(in oklab, var(--col) 30%, var(--line));
   border-radius: 999px;
   font-size: 9.5px;
@@ -5990,7 +5993,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 18px;
   padding: 16px 22px;
   border-top: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
   font-size: 10.5px;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -6016,7 +6019,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-sm .sm-deliv-card {
   display: flex; flex-direction: column; gap: 10px;
   padding: 26px;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   transition: border-color .25s, transform .25s, box-shadow .25s;
@@ -6112,8 +6115,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
       0deg,
       transparent 0,
       transparent 31px,
-      rgba(20,18,14,.04) 31px,
-      rgba(20,18,14,.04) 32px
+      rgba(255, 255, 255, 0.04) 31px,
+      rgba(255, 255, 255, 0.04) 32px
     ),
     var(--bg);
 }
@@ -6173,7 +6176,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Brief document card */
 .lvm-redesign .svc-dm .dm-brief__doc {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 24px 28px 22px;
@@ -6257,14 +6260,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border-radius: 999px;
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
   margin-bottom: 32px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
 }
 .lvm-redesign .svc-dm .dm-mix__bar-seg {
   height: 100%;
   display: block;
-  border-right: 1px solid #fff;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 .lvm-redesign .svc-dm .dm-mix__bar-seg:last-child { border-right: none; }
 .lvm-redesign .svc-dm .dm-mix__bar-seg--seo  { background: #FF6B4A; }
@@ -6279,7 +6282,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-dm .dm-mix-card {
   --col: var(--accent);
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 22px;
@@ -6343,7 +6346,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex; flex-direction: column; gap: 12px;
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .svc-dm .dm-strat-col--featured {
   background: #14130F;
@@ -6351,7 +6354,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-dm .dm-strat-col__num {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 64px;
   line-height: 0.9;
   color: var(--accent);
@@ -6402,7 +6405,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* ---- TIMELINE / GANTT --------------------------------- */
 .lvm-redesign .svc-dm .dm-gantt {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
@@ -6434,8 +6437,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
       to right,
       transparent 0,
       transparent calc((100% - 180px) / 12 - 1px),
-      rgba(20,18,14,.04) calc((100% - 180px) / 12 - 1px),
-      rgba(20,18,14,.04) calc((100% - 180px) / 12)
+      rgba(255, 255, 255, 0.04) calc((100% - 180px) / 12 - 1px),
+      rgba(255, 255, 255, 0.04) calc((100% - 180px) / 12)
     );
   background-position: 180px 0;
   background-size: 100% 100%;
@@ -6491,7 +6494,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 18px;
   padding: 14px 22px;
   border-top: 1px solid var(--line);
-  background: #FBFAF6;
+  background: #131312;
   font-size: 10.5px;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -6518,7 +6521,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin: 0 auto;
 }
 .lvm-redesign .svc-dm .dm-kpi-tile {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 28px 24px 26px;
@@ -6596,8 +6599,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(20,18,14,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20,18,14,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(70% 50% at 50% 30%, #000 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(70% 50% at 50% 30%, #000 30%, transparent 80%);
@@ -6756,7 +6759,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-idx .idx-row__cta-lbl span { transition: transform .2s; display: inline-block; }
 .lvm-redesign .svc-idx .idx-row__link:hover .idx-row__cta-lbl {
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   border-color: var(--ink);
 }
 .lvm-redesign .svc-idx .idx-row__link:hover .idx-row__cta-lbl span {
@@ -6878,7 +6881,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-about .ab-mast__line { display: block; }
 .lvm-redesign .svc-about .ab-mast__line--accent {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   margin: 0;
 }
@@ -6940,7 +6943,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-about .ab-origin__lead em.serif { color: var(--accent); }
 .lvm-redesign .svc-about .ab-origin__cap {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 88px;
   line-height: 0.85;
   color: var(--accent);
@@ -6996,6 +6999,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-about .ab-mem__photo img {
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: center 18%; /* portrait headshots in a 4:3 frame: keep the head in */
   filter: grayscale(.05);
   transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .4s ease;
 }
@@ -7011,7 +7015,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #fff;
-  background: rgba(20,18,14,.6);
+  background: rgba(255, 255, 255, 0.12);
   padding: 8px 12px;
   border-radius: 4px;
   -webkit-backdrop-filter: blur(8px);
@@ -7060,7 +7064,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
 }
 .lvm-redesign .svc-about .ab-mem__q em.serif {
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-redesign .svc-about .ab-mem__q-mark {
   position: absolute;
@@ -7068,7 +7072,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 36px;
   line-height: 0.8;
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   transform: translateX(-100%);
   display: none;
 }
@@ -7099,7 +7103,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-about .ab-prin {
   background: #14130F;
   color: #E9E5DA;
-  border-bottom-color: #14130F;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 .lvm-redesign .svc-about .ab-prin .ab-section-bar { color: #8A8880; }
 .lvm-redesign .svc-about .ab-prin .ab-section-bar__rule { background: rgba(255,255,255,.16); }
@@ -7150,7 +7154,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.1;
   letter-spacing: -0.025em;
-  font-style: italic;
+  font-style: normal;
   color: #fff;
   font-weight: 400;
 }
@@ -7176,7 +7180,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 36px 28px 32px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
 }
 .lvm-redesign .svc-about .ab-stat__val {
   font-size: clamp(48px, 6vw, 88px);
@@ -7235,7 +7239,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Field card */
 .lvm-redesign .svc-about .ab-place__card {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 6px;
   overflow: hidden;
@@ -7275,7 +7279,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-about .ab-place__lines path {
   fill: none;
-  stroke: rgba(20,18,14,.14);
+  stroke: rgba(243, 240, 234, 0.14);
   stroke-width: 1;
   stroke-dasharray: 4 6;
 }
@@ -7292,7 +7296,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   transform: translate(-50%, -50%);
   width: 12px; height: 12px;
   background: var(--accent);
-  border: 2px solid #fff;
+  border: 2px solid rgba(255, 255, 255, 0.08);
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(20,18,14,.3);
   z-index: 3;
@@ -7430,7 +7434,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-blog .bl-mast__h em.serif {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -7474,7 +7478,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: -0.005em;
@@ -7490,7 +7494,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-blog .bl-cat--active {
   background: var(--ink);
   border-color: var(--ink);
-  color: #fff;
+  color: #0A0A09;
 }
 .lvm-redesign .svc-blog .bl-cat--active:hover { color: #fff; }
 .lvm-redesign .svc-blog .bl-cat__count {
@@ -7558,7 +7562,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: clamp(32px, 4vw, 56px);
   line-height: 1;
   color: var(--ink);
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-redesign .svc-blog .bl-lead__cat {
   position: absolute;
@@ -7567,7 +7571,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
-  background: rgba(20,18,14,.7);
+  background: rgba(255, 255, 255, 0.12);
   padding: 6px 12px;
   border-radius: 999px;
   -webkit-backdrop-filter: blur(8px);
@@ -7608,7 +7612,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: var(--muted);
   max-width: 56ch;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
 }
 
 .lvm-redesign .svc-blog .bl-lead__byline {
@@ -7642,7 +7646,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 10px 16px;
   border-radius: 999px;
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: -0.005em;
@@ -7652,7 +7656,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-blog .bl-lead__cta span { transition: transform .2s; display: inline-block; }
 .lvm-redesign .svc-blog .bl-lead__art:hover .bl-lead__cta {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
 }
 .lvm-redesign .svc-blog .bl-lead__art:hover .bl-lead__cta span {
   transform: translateX(4px);
@@ -7766,7 +7770,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: var(--accent-ink);
   font-size: 36px;
   line-height: 1;
-  font-style: italic;
+  font-style: normal;
 }
 
 .lvm-redesign .svc-blog .bl-row__meta {
@@ -7815,7 +7819,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 0 12px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  background: #fff;
+  background: #171715;
   color: var(--ink);
   font-family: var(--font-mono);
   font-size: 12px;
@@ -7829,7 +7833,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-blog .bl-pag__item .page-numbers.current {
   background: var(--ink);
   border-color: var(--ink);
-  color: #fff;
+  color: #0A0A09;
 }
 .lvm-redesign .svc-blog .bl-pag__item .page-numbers.dots {
   border: none;
@@ -7957,7 +7961,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: #171715;
   font-size: 10.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -7991,7 +7995,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: var(--muted);
   max-width: 60ch;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
 }
 
 .lvm-redesign .svc-single .bl-art-head__byline {
@@ -8231,8 +8235,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   text-transform: none;
 }
 .lvm-redesign .svc-single .bl-prose p {
-  margin: 0;
-  color: var(--ink-2);
+  color: var(--ink-2); /* no margin reset here: it would beat the "> * + *" rhythm above */
 }
 .lvm-redesign .svc-single .bl-prose a:not(.btn) {
   color: var(--accent-ink);
@@ -8250,9 +8253,11 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 .lvm-redesign .svc-single .bl-prose ul,
 .lvm-redesign .svc-single .bl-prose ol {
-  margin: 0;
   padding-left: 1.4em;
 }
+/* The legacy Tailwind preflight strips list markers; articles need them back */
+.lvm-redesign .svc-single .bl-prose ul { list-style: disc; }
+.lvm-redesign .svc-single .bl-prose ol { list-style: decimal; }
 .lvm-redesign .svc-single .bl-prose li { margin-top: 0.45em; }
 .lvm-redesign .svc-single .bl-prose ul li::marker { color: var(--accent); }
 .lvm-redesign .svc-single .bl-prose ol li::marker { color: var(--accent); font-family: var(--font-mono); font-size: .9em; }
@@ -8358,7 +8363,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .svc-single .bl-cta-banner {
   margin: 64px 0 0;
   padding: 36px 36px 28px;
-  background: linear-gradient(180deg, #fff 0%, var(--bg-2) 100%);
+  background: linear-gradient(180deg, #171715 0%, var(--bg-2) 100%);
   border: 1px solid var(--line);
   border-radius: 6px;
   position: relative;
@@ -8401,7 +8406,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-single .bl-cta-banner__h em.serif {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 .lvm-redesign .svc-single .bl-cta-banner__p {
@@ -8462,7 +8467,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 5px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: #171715;
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.04em;
@@ -8606,7 +8611,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-single .bl-related__h em.serif {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -8621,7 +8626,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: inherit;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: #fff;
+  background: #171715;
   overflow: hidden;
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
@@ -8648,7 +8653,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 18%, var(--bg-2)), var(--bg-2));
   color: var(--accent-ink);
   font-size: 64px;
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-redesign .svc-single .bl-related__cat {
   position: absolute;
@@ -8657,7 +8662,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
-  background: rgba(20,18,14,.7);
+  background: rgba(255, 255, 255, 0.12);
   padding: 5px 10px;
   border-radius: 999px;
   -webkit-backdrop-filter: blur(8px);
@@ -8748,7 +8753,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 3px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: #171715;
 }
 
 /* ---- MASTHEAD ----------------------------------------- */
@@ -8818,7 +8823,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-contact .ct-mast__h em.serif {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -8872,7 +8877,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-contact .ct-lines__h em.serif {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -8889,7 +8894,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 32px 28px 28px;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  background: #171715;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   position: relative;
@@ -9020,7 +9025,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-contact .ct-brief__h em.serif {
   color: var(--accent);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 .lvm-redesign .svc-contact .ct-brief__p {
@@ -9054,7 +9059,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   width: 22px; height: 22px;
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   border-radius: 4px;
   font-size: 11px;
   font-weight: 700;
@@ -9062,7 +9067,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 
 .lvm-redesign .svc-contact .ct-brief__hours {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 18px 22px 22px;
@@ -9117,7 +9122,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Form wrap */
 .lvm-redesign .svc-contact .ct-brief__form-wrap {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 6px;
   overflow: hidden;
@@ -9194,7 +9199,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: var(--ink);
   max-width: 18ch;
 }
-.lvm-redesign .svc-contact .ct-visit__h em.serif { color: var(--accent); font-style: italic; font-weight: 400; }
+.lvm-redesign .svc-contact .ct-visit__h em.serif { color: var(--accent); font-style: normal; font-weight: 400; }
 .lvm-redesign .svc-contact .ct-visit__p {
   margin: 0;
   font-size: 17px;
@@ -9230,7 +9235,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 18px;
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   text-decoration: none;
   border-radius: 999px;
   font-size: 13px;
@@ -9240,13 +9245,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-contact .ct-visit__cta:hover {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: #0A0A09;
   transform: translateY(-2px);
 }
 
 /* Field card */
 .lvm-redesign .svc-contact .ct-visit__card {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--line);
   border-radius: 6px;
   overflow: hidden;
@@ -9290,7 +9295,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-contact .ct-visit__lines path {
   fill: none;
-  stroke: rgba(20,18,14,.14);
+  stroke: rgba(243, 240, 234, 0.14);
   stroke-width: 1;
   stroke-dasharray: 4 6;
 }
@@ -9307,7 +9312,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   transform: translate(-50%, -50%);
   width: 12px; height: 12px;
   background: var(--accent);
-  border: 2px solid #fff;
+  border: 2px solid rgba(255, 255, 255, 0.08);
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(20,18,14,.3);
   z-index: 3;
@@ -9354,18 +9359,6 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: -0.005em;
 }
 
-/* ---- FAQ ---------------------------------------------- */
-.lvm-redesign .svc-contact .ct-faq__h {
-  font-size: clamp(36px, 4.4vw, 60px);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  font-weight: 500;
-  color: var(--ink);
-  margin: 0 0 48px;
-  max-width: 22ch;
-}
-.lvm-redesign .svc-contact .ct-faq__h em.serif { color: var(--accent); font-style: italic; font-weight: 400; }
-.lvm-redesign .svc-contact .ct-faq__list { max-width: 920px; }
 
 /* ---- Responsive --------------------------------------- */
 @media (max-width: 1080px) {
@@ -9521,7 +9514,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-seo .seo-geo__report-stamp {
   background: var(--accent);
-  color: #fff;
+  color: #0A0A09;
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
@@ -9538,6 +9531,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 10px;
   letter-spacing: 0.18em;
   color: var(--muted);
+  text-transform: uppercase; /* match the other templates' section bars */
   margin-bottom: 24px;
 }
 .lvm-redesign .svc-seo .seo-section-bar__num {
@@ -9885,7 +9879,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .svc-ind .ind-brief__doc-stamp {
   background: var(--accent);
-  color: #fff;
+  color: #0A0A09;
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
@@ -9902,6 +9896,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   font-size: 10px;
   letter-spacing: 0.18em;
   color: var(--muted);
+  text-transform: uppercase; /* match the other templates' section bars */
   margin-bottom: 24px;
 }
 .lvm-redesign .svc-ind .ind-section-bar__num {
@@ -10119,7 +10114,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-diag__board {
   border: 1px solid var(--ink);
   border-radius: 6px;
-  background: #fff;
+  background: #171715;
   box-shadow: 0 1px 0 var(--ink), 0 14px 32px -28px rgba(0,0,0,.2);
   overflow: hidden;
 }
@@ -10129,7 +10124,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 20px;
   padding: 14px 22px;
   background: var(--ink);
-  color: #fff;
+  color: #0A0A09;
   font-size: 10px; letter-spacing: 0.22em;
 }
 .lvm-home .hm-diag__board-head > span { opacity: .8; }
@@ -10168,7 +10163,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border: 1px solid var(--ink);
   border-radius: 999px;
   font-size: 10px; letter-spacing: 0.2em;
-  background: #fff;
+  background: #171715;
   color: var(--ink);
 }
 .lvm-home .hm-diag__sev-dot {
@@ -10189,7 +10184,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   align-items: stretch;
   border: 1px solid var(--ink);
   border-radius: 6px;
-  background: #fff;
+  background: #171715;
   overflow: hidden;
 }
 .lvm-home .hm-diag__vital {
@@ -10211,12 +10206,12 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-diag__stamp {
   display: flex; align-items: center; justify-content: center;
   padding: 14px 22px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 11px; letter-spacing: 0.22em;
 }
 .lvm-home .hm-diag__stamp span {
   transform: rotate(-3deg);
-  border: 1.5px solid #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
   padding: 4px 10px;
 }
 
@@ -10242,7 +10237,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
    ============================================================ */
 .lvm-home .hm-menu {
   padding: 120px 0;
-  background: #FBFAF5;
+  background: #131312;
   position: relative;
 }
 .lvm-home .hm-menu__head {
@@ -10257,7 +10252,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border: 1px solid var(--ink);
   border-radius: 6px;
   padding: 18px 20px 14px;
-  background: #fff;
+  background: #171715;
   position: relative;
   font-size: 10.5px; letter-spacing: 0.16em;
 }
@@ -10273,7 +10268,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-menu__card-stamp {
   position: absolute;
   right: -10px; top: -14px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10px; letter-spacing: 0.22em;
   padding: 5px 10px;
   border-radius: 4px;
@@ -10281,7 +10276,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 
 .lvm-home .hm-menu__sheet {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--ink);
   border-radius: 6px;
   padding: 48px 48px 28px;
@@ -10308,7 +10303,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-menu__sheet-title {
   display: block;
   font-family: var(--font-serif, ui-serif, Georgia, serif);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(28px, 3vw, 36px);
   color: var(--ink);
   letter-spacing: -0.01em;
@@ -10354,7 +10349,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-home .hm-menu__item-tag {
   font-size: 10px; letter-spacing: 0.22em;
-  color: #fff;
+  color: #0A0A09;
   background: var(--ink);
   padding: 4px 9px;
   border-radius: 4px;
@@ -10451,7 +10446,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; flex-direction: column;
   padding: 32px 22px 22px;
   border: 1px solid var(--ink);
-  background: #FBFAF5;
+  background: #131312;
   border-radius: 0 8px 8px 8px;
   text-decoration: none;
   color: inherit;
@@ -10465,7 +10460,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   top: -22px; left: -1px;
   display: inline-flex; align-items: center; gap: 8px;
   padding: 5px 12px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10px; letter-spacing: 0.22em;
   border-radius: 6px 8px 0 0;
   border: 1px solid var(--ink);
@@ -10491,7 +10486,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-files__folder-icon {
   width: 40px; height: 40px;
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   border-radius: 4px;
 }
 .lvm-home .hm-files__folder-title {
@@ -10517,7 +10512,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 .lvm-home .hm-files__folder:hover {
   transform: translateY(-4px);
-  background: #fff;
+  background: #171715;
 }
 .lvm-home .hm-files__folder:hover .hm-files__folder-foot { color: var(--ink); }
 .lvm-home .hm-files__folder:hover .lvm-arrow-ne { transform: translate(2px, -2px); }
@@ -10703,7 +10698,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Right brief card */
 .lvm-home .hm-hero__brief {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--ink);
   border-radius: 6px;
   padding: 22px 22px 16px;
@@ -10718,7 +10713,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: var(--muted);
 }
 .lvm-home .hm-hero__brief-stamp {
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   padding: 3px 8px;
   border-radius: 3px;
   letter-spacing: 0.22em;
@@ -10744,7 +10739,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   color: var(--muted);
 }
 .lvm-home .hm-hero__brief-foot-v {
-  font-style: italic;
+  font-style: normal;
   font-family: var(--font-serif, ui-serif, Georgia, serif);
   letter-spacing: 0;
   text-transform: none;
@@ -10757,13 +10752,13 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   margin-bottom: 56px;
   border: 1px solid var(--ink);
   border-radius: 6px;
-  background: #fff;
+  background: #171715;
   overflow: hidden;
 }
 .lvm-home .hm-hero__ledger-head {
   display: flex; align-items: center; gap: 14px;
   padding: 12px 18px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10px; letter-spacing: 0.22em;
 }
 .lvm-home .hm-hero__ledger-rule { flex: 1; height: 1px; background: rgba(255,255,255,.25); }
@@ -10844,7 +10839,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
    ============================================================ */
 .lvm-home .hm-radar {
   padding: 120px 0;
-  background: #FBFAF5;
+  background: #131312;
 }
 .lvm-home .hm-radar__topline {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
@@ -10874,7 +10869,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   background: #14110D;
   color: #fff;
   border-radius: 8px;
-  border: 1px solid #14110D;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 18px;
   display: flex; flex-direction: column;
   position: relative;
@@ -10952,7 +10947,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-radar__pin-tag {
   font-size: 9.5px; letter-spacing: 0.18em;
   color: rgba(255,255,255,.7);
-  background: rgba(0,0,0,.3);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2px 6px; border-radius: 3px;
   white-space: nowrap;
 }
@@ -11014,7 +11009,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Ops manifest */
 .lvm-home .hm-radar__ops {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--ink);
   border-radius: 8px;
   display: flex; flex-direction: column;
@@ -11022,7 +11017,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-radar__ops-head {
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 20px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10px; letter-spacing: 0.22em;
   border-radius: 8px 8px 0 0;
 }
@@ -11056,7 +11051,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-radar__ops-tag {
   align-self: start;
   font-size: 9.5px; letter-spacing: 0.22em;
-  color: #fff; background: var(--ink);
+  color: #0A0A09; background: var(--ink);
   padding: 4px 8px; border-radius: 3px;
 }
 .lvm-home .hm-radar__ops-foot {
@@ -11114,7 +11109,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 22px;
 }
 .lvm-home .hm-press__paper {
-  background: #FAF5EA;
+  background: #131312;
   border: 1px solid var(--ink);
   border-radius: 4px;
   padding: 18px 18px 14px;
@@ -11125,7 +11120,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-home .hm-press__paper:hover {
   transform: translateY(-3px);
-  background: #FFFCF5;
+  background: #171715;
 }
 .lvm-home .hm-press__paper-mast {
   display: flex; align-items: center; gap: 10px;
@@ -11195,7 +11190,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   border: 1px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
-  background: #fff;
+  background: #171715;
 }
 .lvm-home .hm-press__band {
   display: flex; align-items: center; gap: 10px;
@@ -11232,8 +11227,8 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   position: relative;
   padding: 120px 0;
   background:
-    radial-gradient(circle at 1px 1px, rgba(0,0,0,.06) 1px, transparent 1px) 0 0 / 22px 22px,
-    #F1ECDF;
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 22px 22px,
+    rgba(255, 255, 255, 0.08);
 }
 .lvm-home .hm-board__topline {
   display: flex; align-items: center; gap: 14px;
@@ -11246,7 +11241,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 
 /* Cadence rail */
 .lvm-home .hm-board__rail {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--ink);
   border-radius: 6px;
   padding: 14px 18px 14px;
@@ -11268,7 +11263,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-board__rail-day {
   display: flex; flex-direction: column; gap: 6px;
   padding: 10px 8px;
-  background: #FBFAF5;
+  background: #131312;
   border: 1px dashed var(--line);
   border-radius: 4px;
   min-height: 70px;
@@ -11282,7 +11277,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   display: flex; flex-wrap: wrap; gap: 4px;
 }
 .lvm-home .hm-board__rail-pin {
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 9px; letter-spacing: 0.16em;
   padding: 2px 5px;
   border-radius: 2px;
@@ -11297,7 +11292,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-home .hm-board__post {
   position: relative;
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--ink);
   border-radius: 4px;
   padding: 22px 20px 16px;
@@ -11318,7 +11313,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-board__post-tape {
   position: absolute;
   top: 8px; right: -10px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 9px; letter-spacing: 0.22em;
   padding: 4px 9px;
   border-radius: 3px;
@@ -11332,7 +11327,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-board__post-avatar {
   width: 34px; height: 34px;
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   border-radius: 4px;
   font-size: 11px; letter-spacing: 0.1em; font-weight: 600;
 }
@@ -11380,7 +11375,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
    ============================================================ */
 .lvm-home .hm-log {
   padding: 120px 0;
-  background: #FBFAF5;
+  background: #131312;
 }
 .lvm-home .hm-log__topline {
   display: flex; align-items: center; gap: 14px;
@@ -11392,7 +11387,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-log__head .section-lead { margin-top: 18px; }
 
 .lvm-home .hm-log__book {
-  background: #fff;
+  background: #171715;
   border: 1px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
@@ -11414,7 +11409,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-log__entry-id {
   font-size: 18px; font-weight: 700;
   letter-spacing: 0.05em;
-  color: #fff; background: var(--ink);
+  color: #0A0A09; background: var(--ink);
   width: 36px; height: 36px;
   display: inline-flex; align-items: center; justify-content: center;
   border-radius: 4px;
@@ -11428,7 +11423,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: -0.015em;
   color: var(--ink);
   font-family: var(--font-serif, ui-serif, Georgia, serif);
-  font-style: italic;
+  font-style: normal;
 }
 .lvm-home .hm-log__entry-sub {
   font-size: 10.5px; letter-spacing: 0.18em; color: var(--muted);
@@ -11484,7 +11479,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-home .hm-log__init {
   font-size: 10px; letter-spacing: 0.14em;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   padding: 3px 7px;
   border-radius: 3px;
 }
@@ -11492,7 +11487,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-log__foot {
   display: flex; justify-content: space-between; align-items: center;
   padding: 18px 24px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10.5px; letter-spacing: 0.18em;
 }
 .lvm-home .hm-log__foot-sig {
@@ -11545,7 +11540,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-home .hm-cases__file {
   position: relative;
-  background: #FAF5EA;
+  background: #131312;
   border: 1px solid var(--ink);
   border-radius: 0 6px 6px 6px;
   overflow: visible;
@@ -11560,7 +11555,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   top: -22px; left: -1px;
   display: inline-flex; align-items: center; gap: 10px;
   padding: 5px 14px;
-  background: var(--ink); color: #fff;
+  background: var(--ink); color: #0A0A09;
   font-size: 10px; letter-spacing: 0.22em;
   border-radius: 6px 8px 0 0;
 }
@@ -11570,7 +11565,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-cases__file-media {
   position: relative;
   aspect-ratio: 16 / 10;
-  background: #fff;
+  background: #171715;
   border-bottom: 1px solid var(--ink);
   overflow: hidden;
 }
@@ -11592,14 +11587,14 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   padding: 4px 10px;
   font-weight: 700;
   transform: rotate(-7deg);
-  background: rgba(255,255,255,.85);
+  background: rgba(23, 23, 21, 0.85);
   border-radius: 3px;
 }
 
 .lvm-home .hm-cases__file-body {
   padding: 24px 22px 22px;
   display: flex; flex-direction: column; gap: 14px;
-  background: #FAF5EA;
+  background: #131312;
 }
 .lvm-home .hm-cases__file-index {
   display: flex; align-items: center; gap: 10px;
@@ -11625,7 +11620,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-home .hm-cases__file-client {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   padding: 10px 14px;
-  background: #fff;
+  background: #171715;
   border: 1px dashed var(--line);
   border-radius: 4px;
   font-size: 10.5px; letter-spacing: 0.16em;
@@ -11669,7 +11664,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   letter-spacing: -0.005em;
   text-transform: none;
   font-family: var(--font-serif, ui-serif, Georgia, serif);
-  font-style: italic;
+  font-style: normal;
 }
 
 .lvm-home .hm-cases__foot {
@@ -11677,7 +11672,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
   gap: 16px; flex-wrap: wrap;
   padding: 22px 24px;
   border: 1px solid var(--ink);
-  background: #fff;
+  background: #171715;
   border-radius: 6px;
   font-size: 11px; letter-spacing: 0.18em;
   color: var(--muted);

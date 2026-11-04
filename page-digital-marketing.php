@@ -35,12 +35,12 @@ get_header(); ?>
 
         <div class="dm-brief__copy">
           <div class="eyebrow"><span class="eyebrow__num mono">S/06</span><span class="eyebrow__rule"></span><span class="eyebrow__label mono">Service · Digital Marketing</span></div>
-          <h1 class="dm-brief__h">One coordinated plan,<br><em class="serif">not three vendors guessing.</em></h1>
+          <h1 class="dm-brief__h">Digital marketing in Maryland:<br><em class="serif">one plan, not three vendors.</em></h1>
           <p class="dm-brief__sub">
-            A focused mix of SEO, social, content, and paid — tied to one set of business outcomes. We write the brief, run the channels, and report on the only thing that matters: did the phone ring more this quarter than last.
+            A focused mix of SEO, social, content, and paid for Maryland businesses — tied to one set of business outcomes. We write the brief, run the channels, and report on the only thing that matters: did the phone ring more this quarter than last.
           </p>
           <div class="dm-brief__ctas">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Request a free strategy call <span aria-hidden="true">→</span></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg" data-lvm-intake>Request a free strategy call <span aria-hidden="true">→</span></a>
             <a href="#mix" class="btn btn--ghost btn--lg">View channel mix <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -268,18 +268,16 @@ get_header(); ?>
   <!-- ============================================================
        CTA
        ============================================================ -->
-  <section class="cta" id="cta">
-    <div class="cta__glow" aria-hidden="true"></div>
-    <div class="lvm-container cta__inner">
-      <div class="cta__eyebrow mono">↳ Free strategy call</div>
-      <h2 class="cta__h">Ready to grow<br><em class="serif">your business?</em></h2>
-      <p class="cta__p">We'll review your current marketing, recommend a focused channel mix, and walk you through the highest-leverage moves first.</p>
-      <div class="cta__actions">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn--primary btn--lg">Start marketing now <span aria-hidden="true">→</span></a>
-        <a href="tel:+14438521000" class="btn btn--dark-ghost btn--lg">↳ (443) 852‑1000</a>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part( 'template-parts/faq' ); // visible FAQs = FAQPage schema (inc/seo-data.php) ?>
+
+  <?php
+  get_template_part( 'template-parts/cta', null, array(
+    'eyebrow' => 'Free strategy call',
+    'lead'    => 'Ready to grow',
+    'tail'    => 'your business?',
+    'deck'    => 'We\'ll review your current marketing, recommend a focused channel mix, and walk you through the highest-leverage moves first.',
+  ) );
+  ?>
 
 </main>
 
