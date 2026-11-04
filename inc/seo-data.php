@@ -358,5 +358,9 @@ function lvm_seo_current( $key = null ) {
 		}
 	}
 	$pages = lvm_seo_pages();
+	// Slug differs between sites (live About is /maryland-digital-marketing-agency/): fall back to the template, contact.php → contact.
+	if ( ! isset( $pages[ $key ] ) && is_page() ) {
+		$key = preg_replace( '/^page-|\.php$/', '', (string) get_page_template_slug( get_queried_object_id() ) );
+	}
 	return isset( $pages[ $key ] ) ? $pages[ $key ] + array( 'key' => $key ) : null;
 }
