@@ -4,9 +4,11 @@
    Moved out of home.js so inner pages get the same CTA background. */
 (function () {
   'use strict';
+  // Start after load, when the main thread is idle: the canvas is decoration, first paint comes first
   function ready(fn) {
-    if (document.readyState !== 'loading') fn();
-    else document.addEventListener('DOMContentLoaded', fn);
+    var idle = function () { (window.requestIdleCallback || setTimeout)(fn, { timeout: 2000 }); };
+    if (document.readyState === 'complete') idle();
+    else window.addEventListener('load', idle);
   }
   ready(function () {
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -63,6 +65,12 @@
     document.querySelectorAll('.lvh-shader[data-shader="stage"]').forEach(function (canvas) {
       var gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' });
       if (!gl) return;
+      // No GPU (SwiftShader, llvmpipe): fbm per pixel runs on the CPU and stalls the page; keep the CSS gradient
+      var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+      if (dbg && /swiftshader|llvmpipe|software/i.test(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL))) {
+        var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext();
+        return;
+      }
       var compile = function (type, src) {
         var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
         return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
