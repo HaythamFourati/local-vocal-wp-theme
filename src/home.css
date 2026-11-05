@@ -1754,6 +1754,13 @@ body.lvm-redesign .lvh .lvh-why__head { font-weight: 300; }
 .lvh-js .lvh [data-reveal].is-in { opacity: 1; transform: none; filter: none; }
 .lvh-js .lvh .lvh-mag[data-reveal].is-in { transition-delay: 0ms; }
 
+/* Hero enters on CSS alone: first paint (and LCP) never waits for scripts */
+.lvh-js .lvh .lvh-hero [data-reveal] { opacity: 1; transform: none; filter: none; transition: none; animation: lvh-in 900ms var(--ease-out) both; }
+.lvh-js .lvh-hero .lvh-w { opacity: 1; transform: none; filter: none; transition: none; animation: lvh-in 900ms var(--ease-out) both; animation-delay: calc(var(--w) * 50ms + 120ms); }
+.lvh-js .lvh .lvh-hero__copy > [data-reveal]:nth-child(3) { animation-delay: 240ms; }
+.lvh-js .lvh .lvh-hero__copy > [data-reveal]:nth-child(n+4) { animation-delay: 320ms; }
+@keyframes lvh-in { from { opacity: 0; transform: translateY(0.25em); filter: blur(6px); } }
+
 @media (prefers-reduced-motion: reduce) {
   .lvh-eyebrow--live i, .lvh-btn--glow::before, .lvh-phone__caret, .lvh-phone__pin--you::after,
   .lvh-iso__ring, .lvh-iso__stage, .lvh-console__ok i, .lvh-console__live i { animation: none; }
@@ -1762,6 +1769,7 @@ body.lvm-redesign .lvh .lvh-why__head { font-weight: 300; }
   .lvh-ticker__track { animation: none; flex-wrap: wrap; width: auto; }
   .lvh-ticker li[aria-hidden] { display: none; }
   .lvh-js .lvh-w { transform: none; filter: none; }
+  .lvh-js .lvh-hero [data-reveal], .lvh-js .lvh-hero .lvh-w { animation: none; }
   .lvh-js .lvh [data-reveal] { transform: none; filter: none; transition: opacity 300ms ease; }
   .lvh-js .lvh-iso:not(.is-in) .lvh-iso__up b { transform: none; }
   .lvh-js .lvh-person:not(.is-in) figure { clip-path: inset(0 round 20px); }

@@ -7,11 +7,10 @@
 function lvm_load_assets() {
   // Legacy assets (still needed for service pages until they are migrated)
   if ( file_exists( get_theme_file_path( '/build/index.js' ) ) ) {
-    wp_enqueue_script( 'ourmainjs', get_theme_file_uri( '/build/index.js' ), array( 'wp-element', 'react-jsx-runtime' ), '1.0', true );
+    wp_enqueue_script( 'ourmainjs', get_theme_file_uri( '/build/index.js' ), array(), '1.0', true ); // plain DOM code, no React
   }
-  if ( file_exists( get_theme_file_path( '/build/index.css' ) ) ) {
-    wp_enqueue_style( 'ourmaincss', get_theme_file_uri( '/build/index.css' ), array(), '1.0' );
-  }
+  // Element resets only; extracted from the legacy build/index.css, whose class rules no template uses
+  wp_enqueue_style( 'lvm-base', get_theme_file_uri( '/src/base.css' ), array(), filemtime( get_theme_file_path( '/src/base.css' ) ) );
 
   // Mobile menu (legacy)
   wp_enqueue_script( 'mobile-menu', get_theme_file_uri( '/src/scripts/mobilemenu.js' ), array(), '1.0', true );
@@ -25,9 +24,6 @@ function lvm_load_assets() {
     array(),
     file_exists( $css_path ) ? filemtime( $css_path ) : '1.0'
   );
-  // General Sans (display + logo) and Onest (body), on every page
-  wp_enqueue_style( 'lvm-home-fonts-display', 'https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap', array(), null );
-  wp_enqueue_style( 'lvm-home-fonts-body', 'https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap', array(), null );
   // Site layer: dark chrome + inner pages on the homepage system
   $site_css = get_theme_file_path( '/src/site.css' );
   wp_enqueue_style( 'lvm-site', get_theme_file_uri( '/src/site.css' ), array( 'lvm-redesign' ), filemtime( $site_css ) );
@@ -96,13 +92,10 @@ function lvm_theme_support() {
 }
 add_action( 'after_setup_theme', 'lvm_theme_support' );
 
-// Contact Form 7 custom styles
-function lvm_enqueue_cf7_styles() {
-  if ( function_exists( 'wpcf7_contact_form' ) ) {
-    wp_enqueue_style( 'cf7-custom', get_template_directory_uri() . '/src/contact-form.css', array(), '1.0.0' );
-  }
-}
-add_action( 'wp_enqueue_scripts', 'lvm_enqueue_cf7_styles' );
+// ponytail: CF7 only renders if the intake module is missing (contact.php, cta.php),
+// so skip its CSS/JS everywhere; the form still posts without them.
+add_filter( 'wpcf7_load_js', '__return_false' );
+add_filter( 'wpcf7_load_css', '__return_false' );
 
 // Post navigation styles (single posts)
 function lvm_enqueue_post_navigation_styles() {

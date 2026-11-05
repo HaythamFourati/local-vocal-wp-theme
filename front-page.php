@@ -16,12 +16,17 @@ $arrow   = '<svg class="lvh-arrow" viewBox="0 0 16 16" width="14" height="14" fi
 $icon = function ( $paths ) {
   return '<svg class="lvh-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $paths . '</svg>';
 };
+// Screenshot src/srcset: each .jpg in assets/projects/screens/ has .webp and -720.webp copies (cwebp -q 78)
+$shot = function ( $img ) use ( $assets ) {
+  $base = $assets . 'screens/' . preg_replace( '/\.jpg$/', '', $img );
+  return 'src="' . esc_url( $base . '.webp' ) . '" srcset="' . esc_url( $base . '-720.webp' ) . ' 720w, ' . esc_url( $base . '.webp' ) . ' 1440w" sizes="(max-width: 960px) 92vw, 720px"';
+};
 // Browser-window mockup. Screenshots live in assets/projects/screens/ and are never cropped.
-$window = function ( $img, $url, $alt = '', $class = '' ) use ( $assets ) {
+$window = function ( $img, $url, $alt = '', $class = '' ) use ( $shot ) {
   return '<figure class="lvh-window ' . esc_attr( $class ) . '">'
     . '<div class="lvh-window__bar"><span class="lvh-window__dots"><i></i><i></i><i></i></span>'
     . '<span class="lvh-window__url"><svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" aria-hidden="true"><path d="M5 7V5a3 3 0 0 1 6 0v2h.5A1.5 1.5 0 0 1 13 8.5v5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7H5zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2z"/></svg>' . esc_html( $url ) . '</span><span></span></div>'
-    . '<img src="' . esc_url( $assets . 'screens/' . $img ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy">'
+    . '<img ' . $shot( $img ) . ' alt="' . esc_attr( $alt ) . '" loading="lazy">'
     . '</figure>';
 };
 // Platform app icons live in functions.php (lvm_platforms / lvm_app_icon), shared with inner pages
@@ -340,7 +345,7 @@ $eyebrow = function ( $text ) {
             <li class="lvh-shot" data-reveal>
               <figure class="lvh-shot__win">
                 <div class="lvh-window__bar"><span class="lvh-window__dots"><i></i><i></i><i></i></span><span class="lvh-window__url"><?php echo esc_html( $c[4] ); ?></span><span></span></div>
-                <div class="lvh-shot__img"><img src="<?php echo esc_url( $assets . 'screens/' . $c[3] ); ?>" alt="<?php echo esc_attr( $c[7] ); ?>" loading="lazy" draggable="false"></div>
+                <div class="lvh-shot__img"><img <?php echo $shot( $c[3] ); ?> alt="<?php echo esc_attr( $c[7] ); ?>" loading="lazy" draggable="false"></div>
                 <?php if ( $c[6] ) : ?><span class="lvh-badge">New</span><?php endif; ?>
               </figure>
               <div class="lvh-shot__meta">
@@ -687,7 +692,7 @@ $eyebrow = function ( $text ) {
       <div class="lvh-layers" data-reveal>
         <ol class="lvh-layers__steps" role="tablist" aria-label="How a website ranks, layer by layer">
           <?php foreach ( $layers as $i => $l ) : ?>
-            <li>
+            <li role="presentation">
               <button class="lvh-layers__step<?php echo 0 === $i ? ' is-on' : ''; ?>" type="button" role="tab" aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>" data-slide="<?php echo (int) $i; ?>">
                 <span class="lvh-layers__num"><?php echo str_pad( $i + 1, 2, '0', STR_PAD_LEFT ); ?></span>
                 <span class="lvh-layers__title"><?php echo esc_html( $l[1] ); ?></span>
@@ -728,7 +733,7 @@ $eyebrow = function ( $text ) {
               <?php endforeach; ?>
             </div>
             <div class="lvh-stack__layer lvh-stack__layer--design">
-              <img src="<?php echo esc_url( $assets . 'screens/caregiving.jpg' ); ?>" alt="" loading="lazy" draggable="false">
+              <img <?php echo $shot( 'caregiving.jpg' ); ?> alt="" loading="lazy" draggable="false">
             </div>
           </div>
 

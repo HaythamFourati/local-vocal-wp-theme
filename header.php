@@ -8,10 +8,9 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap">
+  <?php // Self-hosted fonts (assets/fonts, @font-face in lvm-redesign.css); preload the two the hero paints with ?>
+  <link rel="preload" href="<?php echo esc_url( get_theme_file_uri( '/assets/fonts/onest.woff2' ) ); ?>" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="<?php echo esc_url( get_theme_file_uri( '/assets/fonts/general-sans-300.woff2' ) ); ?>" as="font" type="font/woff2" crossorigin>
 
   <?php // Current logo mark (assets/images/favicon.svg); PNG for browsers without SVG icons and iOS home screens ?>
   <link rel="icon" type="image/svg+xml" href="<?php echo esc_url( get_theme_file_uri( '/assets/images/favicon.svg' ) ); ?>">

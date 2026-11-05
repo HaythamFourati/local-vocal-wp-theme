@@ -1,3 +1,11 @@
+/* Self-hosted fonts (latin). Onest and Geist Mono are variable. */
+@font-face { font-family: "Onest"; src: url(../assets/fonts/onest.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url(../assets/fonts/geist-mono.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url(../assets/fonts/general-sans-300.woff2) format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url(../assets/fonts/general-sans-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url(../assets/fonts/general-sans-500.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url(../assets/fonts/general-sans-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+
 /* ============================================================
    LOCAL VOCAL MARKETING — Maryland Web Design & SEO Redesign
    Combined: styles.css + polish.css (from design package)
@@ -47,9 +55,9 @@ body.lvm-redesign {
   --gap-9: 96px;
   --gap-10: 128px;
 
-  --font-sans: "Onest", "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: "Onest", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-serif: "General Sans", "Geist", ui-sans-serif, system-ui, sans-serif; /* the old serif accent now uses the display face */
+  --font-serif: "General Sans", ui-sans-serif, system-ui, sans-serif; /* the old serif accent now uses the display face */
 
   background: var(--bg);
   color: var(--ink);
@@ -90,7 +98,7 @@ body.lvm-redesign .nav__name,
 body.lvm-redesign .spost__name,
 body.lvm-redesign .mappack__name,
 body.lvm-redesign .srank__name {
-  font-family: "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-family: var(--font-sans) !important;
 }
 
 /* Cancel legacy theme's global text-transform: uppercase on headings */
@@ -3013,7 +3021,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 .lvm-redesign .post__body h2,
 .lvm-redesign .post__body h3,
 .lvm-redesign .post__body h4 {
-  font-family: "Geist", sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -3191,7 +3199,7 @@ a:hover > .lvlogo *, a:focus-visible > .lvlogo * { animation-iteration-count: in
 }
 .lvm-redesign .page-body__inner h2,
 .lvm-redesign .page-body__inner h3 {
-  font-family: "Geist", sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--ink);
