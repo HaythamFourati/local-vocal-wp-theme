@@ -584,11 +584,32 @@ $eyebrow = function ( $text ) {
         <div class="lvh-peek__pane">
           <?php echo $peek_head( 6 ); ?>
           <div class="lvh-peek__stage">
-            <div class="lvh-doc">
-              <span class="lvh-doc__tag">ChatGPT · "best HVAC company in Annapolis?"</span>
-              <strong>Your business is a top pick: 4.9 stars, heat pump installs across Anne Arundel County.</strong>
-              <i style="--i:1"></i><i style="--i:2"></i><i style="--i:3;width:64%"></i>
-              <span class="lvh-doc__rank">Named in 3 of 4 AI answers</span>
+            <div class="lvh-ai">
+              <div class="lvh-ai__in">
+                <div class="lvh-ai__top">
+                  <svg class="lvh-ai__spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="lvh-ai-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB37A"/><stop offset=".5" stop-color="#C69CFF"/><stop offset="1" stop-color="#7DB4FF"/></linearGradient></defs><path fill="url(#lvh-ai-g)" d="M12 2c.6 4.6 2.4 7.4 7.5 8.2v1.6C14.4 12.6 12.6 15.4 12 20h-.1c-.6-4.6-2.4-7.4-7.5-8.2v-1.6C9.5 9.4 11.3 6.6 11.9 2z"/></svg>
+                  <span>AI answer</span>
+                  <small>ChatGPT · Gemini · Perplexity</small>
+                </div>
+                <p class="lvh-ai__q">Who's the best HVAC company near Annapolis?</p>
+                <div class="lvh-ai__a">
+                  <span class="lvh-ai__think">Searching reviews, listings and websites…</span>
+                  <p class="lvh-ai__text"><?php
+                  // Streams in word by word (--w); the business name lands highlighted
+                  $w = 0;
+                  foreach ( array( 'For heat pump installs near Annapolis, customers rate', '<mark>Your&nbsp;business</mark>', 'highest: 4.9★ from 184 reviews and same-week service across Anne Arundel County.' ) as $chunk ) {
+                    foreach ( 0 === strpos( $chunk, '<mark>' ) ? array( $chunk ) : explode( ' ', $chunk ) as $word ) {
+                      echo '<span style="--w:' . $w++ . '">' . $word . '</span> ';
+                    }
+                  }
+                  ?></p>
+                </div>
+                <div class="lvh-ai__src">
+                  <span style="--i:0"><i></i>yourbusiness.com</span>
+                  <span style="--i:1"><i></i>Google reviews</span>
+                  <span style="--i:2"><i></i>Yelp</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
