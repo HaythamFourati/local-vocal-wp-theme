@@ -188,3 +188,28 @@ function lvm_app_icon( $key, $class = '' ) {
   $p = lvm_platforms()[ $key ];
   return '<span class="lvh-app ' . esc_attr( $class ) . '" style="--app:' . esc_attr( $p[1] ) . ';--g:' . (int) $p[3] . '%" title="' . esc_attr( $p[0] ) . '"><svg viewBox="0 0 24 24" aria-hidden="true">' . $p[2] . '</svg></span>';
 }
+
+/**
+ * The service page a blog post belongs to, picked from its title and tags.
+ * First match wins; order matters ("AI tools for social media" is social, not AI).
+ *
+ * @return array{0:string,1:string,2:string} [slug, service name, one-line pitch]
+ */
+function lvm_post_service( $post_id ) {
+  $text = strtolower( get_the_title( $post_id ) . ' ' . implode( ' ', wp_get_post_tags( $post_id, array( 'fields' => 'names' ) ) ) );
+  $map  = array(
+    '/social|linkedin|instagram|facebook|tiktok/'                => array( 'social-media-management', 'Social Media Management', 'Consistent posting that keeps your business visible to local customers, every week.' ),
+    '/\bai\b|\bllm|chatgpt|language model/'                    => array( 'ai-search-optimization', 'AI Search Optimization', 'Get your business named when customers ask ChatGPT, Gemini, or Google\'s AI who to call.' ),
+    '/seo|google|local search|keyword|redirect|map pack|rank/'   => array( 'seo-optimization', 'Local SEO', 'Show up in Google Maps and local search across Baltimore and Maryland.' ),
+    '/website|web design|landing page|wordpress/'                => array( 'development', 'Website Design', 'Fast, search-ready websites that turn Maryland visitors into calls.' ),
+    '/content|blog|writing|aggregator/'                          => array( 'content-creation', 'SEO Blog Articles', 'Articles written around the questions your local customers actually search.' ),
+    '/analytics|data|roi|report|metric/'                         => array( 'analytics-reporting', 'Analytics & Reporting', 'Tracking and a plain-English monthly report on calls, forms, and rankings.' ),
+  );
+  foreach ( $map as $re => $svc ) {
+    if ( preg_match( $re, $text ) ) {
+      return $svc;
+    }
+  }
+  return array( 'digital-marketing', 'Digital Marketing', 'One plan across SEO, content, and social, tied to more calls and booked jobs.' );
+}
+

@@ -490,7 +490,7 @@ function lvm_seo_llms_txt() {
 		'- Email: ' . $b['email'],
 		'- Hours: Monday–Friday, 9am–6pm ET',
 		'- Service area: ' . $areas,
-		'- Free offer: a free website & SEO review (30-minute walkthrough, written report within 48 hours)',
+		'- Free offer: a free website, SEO & AI visibility review (30-minute walkthrough, written report within 48 hours)',
 		'',
 		'## Services',
 		$link( 'development', 'Website design (Baltimore & Maryland)' ),

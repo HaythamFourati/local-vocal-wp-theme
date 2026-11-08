@@ -23,13 +23,13 @@ $a = wp_parse_args(
 		'eyebrow' => 'Free review',
 		'lead'    => 'Ready to improve your website',
 		'tail'    => 'and local SEO?',
-		'deck'    => "We'll review your current website, local search visibility, and content strategy — and walk you through the highest‑leverage opportunities to grow. No pitch deck, no obligation.",
+		'deck'    => "We'll review your website, local search visibility, content, and what AI assistants like ChatGPT say about you — then walk you through the highest‑leverage opportunities to grow. No pitch deck, no obligation.",
 	)
 );
 ?>
 <div class="lvh lvh--part">
   <?php // <div>, not <section>: inner templates pad and border every <section> they contain ?>
-  <div class="lvh-sec lvh-sec--bay lvh-cta" id="cta" role="region" aria-label="Free website and SEO review">
+  <div class="lvh-sec lvh-sec--bay lvh-cta" id="cta" role="region" aria-label="Free website, SEO and AI visibility review">
     <div class="lvh-bay lvh-cta__stage">
       <canvas class="lvh-shader" data-shader="stage" aria-hidden="true"></canvas>
       <header class="lvh-cta__head">
@@ -43,7 +43,7 @@ $a = wp_parse_args(
           <span class="lvh-cta__label">What happens next</span>
           <ol class="lvh-cta__notes">
             <li><b>30‑minute walkthrough</b>Scheduled this week, at a time that suits you.</li>
-            <li><b>We show you what's costing visibility</b>On screen, with your site and your competitors.</li>
+            <li><b>We show you what's costing visibility</b>On screen: your site, your competitors, and what ChatGPT and Google's AI say about you.</li>
             <li><b>Written report within 48 hours</b>The fixes, in order, whether you hire us or not.</li>
           </ol>
           <div class="lvh-cta__team">

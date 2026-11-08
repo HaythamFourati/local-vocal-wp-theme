@@ -179,6 +179,20 @@ if ( have_posts() ) : the_post();
             <?php echo $processed; // Already passed through the_content filter ?>
           </div>
 
+          <?php
+          // Related service: links every post to the page it supports (topic → service), plus two city pages
+          list( $svc_slug, $svc_name, $svc_line ) = lvm_post_service( get_the_ID() );
+          ?>
+          <aside class="bl-rel" aria-label="Related service">
+            <span class="bl-rel__k mono">↳ Related service</span>
+            <a class="bl-rel__card" href="<?php echo esc_url( home_url( '/' . $svc_slug . '/' ) ); ?>">
+              <span class="bl-rel__name"><?php echo esc_html( $svc_name ); ?></span>
+              <span class="bl-rel__line"><?php echo esc_html( $svc_line ); ?></span>
+              <span class="bl-rel__go" aria-hidden="true">→</span>
+            </a>
+            <p class="bl-rel__areas">Serving <a href="<?php echo esc_url( home_url( '/baltimore/' ) ); ?>">Baltimore</a>, <a href="<?php echo esc_url( home_url( '/annapolis/' ) ); ?>">Annapolis</a>, and businesses across Maryland from our office in <?php echo esc_html( lvm_business()['city'] ); ?>.</p>
+          </aside>
+
           <!-- ============================================================
                INLINE CTA BANNER  (right after the post body)
                ============================================================ -->
@@ -193,13 +207,13 @@ if ( have_posts() ) : the_post();
               <p class="bl-cta-banner__p">Want this exact playbook applied to your own site? We'll audit your website and local SEO and show you the highest-leverage moves first — no decks, no fluff.</p>
               <div class="bl-cta-banner__actions">
                 <a href="<?php echo esc_url( lvm_url( 'contact' ) ); ?>" class="btn btn--primary" data-lvm-intake>Get a free review <span aria-hidden="true">→</span></a>
-                <a href="tel:+14438521000" class="bl-cta-banner__phone mono">↳ (443) 852‑1000</a>
+                <a href="tel:<?php echo esc_attr( lvm_business()['phone'] ); ?>" class="bl-cta-banner__phone mono">↳ <?php echo esc_html( lvm_business()['phone_human'] ); ?></a>
               </div>
             </div>
             <div class="bl-cta-banner__sig mono">
-              <span>Local Vocal Studio</span>
+              <span><?php echo esc_html( lvm_business()['name'] ); ?></span>
               <span class="bl-cta-banner__sig-rule"></span>
-              <span>Annapolis · MD</span>
+              <span><?php echo esc_html( lvm_business()['city'] . ' · ' . lvm_business()['region'] ); ?></span>
             </div>
           </aside>
 

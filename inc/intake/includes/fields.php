@@ -73,6 +73,7 @@ function lvmi_steps() {
 						'reviews' => __( 'More reviews', 'lvm-seo-intake' ),
 						'content' => __( 'Blog & content', 'lvm-seo-intake' ),
 						'social'  => __( 'Social media', 'lvm-seo-intake' ),
+						'ai'      => __( 'Show up in AI answers', 'lvm-seo-intake' ),
 					),
 				),
 				'challenge' => array( 'type' => 'textarea', 'label' => __( 'Biggest challenge right now', 'lvm-seo-intake' ), 'placeholder' => __( 'Optional — e.g. “Competitors show up above us for every search in our town.”', 'lvm-seo-intake' ), 'required' => false ),

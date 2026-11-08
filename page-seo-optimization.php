@@ -132,12 +132,12 @@ get_header(); ?>
           <ul class="seo-serp__organic">
             <li class="seo-serp__result seo-serp__result--you">
               <span class="seo-serp__crumb mono">tidewaterhvac.com › services › repair</span>
-              <h4 class="seo-serp__rtitle">HVAC Repair in Annapolis · Same-Day Service | Tidewater</h4>
+              <p class="seo-serp__rtitle">HVAC Repair in Annapolis · Same-Day Service | Tidewater</p>
               <p class="seo-serp__rmeta">Family-run HVAC repair across Anne Arundel County. Honest diagnostics, upfront pricing, weekend service available. Call (443) 555-0142.</p>
             </li>
             <li class="seo-serp__result">
               <span class="seo-serp__crumb mono">bay-area-hvac.com › repair-services</span>
-              <h4 class="seo-serp__rtitle">HVAC Repair Services | Bay Area Heating &amp; Cooling</h4>
+              <p class="seo-serp__rtitle">HVAC Repair Services | Bay Area Heating &amp; Cooling</p>
               <p class="seo-serp__rmeta">24/7 emergency HVAC repair in the greater Annapolis region. Licensed, bonded, insured. Free estimates on new systems.</p>
             </li>
           </ul>
