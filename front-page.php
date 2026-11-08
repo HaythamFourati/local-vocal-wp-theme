@@ -448,7 +448,7 @@ $eyebrow = function ( $text ) {
       <header class="lvh-head lvh-head--row">
         <div>
           <?php echo $eyebrow( 'Services' ); ?>
-          <?php echo $title( 'Six services.', 'One team, built for local growth.' ); ?>
+          <?php echo $title( 'Seven services.', 'One team, built for local growth.' ); ?>
         </div>
         <p class="lvh-deck" data-reveal>
           Buy one, the rest get sharper. Combine them and you stop competing for
@@ -464,6 +464,7 @@ $eyebrow = function ( $text ) {
         array( 'Social Media Management', 'Consistent posting that keeps your business visible — service updates, blog promotion, seasonal content, and customer education.', 'Local brands that need to stay active, not viral',   'Steady online presence and a trust signal for searchers',     '/social-media-management' ),
         array( 'Custom Plugins & Solutions', 'Booking flows, quote calculators, client portals and integrations with the tools you already use — custom WordPress plugins built around how your business works.', "Businesses whose process doesn't fit an off‑the‑shelf plugin", 'Software that fits your business, not the other way round',  '/development' ),
         array( 'Ongoing Website Support', 'Updates, fixes, new pages, security patches, content changes, and performance tuning — handled without the headache.',              'Owners who want a long‑term partner, not a one‑off', 'A healthy website that stays current and search‑friendly',   '/analytics-reporting' ),
+        array( 'AI Search Optimization',  'Get your business named when customers ask ChatGPT, Google AI Overviews, Gemini, or Perplexity who to call — clear facts, schema, and reviews AI can trust.', 'Owners asking "does ChatGPT know about us?"',      'Accurate AI answers that recommend you, not a competitor',   '/ai-search-optimization' ),
       );
       ?>
       <ol class="lvh-index">
@@ -577,6 +578,17 @@ $eyebrow = function ( $text ) {
                   <li class="is-<?php echo esc_attr( $c[2] ); ?>" style="--i:<?php echo $j + 3; ?>"><span><?php echo esc_html( $c[0] ); ?></span><small><?php echo esc_html( $c[1] ); ?></small></li>
                 <?php endforeach; ?>
               </ul>
+            </div>
+          </div>
+        </div>
+        <div class="lvh-peek__pane">
+          <?php echo $peek_head( 6 ); ?>
+          <div class="lvh-peek__stage">
+            <div class="lvh-doc">
+              <span class="lvh-doc__tag">ChatGPT · "best HVAC company in Annapolis?"</span>
+              <strong>Your business is a top pick: 4.9 stars, heat pump installs across Anne Arundel County.</strong>
+              <i style="--i:1"></i><i style="--i:2"></i><i style="--i:3;width:64%"></i>
+              <span class="lvh-doc__rank">Named in 3 of 4 AI answers</span>
             </div>
           </div>
         </div>
