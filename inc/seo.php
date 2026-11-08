@@ -59,8 +59,22 @@ function lvm_seo_description() {
 
 if ( lvm_seo_rank_math() ) {
 	// Rank Math prints the tags; the theme supplies the copy for the pages it owns.
-	$lvm_title = function ( $v ) { $t = lvm_seo_title(); return $t ? $t : $v; };
-	$lvm_desc  = function ( $v ) { $p = lvm_seo_current(); return ! empty( $p['desc'] ) ? $p['desc'] : $v; };
+	// Long post headlines: drop the " - Local Vocal Marketing" suffix so the headline fits Google's ~60 characters
+	$lvm_title = function ( $v ) {
+		$t = lvm_seo_title();
+		if ( $t ) {
+			return $t;
+		}
+		return ( is_singular( 'post' ) && mb_strlen( $v ) > 60 ) ? wp_strip_all_tags( get_the_title() ) : $v;
+	};
+	// Data file first, then Rank Math's own, then the post's opening text
+	$lvm_desc = function ( $v ) {
+		$p = lvm_seo_current();
+		if ( ! empty( $p['desc'] ) ) {
+			return $p['desc'];
+		}
+		return $v ? $v : lvm_seo_description();
+	};
 	add_filter( 'rank_math/frontend/title', $lvm_title, 20 );
 	add_filter( 'rank_math/frontend/description', $lvm_desc, 20 );
 	add_filter( 'rank_math/opengraph/facebook/og_title', $lvm_title, 20 );
@@ -107,6 +121,27 @@ if ( lvm_seo_rank_math() ) {
 			return $parts;
 		}
 	);
+}
+
+/** BlogPosting node for the current post. */
+function lvm_seo_article_node( $url ) {
+	$post    = get_queried_object();
+	$article = array(
+		'@type'            => 'BlogPosting',
+		'@id'              => $url . '#article',
+		'headline'         => get_the_title( $post ),
+		'description'      => lvm_seo_description(),
+		'datePublished'    => get_the_date( DATE_W3C, $post ),
+		'dateModified'     => get_the_modified_date( DATE_W3C, $post ),
+		'author'           => array( '@type' => 'Person', 'name' => get_the_author_meta( 'display_name', $post->post_author ) ),
+		'publisher'        => array( '@id' => lvm_seo_id( 'organization' ) ),
+		'mainEntityOfPage' => array( '@id' => $url . '#webpage' ),
+		'inLanguage'       => 'en-US',
+	);
+	if ( has_post_thumbnail( $post ) ) {
+		$article['image'] = get_the_post_thumbnail_url( $post, 'full' );
+	}
+	return $article;
 }
 
 /**
@@ -358,23 +393,7 @@ function lvm_seo_print_schema() {
 		$graph[] = $webpage;
 	}
 	if ( is_singular( 'post' ) ) {
-		$post    = get_queried_object();
-		$article = array(
-			'@type'            => 'BlogPosting',
-			'@id'              => $url . '#article',
-			'headline'         => get_the_title( $post ),
-			'description'      => lvm_seo_description(),
-			'datePublished'    => get_the_date( DATE_W3C, $post ),
-			'dateModified'     => get_the_modified_date( DATE_W3C, $post ),
-			'author'           => array( '@type' => 'Person', 'name' => get_the_author_meta( 'display_name', $post->post_author ) ),
-			'publisher'        => array( '@id' => lvm_seo_id( 'organization' ) ),
-			'mainEntityOfPage' => array( '@id' => $url . '#webpage' ),
-			'inLanguage'       => 'en-US',
-		);
-		if ( has_post_thumbnail( $post ) ) {
-			$article['image'] = get_the_post_thumbnail_url( $post, 'full' );
-		}
-		$graph[] = $article;
+		$graph[] = lvm_seo_article_node( $url );
 	}
 	$graph = array_merge( $graph, array_values( lvm_seo_page_nodes() ) );
 	echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $graph ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
@@ -409,6 +428,18 @@ if ( lvm_seo_rank_math() ) {
 					continue;
 				}
 				$data[ $key ] = $node;
+			}
+			// Posts: Rank Math's Article schema is off on this site, so add ours unless it already has one
+			if ( is_singular( 'post' ) ) {
+				$has_article = false;
+				foreach ( $data as $node ) {
+					if ( array_intersect( (array) ( $node['@type'] ?? array() ), array( 'Article', 'BlogPosting', 'NewsArticle' ) ) ) {
+						$has_article = true;
+					}
+				}
+				if ( ! $has_article ) {
+					$data['lvm_article'] = lvm_seo_article_node( get_permalink() );
+				}
 			}
 			return $data;
 		},
@@ -506,6 +537,9 @@ function lvm_seo_llms_txt() {
 
 /** [noindex?, canonical URL or ''] for the current page. */
 function lvm_seo_index_rule() {
+	if ( is_category( 'uncategorized' ) ) {
+		return array( true, '' ); // catch-all archive, nothing worth ranking
+	}
 	if ( ! is_page() ) {
 		return array( false, '' );
 	}
@@ -536,12 +570,12 @@ if ( lvm_seo_rank_math() ) {
 		},
 		20
 	);
-	// Keep noindexed pages out of the sitemap too
+	// Keep noindexed and redirected pages out of the sitemap too
 	add_filter(
 		'rank_math/sitemap/entry',
 		function ( $url, $type, $post ) {
 			// Rank Math passes a raw DB row, not a WP_Post
-			return ( 'post' === $type && isset( $post->ID ) && isset( lvm_seo_noindex()[ get_post_field( 'post_name', $post->ID ) ] ) ) ? false : $url;
+			return ( 'post' === $type && isset( $post->ID ) && ( isset( lvm_seo_noindex()[ $slug = get_post_field( 'post_name', $post->ID ) ] ) || isset( lvm_seo_redirects()[ $slug ] ) ) ) ? false : $url;
 		},
 		10,
 		3
@@ -565,3 +599,31 @@ if ( lvm_seo_rank_math() ) {
 		}
 	);
 }
+
+// Retired pages (lvm_seo_redirects) 301 to their replacement
+add_action(
+	'template_redirect',
+	function () {
+		if ( ! is_page() ) {
+			return;
+		}
+		$to = lvm_seo_redirects()[ get_post_field( 'post_name', get_queried_object_id() ) ] ?? '';
+		if ( $to ) {
+			wp_safe_redirect( home_url( $to ), 301 );
+			exit;
+		}
+	}
+);
+
+// Featured images without alt text fall back to the post title (blog posts, cards, related posts)
+add_action( 'begin_fetch_post_thumbnail_html', function ( $post_id ) { $GLOBALS['lvm_thumb_post'] = $post_id; } );
+add_action( 'end_fetch_post_thumbnail_html', function () { unset( $GLOBALS['lvm_thumb_post'] ); } );
+add_filter(
+	'wp_get_attachment_image_attributes',
+	function ( $attr ) {
+		if ( '' === trim( $attr['alt'] ?? '' ) && ! empty( $GLOBALS['lvm_thumb_post'] ) ) {
+			$attr['alt'] = wp_strip_all_tags( get_the_title( $GLOBALS['lvm_thumb_post'] ) );
+		}
+		return $attr;
+	}
+);

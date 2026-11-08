@@ -336,6 +336,21 @@ function lvm_seo_noindex() {
 		'payment-page'                           => '',
 		'intake-form'                            => '',
 		'scotts-gunsmithing-website-initial-audit' => '',               // client deliverable, not for search
+		'our-clients'                            => '',                   // 2024 page, superseded by the work section
+		'grow-your-small-business-online'        => '',                   // 2025 landing page, thin and orphaned
+		'request-for-service'                    => '',                   // old form, replaced by the intake
+	);
+}
+
+/**
+ * Retired pages: slug => where they now live (301). Keeps their links and stops them
+ * competing with the real page.
+ *
+ * @return array<string,string>
+ */
+function lvm_seo_redirects() {
+	return array(
+		'website-creation' => '/development/', // 2023 keyword-stuffed web design page
 	);
 }
 
