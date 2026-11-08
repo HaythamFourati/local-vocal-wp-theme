@@ -37,6 +37,7 @@
       array( 'S/04', 'Social Media',            'Social feed',         home_url( '/social-media-management/' ) ),
       array( 'S/05', 'Analytics & Reporting',   'Live dashboard',      home_url( '/analytics-reporting/' ) ),
       array( 'S/06', 'Digital Marketing',       'Campaign brief',      home_url( '/digital-marketing/' ) ),
+      array( 'S/07', 'AI Search Optimization',  'AI visibility check', home_url( '/ai-search-optimization/' ) ),
     );
 
     $lvm_nav_items = array(

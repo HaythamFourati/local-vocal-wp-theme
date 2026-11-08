@@ -25,6 +25,7 @@
           <li><a href="<?php echo esc_url( home_url( '/content-creation/' ) ); ?>">SEO Blog Articles</a></li>
           <li><a href="<?php echo esc_url( home_url( '/social-media-management/' ) ); ?>">Social Media</a></li>
           <li><a href="<?php echo esc_url( home_url( '/analytics-reporting/' ) ); ?>">Analytics &amp; Reporting</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/ai-search-optimization/' ) ); ?>">AI Search Optimization</a></li>
           <li><a href="<?php echo esc_url( home_url( '/#cta' ) ); ?>" data-lvm-intake>Free SEO Review</a></li>
         </ul>
       </div>

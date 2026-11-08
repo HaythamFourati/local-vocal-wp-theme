@@ -258,7 +258,7 @@ function lvm_seo_trail() {
 		return array();
 	}
 	$trail    = array( array( 'Home', home_url( '/' ) ) );
-	$services = array( 'development', 'seo-optimization', 'content-creation', 'social-media-management', 'analytics-reporting', 'digital-marketing' );
+	$services = array( 'development', 'seo-optimization', 'content-creation', 'social-media-management', 'analytics-reporting', 'digital-marketing', 'ai-search-optimization' );
 	if ( is_singular( 'post' ) ) {
 		$blog    = get_option( 'page_for_posts' );
 		$trail[] = array( $blog ? get_the_title( $blog ) : 'Blog', $blog ? get_permalink( $blog ) : home_url( '/blog/' ) );
@@ -499,6 +499,7 @@ function lvm_seo_llms_txt() {
 		$link( 'social-media-management', 'Social media management' ),
 		$link( 'analytics-reporting', 'SEO reporting & analytics' ),
 		$link( 'digital-marketing', 'Digital marketing' ),
+		$link( 'ai-search-optimization', 'AI search optimization (ChatGPT, AI Overviews, Gemini, Perplexity)' ),
 		'',
 		'## Locations',
 		$link( 'baltimore', 'Baltimore SEO & web design' ),

@@ -177,6 +177,19 @@ function lvm_seo_pages() {
 			),
 		),
 
+		'ai-search-optimization'  => array(
+			'title'  => 'AI Search Optimization in Maryland | Local Vocal Marketing',
+			'desc'   => 'Get your Maryland business named in ChatGPT, Google AI Overviews, Gemini and Perplexity answers: schema, consistent business facts, reviews and a free AI visibility check.',
+			'schema' => array( 'service' => array( 'AI Search Optimization', 'Search engine optimization' ) ),
+			'faq_h'  => array( 'AI search', 'questions, answered.' ),
+			'faqs'   => array(
+				array( 'What is AI search optimization?', 'It is the work of making your business easy for AI assistants such as ChatGPT, Google AI Overviews, Gemini, and Perplexity to find, understand, and recommend. That means clear service pages, structured data, consistent business details across the web, and reviews that describe what you do and where.' ),
+				array( 'Is AI search optimization different from SEO?', 'It builds on SEO rather than replacing it. The same foundations help both: a fast website, clear pages for each service, an accurate Google Business Profile, and steady reviews. AI search adds a focus on facts machines can verify and on content that answers questions directly.' ),
+				array( 'How do I know if ChatGPT recommends my business?', 'Ask it the questions your customers ask, such as which company to call for your service in your town, and see who it names. Our free AI visibility check does this across four AI engines and shows where you appear, where competitors appear instead, and why.' ),
+				array( 'How long does it take to show up in AI answers?', 'Fixes to your website and business listings can show up within weeks, as AI tools re-read the web. Reviews and mentions build over months. We re-test every month so you can see what changed.' ),
+			),
+		),
+
 		/* ---------- Cities ---------- */
 		'baltimore'               => array(
 			'title'  => 'Baltimore SEO Company & Web Design | Local Vocal Marketing',

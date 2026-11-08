@@ -112,6 +112,17 @@ get_header(); ?>
             'best'  => 'Combine channels into one plan',
             'span'  => '90-day brief',
           ),
+          array(
+            'num'   => 'S/07',
+            'name'  => 'AI Search Optimization',
+            'serif' => 'get named in AI answers.',
+            'desc'  => 'Make your business easy for ChatGPT, Google AI Overviews, Gemini, and Perplexity to find, trust, and recommend.',
+            'sig'   => 'AI visibility check',
+            'sigsm' => 'four engines · fix list · monthly re-test',
+            'slug'  => 'ai-search-optimization',
+            'best'  => 'Owners asking "does ChatGPT know us?"',
+            'span'  => 'Monthly re-test',
+          ),
         );
 
         foreach ( $services as $s ) : ?>
@@ -156,7 +167,7 @@ get_header(); ?>
       <div class="idx-note__inner">
         <span class="idx-note__tag mono">↳ note from the team</span>
         <p class="idx-note__p">
-          You don't have to buy all six. Most clients start with <em class="serif">Local SEO</em> or <em class="serif">Web Development</em> — whichever is the bigger lever right now — and add the rest as the pipeline calls for it. Pick the one that solves your loudest problem first.
+          You don't have to buy all seven. Most clients start with <em class="serif">Local SEO</em> or <em class="serif">Web Development</em> — whichever is the bigger lever right now — and add the rest as the pipeline calls for it. Pick the one that solves your loudest problem first.
         </p>
       </div>
     </div>
