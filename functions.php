@@ -33,6 +33,10 @@ function lvm_load_assets() {
   $shader   = get_theme_file_path( '/src/scripts/shader.js' );
   wp_enqueue_style( 'lvm-home', get_theme_file_uri( '/src/home.css' ), array( 'lvm-site' ), filemtime( $home_css ) );
   wp_enqueue_script( 'lvm-shader', get_theme_file_uri( '/src/scripts/shader.js' ), array(), filemtime( $shader ), true );
+  if ( is_page_template( 'page-ai-search-optimization.php' ) ) {
+    wp_enqueue_style( 'lvm-ai-search', get_theme_file_uri( '/src/ai-search.css' ), array( 'lvm-home' ), filemtime( get_theme_file_path( '/src/ai-search.css' ) ) );
+    wp_enqueue_script( 'lvm-ai-search', get_theme_file_uri( '/src/scripts/ai-search.js' ), array(), filemtime( get_theme_file_path( '/src/scripts/ai-search.js' ) ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+  }
   if ( is_front_page() ) {
     $home_js = get_theme_file_path( '/src/scripts/home.js' );
     wp_enqueue_script( 'lvm-home', get_theme_file_uri( '/src/scripts/home.js' ), array(), filemtime( $home_js ), true );
