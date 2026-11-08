@@ -536,6 +536,15 @@ if ( lvm_seo_rank_math() ) {
 		},
 		20
 	);
+	// Keep noindexed pages out of the sitemap too
+	add_filter(
+		'rank_math/sitemap/entry',
+		function ( $url, $type, $post ) {
+			return ( 'post' === $type && $post instanceof WP_Post && isset( lvm_seo_noindex()[ $post->post_name ] ) ) ? false : $url;
+		},
+		10,
+		3
+	);
 } else {
 	add_filter(
 		'wp_robots',
