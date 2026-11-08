@@ -540,7 +540,8 @@ if ( lvm_seo_rank_math() ) {
 	add_filter(
 		'rank_math/sitemap/entry',
 		function ( $url, $type, $post ) {
-			return ( 'post' === $type && $post instanceof WP_Post && isset( lvm_seo_noindex()[ $post->post_name ] ) ) ? false : $url;
+			// Rank Math passes a raw DB row, not a WP_Post
+			return ( 'post' === $type && isset( $post->ID ) && isset( lvm_seo_noindex()[ get_post_field( 'post_name', $post->ID ) ] ) ) ? false : $url;
 		},
 		10,
 		3
