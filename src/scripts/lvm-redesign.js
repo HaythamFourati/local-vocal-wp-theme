@@ -118,4 +118,15 @@
       });
     }
   });
+
+  /* Lead tracking for GA4 (gtag comes from Site Kit). Mark generate_lead and
+     phone_click as key events in GA4. No personal data is sent. */
+  function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); }
+  document.addEventListener('lvmi:submitted', function (e) {
+    track('generate_lead', { form: 'seo_review', placement: e.detail && e.detail.inline ? 'inline' : 'popup' });
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (a) track('phone_click', { link_location: a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'page' });
+  });
 })();

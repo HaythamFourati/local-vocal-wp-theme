@@ -37,12 +37,16 @@ function lvm_business() {
 		'region'      => 'MD',
 		'zip'         => '21071',
 		'country'     => 'US',
-		'lat'         => 39.4836, // as shown on the contact page's field card
-		'lng'         => -76.8236,
+		'lat'         => '39.4742', // the Google Business Profile pin (Maps CID below)
+		'lng'         => '-76.8136',
 		'map'         => 'https://maps.app.goo.gl/eio3U1s7NzCkutyf8',
 		'hours'       => array( 'days' => array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ), 'opens' => '09:00', 'closes' => '18:00' ),
 		// Only profiles confirmed to exist. Add LinkedIn, Google Business Profile, Yelp, Clutch… as they're verified.
-		'same_as'     => array( 'https://www.facebook.com/localvocalmarketing' ),
+		'same_as'     => array(
+			'https://www.google.com/maps?cid=1599664359620285201', // Google Business Profile
+			'https://www.facebook.com/localvocalmarketing',
+			'https://www.youtube.com/@localvocalmarketing4585',
+		),
 		// Places with a dedicated page (plus the counties and state they sit in).
 		'areas'       => array(
 			array( 'City', 'Baltimore', 'https://en.wikipedia.org/wiki/Baltimore' ),

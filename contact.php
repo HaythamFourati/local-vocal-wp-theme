@@ -219,7 +219,7 @@ get_header(); ?>
           <div class="ct-visit__card-bar mono">
             <span class="ct-visit__card-folio">FIELD&nbsp;CARD&nbsp;/&nbsp;03</span>
             <span class="ct-visit__card-rule"></span>
-            <span>39.4836°N · 76.8236°W</span>
+            <span>39.4742°N · 76.8136°W</span>
           </div>
 
           <div class="ct-visit__card-art" aria-hidden="true">
